@@ -11,6 +11,7 @@
 				var params = {};
 				$http.post("/company/"+comId,angular.toJson(params)).success(function (result) {
 					selt.company=result.data;
+                    console.log("11111:"+result);
 				});
 
 			};
@@ -19,14 +20,21 @@
 				var paramsPage = {
 					keyWord:'湖南',
 					pageNo:pageNo,
-					pageSize:15
+					pageSize:5
 				};
 				$http.post("/company/query",angular.toJson(paramsPage)).success(function (result) {
+					console.log(result);//已经获取数据，在这里渲染啊
 					selt.testList = result.data;
 					selt.totalCount = result.total;
 					selt.pageSize = result.pageSize;;
 					selt.pageNo = result.pageNum;
 				});
+                $http.get("/company/filter",angular.toJson(paramsPage)).success(function (result) {
+					selt.pbMode=result.pbMode;
+					selt.companyQual=result.companyQual;
+					selt.indestry=result.indestry;
+                    console.log(result);
+                });
 			};
 
 			this.pageChanged = function() {
@@ -41,7 +49,9 @@
 					selt.totalCount = result.total;
 					selt.pageSize = result.pageSize;;
 					selt.pageNo = result.pageNum;
+                    console.log("22222:"+result);
 				});
+
 
 			};
 

@@ -2,13 +2,21 @@
 <html lang="en" ng-app="WEBAPP">
 <head>
     <meta charset="UTF-8">
+    <!--移动端设置viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="../vendor/normalize.css/normalize.css">
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./app/index/index.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/calendar.css"/>
+    <link rel="stylesheet" href="../vendor/normalize.css/base.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/bdd_letter.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/bdd_scerrn.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/bdd-home.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/bdd-footer.css">
     <title>webapp</title>
 </head>
 
-<body class="container">
+<body class="container-fluid">
 
     <ui-view> </ui-view>
 
@@ -24,5 +32,6 @@
     <script src="./app/app.js"></script>
     <script src="./app/index/controller.js"></script>
     <script src="./app/about/controller.js"></script>
+    <script src="./app/company/controller.js"></script>
 </body>
 </html>

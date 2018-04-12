@@ -1,0 +1,41 @@
+/*°ó¶¨ÊÖ»úºÅ*/
+body{
+    background-color: #F8F8F8;
+}
+.bdd_binding_content{
+    width: 600px;
+    height: 500px;
+    margin: 110px auto 0px auto;
+    background-color: white;
+
+}
+.bdd_binding_content_conter{
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+}
+.bdd_binding_content_conter_header{
+    width: 400px;
+    height: 100px;
+   text-align: center;
+    padding-top:30px;
+    color: #4d3a3a;
+    font-size: 24px;
+    font-family: Arial;
+
+}
+.bdd_binding_content_plone{
+    width: 400px;
+    height: 70px;
+    font-size: 18px;
+    color: #ccbebe;
+    font-family: Arial;
+
+}
+.bdd_binding_content_plone_br{
+    width: 400px;
+    height: 1px;
+    background-color: #E6DFDF;
+    margin-top:6px;
+
+}
