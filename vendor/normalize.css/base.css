@@ -56,3 +56,7 @@ input{
     clear: both;
     visibility: hidden;
 }
+
+.title-white{
+    color:white;
+}

@@ -1,21 +1,17 @@
 /*个人中心*/
 body{
     background-color: #F8F8F8;
-
 }
-
 .bdd_perso_nav_header{
     width: 1200px;
     height:1000px;
     margin: 0 auto;
-
 }
 .bdd_perso_nav_news{
     width: 1200px;
     height: 340px;
     background-color: white;
     margin:200px auto 0 auto;
-
 }
 .bdd_perso_left{
     width: 110px;
