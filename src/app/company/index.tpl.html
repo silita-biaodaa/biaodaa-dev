@@ -1,10 +1,69 @@
+
+
+<script>
+    var date = new Date();
+    var yearStr = date.getFullYear();
+    var monthStr = date.getMonth();
+    var curDateStr = date.getDate();
+    $("#today-txt").html("<span style='color: red'>"+yearStr+"/"+monthStr+"/"+curDateStr+"<span>");
+    $(function () {
+        var r = document.body.offsetWidth / 1200; //window.screen.availWidth;
+        if (window.screen.availWidth < 1200) {
+            $(document.body).css("zoom", r);
+        }
+    });
+
+</script>
+<style type="text/css">
+    .dropdown-submenu {
+        position: relative;
+    }
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+    .dropdown-submenu > a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+    .dropdown-submenu:hover > a:after {
+        border-left-color: #fff;
+    }
+    .dropdown-submenu.pull-left {
+        float: none;
+    }
+    .dropdown-submenu.pull-left > .dropdown-menu {
+        left: -100%;
+        margin-left: 10px;
+        -webkit-border-radius: 6px 0 6px 6px;
+        -moz-border-radius: 6px 0 6px 6px;
+        border-radius: 6px 0 6px 6px;
+    }
+</style>
 <!--头部-->
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
-        <div class="bdd-img-div"><div class="bdd-img-one"><img class="bdd-img" src="./images/logo.png" alt=""/></div></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html"></a>首页</div>
+        <div class="bdd-img-div"><div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div></div>
+        <div class="bdd-nav-title"><a ui-sref="Index">首页</a></div>
         <div class="bdd-nav-title"><a href="./bdd_scerrn.html"></a>标讯</div>
-        <div class="bdd-nav-title"><a href="./bdd_letter.html"></a>企信</div>
+        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
         <div class="bdd-nav-title"><a href="./bdd_trends.html"></a>动态</div>
         <div class="bdd-nav-title"><a href="./bdd_society.html"></a>应用</div>
         <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
@@ -28,7 +87,7 @@
             </div>
         </div>
             <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="./images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
     </div>
@@ -38,163 +97,119 @@
     <div class="bdd_area_header">
         <div class="bdd_area_left">
             <div class="bdd_area_content bdd_content_h">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</div>
-            <div class="bdd_area_content bdd_content_q">全部</div>
-            <div class="bdd_area_content bdd_text_vib">湖北</div>
-            <div class="bdd_area_content bdd_text_vib">荆州</div>
-            <div class="bdd_area_content bdd_text_vib">石首</div>
-            <div class="bdd_area_content bdd_text_vib">天门</div>
-            <div class="bdd_area_content bdd_text_vib">仙桃</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
+            <div class="bdd_area_content bdd_content_q" ng-click="$ctrl.cancelArea()">全部</div>
+            <div class="bdd_area_content bdd_text_vib" ng-repeat="area in $ctrl.areaList">
+                <span ng-bind="area.name" ng-click="$ctrl.clickProvince(area)"></span>
+            </div>
+
             <div class="bdd_area_content bdd_text_rifht">更多</div>
         </div>
-        <div class="bdd_area_left">
-            <div class="bdd_area_content bdd_content_h">行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</div>
-            <div class="bdd_area_content bdd_content_q">不限</div>
-            <div class="bdd_area_content bdd_text_vib">湖北</div>
-            <div class="bdd_area_content bdd_text_vib">荆州</div>
-            <div class="bdd_area_content bdd_text_vib">石首</div>
-            <div class="bdd_area_content bdd_text_vib">天门</div>
-            <div class="bdd_area_content bdd_text_vib">仙桃</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
-            <div class="bdd_area_content bdd_text_rifht">更多</div>
+
+        <div class="bdd_area_left" ng-show="$ctrl.isCity">
+            <div class="bdd_area_content bdd_text_vib" ng-repeat="city in $ctrl.cityList">
+                <span ng-bind="city" ng-click="$ctrl.clickCity(city)"></span>
+            </div>
+
         </div>
+
+
         <div class="bdd_area_left">
             <div class="bdd_area_content bdd_content_h">资质要求：</div>
-            <div class="bdd_area_content bdd_content_q">不限</div>
-            <div class="bdd_area_content bdd_text_vib"></div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
+            <div class="bdd_area_content bdd_content_q" ng-click="$ctrl.cancelQUal()">不限</div>
+
+
+
+
+            <div class="bdd_area_content bdd_text_vib" ng-repeat="qual in $ctrl.companyQualList">
+                <div class="dropdown">
+                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+                       href="javascript:;"  ng-click="$ctrl.clickQual1(qual)">{{qual.name}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li class="dropdown-submenu" ng-repeat="qual2 in qual.list">
+                            <a tabindex="-1" href="javascript:;" ng-bind="qual2.name" ng-click="$ctrl.clickQual2(qual2,qual)"></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="qual3 in qual2.list">
+                                    <a tabindex="-1" href="javascript:;" ng-bind="qual3.name" ng-click="$ctrl.clickQual3(qual3,qual2,qual)"></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
-            <div class="bdd_area_content bdd_text_vib">
-                <select class="bdd_select">
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                    <option>公路养护</option>
-                </select>
-            </div>
+
+
+
+
+
+
             <div class="bdd_area_content bdd_text_rifht">更多</div>
         </div>
         <div class="bdd_area_left">
             <div class="bdd_area_content bdd_content_h">注册资金：</div>
-            <div class="bdd_area_content bdd_content_q"> <input class="bdd_select  bdd_font" type="text" value="最低价"><span>&nbsp;&nbsp;&nbsp;&nbsp;——</span></div>
-            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font" type="text" value="最高价"></div>
-            <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认">&nbsp;<span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
+            <div class="bdd_area_content bdd_content_q"> <input class="bdd_select  bdd_font" type="text" ng-model="$ctrl.minPrice" ><span>&nbsp;&nbsp;&nbsp;&nbsp;——</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font" type="text" ng-model="$ctrl.maxPrice" ></div>
+            {{$ctrl.minPrice}}-{{$ctrl.maxPrice}}
+            <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认" ng-click="$ctrl.clickPrice()">&nbsp;<span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
         </div>
         <div class="bdd_area_left">
-            <div style="padding-left: 110px;" class="bdd_area_content bdd_text_vib">0-200万</div>
-            <div class="bdd_area_content bdd_text_vib">200-500万</div>
-            <div class="bdd_area_content bdd_text_vib">500-1000万</div>
-
+            <div  class="bdd_area_content bdd_text_vib" ng-click="$ctrl.clickCapital(0,200)">0-200万</div>
+            <div  class="bdd_area_content bdd_text_vib" ng-click="$ctrl.clickCapital(200,500)">200-500万</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="$ctrl.clickCapital(500,1000)">500-1000万</div>
         </div>
-        <div class="bdd_area_left">
-            <div class="bdd_area_content bdd_content_h">发布时间：</div>
-            <div class="bdd_area_content bdd_content_q">全部</div>
-            <div class="bdd_area_content bdd_text_vib">湖北</div>
-            <div class="bdd_area_content bdd_text_vib">荆州</div>
-            <div class="bdd_area_content bdd_text_vib">石首</div>
-            <div class="bdd_area_content bdd_text_vib">天门</div>
-            <div class="bdd_area_content bdd_text_vib">仙桃</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
-            <div class="bdd_area_content bdd_text_vib">监理</div>
-            <div class="bdd_area_content bdd_text_vib">沙市</div>
-            <div class="bdd_area_content bdd_text_vib">武汉</div>
-            <div class="bdd_area_content bdd_text_vib">公安</div>
-        </div>
-
     </div>
 </div>
 <div class="bdd_side_left">
     <div class="bdd_side_conter">
         <div class="bdd_area_left">
             <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
-            <div class="bdd_area_content bdd_content_q"> <input class="bdd_select  bdd_font bdd_select_pic  bdd_font_color" type="text" value="合理低价法合理低价法&nbsp;×"></div>
-            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="合格低价法&nbsp;×"></div>
-            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font bdd_font_color" type="text" value="合格低价法&nbsp;×"></div>
-            <div class="bdd_area_content bdd_text_vib"><span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.province"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.province}}&nbsp;×"></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.city"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.city}}&nbsp;×"></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual1"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.qual1}}&nbsp;×"></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual2"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.qual2}}&nbsp;×"></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual3"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.qual3}}&nbsp;×"></div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.priceArea"> <input class="bdd_select bdd_font  bdd_font_color" type="text" value="{{$ctrl.priceArea}}&nbsp;×"></div>
+
+
+
+
+
+
+            <div class="bdd_area_content bdd_text_vib"><span class="bdd_font_span" ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
             <div class="bdd_area_content bdd_text_vib"> <input class="bdd_button_val bdd_button_mews" type="button" value="立即订阅"></div>
         </div>
         <div class="bdd_side_news_val">
             <div class="bdd_side_rihgt">综合排序</div>
             <div class="bdd_side_rihgt">发布时间</div>
             <div class="bdd_side_rihgt">项目金额</div>
-            <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f">10000</span>条广告</div>
+            <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f" ng-bind="$ctrl.totalCount"></span>条广告</div>
         </div>
     </div>
 </div>
-<div class="bdd_adver">
-    <div class="bdd_adver_header">
-        <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="test in $ctrl.testList">
-            <div class="bdd_win_conter_left"></div>
-            <div class="bdd_win_conter_conter">
-                <div class="bdd_win_conter_header" ng-bind="test.comName"></div>
-                <div class="bdd_sast"><span class="bdd_hold_pic" style="margin-top: 100px">存续</span></div><br>
-                <div style="margin-top:15px" class="bdd_hold_top">法定代表人：张三</div>
-                <div class="bdd_hold_top bdd_hold_list">法定代表人：张三</div>
-                <div class="bdd_hold_top bdd_hold_text">法定代表人：张三</div><br>
-                <div class="bdd_hold_top">法定代表人：张三</div>
 
+
+
+<div class="bdd_adver">
+    <div class="bdd_adver_header" >
+        <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in $ctrl.companyList">
+            <div class="bdd_win_conter_left"></div>
+            <div class="bdd_win_conter_conter" >
+
+                <div class="bdd_win_conter_header" ng-bind="company.comName"></div>
+                <div></span></div><br>
+                <div style="margin-top:15px" class="bdd_hold_top" >法定代表人：<span ng-bind="company.legalPerson"></span></div>
+                <div class="bdd_hold_top bdd_hold_list">注册资本：<span ng-bind="company.regisCapital"></span></div>
+                <div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div><br>
+                <div class="bdd_hold_top">地址：<span ng-bind="company.comAddress"></span></div>
             </div>
-            <div class="bdd_win_conter_right"><sapn style="font-size: 24px;color: #cea63f">97</sapn><span style="font-size: 14px;color: #cea63f">分</span></div>
+            <div class="bdd_win_conter_right"><span ng-bind="company.subsist" ></span></div>
         </div>
         <ul uib-pagination total-items="$ctrl.totalCount" ng-model="$ctrl.pageNo" ng-change="$ctrl.pageChanged()"
             items-per-page="$ctrl.pageSize" max-size="$ctrl.maxSize" class="pagination-sm"
             boundary-links="true" force-ellipses="true"></ul>
+
+    </div>
 
 
     </div>
@@ -203,14 +218,14 @@
 
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="./images/logo.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
         <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="./images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="./images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="./images/bottom_icon_wechat.png" alt=""/></a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
     </div>
 </div>

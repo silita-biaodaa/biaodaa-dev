@@ -21,7 +21,7 @@
 		$stateProvider
 			.state('Index', {
 				url: '/index',
-				templateUrl: window.rootSrc + 'app/index/bdd_letter.html',//路由更改
+				templateUrl: window.rootSrc + 'app/index/index.tpl.html',//路由更改
 
 				// 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
 				controller: 'IndexCtrl as $ctrl'
