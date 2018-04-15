@@ -13,7 +13,14 @@
 			'ui.router',
 			'WEBAPP.INDEX.CONTROLLER',
 			'WEBAPP.ABOUT.CONTROLLER',
-            'WEBAPP.COM.CONTROLLER'
+            'WEBAPP.COM.CONTROLLER',
+				'HomeController',
+				'QiyeController',
+				'TrendController',
+				'TenderController',
+				'CompanyDetailController',
+				'SocietyController',
+				'ngTouch'
 		])
 		.config(config);
 
@@ -49,22 +56,35 @@
 
                 // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
                 controller: 'CompanyCtrl as $ctrl'
-            });
-            /*.state('home', {
+            })
+            .state('home', {
                 url: '/home',
                 templateUrl: window.rootSrc + 'app/home/index.tpl.html',
-                controller: 'homeCtrl as $ctrl'
+                controller: 'HomeCtrl as $ctrl'
             })
 			.state('zhaobiao', {
             url: '/zhaobiao',
             templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
             controller: 'tenderCtrl as $ctrl'
         })
+			.state('trend', {
+            url: '/trend',
+            templateUrl: window.rootSrc + 'app/trendstatu/index.tpl.html',
+            controller: 'trendCtrl as $ctrl'
+        }).state('companyDetail', {
+				url: '/companydetail',
+				templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
+				controller: 'CompanyDetailCtrl as $ctrl'
+			})
             .state('qiyemsg', {
                 url: '/qiyemsg',
                 templateUrl: window.rootSrc + 'app/qiyemsg/index.tpl.html',
                 controller: 'qiyemsgCtrl as $ctrl'
-            });*/
+            }).state('society', {
+				url: '/society',
+				templateUrl: window.rootSrc + 'app/society/index.tpl.html',
+				controller: 'SocietyCtrl as $ctrl'
+			});
 
 		/**
 		 * 什么都匹配不到的时候就跳转到首页

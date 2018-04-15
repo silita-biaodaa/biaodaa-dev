@@ -1,5 +1,291 @@
-<!--头部-->
 <style>
+
+    /*nav*/
+    body{
+        background-color: #F8F8F8;
+    }
+    .bdd_details_nav{
+        width: 100%;
+        height:2000px;
+    }
+    .bdd_details_value{
+        width:1200px;
+        height:2000px;
+        margin:0 auto;
+    }
+    .bdd_details_value_hold{
+        width: 890px;
+        height:1800px;
+        float:left;
+
+    }
+    .bdd_details_value_left{
+        width: 890px;
+        height:240px;
+        margin-top:-30px;
+        background-color:white;
+
+    }
+    .bdd_details_value_right{
+        width: 290px;
+        height: 1000px;
+        float:right;
+        margin-left:18px;
+    }
+    .bdd_details_value_left_top{
+        width: 800px;
+        height:210px;
+        margin: 0 auto;
+        margin-top:30px;
+    }
+    .bdd_details_news{
+        float: right;
+    }
+    .bdd_details_data{
+        float: left;
+    }
+
+    .bdd_details_size{
+        font-size: 24px;
+        color: #4d3a3a;
+        font-weight: 700;
+        padding-top:30px;
+    }
+    .bdd_br{
+        width: 800px;
+        height: 1px;
+        background-color: #f0f0f0;
+    }
+    .bdd_details_one{
+        font-size: 14px;
+        color:#ccbebe;
+    }
+    .bdd_details_data_c{
+        font-size: 16px;
+        color: #ccbebe;
+    }
+    .bdd_details_html{
+        width: 890px;
+        height:120px;
+        margin-top:40px;
+
+
+
+    }
+    .bdd_details_hs{
+        width: 200px;
+        height: 120px;
+        border: 1px solid #ccc;
+        position: absolute;
+
+
+    }
+    .bdd_details_x{
+        font-size: 16px;
+        color: #cea63f;
+        position: relative;
+        top:47px;
+        left: 0;
+    }
+    .bdd_details_img {
+        position: relative;
+        top: 24px;
+        left: 71px;
+    }
+
+    .bdd_details_html_left{
+        width: 200px;
+        height: 120px;
+        float: left;
+        background-color: white;
+    }
+    .bdd_details_html_right{
+        width: 410px;
+        height: 120px;
+        float: left;
+        background-color: white;
+    }
+    .bdd_details_zf{
+        margin-left:39px;
+    }
+    .bdd_style_value{
+        font-size: 16px;
+        color: #cea63f;
+        position: relative;
+        top:43px;
+    }
+    .bdd_style_img{
+        position: relative;
+        left:77px;
+        top:23px;
+        font-size: 12px;
+        color: #ccbebe;
+    }
+    .bdd_details_span{
+        position: relative;
+        left: -36px;
+        top:-6px;
+        color: #ffffff;
+    }
+    .bdd_details_side{
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    .bdd_details_ke{
+        position: relative;
+        left:-25px;
+        top: 0;
+    }
+    .bdd_details_what{
+        position: relative;
+        color: #cea63f;
+        font-size: 16px;
+        left:-133px;
+        top: 53px;
+        margin-left:-20px;
+    }
+    /*保证金*/
+    .bdd_bond{
+        width: 890px;
+        height: 90px;
+        float: left;
+        margin-top:10px;
+        background-color: white;
+
+
+    }
+    .bdd_bond_pic{
+        width: 90px;
+        height: 90px;
+        background-color:#ccbebe;
+        color: white;
+        float: left;
+        font-size: 16px;
+        position: absolute;
+        border-radius: 5px 0 0 5px;
+
+    }
+    .bdd_bond_r{
+        float: left;
+        padding:18px 0 0 110px;
+    }
+    .bdd_bond_l{
+        float: right;
+        padding: 18px 20px 0 0;
+    }
+    .bdd_bond_span{
+        font-size: 16px;
+        color: #ccbebe;
+    }
+    .bdd_bond_b{
+        float: left;
+        margin-top:20px;
+        margin-left:-218px;
+    }
+    .bdd_pic_po{
+        position: relative;
+        left:20%;
+        top:40%;
+    }
+    .bdd_bond_fit{
+        margin-top:40px;
+    }
+    .bdd_follow_weibo{
+        width: 115px;
+        height:25px;
+        text-align: center;
+        font-size: 14px;
+        color: #4d3a3a;
+        margin-left:-20px;
+    }
+    .bdd_follow{
+        float: left;
+    }
+    .bdd_follow_foll{
+        margin-top:30px;
+        padding-left:400px;
+    }
+    .bdd_follow_pyq{
+        margin-top:30px;
+        padding-left:10px;
+    }
+    .bdd_follow_zb{
+        padding-left:210px;
+    }
+
+    /*分析*/
+    .bdd_details_header{
+        width: 290px;
+        height:60px;
+        background-color: white;
+        padding-left:15px;
+
+    }
+    .bdd_details_header_left{
+        width: 5px;
+        height: 20px;
+        background-color: #cea63f;
+        float: left;
+        margin-top:22px;
+
+    }
+    .bdd_details_header_conter{
+        float: left;
+        margin-left:5px;
+        margin-top:20px;
+        color: #4d3a3a;
+        font-size: 18px;
+    }
+    .bdd_details_js{
+        width: 290px;
+        height: 180px;
+        margin-top:10px;
+        background-color: white;
+    }
+    .bdd_details_js_two{
+        font-size: 16px;
+        color: #4d3a3a;
+        padding:20px 0 0 58px;
+        font-family: Arial;
+        font-weight: 700;
+
+    }
+    .bdd_details_js_new{
+        font-size: 14px;
+        color: #4d3a3a;
+        padding: 0 0 10px 20px;
+    }
+    .bdd_details_messg{
+        margin-top:50px;
+    }
+    .bdd_deails_lis{
+        margin-top:40px;
+    }
+    .bdd_follow_info{
+        width: 890px;
+        height: 800px;
+        border: 1px solid #ccc;
+        float: left;
+    }
+    .bdd_follow_info{
+        width: 890px;
+        height:800px;
+        margin-top:70px;
+
+    }
+    .bdd_follow_left{
+        width: 890px;
+        height: 70px;
+        background-color:white;
+        margin-top:20px;
+        float: left;
+        padding:20px 10px;
+        font-size: 16px;
+        color: #cea63f;
+
+    }
+
 
     /*多标段样式*/
     .bdd_stage{
@@ -102,13 +388,15 @@
 </style>
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
-        <div class="bdd-img-div"><div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div></div>
-        <div class="bdd-nav-title"><a href="#/home">首页</a></div>
-        <div class="bdd-nav-title"><a class="title-white" href="./bdd_scerrn.html">标讯</a></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html">企信</a></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html">动态</a></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">npm
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
+        </div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a  style="color:white" ui-sref="zhaobiao">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
+        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
             <div class="search-filter">
                 <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
                 <ul class="options">
@@ -129,7 +417,7 @@
             </div>
         </div>
             <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images//nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
     </div>
@@ -152,21 +440,21 @@
             </div>
             <div class="bdd_details_html">
                 <div class="bdd_details_html_left">
-                    <a class="bdd_style_img " href="#"><img class="bdd_style_img_pic" src="../../../vendor/images/zb_icon_xggg.png" alt=""></a>
+                    <a class="bdd_style_img " href="#"><img class="bdd_style_img_pic" src="../../../vendor/images//zb_icon_xggg.png" alt=""></a>
                     <a class="bdd_style_value" href="#">相关公告：10</a>
                 </div>
                 <div class="bdd_details_html_left bdd_details_zf">
-                    <a class="bdd_style_img " href="#"><img class="bdd_style_img_pic" src="../../../vendor/images/zb_icon_zbwj.png" alt=""></a>
+                    <a class="bdd_style_img " href="#"><img class="bdd_style_img_pic" src="../../../vendor/images//zb_icon_zbwj.png" alt=""></a>
                     <a class="bdd_style_value" href="#">相关公告：10</a>
                 </div>
                 <div class="bdd_details_html_right bdd_details_zf">
-                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">时</span></a>
-                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke" >分</span></a>
-                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">秒</span></a>
+                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images//zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">时</span></a>
+                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images//zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke" >分</span></a>
+                    <a class="bdd_style_img" href="#"><img src="../../../vendor/images//zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">秒</span></a>
                     <a class="bdd_details_what" href="#">离报名截止时间还剩</a>
                 </div>
                 <div class="bdd_stage">
-                    <div class="bdd_stage_img"><span class="bdd_stage_one">1标段</span><img src="../../../vendor/images/zb_lable_dbd.png" alt=""></div>
+                    <div class="bdd_stage_img"><span class="bdd_stage_one">1标段</span><img src="../../../vendor/images//zb_lable_dbd.png" alt=""></div>
                     <div class="bdd_stage_conter">
                         <div class="bdd_stage_top">
                             <div class="bdd_stage_top_left">报名截止时间：<span class="bdd_stage_color">2018-1-0</span></div>
@@ -234,11 +522,11 @@
                 <!--<br>-->
                 <!--<div class="bdd_bond_b bdd_bond_span">递交方式：银行保函</div>-->
                 <!--</div>-->
-                <div class="bdd_follow bdd_follow_foll"><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
-                <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span"><img src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
-                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_wechat.png" alt=""></div>
-                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_qq.png" alt=""></div>
-                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt=""></div>
+                <div class="bdd_follow bdd_follow_foll"><img src="../../../vendor/images//zb_btn_follow.png" alt=""></div>
+                <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span"><img src="../../../vendor/images//zb_icon_weibo.png" alt=""></div>
+                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images//zb_icon_wechat.png" alt=""></div>
+                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images//zb_icon_qq.png" alt=""></div>
+                <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images//zb_icon_pyq.png" alt=""></div>
                 <div class="bdd_follow "><input class="bdd_follow_weibo" type="text" value="分享到微博"></div>
             </div>
             <div class="bdd_follow_info" style="background-color: white">
@@ -287,14 +575,14 @@
 <!--底部-->
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images//logo.png" alt=""/></a></div>
         <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images//bottom_icon_andriod.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images//bottom_icon_ios.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images//bottom_icon_wechat.png" alt=""/></a></div>
     </div>
 </div>

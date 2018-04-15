@@ -1,5 +1,5 @@
 (function() {
-	angular.module('WEBAPP.INDEX.CONTROLLER', ['ui.bootstrap'])
+	angular.module('QiyeController', ['ui.bootstrap'])
 		.controller('qiyemsgCtrl', ['$http','$uibModal','$log','$document',function($http,$uibModal, $log, $document) {
         	console.log("11111");
 		}])
