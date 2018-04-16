@@ -206,6 +206,8 @@
     }
     .bg-color {
         width: 100%;
+        background-color: white;
+
 
     }
     .bg-color-c{
@@ -214,14 +216,13 @@
         background-color:white;
     }
     .container-fluid{
-        background-color: white;
         padding-left: 0px;
         padding-right: 0px;
     }
     .bdd_adver{
         height: auto;
-        padding-bottom: 20px;
-    }
+        padding-bottom: 20px;}
+
     .bdd_adver_header{
         height: 500px;
     }
@@ -342,6 +343,9 @@
         background: none;
         text-decoration:none;
     }
+    .dropdown-menu{
+        padding: 5px 10px;
+    }
 </style>
 
 <nav class="bdd-nav">
@@ -460,7 +464,7 @@
 
                         </div>
 
-                        <div class="dropdown dropdown-div dropdown-div-more">
+                        <div class="dropdown  dropdown-div dropdown-div-more">
                             <a id="more_select_zz" role="button" data-toggle="dropdown" class="btn btn-white btn-white-a" data-target="#"
                                href="javascript:;" ng-click="$ctrl.moreSelectZz($event)"><div class="to_more">更多</div><div class="to_more to_bottom"></div></a>
 
@@ -475,9 +479,9 @@
                            href="javascript:;"><span
                                 ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
                                 class="caret"></span></a>
-                        <ul class="dropdown-menu multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
+                        <ul class="dropdown-menu  multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
                             ng-mouseleave="mouseOut()" role="menu" aria-labelledby="dropdownMenu">
-                            <li class="dropdown-submenu" ng-repeat="qual2 in qual.list">
+                            <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
                                 <a href="javascript:;" data-index="2" ng-bind="qual2.name"
                                    ng-mouseenter="touchStart($event,qual2)"
                                    ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>

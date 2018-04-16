@@ -269,8 +269,8 @@
 
 function setPosition(arr,offX,offY,tocWidth){
 	var secondMenu = document.getElementById('bdd_second_menu');
-	$('#bdd_second_menu').css('left',(offX + tocWidth +100) + 'px');
-	//secondMenu.style.left = (offX + tocWidth +200) + 'px';
+	$('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
+	//secondMenu.style.left = (offX + tocWidth +100) + 'px';
 	$('#bdd_second_menu').css('top',offY + 'px');
 //	secondMenu.style.top = (offY)+'px';
 	if(arr!=null && arr.length>0) {
@@ -317,10 +317,10 @@ function mourseMoveOut(){
 
 function setContentHeight(dataList){
 	var bdd_adver_header = document.getElementById("bdd_adver_header");
-	if(dataList.length>0){
+	if(dataList.length>2){
 	bdd_adver_header.style.height="auto";
 	}else{
-		bdd_adver_header.style.height="200px";
+		bdd_adver_header.style.height="500px";
 	}
 
 }
