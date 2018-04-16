@@ -102,10 +102,10 @@
             url: '/basicinfor',
             templateUrl: window.rootSrc + 'app/basicinfor/index.tpl.html',
             controller: 'BasicinforCtrl as $ctrl'
-        }).state('Personnel', {
-            url: '/personnel',
-            templateUrl: window.rootSrc + 'app/personnel/index.tpl.html',
-            controller: 'PersonnelCtrl as $ctrl'
+        }).state('Staff', {
+            url: '/staff',
+            templateUrl: window.rootSrc + 'app/stall/index.tpl.html',
+            controller: 'StaffCtrl as $ctrl'
         });
 
 		/**
