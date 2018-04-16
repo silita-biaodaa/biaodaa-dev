@@ -21,7 +21,8 @@
 				'CompanyDetailController',
 				'SocietyController',
 				'ngTouch',
-				'ReputController'
+				'ReputController',
+				'PersonInfoController'
 
 		])
 		.config(config);
@@ -106,7 +107,11 @@
             url: '/staff',
             templateUrl: window.rootSrc + 'app/stall/index.tpl.html',
             controller: 'StaffCtrl as $ctrl'
-        });
+        }).state('personInfo', {
+				url: '/personInfo',
+				templateUrl: window.rootSrc + 'app/personalinfo/index.tpl.html',
+				controller: 'PersonInfoCtrl as $ctrl'
+			});
 
 		/**
 		 * 什么都匹配不到的时候就跳转到首页
