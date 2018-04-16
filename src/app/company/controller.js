@@ -100,32 +100,32 @@
 			};
 			this.cancleEmProvince = function () {
 
-				$ctrl.province="";
+				selt.province="";
 				selt.setPage(1);
 			};
 			this.cancleEmCity = function () {
 
-				$ctrl.city="";
+				selt.city="";
 				selt.setPage(1);
 			};
 			this.cancleEmQone = function () {
 
-				$ctrl.qual1="";
+				selt.qual1="";
 				selt.setPage(1);
 			};
 			this.cancleEmQTwo = function () {
 
-				$ctrl.qual2="";
+				selt.qual2="";
 				selt.setPage(1);
 			};
 			this.cancleEmProvince = function () {
 
-				$ctrl.province="";
+				selt.province="";
 				selt.setPage(1);
 			};
 			this.cancleEmProvince = function () {
 
-				$ctrl.province="";
+				selt.province="";
 				selt.setPage(1);
 			};
 
@@ -137,10 +137,10 @@
 				var aArr = grandFather.getElementsByTagName("a");
 				for(var i=0;i<aArr.length;i++){
 					var aElem = aArr[i];
-					aElem.style.backgroundColor='#fff';
+					aElem.parentNode.style.backgroundColor='#fff';
 					aElem.style.color='#000';
 				}
-				elem.style.backgroundColor='#A7BC6D';
+				elem.parentNode.style.backgroundColor='#A7BC6D';
 				elem.style.color='#fff';
 				var off = $($event.target).offset();
 				var tocWidth = $($event.target).width();
@@ -269,17 +269,16 @@
 
 function setPosition(arr,offX,offY,tocWidth){
 	var secondMenu = document.getElementById('bdd_second_menu');
-	if(offX>1200){
-		secondMenu.style.left = (offX- 152) + 'px';
-	}else {
-		secondMenu.style.left = (offX + tocWidth + 40) + 'px';
-	}
-	secondMenu.style.top = (offY)+'px';
+	$('#bdd_second_menu').css('left',(offX + tocWidth +100) + 'px');
+	//secondMenu.style.left = (offX + tocWidth +200) + 'px';
+	$('#bdd_second_menu').css('top',offY + 'px');
+//	secondMenu.style.top = (offY)+'px';
 	if(arr!=null && arr.length>0) {
-		secondMenu.style.display='block';
-		secondMenu.style.border = '1px solid #ccc';
+		$('#bdd_second_menu').css('border', '1px solid #ccc');
+		$('#bdd_second_menu').show();
 	}else{
-		secondMenu.style.display='none';
+		//secondMenu.style.display='none';
+		$('#bdd_second_menu').hide();
 	}
 }
 

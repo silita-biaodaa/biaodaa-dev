@@ -1,9 +1,10 @@
+
 <!--头部-->
 <style>
-
-    ::-webkit-scrollbar {
-        display: none;
+    body{
+        background-color: #f8f8f8;
     }
+
     .btn{
         padding: 1px 10px;
     }
@@ -22,6 +23,9 @@
 
     .dropdown-submenu {
         position: relative;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius:10px;
     }
 
     .dropdown-submenu > .dropdown-menu {
@@ -156,7 +160,7 @@
     .bdd_drop_scroll {
         height: 300px;
         overflow-y: scroll;
-        webkit-overflow-scrolling: touch;
+       /* webkit-overflow-scrolling: touch;*/
     }
 
     .a-point {
@@ -185,9 +189,9 @@
     }
 
     /* for Chrome */
-    .bdd_drop_scroll::-webkit-scrollbar {
+ /*   .bdd_drop_scroll::-webkit-scrollbar {
         display: none;
-    }
+    }*/
 
     .bdd_comp_span_m {
         margin-left: 50px;
@@ -200,15 +204,14 @@
         background-color: #F5F3F3;
 
     }
-
     .bg-color {
         width: 100%;
-        background-color: white;
 
     }
     .bg-color-c{
         width: 1200px;
         margin: 0 auto;
+        background-color:white;
     }
     .container-fluid{
         background-color: white;
@@ -254,9 +257,7 @@
         font-size: 14px;
         margin-left: 25px;
     }
-    .dropdown-yellow:hover{
-        background-color: #A7BC6D;
-    }
+
     .to_bottom {
         width: 0;
         height: 0;
@@ -305,9 +306,9 @@
     .bdd_vib_mews{
         float:right;
     }
-    .bdd_win_conter_conter{
-        margin-top: 10px;
-    }
+    /*.bdd_win_conter_conter{*/
+        /*margin-top: 10px;*/
+    /*}*/
     .bdd_hold_top>span{
         width: 800px;
     }
@@ -315,6 +316,31 @@
         text-align: left;
         width: 1000px;
         margin-top: 10px;
+    }
+    .bdd_hold_color{
+        color:#cea63f;
+    }
+    .bdd_side_le{
+        margin-left:30px;
+    }
+    .dropdown-menu>li>a{
+
+        padding: 3px 3px;
+    }
+    .dropdown-submenu{
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .dropdown-yellow-li{
+        padding: 3px 10px;
+
+    }
+    .dropdown-menu>li>a:hover{
+        background: none;
+        text-decoration:none;
     }
 </style>
 
@@ -395,7 +421,7 @@
 
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">不限</a>
+                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
                     </div>
                     <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city"><a class="span-cursor"
                                                                                                     ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
@@ -413,7 +439,7 @@
                 <div class="bdd_area_header_select_li">
                     <div class="bdd_area_left">
                         <div class="bdd_content_h">资质要求：</div>
-                        <div class="bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">不限</div>
+                        <div class="bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">全部</div>
 
 
                         <div class="dropdown dropdown-div dropdown-div-border" ng-repeat="qual in $ctrl.companyQualList">
@@ -423,7 +449,7 @@
                                     class="caret"></span></a>
                             <ul class="dropdown-menu multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
                                 ng-mouseleave="mouseOut()" role="menu" aria-labelledby="dropdownMenu">
-                                <li class="dropdown-submenu" ng-repeat="qual2 in qual.list">
+                                <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
                                     <a class="dropdown-yellow" href="javascript:;" data-index="2" ng-bind="qual2.name"
                                        ng-mouseenter="touchStart($event,qual2)"
                                        ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>
@@ -517,8 +543,8 @@
                     </div>
                     <div class="bdd_side_news_val">
                         <div class="bdd_side_rihgt">综合排序</div>
-                        <div class="bdd_side_rihgt">发布时间</div>
-                        <div class="bdd_side_rihgt">项目金额</div>
+                        <div class="bdd_side_rihgt bdd_side_le">发布时间<span><img src="../../../vendor/images/bx_icon_sort.png" alt=""></span></div>
+                        <div class="bdd_side_rihgt bdd_side_le">项目金额<span><img src="../../../vendor/images/bx_icon_sort.png" alt=""></span></div>
                         <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f" ng-bind="$ctrl.totalCount"></span>条广告
                         </div>
                     </div>
@@ -537,13 +563,13 @@
                     <div class="bdd_win_conter_d"><span class="bdd_win_conter_span" ng-bind="company.subsist|limitTo:2"></span></div>
                     <br>
 
-                    <div style="margin-top:15px" class="bdd_hold_top">法定代表人：<span ng-bind="company.legalPerson"></span>
+                    <div style="margin-top:-2px" class="bdd_hold_top">法定代表人：<span ng-bind="company.legalPerson"></span>
                     </div>
                     <div class="bdd_hold_top bdd_hold_list">注册资本：<span ng-bind="company.regisCapital"></span></div>
-                    <div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>
+                    <!--<div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>-->
                     <br>
 
-                    <div class="bdd_hold_top bdd_hold_top_addr">地址：<span ng-bind="company.comAddress"></span></div>
+                    <div class="bdd_hold_top bdd_hold_top_addr">地址：<span class="bdd_hold_color" ng-bind="company.comAddress"></span></div>
                 </div>
                 <div class="bdd_win_conter_right"></div>
             </div>

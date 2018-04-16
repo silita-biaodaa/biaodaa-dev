@@ -20,7 +20,9 @@
 				'TenderController',
 				'CompanyDetailController',
 				'SocietyController',
-				'ngTouch'
+				'ngTouch',
+				'ReputController'
+
 		])
 		.config(config);
 
@@ -84,7 +86,27 @@
 				url: '/society',
 				templateUrl: window.rootSrc + 'app/society/index.tpl.html',
 				controller: 'SocietyCtrl as $ctrl'
-			});
+			}).state('Reput', {
+				url: '/reput',
+				templateUrl: window.rootSrc + 'app/reput/index.tpl.html',
+				controller: 'ReputCtrl as $ctrl'
+			}).state('Loginpage', {
+            url: '/loginpage',
+            templateUrl: window.rootSrc + 'app/loginpage/index.tpl.html',
+            controller: 'LoginpageCtrl as $ctrl'
+        }).state('Information', {
+            url: '/information',
+            templateUrl: window.rootSrc + 'app/information/index.tpl.html',
+            controller: 'InformationCtrl as $ctrl'
+        }).state('Basicinfor', {
+            url: '/basicinfor',
+            templateUrl: window.rootSrc + 'app/basicinfor/index.tpl.html',
+            controller: 'BasicinforCtrl as $ctrl'
+        }).state('Personnel', {
+            url: '/personnel',
+            templateUrl: window.rootSrc + 'app/personnel/index.tpl.html',
+            controller: 'PersonnelCtrl as $ctrl'
+        });
 
 		/**
 		 * 什么都匹配不到的时候就跳转到首页

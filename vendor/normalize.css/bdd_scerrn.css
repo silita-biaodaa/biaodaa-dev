@@ -53,8 +53,6 @@
     margin-top:26px;
     margin: 26px  auto 0px auto;
 
-
-
 }
 .bdd_area_content{
     float: left;
@@ -74,7 +72,7 @@
 .bdd_content_q{
     font-size: 14px;
     color: #cea63f;
-    padding-left:20px;
+    padding-left:30px;
 }
 .bdd_text_vib{
     padding:15px;
@@ -400,7 +398,10 @@
     font-size: 14px;
     color: #ccbebe;
     margin-top:6px;
-    padding-left:20PX;
+    margin-left: 20px;
+    width: 200px;
+    padding-left: -30px;
+    
 }
 .bdd_hold_list{
     float: left;
