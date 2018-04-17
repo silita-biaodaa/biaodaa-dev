@@ -1,8 +1,14 @@
-(function() {
-	angular
-		.module('BasicinforController',['ui.bootstrap','ngTouch'])
-		.controller('BasicinforCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
+app.controller('BasicinforCtrl', ['$http','$scope','utils',function($http,$scope, utils) {
+	var selt = this;
 
-		}]);
+	var comId =  utils.getUrlVar('comId');
+	console.log("=====comId:"+comId);
 
-})();
+
+
+
+
+
+
+
+}]);
