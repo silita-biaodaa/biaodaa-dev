@@ -62,6 +62,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
          })
 
+
         .state('Home', {
             url: '/home',
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
@@ -77,16 +78,16 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
-        .state('Basicinfor', {
-            url: '/basicinfor',
-            templateUrl: window.rootSrc + 'app/basicinfor/index.tpl.html',
+        .state('CompanyDetail', {
+            url: '/companydetail',
+            templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
 
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
-            controller: 'BasicinforCtrl as $ctrl',
+            controller: 'CompanyDetailCtrl as ctrl',
             resolve: {
                 load:['$ocLazyLoad',function($ocLazyLoad){
                     return $ocLazyLoad.load([
-                        'app/basicinfor/controller.js'
+                        'app/companydetail/controller.js'
                     ]);
                 }]
             }
