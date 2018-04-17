@@ -35,6 +35,11 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	}
 
 
+	$http.post("/company/reputation/"+comId,angular.toJson(params)).success(function (result) {
+		selt.repuMap=result.data;
+	});
+
+
 
 
 
