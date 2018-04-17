@@ -46,7 +46,7 @@
 
     }
     .bdd_basic_P_span_value{
-        padding:0 30px;
+
     }
     .bdd_basic_P_span_xu{
         width:50px;
@@ -149,8 +149,10 @@
     .bdd_basic_nav_header{
         width: 1140px;
         height:160px;
-        margin:25px  auto 0 auto;
+        margin-left:20px;
+        margin-right: 20px;
         line-height:35px;
+        overflow: hidden;
     }
     .bdd_basic_nav_header_left{
         font-size: 16px;
@@ -739,6 +741,14 @@
     .bdd_per_ul{
         text-align: center;
     }
+  .bdd_basic_person{
+      float: left;
+  }
+    .bdd_basic_person_site{
+        margin-top: 20px;
+        margin-left: 100px;
+    }
+
 </style>
 <!--头部-->
 <nav class="bdd-nav">
@@ -784,8 +794,10 @@
             <div class="bdd_basic_top_l"></div>
             <div class="bdd_basic_top_r">
                 <div class="bdd_basic_top_p bdd_basic_P_size" ng-bind="ctrl.company.comName"></div><div class="bdd_basic_P_span_xu" ng-bind="ctrl.company.subsist|limitTo:2"></div>
-                <div class="bdd_basic_top_p bdd_basic_P_span"><span class="bdd_basic_P_span_value">法人：希希</span><span class="bdd_basic_P_span_value">法人：希希</span><span class="bdd_basic_P_span_value">法人：希希</span></div>
-            </div>
+            </div><br><br>
+                <div style="margin-left: 20px;padding-top: 20px;" class="bdd_basic_person">法人代表：</div>
+                <div class="bdd_basic_person bdd_basic_person_site">注册地：</div>
+                <div class="bdd_basic_person bdd_basic_person_site">注册资金：</div>
         </div>
     </div>
     <!--微信-->
@@ -807,13 +819,13 @@
     <!--内容-->
     <div class="bdd_basic_nav_conter" ng-if="ctrl.showType==1">
         <div class="bdd_basic_nav_header">
-            <div class="bdd_basic_nav_header_right">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div><br>
             <div class="bdd_basic_nav_header_left">企业类型：<span class="bdd_basic_black" ng-bind="ctrl.company.economicType"></span></div>
-            <div class="bdd_basic_nav_header_right">安许证号：<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div><br>
-            <div class="bdd_basic_nav_header_left">经营地址：<span style="color: #cea63f" ng-bind="ctrl.company.regisAddress"></span></div>
-            <div class="bdd_basic_nav_header_right">有效期：<span class="bdd_basic_black" ng-bind="ctrl.company.validDate"></span></div><br>
-
+            <div class="bdd_basic_nav_header_right">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div><br>
+            <div class="bdd_basic_nav_header_left">有效期:<span class="bdd_basic_black" ng-bind="ctrl.company.validDate"></span></div><br>
+            <div class="bdd_basic_nav_header_right">安许证号:<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div>
+            <div class="bdd_basic_nav_header_left">经营地址:<span  style="color: #cea63f" ng-bind="ctrl.company.regisAddress"></span></div>
         </div>
+
     </div >
     <!--经营范围-->
     <div class="bdd_scope" ng-if="ctrl.showType==1">
