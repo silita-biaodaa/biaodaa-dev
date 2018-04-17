@@ -527,7 +527,6 @@
         color: #4d3a3a;
         margin-left:30px;
         line-height: 40px;
-        margin-bottom: 200px;
     }
     /*不良记录*/
     .bdd_lauban_conter_mess{
@@ -794,9 +793,10 @@
             <div class="bdd_basic_top_r">
                 <div class="bdd_basic_top_p bdd_basic_P_size" ng-bind="ctrl.company.comName"></div><div class="bdd_basic_P_span_xu" ng-bind="ctrl.company.subsist|limitTo:2"></div>
             </div><br><br>
-                <div style="margin-left: 20px;padding-top: 20px;" class="bdd_basic_person">法人代表：</div>
-                <div class="bdd_basic_person bdd_basic_person_site">注册地：</div>
-                <div class="bdd_basic_person bdd_basic_person_site">注册资金：</div>
+                <div style="margin-left: 20px;padding-top: 20px;" class="bdd_basic_person">法人代表：{{ctrl.company.legalPerson}}</div>
+                <div class="bdd_basic_person bdd_basic_person_site">注册地：{{ctrl.company.regisAddress}}</div>
+                <div class="bdd_basic_person bdd_basic_person_site">注册资金：{{ctrl.company.regisCapital}}</div>
+            </div>
         </div>
     </div>
     <!--微信-->
@@ -818,10 +818,10 @@
     <!--内容-->
     <div class="bdd_basic_nav_conter" ng-if="ctrl.showType==1">
         <div class="bdd_basic_nav_header">
-            <div class="bdd_basic_nav_header_right">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div><br>
             <div class="bdd_basic_nav_header_left">企业类型：<span class="bdd_basic_black" ng-bind="ctrl.company.economicType"></span></div>
-            <div class="bdd_basic_nav_header_right">安许证号:<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div>
+            <div class="bdd_basic_nav_header_right">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div><br>
             <div class="bdd_basic_nav_header_left">有效期:<span class="bdd_basic_black" ng-bind="ctrl.company.validDate"></span></div><br>
+            <div class="bdd_basic_nav_header_right">安许证号:<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div>
             <div class="bdd_basic_nav_header_left">经营地址:<span  style="color: #cea63f" ng-bind="ctrl.company.regisAddress"></span></div>
         </div>
 
@@ -842,10 +842,7 @@
     <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
         <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">获奖信息</div></div>
         <div class="bdd_scopr_prize_span">
-            <div class="bdd_scopr_prize bdd_scope_reput">国家级奖项<span style="color: #cea63f">（10）</span></div>
-            <div class="bdd_scopr_prize bdd_scope_list">省级奖项<span style="color: #cea63f">（10）</span></div>
-            <div class="bdd_scopr_prize bdd_scope_list">市级奖项<span style="color: #cea63f">（10）</span></div>
-            <div class="bdd_scopr_prize bdd_scope_list">其他级奖项<span style="color: #cea63f">（10）</span></div>
+            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="repu in ctrl.repuMap.reputation">{{repu.name}}<span style="color: #cea63f">（{{repu.num}}）</span></div>
         </div>
         <!--鲁班奖-->
         <div class="bdd_basic_person_spans">
