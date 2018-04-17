@@ -116,7 +116,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document',f
 		selt.setPage(1);
 	};
 	this.cancleEmProvince = function () {
-
 		selt.province="";
 		selt.setPage(1);
 	};

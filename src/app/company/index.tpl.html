@@ -3,7 +3,12 @@
 <style>
     body{
         background-color: #f8f8f8;
+
     }
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
 
     .btn{
         padding: 1px 10px;
@@ -307,9 +312,9 @@
     .bdd_vib_mews{
         float:right;
     }
-    /*.bdd_win_conter_conter{*/
-        /*margin-top: 10px;*/
-    /*}*/
+    .bdd_win_conter_conter{
+          margin-top: 28px;
+      }
     .bdd_hold_top>span{
         width: 800px;
     }
@@ -345,6 +350,10 @@
     }
     .dropdown-menu{
         padding: 5px 10px;
+    }
+    .bdd_win_conter_left{
+        background-color: white;
+        margin-top: 24px;
     }
 </style>
 
@@ -560,7 +569,7 @@
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header">
             <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in $ctrl.companyList">
-                <div class="bdd_win_conter_left"></div>
+                <div class="bdd_win_conter_left"><img src="../../../vendor/images/logo_default.png" alt=""></div>
                 <div class="bdd_win_conter_conter">
 
                     <div class="bdd_win_conter_header" ng-bind="company.comName"></div>
@@ -573,7 +582,7 @@
                     <!--<div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>-->
                     <br>
 
-                    <div class="bdd_hold_top bdd_hold_top_addr">地址：<span class="bdd_hold_color" ng-bind="company.comAddress"></span></div>
+                    <div class="bdd_hold_top bdd_hold_top_addr">地址：<span  ng-bind="company.comAddress"></span></div>
                 </div>
                 <div class="bdd_win_conter_right"></div>
             </div>

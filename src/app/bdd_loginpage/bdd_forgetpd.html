@@ -5,11 +5,11 @@
     <!--移动端设置viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <!--引入公共样式-->
-    <link rel="stylesheet" href="css/lib/calendar.css"/>
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/bdd_login.css">
-    <link rel="stylesheet" href="./css/bdd-home.css">
-    <link rel="stylesheet" href="./css/bdd-footer.css">
+    <link rel="stylesheet" href="../../../vendor/normalize.css/calendar.css"/>
+    <link rel="stylesheet" href="../../../vendor/normalize.css/base.css">
+    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd_forgetpd.css">
+    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
+    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
     <!--引入首页的js文件-->
     <!--<script src="./js/index.js"></script>-->
     <!--<script src="./zepto-master/src/zepto.min.js"></script>
@@ -75,69 +75,27 @@
         <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
     </div>
 </nav>
-<div class="bdd_login_content">
-    <div class="bdd_login_banner">
-              <div class="bdd_login_banner_left">
-                  <div class="bdd_login_banner_header">
-                     <div class="bdd_logoin_banner_border">
-                         <div class="bdd_logoin_banner_bor_l">登录</div>
-                         <div class="bdd_logoin_banner_bor_r">注册</div>
-                     </div>
-                      <div class="bdd_logoin_banner_conter">
-                          <input class="bdd_logoin_placeholder" type="text" value="用户名/邮箱/手机号" placeholder="用户名/邮箱/手机号">
-                          <div class="bdd_logoin_hr"></div>
-                          <input style="margin-top:34px;color: #ccbebe" class="bdd_logoin_placeholder" type="text" value="密码" placeholder="密码">
-                          <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
-                          <div class="bdd_logoin_mi">
-                              <div  class="bdd_logoin_mi_l"><div style="float: left"><img  src="./images/login_icon_Hook.png" alt=""></div><span style="padding-left: 10px">记住我</span></div>
-                              <div class="bdd_logoin_mi_r">忘记密码</div>
-                          </div>
-                          <input class="bdd_login_buttom" type="button" value="登录">
-                          <div class="bdd_login_pic">
-                              <div class="bdd_login_pic_left">其他账号登录</div>
-                              <div class="bdd_login_pic_right">
-                                  <img src="./images/login_icon_wechat.png" alt="">
-                                  <img style="margin-left: 20px;" src="./images/login_icon_qq.png" alt="">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-               <div class="bdd_login_banner_right">
-                   <div class="bdd_login_banner_right_conter">
-                       <div class="bdd_login_banner_right_text">大数据时代的精益求精</div>
-                       <div style="margin-top: 10px;" class="bdd_login_banner_right_text">让您与数据随心沟通</div>
-                       <div class="bdd_login_banner_logo">
-                           <div class="bdd_login_banner_logo_text"><img src="./images/login_logo.png" alt=""></div>
-                           <div class="bdd_login_banner_logo_text_br"></div>
-                           <div class="bdd_login_banner_logo_text_span">
-                               <div class="bdd_login_banner_logo_list">专注-建筑工程</div>
-                               <div style="margin-top:-2px;" class="bdd_login_banner_logo_li">招投标大数据分析</div></div>
+<!--绑定手机号-->
+<div class="bdd_binding_content">
+    <div class="bdd_binding_content_conter">
+        <div class="bdd_binding_content_conter_header">忘记密码</div>
+        <div class="bdd_binding_content_plone">
+            <div class="bdd_binding_text">输入手机号</div>
+            <div class="bdd_binding_text_br"></div>
+            <div class="bdd_binding_text">验证码<span class="bdd_binging_aide">发送验证码</span></div>
+            <div class="bdd_binding_text_br"></div>
+            <div class="bdd_binding_text">设置密码</div>
+            <div class="bdd_binding_text_br"></div>
+            <div class="bdd_binding_text_news">确定</div>
+            <div class="bdd_binding_text_con">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
+        </div>
 
-                       </div>
-                   </div>
-               </div>
+
     </div>
+    <div class="bdd_binding_content_realm">© 2017 思利他, Inc. All rights reserved  . 湘ICP备17019911号-1</div>
+
+
 </div>
-
-
-
-
-
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="./images/logo.png" alt=""/></a></div>
-        <div class="bdd_footer_content  bdd_footer_side"><a href="#">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="./images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="./images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="./images/bottom_icon_wechat.png" alt=""/></a></div>
-    </div>
-</div>
-
 <script>
     /*使用zepto实现轮播图*/
     $(function(){

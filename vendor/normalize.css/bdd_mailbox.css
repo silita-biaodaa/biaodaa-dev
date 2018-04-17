@@ -1,4 +1,4 @@
-/*绑定手机号*/
+/*绑定邮箱*/
 body{
     background-color: #F8F8F8;
 }
@@ -17,7 +17,7 @@ body{
 .bdd_binding_content_conter_header{
     width: 400px;
     height: 100px;
-   text-align: center;
+    text-align: center;
     padding-top:54px;
     color: #4d3a3a;
     font-size: 24px;
@@ -67,7 +67,7 @@ body{
     color: white;
     text-align: center;
     padding-top:12px;
-    margin-top:50px;
+    margin-top:110px;
 
 }
 .bdd_binding_text_con{
