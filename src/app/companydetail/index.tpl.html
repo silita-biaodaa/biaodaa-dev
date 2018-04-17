@@ -845,26 +845,23 @@
     <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
         <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">获奖信息</div></div>
         <div class="bdd_scopr_prize_span">
-            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="repu in ctrl.repuMap.reputation">{{repu.name}}<span style="color: #cea63f">（{{repu.num}}）</span></div>
+            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="repu in ctrl.repuMap.reputation" ng-click="ctrl.showReputation(repu.list)">{{repu.name}}<span style="color: #cea63f">（{{repu.num}}）</span></div>
         </div>
         <!--鲁班奖-->
         <div class="bdd_lauban">
-            <div class="bdd_lauban_left"></div>
-            <div class="bdd_lauban_rihgt">鲁班奖</div>
-            <div class="bdd_lauban_news">
-                <div class="bdd_lauban_conter">
-                    <div class="bdd_lauban_conter_left">项目名称:湖南省株洲市芦淞区建设中路28号</div>
-                    <div class="bdd_lauban_conter_right">项目分值：5</div><br>
-                    <div class="bdd_lauban_conter_left">项目类型：建筑工程</div>
-                    <div class="bdd_lauban_conter_right">年度：2018</div>
-                </div>
-                <div style="margin-top: 10px" class="bdd_lauban_conter">
-                    <div class="bdd_lauban_conter_left">项目名称:湖南省株洲市芦淞区建设中路28号</div>
-                    <div class="bdd_lauban_conter_right">项目分值：5</div><br>
-                    <div class="bdd_lauban_conter_left">项目类型：建筑工程</div>
-                    <div class="bdd_lauban_conter_right">年度：2018</div>
+            <div ng-repeat="item in ctrl.reputList">
+                <div class="bdd_lauban_left"></div>
+                <div class="bdd_lauban_rihgt" ng-bind="item.name"></div>
+                <div class="bdd_lauban_news">
+                    <div class="bdd_lauban_conter" ng-repeat="subItem in item.list">
+                        <div class="bdd_lauban_conter_left" ng-bind="subItem.projName"></div>
+                        <div class="bdd_lauban_conter_right">项目分值：{{subItem.score}}</div><br>
+                        <div class="bdd_lauban_conter_left">项目类型：{{subItem.projType}}</div>
+                        <div class="bdd_lauban_conter_right" ng-bind="subItem.years"></div>
+                    </div>
                 </div>
             </div>
+
             <!--装饰奖-->
             <div class="bdd_decorate">
                 <ul>
@@ -879,26 +876,24 @@
     <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
         <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">不良记录</div></div>
         <div class="bdd_scopr_prize_span">
-            <div style="color: #761c19" class="bdd_scopr_prize bdd_scope_reput">性质严重<span style="color: #cea63f">（10）</span></div>
-            <div class="bdd_scopr_prize bdd_scope_list">性质一般<span style="color: #cea63f">（10）</span></div>
+            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="undes in ctrl.undesMap.undesirable" ng-click="ctrl.showUndesirable(undes.list)">{{undes.name}}<span style="color: #cea63f">（{{undes.num}}）</span></div>
 
         </div>
         <!--鲁班奖-->
         <div class="bdd_lauban">
             <div class="bdd_lauban_left"></div>
-            <div class="bdd_lauban_rihgt">鲁班奖</div>
-            <div class="bdd_lauban_news">
+            <div class="bdd_lauban_rihgt">性质</div>
+            <div class="bdd_lauban_news" ng-repeat="item in ctrl.undesList">
                 <div class="bdd_lauban_conter bdd_lauban_conter_mess">
-                    <div class="bdd_lauban_conter_left">项目名称:湖南省株洲市芦淞区建设中路28号</div>
-                    <div class="bdd_lauban_conter_right">项目分值：5</div><br>
-                    <div class="bdd_lauban_conter_left">项目类型：建筑工程</div>
-                    <div class="bdd_lauban_conter_right">年度：2018</div><br>
-                    <div class="bdd_lauban_conter_left">项目类型：建筑工程</div>
-                    <div class="bdd_lauban_conter_right">年度：2018</div>
-                    <div class="bdd_lauban_conter_footer">本招标项目长沙城南（寺冲）220千伏输变电项目土石方工程已由暮管发[2018]3号批准建设，建设资金来自 国网长沙市供电公司专项资金 。招标人（项目业主）为湖南长沙暮云经济开发区城建开发有限公司 ，项目已具备招标条件，现对该项目的施工进行公开招标。</div>
+                    <div class="bdd_lauban_conter_left">项目名称:{{item.projectName}}</div>
+                    <div class="bdd_lauban_conter_right">发布日期：{{item.publishDate}}</div><br>
+                    <div class="bdd_lauban_conter_left">发布单位：{{item.publishSite}}</div>
+                    <div class="bdd_lauban_conter_right">行为代码：{{item.actionCode}}</div><br>
+                    <div class="bdd_lauban_conter_footer" ng-bind="item.badBehaviorContent"></div>
                 </div>
 
             </div>
+
         </div>
     </div>
 
