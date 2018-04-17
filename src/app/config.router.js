@@ -81,8 +81,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         .state('CompanyDetail', {
             url: '/companydetail',
             templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
-
-            // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'CompanyDetailCtrl as ctrl',
             resolve: {
                 load:['$ocLazyLoad',function($ocLazyLoad){
