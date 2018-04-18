@@ -155,5 +155,5 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     /**
      * 什么都匹配不到的时候就跳转到首页
      */
-    $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/home');
 }
