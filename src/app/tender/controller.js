@@ -1,7 +1,10 @@
-(function() {
-	angular
-		.module('TenderController', ['ui.bootstrap'])
-		.controller('tenderCtrl', ['$http','$uibModal','$log','$document',function($http,$uibModal, $log, $document) {
-			var selt = this;
-		}]);
-})();
+
+app.controller('tenderCtrl', ['$http','$scope','utils',function($http,$scope, utils) {
+    var selt = this;
+
+    $http.get("/company/filter").success(function (result) {
+        console.log(result.data.area);
+
+
+
+}]);

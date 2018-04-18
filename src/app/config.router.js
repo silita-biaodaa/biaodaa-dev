@@ -74,7 +74,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     return $ocLazyLoad.load([
                         'app/home/controller.js'
                     ]);
-                }]
+                }],
             }
         })
 
@@ -90,6 +90,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
+        .state('Tender', {
+        url: '/tender',
+        templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
+        controller: 'TenderCtrl as ctrl',
+        resolve: {
+            load:['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    })
     ;
     /*.state('home', {
      url: '/home',

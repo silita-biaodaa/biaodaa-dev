@@ -74,11 +74,11 @@
         float: left;
     }
     .bdd_follow_foll{
-        margin-top:30px;
-        padding-left:400px;
+        margin-left: 500px;
+        text-align: center;
     }
     .bdd_follow_pyq{
-        margin-top:30px;
+
         padding-left:10px;
     }
     .bdd_follow_zb{
@@ -151,7 +151,7 @@
         height:160px;
         margin-left:20px;
         margin-right: 20px;
-        line-height:35px;
+        line-height:40px;
         overflow: hidden;
     }
     .bdd_basic_nav_header_left{
@@ -285,7 +285,6 @@
     .bdd_basic_hold{
         width: 1200px;
         margin: 0 auto;
-        margin-bottom:140px;
 
     }
     .bdd_basic_top{
@@ -355,7 +354,7 @@
     }
     .bdd_follow_foll{
         margin-top:30px;
-        padding-left:400px;
+        padding-left:482px;
     }
     .bdd_follow_pyq{
         margin-top:30px;
@@ -390,7 +389,7 @@
         margin: 30px 0 0 120px;
     }
     .bdd_follow_span{
-        padding-left:400px;
+        padding-left:406px;
     }
 
     /*导航栏*/
@@ -415,13 +414,16 @@
         width: 1200px;
         height:150px;
         margin-top:5px;
+        margin: 0 auto;
     }
     /*信誉总分*/
     .bdd_reput_top{
         width: 1200px;
         height: 250px;
         background-color: white;
+        margin: 0 auto;
         margin-top: 30px;
+
     }
     .bdd_reput_top_title{
         font-size: 18px;
@@ -550,7 +552,7 @@
     .bdd_basic_hold{
         width: 1200px;
         margin: 0 auto;
-        margin-bottom:140px;
+        margin-bottom: -1350px;
 
     }
     .bdd_basic_top{
@@ -619,8 +621,11 @@
         float: left;
     }
     .bdd_follow_foll{
-        margin-top:30px;
+
         padding-left:400px;
+        margin: 0 auto;
+        margin-top:30px;
+
     }
     .bdd_follow_pyq{
         margin-top:30px;
@@ -656,7 +661,7 @@
         margin: 30px 0 0 120px;
     }
     .bdd_follow_span{
-        padding-left:400px;
+        padding-left:405px;
     }
 
     /*导航栏*/
@@ -819,12 +824,15 @@
     </div>
     <!--内容-->
     <div class="bdd_basic_nav_conter" ng-if="ctrl.showType==1">
-        <div class="bdd_basic_nav_header">
-            <div class="bdd_basic_nav_header_left">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div>
-            <div class="bdd_basic_nav_header_right">企业类型：<span class="bdd_basic_black" ng-bind="ctrl.company.economicType"></span></div><br>
-            <div class="bdd_basic_nav_header_left">安许证号：<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div>
-            <div class="bdd_basic_nav_header_right">有效期至：<span class="bdd_basic_black" ng-bind="ctrl.company.validDate"></span></div><br>
-            <div class="bdd_basic_nav_header_left">经营地址：<span style="color: #cea63f" ng-bind="ctrl.company.comAddress"></span></div>
+        <div style="overflow: hidden" class="bdd_basic_nav_header">
+            <div style="width: 100%;height:30px;margin-top:15px;">
+                <div class="bdd_basic_nav_header_left">注册号：<span class="bdd_basic_black" ng-bind="ctrl.company.businessNum"></span></div>
+                <div class="bdd_basic_nav_header_right">企业类型：<span class="bdd_basic_black" ng-bind="ctrl.company.economicType"></span></div></div>
+            <div style="width: 100%;height:30px;margin-top:15px;">
+            <div  class="bdd_basic_nav_header_left">安许证号：<span class="bdd_basic_black" ng-bind="ctrl.company.certNo"></span></div>
+                <div class="bdd_basic_nav_header_right">有效期至：<span class="bdd_basic_black" ng-bind="ctrl.company.validDate"></span></div></div>
+            <div style="width: 100%;height:30px;margin-top:15px;">
+                <div class="bdd_basic_nav_header_left">经营地址：<span style="color: #cea63f" ng-bind="ctrl.company.comAddress"></span></div></div>
 
         </div>
 
@@ -863,15 +871,6 @@
                 </div>
             </div>
 
-            <!--装饰奖-->
-            <div class="bdd_decorate">
-                <ul>
-                    <li><img src="/vendor/images/qx_origin_greeen.png" alt=""><span style="margin-left: 5px;">全国建筑工程装饰奖</span></li>
-                    <li><img src="/vendor/images/qx_origin_greeen.png" alt=""><span style="margin-left: 5px;">金杯奖</span></li>
-                    <li><img src="/vendor/images/qx_origin_greeen.png" alt=""><span style="margin-left: 5px;">金杯奖</span></li>
-                </ul>
-            </div>
-        </div>
     <!--不良记录-->
     <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
         <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">不良记录</div></div>
@@ -1129,9 +1128,242 @@
             </ul>
         </div>
     </div>
-
+        </div>
+        </div>
 
 </div>
+
+<div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
+    <div class="bdd_Personl_talbe_header">
+        <div class="bdd_Personl_table_header_list">
+            <span style="color: #cea63f">全部</span>
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            勘察
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            设计
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            建筑业
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            监理
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            招标代理
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            设计与施工
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            造价与咨询
+        </div>
+        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f">1000</span>条人员信息</div>
+    </div>
+    <table cellspacing="0" style="text-align: center;margin: 0 auto;width: 1000px;height:700px;line-height:30px;border: none">
+        <tr style="color: #ccbebe;font-size: 16px">
+            <th >姓名</th>
+            <th >证书编号</th>
+            <th >专业</th>
+            <th >有效期</th>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+        </tr>
+    </table>
+
+</div>
+
+
+
+
+<div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
+    <div class="bdd_Personl_talbe_header">
+        <div class="bdd_Personl_table_header_list">
+            <span style="color: #cea63f">全部</span>
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            <select class="bdd_Personl_table_sel">
+                <option>勘察设计</option>
+                <option>勘察设计</option>
+                <option>勘察设计</option>
+            </select>
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            <select class="bdd_Personl_table_sel" >
+                <option>监理造价师</option>
+                <option>勘察设计</option>
+                <option>勘察设计</option>
+            </select>
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            <select  class="bdd_Personl_table_sel" >
+                <option>造价工程师</option>
+                <option>勘察设计</option>
+                <option>勘察设计</option>
+            </select>
+        </div>
+        <div class="bdd_Personl_table_header_title">
+            <select class="bdd_Personl_table_sel" >
+                <option>建筑师</option>
+                <option>勘察设计</option>
+                <option>勘察设计</option>
+            </select>
+        </div>
+        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;">1000</span>条人员信息</div>
+    </div>
+    <table cellspacing="0" style="text-align: center;margin: 0 auto;width: 1100px;height:700px;line-height:30px;border: none">
+        <tr style="color: #ccbebe;font-size: 16px">
+            <th >姓名</th>
+            <th >证书编号</th>
+            <th >专业</th>
+            <th >有效期</th>
+            <!--  <th >在建情况</th>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!-- <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--  <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--   <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--   <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!-- <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--   <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--  <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!-- <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!-- <td>无在建</td>-->
+        </tr>
+        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
+            <td>希希</td>
+            <td>0123456789</td>
+            <td>公路一级、建筑一级、市政一级</td>
+            <td>2018-01-10</td>
+            <!--<td>无在建</td>-->
+        </tr>
+    </table>
+    <div class="bdd_per_bottom">
+        <ul class="bdd_per_ul">
+            <li class="bdd_per_list"><a href="">1</a></li>
+            <li class="bdd_per_list"><a href="">2</a></li>
+            <li class="bdd_per_list"><a href="">3</a></li>
+            <li class="bdd_per_list"><a href="">4</a></li>
+            <li class="bdd_per_list"><a href="">5</a></li>
+            <li class="bdd_per_list"><a href="">6</a></li>
+            <li class="bdd_per_list"><a href="">7</a></li>
+            <li class="bdd_per_list"><a href="">8</a></li>
+            <li class="bdd_per_list"><a href="">末页</a></li>
+        </ul>
+    </div>
+</div>
+
 
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">
