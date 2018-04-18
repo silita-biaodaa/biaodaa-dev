@@ -15,8 +15,6 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 		"color": "white"
 	};
 	this.style01 = style00;
-
-
 	this.changeType = function (type) {
 		selt.showType = type;
 		selt.style01 = "";

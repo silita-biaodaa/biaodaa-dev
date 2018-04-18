@@ -4,7 +4,6 @@
     }
     .bdd_basic_hold{
         width: 1200px;
-        height:1500px;
         margin: 0 auto;
 
     }
@@ -171,10 +170,12 @@
     .bdd_scope{
         width: 1200px;
         margin: 0 auto;
-        height:200px;
+        height: 1000px;
         background-color:white;
-        margin-top:30px;
-        overflow: hidden;
+        margin-top:120px;
+
+
+
 
     }
     .bdd_scope_conter_left{
@@ -199,7 +200,8 @@
         width: 1145px;
         height: 100px;
         margin-left:30px;
-        margin-top:50px;
+        margin-top:100px;
+
     }
     .bdd_scopr_top_span{
         font-size: 14px;
@@ -440,6 +442,7 @@
         background-color:white;
         margin-top:30px;
         overflow: hidden;
+        margin-bottom: 200px;
 
     }
     .bdd_scope_conter_left{
@@ -467,6 +470,7 @@
         background-color: white;
         margin-top:94px;
         overflow: hidden;
+        margin-bottom:140px;
     }
     .bdd_scopr_prize_span{
         width: 890px;
@@ -552,7 +556,7 @@
     .bdd_basic_hold{
         width: 1200px;
         margin: 0 auto;
-        margin-bottom: -1350px;
+
 
     }
     .bdd_basic_top{
@@ -753,7 +757,55 @@
         margin-top: 20px;
         margin-left: 100px;
     }
+    /*获奖情况*/
+    .bdd_awards_border{
+        width:1200px;
+        height: 30px;
+        margin-top:10px;
+    }
+    .bdd_arwards_boeder_conter{
+        width: 1200px;
+        overflow: hidden;
+    }
+    .bdd_arwards_boder_text{
+        float: left;
+        font-size: 14px;
+        color: #4d3a3a;
+        margin-top:20px;
+        padding-left:10px;
+        overflow: hidden;
+        height: 30px;
 
+    }
+    .bdd_arwards_border_news{
+        width: 1200px;
+        height: 30px;
+    }
+    .bdd_arwards_lauban_content{
+        width: 1200px;
+        margin-bottom:200px;
+        margin-top:10px;
+        background-color: white;
+    }
+    .bdd_arwards_lauban_btn{
+        width: 1200px;
+        height: 80px;
+        background-color:#f0f0f0;
+        border-radius: 10px;
+        margin-top:10px;
+
+
+    }
+    .bdd_arw-br{
+        width: 1200px;
+        height: 30px;
+        margin-top:15px;
+        color: #4d3a3a;
+        font-size: 16px;
+        padding-left:20px;
+        padding-right:20px;
+
+    }
 </style>
 <!--头部-->
 <nav class="bdd-nav">
@@ -851,53 +903,146 @@
     </div>
     <!--获奖情况-->
     <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
-        <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">获奖信息</div></div>
-        <div class="bdd_scopr_prize_span">
-            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="repu in ctrl.repuMap.reputation" ng-click="ctrl.showReputation(repu.list)">{{repu.name}}<span style="color: #cea63f">（{{repu.num}}）</span></div>
-        </div>
-        <!--鲁班奖-->
-        <div class="bdd_basic_person_spans">
-        <div class="bdd_lauban">
-            <div ng-repeat="item in ctrl.reputList">
-                <div class="bdd_lauban_left"></div>
-                <div class="bdd_lauban_rihgt" ng-bind="item.name"></div>
-                <div class="bdd_lauban_news">
-                    <div class="bdd_lauban_conter" ng-repeat="subItem in item.list">
-                        <div class="bdd_lauban_conter_left" ng-bind="subItem.projName"></div>
-                        <div class="bdd_lauban_conter_right">项目分值：{{subItem.score}}</div><br>
-                        <div class="bdd_lauban_conter_left">项目类型：{{subItem.projType}}</div>
-                        <div class="bdd_lauban_conter_right" ng-bind="subItem.years"></div>
+        <!--获奖情况-->
+
+        <div class="bdd_arwards_lauban_content">
+            <div class="bdd_awards_border"><img src="./images/icon_rectangle.png" alt=""><span style="color: #4d3a3a;font-weight: 700;font-size: 18px;margin-left:5px;">获奖情况</span></div>
+            <div class="bdd_arwards_boeder_conter">
+                <div class="bdd_arwards_boder_text">国家级奖项<span style="color: #cea63f">（10）</span></div>
+                <div class="bdd_arwards_boder_text">省级奖项<span style="color: #cea63f">（10）</span></div>
+                <div class="bdd_arwards_boder_text">市级奖项<span style="color: #cea63f">（10）</span></div>
+                <div class="bdd_arwards_boder_text">其他地方级奖项<span style="color: #cea63f">（10）</span></div>
+            </div>
+            <div style="text-align: left;"><img src="./images/qx_origin_greeen.png" alt=""><span style="color:#4d3a3a;font-size: 14px;margin-left: 5px;">鲁班奖</span><div style="text-align:right;font-size: 16px;color: #4d3a3a;display:inline;padding-left:1100px;">更多</div></div>
+            <div class="bdd_arwards_lauban_btn">
+                <div class="bdd_arw-br" >
+                    <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                    <div style="float: right" class="bdd_arwa_put">分值:</div>
+                </div>
+                <div class="bdd_arw-br" >
+                    <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                    <div style="float: right" class="bdd_arwa_put">年度:</div>
+                </div>
+                <div class="bdd_arwards_lauban_btn">
+                    <div class="bdd_arw-br" >
+                        <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                        <div style="float: right" class="bdd_arwa_put">分值:</div>
+                    </div>
+                    <div class="bdd_arw-br" >
+                        <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                        <div style="float: right" class="bdd_arwa_put">年度:</div>
                     </div>
                 </div>
-            </div>
+                <div style="text-align: left;"><img src="./images/qx_origin_greeen.png" alt=""><span style="color:#4d3a3a;font-size: 14px;margin-left: 5px;">金杯奖</span><div style="text-align:right;font-size: 16px;color: #4d3a3a;display:inline;padding-left:1100px;">更多</div></div>
+                <div class="bdd_arwards_lauban_btn">
+                    <div class="bdd_arw-br" >
+                        <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                        <div style="float: right" class="bdd_arwa_put">分值:</div>
+                    </div>
+                    <div class="bdd_arw-br" >
+                        <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                        <div style="float: right" class="bdd_arwa_put">年度:</div>
+                    </div>
+                    <div class="bdd_arwards_lauban_btn">
+                        <div class="bdd_arw-br" >
+                            <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                            <div style="float: right" class="bdd_arwa_put">分值:</div>
+                        </div>
+                        <div class="bdd_arw-br" >
+                            <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                            <div style="float: right" class="bdd_arwa_put">年度:</div>
+                        </div>
 
-    <!--不良记录-->
-    <div class="bdd_reput_conter" ng-if="ctrl.showType==2">
-        <div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">不良记录</div></div>
-        <div class="bdd_scopr_prize_span">
-            <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="undes in ctrl.undesMap.undesirable" ng-click="ctrl.showUndesirable(undes.list)">{{undes.name}}<span style="color: #cea63f">（{{undes.num}}）</span></div>
+                    </div>
+                    <div class="bdd_awards_border"><img src="./images/icon_rectangle.png" alt=""><span style="color: #4d3a3a;font-weight: 700;font-size: 18px;margin-left:5px;">不良记录</span></div>
+                    <div class="bdd_arwards_boeder_conter">
+                        <div class="bdd_arwards_boder_text">性质严重<span style="color: #cea63f">（10）</span></div>
+                        <div class="bdd_arwards_boder_text">性质一般<span style="color: #cea63f">（10）</span></div>
 
-        </div>
-        <!--鲁班奖-->
-        <div class="bdd_lauban">
-            <div class="bdd_lauban_left"></div>
-            <div class="bdd_lauban_rihgt">性质</div>
-            <div class="bdd_lauban_news" ng-repeat="item in ctrl.undesList">
-                <div class="bdd_lauban_conter bdd_lauban_conter_mess">
-                    <div class="bdd_lauban_conter_left">项目名称:{{item.projectName}}</div>
-                    <div class="bdd_lauban_conter_right">发布日期：{{item.publishDate}}</div><br>
-                    <div class="bdd_lauban_conter_left">发布单位：{{item.publishSite}}</div>
-                    <div class="bdd_lauban_conter_right">行为代码：{{item.actionCode}}</div><br>
-                    <div class="bdd_lauban_conter_footer" ng-bind="item.badBehaviorContent"></div>
-                </div>
+                    </div>
+                    <div class="bdd_arwards_lauban_btn">
+                        <div class="bdd_arw-br" >
+                            <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                            <div style="float: right" class="bdd_arwa_put">分值:</div>
+                        </div>
+                        <div class="bdd_arw-br" >
+                            <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                            <div style="float: right" class="bdd_arwa_put">年度:</div>
+                        </div>
+                        <div class="bdd_arwards_lauban_btn">
+                            <div class="bdd_arw-br" >
+                                <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                                <div style="float: right" class="bdd_arwa_put">分值:</div>
+                            </div>
+                            <div class="bdd_arw-br" >
+                                <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                                <div style="float: right" class="bdd_arwa_put">分值:</div>
+                            </div>
+                        </div>
+                        <div class="bdd_arwards_lauban_btn">
+                            <div class="bdd_arw-br" >
+                                <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                                <div style="float: right" class="bdd_arwa_put">分值:</div>
+                            </div>
+                            <div class="bdd_arw-br" >
+                                <div style="float: left" class="bdd_arwa_put">项目类型</div>
+                                <div style="float: right" class="bdd_arwa_put">年度:</div>
+                            </div>
+                            <div class="bdd_arwards_lauban_btn">
+                                <div class="bdd_arw-br" >
+                                    <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                                    <div style="float: right" class="bdd_arwa_put">分值:</div>
+                                </div>
+                                <div class="bdd_arw-br" >
+                                    <div style="float: left" class="bdd_arwa_put">项目名称：</div>
+                                    <div style="float: right" class="bdd_arwa_put">分值:</div>
+                                </div>
 
-            </div>
+                            </div>
+                        </div>
+                    </div>
+        <!--<div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">获奖信息</div></div>-->
+        <!--<div class="bdd_scopr_prize_span">-->
+            <!--<div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="repu in ctrl.repuMap.reputation" ng-click="ctrl.showReputation(repu.list)">{{repu.name}}<span style="color: #cea63f">（{{repu.num}}）</span></div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;鲁班奖&ndash;&gt;-->
+        <!--<div class="bdd_basic_person_spans">-->
+        <!--<div class="bdd_lauban">-->
+            <!--<div ng-repeat="item in ctrl.reputList">-->
+                <!--<div class="bdd_lauban_left"></div>-->
+                <!--<div class="bdd_lauban_rihgt" ng-bind="item.name"></div>-->
+                <!--<div class="bdd_lauban_news">-->
+                    <!--<div class="bdd_lauban_conter" ng-repeat="subItem in item.list">-->
+                        <!--<div class="bdd_lauban_conter_left" ng-bind="subItem.projName"></div>-->
+                        <!--<div class="bdd_lauban_conter_right">项目分值：{{subItem.score}}</div><br>-->
+                        <!--<div class="bdd_lauban_conter_left">项目类型：{{subItem.projType}}</div>-->
+                        <!--<div class="bdd_lauban_conter_right" ng-bind="subItem.years"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </div>
+    <!--&lt;!&ndash;不良记录&ndash;&gt;-->
+    <!--<div class="bdd_reput_conter" ng-if="ctrl.showType==2">-->
+        <!--<div class="bdd_scope_conter"><div class="bdd_scope_conter_left"></div><div class="bdd_scope_conter_right">不良记录</div></div>-->
+        <!--<div class="bdd_scopr_prize_span">-->
+            <!--<div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="undes in ctrl.undesMap.undesirable" ng-click="ctrl.showUndesirable(undes.list)">{{undes.name}}<span style="color: #cea63f">（{{undes.num}}）</span></div>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash;鲁班奖&ndash;&gt;-->
+        <!--<div class="bdd_lauban">-->
+            <!--<div class="bdd_lauban_left"></div>-->
+            <!--<div class="bdd_lauban_rihgt">性质</div>-->
+            <!--<div class="bdd_lauban_news" ng-repeat="item in ctrl.undesList">-->
+                <!--<div class="bdd_lauban_conter bdd_lauban_conter_mess">-->
+                    <!--<div class="bdd_lauban_conter_left">项目名称:{{item.projectName}}</div>-->
+                    <!--<div class="bdd_lauban_conter_right">发布日期：{{item.publishDate}}</div><br>-->
+                    <!--<div class="bdd_lauban_conter_left">发布单位：{{item.publishSite}}</div>-->
+                    <!--<div class="bdd_lauban_conter_right">行为代码：{{item.actionCode}}</div><br>-->
+                    <!--<div class="bdd_lauban_conter_footer" ng-bind="item.badBehaviorContent"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
-
-
-
     <div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
         <div class="bdd_Personl_talbe_header">
             <div class="bdd_Personl_table_header_list">
@@ -996,10 +1141,6 @@
         </table>
 
     </div>
-
-
-
-
     <div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
         <div class="bdd_Personl_talbe_header">
             <div class="bdd_Personl_table_header_list">
@@ -1130,238 +1271,6 @@
     </div>
         </div>
         </div>
-
-</div>
-
-<div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
-    <div class="bdd_Personl_talbe_header">
-        <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f">全部</span>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            勘察
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            设计
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            建筑业
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            监理
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            招标代理
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            设计与施工
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            造价与咨询
-        </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f">1000</span>条人员信息</div>
-    </div>
-    <table cellspacing="0" style="text-align: center;margin: 0 auto;width: 1000px;height:700px;line-height:30px;border: none">
-        <tr style="color: #ccbebe;font-size: 16px">
-            <th >姓名</th>
-            <th >证书编号</th>
-            <th >专业</th>
-            <th >有效期</th>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-    </table>
-
-</div>
-
-
-
-
-<div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
-    <div class="bdd_Personl_talbe_header">
-        <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f">全部</span>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel">
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel" >
-                <option>监理造价师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select  class="bdd_Personl_table_sel" >
-                <option>造价工程师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel" >
-                <option>建筑师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;">1000</span>条人员信息</div>
-    </div>
-    <table cellspacing="0" style="text-align: center;margin: 0 auto;width: 1100px;height:700px;line-height:30px;border: none">
-        <tr style="color: #ccbebe;font-size: 16px">
-            <th >姓名</th>
-            <th >证书编号</th>
-            <th >专业</th>
-            <th >有效期</th>
-            <!--  <th >在建情况</th>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!-- <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--  <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--   <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--   <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!-- <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--   <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--  <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!-- <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!-- <td>无在建</td>-->
-        </tr>
-        <tr class="bdd_per_td" style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-            <!--<td>无在建</td>-->
-        </tr>
-    </table>
-    <div class="bdd_per_bottom">
-        <ul class="bdd_per_ul">
-            <li class="bdd_per_list"><a href="">1</a></li>
-            <li class="bdd_per_list"><a href="">2</a></li>
-            <li class="bdd_per_list"><a href="">3</a></li>
-            <li class="bdd_per_list"><a href="">4</a></li>
-            <li class="bdd_per_list"><a href="">5</a></li>
-            <li class="bdd_per_list"><a href="">6</a></li>
-            <li class="bdd_per_list"><a href="">7</a></li>
-            <li class="bdd_per_list"><a href="">8</a></li>
-            <li class="bdd_per_list"><a href="">末页</a></li>
-        </ul>
-    </div>
 </div>
 
 

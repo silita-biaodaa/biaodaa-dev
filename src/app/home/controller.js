@@ -5,9 +5,5 @@
                     $http.post("/foundation/listBannerImage",{type:1,showType:1}).success(function (result) {
                         console.log(result);
                     });
-
 				}]);
-
-
-
 })();
