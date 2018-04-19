@@ -9,11 +9,13 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
     }]);
 
 
-app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider',config]);
+app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
-    $httpProvider.defaults.headers.common = { 'X-TOKEN' : 'zxh0000001234' };
+    // $httpProvider.defaults.headers.common = {'X-TOKEN': 'zxh0000001234'};
+    // $httpProvider.interceptors.push('loadingInterceptor');
+    $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
 
     /**
      * 定义路由
@@ -24,7 +26,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             templateUrl: window.rootSrc + 'app/index/index.tpl.html',//路由更改
             controller: 'IndexCtrl as $ctrl',
             resolve: {
-                load:['$ocLazyLoad',function($ocLazyLoad){
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/index/controller.js'
                     ]);
@@ -39,7 +41,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'AboutCtrl as $ctrl',
             resolve: {
-                load:['$ocLazyLoad',function($ocLazyLoad){
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/about/controller.js'
                     ]);
@@ -54,23 +56,23 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'CompanyCtrl as $ctrl',
             resolve: {
-                load:['$ocLazyLoad',function($ocLazyLoad){
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/company/controller.js'
                     ]);
                 }]
             }
-         })
+        })
 
 
         .state('Home', {
             url: '/home',
-            templateUrl: window.rootSrc + 'app/home/bdd_home.html',
+            templateUrl: window.rootSrc + 'app/home/index.tpl.html',
 
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'HomeCtrl as $ctrl',
             resolve: {
-                load:['$ocLazyLoad',function($ocLazyLoad){
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/home/controller.js'
                     ]);
@@ -83,7 +85,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
             controller: 'CompanyDetailCtrl as ctrl',
             resolve: {
-                load:['$ocLazyLoad',function($ocLazyLoad){
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/companydetail/controller.js'
                     ]);
@@ -91,17 +93,29 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
         .state('Tender', {
-        url: '/tender',
-        templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
-        controller: 'TenderCtrl as ctrl',
-        resolve: {
-            load:['$ocLazyLoad',function($ocLazyLoad){
-                return $ocLazyLoad.load([
-                    'app/tender/controller.js'
-                ]);
-            }]
-        }
-    })
+            url: '/tender',
+            templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
+            controller: 'TenderCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/tender/controller.js'
+                    ]);
+                }]
+            }
+        })
+        .state('Login', {
+            url: '/login',
+            templateUrl: window.rootSrc + 'app/bdd_loginpage/bdd_login.html',
+            controller: 'LoginCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/bdd_loginpage/controller.js'
+                    ]);
+                }]
+            }
+        })
     ;
     /*.state('home', {
      url: '/home',
@@ -155,5 +169,5 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     /**
      * 什么都匹配不到的时候就跳转到首页
      */
-    $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/home');
 }
