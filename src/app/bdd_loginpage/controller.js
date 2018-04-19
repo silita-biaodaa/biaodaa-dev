@@ -1,6 +1,9 @@
 app.controller('LoginCtrl', ['$http','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
 	var selt = this;
 
+	/**
+	 * 登录
+	 */
 	this.submit = function() {
 		var params = {
 			version:"0",
@@ -16,7 +19,7 @@ app.controller('LoginCtrl', ['$http','$log','$scope','$document',function($http,
 				alert(result.msg);
 			}else{
 				sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-				window.location.href="/index.html#/home";
+				window.location.href="index.html#/home";
 			}
 		});
 	}

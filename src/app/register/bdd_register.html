@@ -7,9 +7,18 @@
     <!--引入公共样式-->
     <link rel="stylesheet" href="../../../vendor/normalize.css/calendar.css"/>
     <link rel="stylesheet" href="../../../vendor/normalize.css/base.css">
-    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd_login.css">
+    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd_register.css">
     <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
-
+    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
+    <style>
+        button{
+            padding:10px;
+            border:none;
+            border-radius: 5px;
+            background: deepskyblue;
+            color: #ffffff;
+        }
+    </style>
     <!--引入首页的js文件-->
     <!--<script src="./js/index.js"></script>-->
     <!--<script src="./zepto-master/src/zepto.min.js"></script>
@@ -84,21 +93,24 @@
                     <div class="bdd_logoin_banner_bor_r"><a href="index.html#/register">注册</a></div>
                 </div>
                 <div class="bdd_logoin_banner_conter">
-                    <input class="bdd_logoin_placeholder" ng-model="ctrl.username" type="text" placeholder="用户名/邮箱/手机号">
+                    <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationPhone" type="text" placeholder="输入手机号">
+
                     <div class="bdd_logoin_hr"></div>
-                    <input style="margin-top:34px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass"type="password" placeholder="密码">
-                    <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
                     <div class="bdd_logoin_mi">
-                        <div  class="bdd_logoin_mi_l"><div style="float: left"><img  src="../../../vendor/images/login_icon_Hook.png" alt=""></div><span style="padding-left: 10px">记住我</span></div>
-                        <div class="bdd_logoin_mi_r">忘记密码</div>
-                    </div>
-                    <input class="bdd_login_buttom" type="button" ng-click="ctrl.submit()" value="登录">
-                    <div class="bdd_login_pic">
-                        <div class="bdd_login_pic_left">其他账号登录</div>
-                        <div class="bdd_login_pic_right">
-                            <img src="../../../vendor/images/login_icon_wechat.png" alt="">
-                            <img style="margin-left: 20px;" src="../../../vendor/images/login_icon_qq.png" alt="">
+                        <div  class="bdd_logoin_mi_l"><div style="float: left"></div>
+                            <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationCode" type="text" placeholder="验证码">
                         </div>
+                        <button  class="button gettestcode col-40" ng-click="ctrl.sendVerCode()" ng-bind="ctrl.description" ng-disabled="ctrl.isDisable"/>
+                    </div>
+                    <div class="bdd_logoin_hr_span"></div>
+
+                    <input style="margin-top:28px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass" type="password" placeholder="设置密码">
+                    <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
+
+                    <!--<input class="bdd_login_buttom" type="button"  ng-click="ctrl.register()"  value="注册">-->
+                    <input class="bdd_login_buttom" ng-click="ctrl.register()" type="button" value="注册">
+                    <div class="bdd_login_pic">
+                        <div class="bdd_login_pic_left">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
                     </div>
                 </div>
             </div>
@@ -119,7 +131,6 @@
         </div>
     </div>
 </div>
-
 <script>
     /*使用zepto实现轮播图*/
     $(function(){

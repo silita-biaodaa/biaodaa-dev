@@ -116,6 +116,31 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
+        .state('Register', {
+            url: '/register',
+            templateUrl: window.rootSrc + 'app/register/bdd_register.html',
+            controller: 'RegisterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/register/controller.js'
+                    ]);
+                }]
+            }
+        })
+        // .state('Forget', {
+        //     url: '/forget',
+        //     templateUrl: window.rootSrc + 'app/register/bdd_forgetpd.html',
+        //     controller: 'ForgetCtrl as ctrl',
+        //     resolve: {
+        //         load: ['$ocLazyLoad', function ($ocLazyLoad) {
+        //             return $ocLazyLoad.load([
+        //                 'app/forget/controller.js'
+        //             ]);
+        //         }]
+        //     }
+        // })
+        
     ;
     /*.state('home', {
      url: '/home',
