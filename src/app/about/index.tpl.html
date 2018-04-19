@@ -9,6 +9,7 @@
 		<!-- 使用ng-bind 比 使用 {{ $ctrl.title }} 更好，方式JS没加载完成时页面会把 {{ ... }} 这个语法显示出来 -->
 		<section class="post-content">
 			<h2 ng-bind="$ctrl.title"></h2>
+			<a href="javascript:"  ng-bind="$ctrl.paracont">获取验证码</a>
 
 			<p>Bootstrap中文网 -- www.bootcss.com 创建于2012年。起因是国内没有较好的关于Bootstrap的中文教程和交流渠道，因此，我们对Bootstrap的文档进行了翻译整理，并且建立了QQ群和微博（<a href="http://weibo.com/bootcss">@bootcss</a>），方便更多热爱这个CSS框架的攻城师们分享、交流自己在前端设计、开发方面的心得。</p>
 			<h3 id="-bootstrap-">展示你的Bootstrap作品</h3>
