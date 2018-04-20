@@ -42,6 +42,9 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	$http.post("/company/undesirable/"+comId,angular.toJson(params)).success(function (result) {
 		selt.undesMap=result.data;
 	});
+	$http.post("/company/qual/5").success(function (result) {
+		console.log(result);
+	});
 
 	this.showReputation = function (reputList) {
 		selt.reputList = reputList;
