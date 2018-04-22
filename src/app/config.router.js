@@ -8,6 +8,7 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
+app.constant('username', sessionStorage.getItem("username"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
@@ -16,7 +17,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     // $httpProvider.defaults.headers.common = {'X-TOKEN': 'zxh0000001234'};
     // $httpProvider.interceptors.push('loadingInterceptor');
     $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
-
     /**
      * 定义路由
      */
@@ -106,12 +106,24 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
         .state('Login', {
             url: '/login',
-            templateUrl: window.rootSrc + 'app/bdd_loginpage/bdd_login.html',
+            templateUrl: window.rootSrc + 'app/login/bdd_login.html',
             controller: 'LoginCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        'app/bdd_loginpage/controller.js'
+                        'app/login/controller.js'
+                    ]);
+                }]
+            }
+        })
+        .state('WXLogin', {
+            url: '/wxLogin',
+            templateUrl: window.rootSrc + 'app/wxlogin/wxLogin.html',
+            controller: 'WXLoginCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/wxlogin/controller.js'
                     ]);
                 }]
             }
@@ -128,18 +140,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-        // .state('Forget', {
-        //     url: '/forget',
-        //     templateUrl: window.rootSrc + 'app/register/bdd_forgetpd.html',
-        //     controller: 'ForgetCtrl as ctrl',
-        //     resolve: {
-        //         load: ['$ocLazyLoad', function ($ocLazyLoad) {
-        //             return $ocLazyLoad.load([
-        //                 'app/forget/controller.js'
-        //             ]);
-        //         }]
-        //     }
-        // })
+        .state('Forget', {
+            url: '/forget',
+            templateUrl: window.rootSrc + 'app/forget/bdd_forgetpd.html',
+            controller: 'ForgetCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/forget/controller.js'
+                    ]);
+                }]
+            }
+        })
         
     ;
     /*.state('home', {

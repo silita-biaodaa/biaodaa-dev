@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="../../../vendor/normalize.css/bdd_forgetpd.css">
     <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
     <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
+    <style>
+        button{
+            padding:10px;
+            border:none;
+            border-radius: 5px;
+            background: deepskyblue;
+            color: #ffffff;
+        }
+    </style>
     <!--引入首页的js文件-->
     <!--<script src="./js/index.js"></script>-->
     <!--<script src="./zepto-master/src/zepto.min.js"></script>
@@ -80,14 +89,24 @@
     <div class="bdd_binding_content_conter">
         <div class="bdd_binding_content_conter_header">忘记密码</div>
         <div class="bdd_binding_content_plone">
-            <div class="bdd_binding_text">输入手机号</div>
-            <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text">验证码<span class="bdd_binging_aide">发送验证码</span></div>
-            <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text">设置密码</div>
-            <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text_news">确定</div>
-            <div class="bdd_binding_text_con">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
+            <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationPhone" type="text" placeholder="输入手机号">
+
+            <div class="bdd_logoin_hr"></div>
+            <div class="bdd_logoin_mi">
+                <div  class="bdd_logoin_mi_l"><div style="float: left"></div>
+                    <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationCode" type="text" placeholder="验证码">
+                </div>
+                <button  class="button" ng-click="ctrl.sendVerCode()" ng-bind="ctrl.description" ng-disabled="ctrl.isDisable"/>
+            </div>
+            <div class="bdd_logoin_hr_span"></div>
+
+            <input style="margin-top:28px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass" type="password" placeholder="新密码">
+            <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
+
+            <input class="bdd_login_buttom" ng-click="ctrl.forgot()" type="button" value="更改密码">
+            <div class="bdd_login_pic">
+                <div class="bdd_login_pic_left">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
+            </div>
         </div>
 
 

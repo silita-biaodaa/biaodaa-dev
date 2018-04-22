@@ -1,4 +1,4 @@
-app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document', 'username', function ($http, $log, $scope, $interval, $document, username) {
+app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document', function ($http, $log, $scope, $interval, $document) {
     var selt = this;
 
     var second = 59;
@@ -27,7 +27,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     this.sendVerCode = function () {
         var params = {
             invitationPhone: selt.invitationPhone,
-            type: 1
+            type: 2
         };
 
         $http.post("/authorize/getVerificationCode", angular.toJson(params)).success(function (result) {
@@ -41,26 +41,22 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     }
 
     /**
-     * 注册
+     * 找回密码
      */
-    this.register = function () {
+    this.forgot = function () {
         var params = {
-            version: "0",
+            version: "1",
             loginchannel: "1003",
-            username: selt.invitationPhone,
             userphone: selt.invitationPhone,
             userpass: selt.userpass,
             invitationCode: selt.invitationCode
         };
 
-        $http.post("/authorize/userRegister", angular.toJson(params)).success(function (result) {
+        $http.post("/authorize/forgotPassword", angular.toJson(params)).success(function (result) {
             if (result.code == 0) {
                 alert(result.msg);
             } else {
-                username = result.data.username;
-                sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                sessionStorage.setItem("username", result.data.username);
-                window.location.href = "index.html#/home";
+                window.location.href = "index.html#/login";
             }
         });
     }
