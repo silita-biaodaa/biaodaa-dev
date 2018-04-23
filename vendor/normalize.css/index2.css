@@ -410,15 +410,15 @@ body{
 }
 .bdd_infor_ul{
    background-color: white;
-    margin-top:150px;
 }
 .bdd_infor_mation_border{
     width: 290px;
+    height: 1000px;
     margin-top:20px;
-    margin-bottom:40px;
 }
 .bdd_infor_mation{
     width:280px;
+    height:100px;
     overflow: hidden;
     float: right;
 }
@@ -459,11 +459,10 @@ body{
     width: 280px;
     height: 125px;
     border-radius:10px ;
-    margin: 103px auto;
+    margin: 40px auto;
     background-color: #F7C9AC;
     color: white;
     font-size: 14px;
-    margin-bottom: 30px;
 }
 .bdd_bid_p{
     text-align: center;
