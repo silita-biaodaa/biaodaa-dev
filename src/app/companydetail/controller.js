@@ -119,6 +119,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	});
 
 	this.setPage = function (pageNo,category) {
+		selt.category = category;
 		var paramsPage = {
 			keyWord:"",
 			comId:comId,
@@ -132,11 +133,42 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 			selt.totalCount = result.total;
 			selt.pageSize = result.pageSize;;
 			selt.pageNo = result.pageNum;
-			selt.personSize = selt.personList.length;
+			selt.personSize = selt.totalCount;
 		});
 	};
 
 	this.setPage(1,"");
+	/*this.personList = [];
+	this.nextNo = 1;
+	this.busy = true;
+	this.items = [];
+	this.nextPage = function () {
+		var paramsPage = {
+			keyWord:"",
+			comId:comId,
+			category:selt.category,
+			pageNo:selt.nextNo,
+			pageSize:5
+		};
+
+		$http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
+			selt.list = result.data;
+			selt.totalCount = result.total;
+			selt.pageSize = result.pageSize;;
+			selt.pageNo = result.pageNum;
+			selt.pages = result.pages;
+
+			if(selt.nextNo<=selt.pages){
+				angular.forEach(selt.list,function(person){
+					selt.personList.push(person);
+				});
+			}
+			selt.personSize = selt.totalCount;
+			selt.nextNo += 1;
+			selt.busy = false;
+		});
+
+	};*/
 
 
 

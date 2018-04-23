@@ -10,7 +10,8 @@ var app = angular.module('WEBAPP', [
 	'ui.bootstrap',
 	'ngTouch',
 	'oc.lazyLoad',
-	'app.utils'
+	'app.utils',
+	'infinite-scroll'
 ]);
 
 
