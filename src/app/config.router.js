@@ -158,6 +158,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
+        .state('WXLogin', {
+            url: '/wxLogin',
+            templateUrl: window.rootSrc + 'app/wxlogin/wxLogin.html',
+            controller: 'WXLoginCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/wxlogin/controller.js'
+                    ]);
+                }]
+            }
+        })
         .state('Register', {
             url: '/register',
             templateUrl: window.rootSrc + 'app/register/bdd_register.html',
@@ -169,7 +181,20 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        }) .state('workmore', {
+        })
+        .state('Forget', {
+            url: '/forget',
+            templateUrl: window.rootSrc + 'app/forget/bdd_forgetpd.html',
+            controller: 'ForgetCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/forget/controller.js'
+                    ]);
+                }]
+            }
+        })
+        .state('workmore', {
             url: '/workmore',
             templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
             controller: 'WorkMoreCtrl as ctrl',

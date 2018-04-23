@@ -43,7 +43,7 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
     /**
      * 找回密码
      */
-    this.forgot = function () {
+    this.forget = function () {
         var params = {
             version: "1",
             loginchannel: "1003",
