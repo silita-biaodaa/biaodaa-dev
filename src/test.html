@@ -1,83 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="myApp" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AngularJS carousel</title>
+    <link href="http://libs.baidu.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-indicators li{
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-
-<pre>
- parent > child
- 在给定的父元素下匹配所有的子元素
-</pre>
-
-<div class="help">
-    <span style="font-size:14px;"><div class="box">
-        <p>向上箭头</p>
-        <div class="to_top"></div>
-        <p>向左箭头</p>
-        <div class="to_left"></div>
-        <p>向右箭头</p>
-        <div class="to_right"></div>
-        <p>向下箭头</p>
-        <div class="to_bottom"></div>
-    </div></span>
+<div ng-controller="CarouselDemoCtrl" style="margin-top: 15px;">
+    <div style="height: 305px">
+        <carousel interval="myInterval" no-wrap="noWrapSlides">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;width:1000px;height: 600px;"/>
+                <div class="carousel-caption">
+                    <p>{{slide.text}}</p>
+                </div>
+            </slide>
+        </carousel>
+    </div>
 </div>
 
-<style>
-    .box {
-        width: 400px;
-        height: 100px;
-        text-align: center;
-        margin: 50px auto;
-    }
-
-    .box p {
-        background: pink;
-    }
-
-    /* 向上箭头 */
-
-    .to_top {
-        width: 0;
-        height: 0;
-        border-bottom: 30px solid #f0f;
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-    }
-
-    /* 向左箭头 */
-
-    .to_left {
-        width: 0;
-        height: 0;
-        border-right: 30px solid #ffd900;
-        border-top: 30px solid transparent;
-        border-bottom: 30px solid transparent;
-    }
-
-    /* 向右箭头 */
-
-    .to_right {
-        width: 0;
-        height: 0;
-        border-left: 30px solid greenyellow;
-        border-top: 30px solid transparent;
-        border-bottom: 30px solid transparent;
-    }
-
-    /* 向下箭头 */
-
-    .to_bottom {
-        width: 0;
-        height: 0;
-        border-top: 30px solid skyblue;
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-    }
-</style>
-
-<script src="../vendor/js/jquery.js"></script>
-
-</body>
-</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular-animate.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+<script>
+    angular.module('myApp', ['ui.bootstrap', 'ngAnimate']).controller('CarouselDemoCtrl', function ($scope) {
+        $scope.myInterval = 500;
+        $scope.noWrapSlides = false;
+        var slides = $scope.slides = [];
+        $scope.addSlide = function () {
+            var newWidth = 600 + slides.length + 1;
+            slides.push({
+                image: '../vendor/images/banner_1.png',
+                text: '1',
+            });
+            slides.push({
+                image: '../vendor/images/banner_2.png',
+                text: '2',
+            });
+            slides.push({
+                image: '../vendor/images/banner_3.png',
+                text: '3',
+            });
+            slides.push({
+                image: '../vendor/images/banner_4.png',
+                text: '4',
+            });
+        };
+        $scope.addSlide();
+    });
+</script>
+</body>  

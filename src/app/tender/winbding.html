@@ -273,12 +273,14 @@
 <!--头部-->
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
-        <div class="bdd-img-div"><div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html"></a>首页</div>
-        <div class="bdd-nav-title"><a href="./bdd_scerrn.html">标讯</a></div>
-        <div class="bdd-nav-title">企信</div>
-        <div class="bdd-nav-title">动态</div>
-        <div class="bdd-nav-title">应用</div>
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
+        </div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
             <div class="search-filter">
                 <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
@@ -302,7 +304,17 @@
             <input type="hidden" name="type" value="project" id="sType"></div>
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 <!--nav-->
@@ -380,7 +392,9 @@
                 </div>
 
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-                    <div class="bdd_details_js_two">{{item.comName}}</div>
+                    <div class="bdd_details_js_two">{{item.comName}}
+                    </div>
+
                     <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
@@ -389,6 +403,7 @@
         </div>
     </div>
 </div>
+
 <!--底部-->
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">

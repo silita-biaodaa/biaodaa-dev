@@ -11,7 +11,6 @@
         margin: 0 auto;
         height: 500px;
     }
-    /*����*/
     .bdd_announcement{
         width: 1200px;
         height: 94px;
@@ -40,12 +39,10 @@
 
     }
 
-    /*ɸѡ��*/
     .bdd_area{
         width:100%;
         margin:0 auto;
         height:550px;
-        background-color: white;
 
 
     }
@@ -447,10 +444,10 @@
             <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a style="color:white" ui-sref="tender">标讯</a></div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
         <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
-        <div class="bdd-nav-title"><a ui-sref="UserCenter">应用</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
             <div class="search-filter">
                 <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
@@ -474,16 +471,21 @@
             <input type="hidden" name="type" value="project" id="sType"></div>
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 <div ng-controller="TenderCtrl">
-<!--图表-->
-<div class="bdd_chart">
-    <div class="bdd_chart_new">
-        <img src="../../../vendor/images/biaoxun_banner1.png" alt="">
-    </div>
-</div>
+
 <!--公告-->
 <div class="bdd_announcement">
     <div class="bdd_announcement_left bdd_announcement_mess {{isTender?'bdd_un_active':''}}"  ng-click="chageToTender()">招标公告</div>

@@ -389,9 +389,9 @@
             <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a ui-sref="zhaobiao">标讯</a></div>
+        <div class="bdd-nav-title"><a  ui-sref="Tender">标讯</a></div>
         <div class="bdd-nav-title"><a style="color:white" ui-sref="Company">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
         <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide">
             <div class="search-status">
@@ -424,7 +424,17 @@
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
                                                                    alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 

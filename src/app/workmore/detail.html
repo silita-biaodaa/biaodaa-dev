@@ -7,61 +7,7 @@
         padding-right: 30px;
     }
 
-    .bdd_text_z {
-        width: 900px;
-        font-size: 18px;
-        color: #2e2e2e;
-        height: 33px;
-        font-family: Arial;
-    }
 
-    .bdd_text_y {
-        padding-top: 16px;
-        font-size: 14px;
-        color: #ccbebe;
-        height: 64px;
-    }
-
-    .bdd_text_p {
-        width: 800px;
-        height: 30px;
-        font-size: 16px;
-        margin-top: -21px;
-        color: #ccbebe;
-
-    }
-
-    .bdd_text_invite {
-        width: 80px;
-        height: 25px;
-        font-size: 14px;
-        font-family: Arial;
-        color: #ef873a;
-        background-color: #fdefe3;
-        text-align: center;
-        padding-top: 4px;
-        float: left;
-    }
-
-    .bdd_text_pading {
-        margin-left: 10px;
-        background-color: #e3e6f7;
-        color: #3676f0;
-    }
-
-    .bdd_win_conter {
-        width: 1200px;
-        background-color: white;
-        padding: 15px 0px 20px 20px;
-        margin-top: 10px;
-    }
-
-    .bdd_text_riqi {
-        font-size: 14px;
-        color: #ccbebe;
-        float: right;
-        margin-right: 10px;
-    }
 
 </style>
 <nav class="bdd-nav">
@@ -69,11 +15,11 @@
         <div class="bdd-img-div">
             <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html"></a>首页</div>
-        <div class="bdd-nav-title"><a href="./tenderSay.html"></a>标讯</div>
-        <div class="bdd-nav-title"><a href="./bdd_letter.html"></a>企信</div>
-        <div class="bdd-nav-title"><a href="./bdd_trends.html"></a>动态</div>
-        <div class="bdd-nav-title"><a href="./bdd_society.html"></a>应用</div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a  ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a  ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide">
             <div class="search-status">
                 <div class="search-filter">
@@ -105,12 +51,27 @@
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
                                                                    alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 <!--公告-->
 
 <div  ng-controller="WorkMoreDetailCtrl">
+    <div style="margin: 20px auto"><h2 ng-bind="dataRes.title"></h2></div>
+
+    <div style="margin: 10px auto">作者：<span ng-bind="dataRes.username"></span></div>
+    <div style="margin: 10px auto">关键字：<span ng-bind="dataRes.keyword"></span></div>
+    <div style="margin: 10px auto">发布时间：<span ng-bind="dataRes.time"></span></div>
     <div class="bdd_adver">
         <div class="bdd_adver_header" id="bdd_adver_header_content">
         </div>

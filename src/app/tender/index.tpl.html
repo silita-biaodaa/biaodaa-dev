@@ -36,6 +36,7 @@
         height: auto;
         float: right;
         margin-left: 18px;
+        margin-top: -2965px;
     }
 
     .bdd_details_value_left_top {
@@ -127,7 +128,7 @@
         font-size: 16px;
         color: #cea63f;
         position: relative;
-        top:27px;
+        top:33px;
         left: 69px;
     }
     .bdd_style_value_one{
@@ -165,9 +166,8 @@
         position: relative;
         color: #cea63f;
         font-size: 16px;
-        left: -133px;
-        top: 63px;
-        margin-left: -20px;
+        left: 115px;
+        top:35px;
     }
 
     /*保证金*/
@@ -254,7 +254,7 @@
     /*分析*/
     .bdd_details_header {
         width: 290px;
-        height: 60px;
+        margin-bottom: 40px;
         background-color: white;
         padding-left: 15px;
         position: absolute;
@@ -282,16 +282,17 @@
     .bdd_details_js {
         width: 290px;
         height: 180px;
-        margin-top: 10px;
+        margin-top:10px;
         background-color: white;
+
     }
 
     .bdd_details_js_two {
         font-size: 16px;
         color: #4d3a3a;
-        padding: 20px 0 0 58px;
         font-family: Arial;
         font-weight: 700;
+        padding-top: 30px;
 
     }
 
@@ -423,7 +424,7 @@
     .bdd_stage_bottom_span {
         position: relative;
         left: 25px;
-        top: 1px;
+        top: 2px;
         color: #4d3a3a;
         font-size: 16px;
     }
@@ -456,12 +457,13 @@
     }
    .bdd_style_img_a{
        text-align: center;
-       margin-top:10px;
+       margin-top:18px;
    }
     .bdd_style_value_a{
         text-align: center;
         color: #cea63f;
         font-size: 16px;
+        margin-top:8px;
     }
     .bdd_details_nav {
         min-height: 600px;
@@ -476,7 +478,7 @@
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
         <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
         <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
         <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide">
             <div class="search-status">
@@ -509,7 +511,17 @@
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
                                                                    alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 <!--nav-->
@@ -629,7 +641,7 @@
             <div class="bdd_details_value_hold_me">
                 <div class="bdd_details_value_left">
                     <div class="bdd_details_value_left_top">
-                        <div class="bdd_details_value_input bdd_details_size" ng-model="">{{currentTender.title}}</div>
+                        <div class="bdd_details_value_input bdd_details_size" ng-bind="currentTender.title"></div>
                         <span style="margin-top: 13px"
                               class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_one">发布日期：{{currentTender.opendate}}</span>
                         <span style="margin-top: 13px"
@@ -680,16 +692,16 @@
                                                                alt=""><span class="bdd_details_span"
                                                                             style="font-size:24px">00</span><span
                                 class="bdd_details_ke">秒</span></a>
-                        <a class="bdd_details_what" href="#">离开标截至时间还剩</a>
+                        <div class="bdd_details_what" href="#">离开标截止时间还剩</div>
                     </div>
                     <div class="bdd_stage">
                         <div class="bdd_stage_img"><span class="bdd_stage_one">{{currentNum}}标段</span><img
                                 src="../../../vendor/images/zb_lable_dbd.png" alt=""></div>
                         <div class="bdd_stage_conter">
                             <div class="bdd_stage_top">
-                                <div class="bdd_stage_top_left">报名截止时间:<span class="bdd_stage_color">{{currentTender.bmEndDate}}</span>
+                                <div class="bdd_stage_top_left">报名截止时间：<span class="bdd_stage_color">{{currentTender.bmEndDate}}</span>
                                 </div>
-                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}万</span>
+                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}</span>
                                 </div>
                             </div>
                             <br>
@@ -763,7 +775,7 @@
                     <div class="bdd_details_header_conter">符合资质企业</div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-                    <div class="bdd_details_js_two">{{item.comName}}</div>
+                    <div class="bdd_details_js_two">  <img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>
                     <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>

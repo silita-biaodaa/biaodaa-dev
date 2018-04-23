@@ -10,7 +10,7 @@ app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'us
 	}
 
 
-	//å…¬å‘Šæ–‡ç« åˆ—è¡¨
+	//¹«¸æÎÄÕÂÁĞ±í
 	this.queryArticleList = function (type){
 		var articleParam ={
 			pageNo:1,
@@ -73,10 +73,10 @@ app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'us
 		username = "";
 		selt.user = null;
 		window.location.href="index.html#/home";
-    };
+	};
 
 
-	//é¡µé¢åˆå§‹åŒ–è¯·æ±‚
+	//Ò³Ãæ³õÊ¼»¯ÇëÇó
 	this.choiceType(2,'');
 	this.choiceType(0,'');
 }]);

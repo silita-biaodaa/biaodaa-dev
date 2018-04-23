@@ -48,10 +48,10 @@
         </div>
         <div class="bdd-nav-title bdd-nav-search"><a href="#" onclick="showSearch()"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div>
+        <div class="bdd-nav-title bdd-nav-right">
             <div ng-if="$ctrl.user == null">
-                <a href="index.html#/login">登录</a>
-                <a href="index.html#/register">注册</a>
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
             </div>
             <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
                 <label>{{$ctrl.user.username}}</label>
@@ -229,10 +229,9 @@
 
         <div class="bdd_use">
             <div class="bdd_infor_ul">
-                <div class="bdd_infor_dv">
+                <div class="bdd_infor_dv"></div>
                 <div class="bdd_infor_title">常用应用</div>
                 <div class="bdd_infor_rihgt">更多></div>
-                </div>
                 <div class="bdd_infor_bid">
                     <div class="bdd_bid_p">评标计算</div>
                 </div>

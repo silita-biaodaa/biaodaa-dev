@@ -1,6 +1,12 @@
-app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
+app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope,$document,username) {
 	var selt = this;
-
+	if(username != null && username != '') {
+		selt.user = {
+			username : username
+		};
+	} else {
+		selt.user = null;
+	}
 
 	$http.get("/company/filter").success(function (result) {
 		console.log(result.data.area);
@@ -347,6 +353,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document',f
 			morePro.style.display="none";
 		}
 	}
+	this.logout = function() {
+		sessionStorage.removeItem("X-TOKEN");
+		sessionStorage.removeItem("username");
+		username = "";
+		selt.user = null;
+		window.location.href="index.html#/home";
+	};
 }]);
 
 

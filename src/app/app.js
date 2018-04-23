@@ -31,6 +31,13 @@ app.factory('locals',['$window',function($window){
 	}
 }]);
 
+function logout(){
+	sessionStorage.removeItem("X-TOKEN");
+	sessionStorage.removeItem("username");
+	window.location.href="index.html#/home";
+}
+
+
 
 
 

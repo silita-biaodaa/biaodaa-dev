@@ -1,7 +1,15 @@
 
-app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', function ($http, $uibModal, $log, $scope, $state) {
+app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','username', function ($http, $uibModal, $log, $scope, $state,username) {
 
     var selt = this;
+
+    if(username != null && username != '') {
+        selt.user = {
+            username : username
+        };
+    } else {
+        selt.user = null;
+    }
     var tenderType = 0;//Ĭ���б�
     var paramsPage = {
         pageNo: 1,
@@ -18,7 +26,7 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
     };
 
     $http.post("/notice/queryList", angular.toJson(paramsPage),
-        {headers: {'X-TOKEN': 'biaodaaTestToken'}}).success(function (result) {
+        {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
 
             $scope.dataList = result.data;
 
@@ -33,18 +41,14 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
         }
     }
 
-
     $scope.chageToTender = function(){
         paramsPage.type=0;
         tenderType = 0;
         $scope.isTender = true;
         $http.post("/notice/queryList", angular.toJson(paramsPage),
-            {headers: {'X-TOKEN': 'biaodaaTestToken'}}).success(function (result) {
-
+            {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
                 $scope.dataList = result.data;
-
             });
-
     }
 
     $scope.chageToWinBid = function(){
@@ -52,20 +56,34 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
         tenderType = 2;
         $scope.isTender = false;
         $http.post("/notice/queryList", angular.toJson(paramsPage),
-            {headers: {'X-TOKEN': 'biaodaaTestToken'}}).success(function (result) {
+            {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
 
                 $scope.dataList = result.data;
 
             });
 
     }
-
+    this.logout = function() {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("username");
+        username = "";
+        selt.user = null;
+        window.location.href="index.html#/home";
+    };
 
 }]);
 
 
-app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state', function ($http, $scope, utils, $stateParams, $state) {
-    var tenderArrayData = [];
+app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','username', function ($http, $scope, utils, $stateParams, $state,username) {
+    var selt = this;
+
+    if(username != null && username != '') {
+        selt.user = {
+            username : username
+        };
+    } else {
+        selt.user = null;
+    }
     var id = $stateParams.id;
     var dataArray = [];
     var resArray = [];
@@ -83,7 +101,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 
     })
     $http.post("/notice/detail/" + id, angular.toJson(paramsPage), {
-        headers: {'X-TOKEN': 'biaodaaTestToken'}
+        headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
     }).success(function (result) {
         //console.log(result);
 
@@ -102,7 +120,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         resArray = result.data;
     })
     $http.post("/notice/queryCompanyList/" + id, {
-        headers: {'X-TOKEN': 'WkZjMWExcFhXbkJpYlZacg=='}
+        headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
     }).success(function (result) {
         console.log(result);
         $scope.copanyResultArr = result.data;
@@ -117,13 +135,28 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
-
+    this.logout = function() {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("username");
+        username = "";
+        selt.user = null;
+        window.location.href="index.html#/home";
+    };
 
 }]);
 
 
-//�б깫����ļ�����ҳ��?
-app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', function ($http, $scope, utils, $stateParams) {
+//�б깫����ļ�����ҳ��??
+app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'username',function ($http, $scope, utils, $stateParams,username) {
+    var selt = this;
+
+    if(username != null && username != '') {
+        selt.user = {
+            username : username
+        };
+    } else {
+        selt.user = null;
+    }
     var id = $stateParams.id;
     var showType = $stateParams.type;
     $scope.showType = showType;
@@ -162,10 +195,27 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', fun
             $scope.fileSize = fileDataArray.length;
         });
     }
+    this.logout = function() {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("username");
+        username = "";
+        selt.user = null;
+        window.location.href="index.html#/home";
+    };
 }])
 
 //�б깫��ҳ��
-app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state', function ($http, $scope, utils, $stateParams,$state) {
+app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','username', function ($http, $scope, utils, $stateParams,$state,username) {
+    var selt = this;
+
+    if(username != null && username != '') {
+        selt.user = {
+            username : username
+        };
+    } else {
+        selt.user = null;
+    }
+
     var id = $stateParams.id;
 
     var dataArray = [];
@@ -183,7 +233,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
 
     })
     $http.post("/notice/detail/" + id, angular.toJson(paramsPage), {
-        headers: {'X-TOKEN': 'biaodaaTestToken'}
+        headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
     }).success(function (result) {
         //console.log(result);
         $scope.mSize = result.data.length;
@@ -198,9 +248,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $("#bdd_follow_info_one").html(result.data[0].content);
 
     })
-    $http.post("/notice/queryCompanyList/" + id,{
-        headers: {'X-TOKEN': 'biaodaaTestToken'}
-    }).success(function (result) {
+    $http.post("/notice/queryCompanyList/" + id).success(function (result) {
         console.log(result);
         $scope.copanyResultArr = result.data;
 
@@ -214,6 +262,13 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
+    this.logout = function() {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("username");
+        username = "";
+        selt.user = null;
+        window.location.href="index.html#/home";
+    };
 }]);
 
 

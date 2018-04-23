@@ -1,7 +1,14 @@
 // app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$document', function ($http, $uibModal, $log, $scope, $document) {
-app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document', function ($http, $log, $scope, $interval, $document) {
-    var selt = this;
+app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document','username', function ($http, $log, $scope, $interval, $document,username) {
 
+    var selt = this;
+    if(username != null && username != '') {
+        selt.user = {
+            username : username
+        };
+    } else {
+        selt.user = null;
+    }
     var second = 59;
     var timerHandler;
     selt.isDisable = false;
@@ -64,5 +71,12 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             }
         });
     }
+    this.logout = function() {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("username");
+        username = "";
+        selt.user = null;
+        window.location.href="index.html#/home";
+    };
 
 }]);

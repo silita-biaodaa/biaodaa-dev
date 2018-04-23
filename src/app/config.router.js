@@ -14,9 +14,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpPr
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
-    // $httpProvider.defaults.headers.common = {'X-TOKEN': 'zxh0000001234'};
+     $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
     // $httpProvider.interceptors.push('loadingInterceptor');
-    $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
+    //$httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
     /**
      * 定义路由
      */
@@ -61,7 +61,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-        .state('Home', {
+        .state('home', {
             url: '/home',
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
 
@@ -169,20 +169,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        })
-        .state('Forget', {
-            url: '/forget',
-            templateUrl: window.rootSrc + 'app/forget/bdd_forgetpd.html',
-            controller: 'ForgetCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/forget/controller.js'
-                    ]);
-                }]
-            }
-        })
-        .state('workmore', {
+        }) .state('workmore', {
             url: '/workmore',
             templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
             controller: 'WorkMoreCtrl as ctrl',
@@ -194,13 +181,24 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         }) .state('workmoreDetail', {
-            url: '/workmoreDetail',
+            url: '/workmoreDetail/:id',
             templateUrl: window.rootSrc + 'app/workmore/detail.html',
             controller: 'WorkMoreDetailCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/workmore/controller.js'
+                    ]);
+                }]
+            }
+        }).state('society', {
+            url: '/society',
+            templateUrl: window.rootSrc + 'app/society/index.tpl.html',
+            controller: 'SocietyCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/society/controller.js'
                     ]);
                 }]
             }
