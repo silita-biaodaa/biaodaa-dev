@@ -158,21 +158,9 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-        .state('WXLogin', {
-            url: '/wxLogin',
-            templateUrl: window.rootSrc + 'app/wxlogin/wxLogin.html',
-            controller: 'WXLoginCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/wxlogin/controller.js'
-                    ]);
-                }]
-            }
-        })
         .state('Register', {
             url: '/register',
-            templateUrl: window.rootSrc + 'app/register/bdd_register.html',
+            templateUrl: window.rootSrc + 'app/register/wx_register.html',
             controller: 'RegisterCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
