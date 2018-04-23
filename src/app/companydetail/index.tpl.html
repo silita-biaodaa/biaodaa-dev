@@ -133,10 +133,14 @@
     <!--鲁班奖-->
     <div class="bdd_basic_person_spans">
         <div class="bdd_lauban">
+            <div ng-show="ctrl.showTip==1">要努力哦！</div>
             <div ng-repeat="item in ctrl.reputList">
                 <div class="bdd_lauban_rihgt_a">
                     <div class="bdd_lauban_left display_inline"></div>
                     <div class="display_inline">{{item.name}}</div>
+                    <div class="display_inline"  style="padding-left: 100px">
+                    <a ng-click="ctrl.changeOneMore($event)"> 收起</a>
+                    </div>
                 </div>
                 <div class="bdd_lauban_news">
                     <div class="bdd_lauban_conter" ng-repeat="subItem in item.list">

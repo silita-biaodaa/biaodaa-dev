@@ -10,6 +10,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	});
 
 	this.showType = 1;
+	selt.showTip = 1;
 	var style00 = {
 		"background-color":"#4d3a3a",
 		"color": "white"
@@ -36,6 +37,12 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	//reputation
 	$http.post("/company/reputation/"+comId,angular.toJson(params)).success(function (result) {
 		selt.repuMap=result.data;
+		if( result.data!=null&& result.data.reputation!=null){
+			var len = result.data.reputation.length;
+			if(len!=null && len>0){
+				selt.showTip = 0;
+			}
+		}
 	});
 
 	//undesirable
@@ -48,11 +55,28 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 
 	this.showReputation = function (reputList) {
 		selt.reputList = reputList;
+		if(reputList!=null&&reputList.length>0){
+			selt.showTip = 0;
+		}
+
 
 	};
 
 	this.showUndesirable = function (undesList) {
 		selt.undesList = undesList;
+
+	}
+	this.changeOneMore = function (event) {
+		var elem = event.target;
+
+		var siblingElem = elem.parentNode.parentNode.nextSibling.nextSibling;
+		if(elem.innerText=='收起'){
+			elem.innerText='更多';
+			siblingElem.style.display="none";
+		}else{
+			elem.innerText='收起';
+			siblingElem.style.display="block";
+		}
 
 	}
 
