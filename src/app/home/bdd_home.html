@@ -12,7 +12,7 @@
         </div>
 
 
-        <div class="bdd-nav-title"><a  style="color:white" ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a  style="color:white" ui-sref="Home">首页</a></div>
         <div class="bdd-nav-title"><a ui-sref="zhaobiao">标讯</a></div>
         <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
         <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
@@ -129,93 +129,45 @@
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">中标公告</div>
                 <div class="bdd_icon"></div>
-                <div class="bdd_header_lit  bdd_header_color">全部</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0)">监理</div>
-                <div class="bdd_header_lit">施工</div>
-                <div class="bdd_header_lit">设计</div>
-                <div class="bdd_header_lit">监理</div>
-                <div class="bdd_header_lit">监理</div>
-
+                <div class="bdd_header_lit  bdd_header_color"  ng-click="$ctrl.choiceType(2,'')" >全部</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'0')" >施工</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'2')" >监理</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'3')" >采购</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'1')" >设计</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')" >勘察</div>
                 <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
             </div>
-            <div class="bdd_win_conter" style="margin-top: 0px" ng-repeat="test in $ctrl.testList">
-                <div class="bdd_text_z" ng-bind="test.title"></div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="bdd_win_conter" style="margin-top: 0px" ng-repeat="notice in $ctrl.zhongbiaoList">
+                <div class="bdd_text_z" ng-bind="notice.title"></div>
+                <div class="bdd_text_y" ng-show="notice.oneName">中标企业：<span ng-bind="notice.oneName"></span></div>
+                <div class="bdd_text_p" ng-show="notice.projSum" >项目金额：<span ng-bind="notice.projSum"></span>万元</div>
+                <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
+                <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
 
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">招标公告</div>
                 <div class="bdd_icon"></div>
-                <div class="bdd_header_lit">全部</div>
-                <div class="bdd_header_lit">监理</div>
-                <div class="bdd_header_lit">施工</div>
-                <div class="bdd_header_lit">设计</div>
-                <div class="bdd_header_lit">监理</div>
-                <div class="bdd_header_lit">监理</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'')">全部</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'0')" >施工</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'2')" >监理</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'3')" >采购</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'1')" >设计</div>
+                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'4')" >勘察</div>
 
                 <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
             </div>
-            <div class="bdd_win_conter">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
 
+            <div class="bdd_win_conter" style="margin-top: 0px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
+                <div class="bdd_text_z" ng-bind="zhaobiao.title"></div>
+                <div class="bdd_text_y" ng-show="zhaobiao.certificate">资质要求：<span ng-bind="zhaobiao.certificate"></span></div>
+                <div class="bdd_text_p" ng-show="zhaobiao.pbMode">评标办法：<span ng-bind="zhaobiao.pbMode"></span></div>
+                <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
+                <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
-            <div class="bdd_win_conter">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="bdd_win_conter">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="bdd_win_conter bdd_win_conter_last">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="bdd_win_conter bdd_win_conter_last">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="bdd_win_conter bdd_win_conter_last">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="bdd_win_conter bdd_win_conter_last">
-                <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-                <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-                <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-                <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-                <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
+
             <!--<div class="bdd_win_header">企业信息</div>-->
             <!--<div class="bdd_inc">-->
             <!--<div class="bdd_inc_list_o">-->
@@ -253,68 +205,21 @@
                 <div class="bdd_infor_title">最新资讯</div>
                 <div class="bdd_infor_rihgt">更多></div>
                 <div class="bdd_infor_mation_border">
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
+                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
+                        <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1.png" /></div>
                         <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
+                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
                         </div>
                     </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
+
+                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
+                        <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2.png" /></div>
                         <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
-                        </div>
-                    </div>
-                    <div class="bdd_infor_mation">
-                        <div class="bdd_infor_maleft"></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title">2015-2016年招标情况</div>
-                            <div class="bdd_infor_maright_news">湖南省沩水流域综合治</div>
-                            <div class="bdd_infor_maright_new">工程施工监理第一标段（第二次</div>
+                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
                         </div>
                     </div>
                 </div>
