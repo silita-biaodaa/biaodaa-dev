@@ -118,14 +118,14 @@
 <div class="bdd_trends_contont" ng-controller="WorkMoreCtrl">
     <div class="bdd_trends_border">
         <div class="bdd_trends_pic">
+            <img src="../../../vendor/images/banner_1.png" alt="">
         </div>
         <div class="bdd_trends_header">
             <div class="bdd_trends_header_title {{isCompany?'bdd_trends_header_bot':''}}" ng-click="toDiffMsg('0')">行业资讯
          </div>
-
             <div class="bdd_trends_header_title bdd_trends_hrader_tex {{isCompany?'':'bdd_trends_header_bot'}}" ng-click="toDiffMsg('1')">平台公示</div>
         </div>
-        <div style="margin-bottom:200px" class="bdd_trends_conter_pic" ng-repeat="item in dataArray">
+        <div  class="bdd_trends_conter_pic" ng-repeat="item in dataArray">
             <a ng-click="toDetail(item.content)">
             <div class="bdd_trends_conter_pic_left"><img src="../../../vendor/images/dt_icon_defa1.png" alt=""></div>
             <div class="bdd_trends_conter_pic_right">
