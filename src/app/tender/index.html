@@ -33,12 +33,11 @@
         line-height: 94px;
     }
     .bdd_announcement_mess{
-        padding-left:400px;
+        margin-left:400px;
     }
-    .bdd_announcement_under{
-        width:100px;
-        height:4px;
-        background-color:#cea63f;
+    .bdd_un_active{
+        border-bottom: 2px solid #ccc;
+
     }
 
     /*ɸѡ��*/
@@ -431,7 +430,14 @@
         float: right;
         margin-right:10px;
     }
-
+    .bdd_adver{
+        height: auto;
+        min-height: 900px;
+    }
+    .bdd_adver_header{
+        height: auto;
+        min-height: 900px;
+    }
 
 </style>
 <!--头部-->
@@ -471,6 +477,7 @@
         <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
     </div>
 </nav>
+<div ng-controller="TenderCtrl">
 <!--图表-->
 <div class="bdd_chart">
     <div class="bdd_chart_new">
@@ -479,9 +486,9 @@
 </div>
 <!--公告-->
 <div class="bdd_announcement">
-    <div class="bdd_announcement_left bdd_announcement_mess"><a href="#">招标公告</a><div class="bdd_announcement_under"></div></div>
-    <div class="bdd_announcement_left"><a href="#">中标公告</a></div>
-    <div class="bdd_announcement_left"><a href="#">我的定制</a></div>
+    <div class="bdd_announcement_left bdd_announcement_mess {{isTender?'bdd_un_active':''}}"  ng-click="chageToTender()">招标公告</div>
+    <div class="bdd_announcement_left {{isTender?'':'bdd_un_active'}}" ng-click="chageToWinBid()">中标公告</div>
+    <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
 <!--筛选框-->
 <div class="bdd_area">
@@ -629,46 +636,23 @@
         </div>
         <div class="bdd_side_news_val">
             <div class="bdd_side_rihgt">综合排序</div>
-            <div class="bdd_side_rihgt">发布时间</div>
-            <div class="bdd_side_rihgt">项目金额</div>
             <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f">10000</span>条广告</div>
         </div>
     </div>
 </div>
 <div class="bdd_adver">
     <div class="bdd_adver_header">
-        <div class="bdd_win_conter" style="margin-top: 0px">
-            <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-            <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-            <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-            <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-            <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a ng-repeat="item in dataList" ng-click="toDetail(item.id)">
+        <div class="bdd_win_conter" style="margin-top:10px;">
+            <div class="bdd_text_z" ng-bind="item.title">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
+            <div class="bdd_text_y" >资质要求：{{item.certificate}}</div>
+            <div class="bdd_text_p">评标办法：{{item.pbMode}}</div>
+            <div class="bdd_text_invite" >{{item.projectType}}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="bdd_text_invite bdd_text_pading" >{{item.noticeType}}</div>
+            <div class="bdd_text_riqi" >{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-        <div class="bdd_win_conter">
-            <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-            <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-            <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-            <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-            <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-        <div class="bdd_win_conter">
-            <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-            <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-            <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-            <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-            <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-        <div class="bdd_win_conter">
-            <div class="bdd_text_z">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
-            <div class="bdd_text_y">资质要求：机电安装工程施工总承包三级及以上</div>
-            <div class="bdd_text_p">评标办法：综合评估法Ⅰ</div>
-            <div class="bdd_text_invite">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="bdd_text_invite bdd_text_pading">中标公告</div>
-            <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+        </a>
+
     </div>
 </div>
 
@@ -685,4 +669,5 @@
         <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
         <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
     </div>
+</div>
 </div>

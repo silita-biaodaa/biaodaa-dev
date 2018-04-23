@@ -1,15 +1,15 @@
-app.controller('LoginCtrl', ['$http','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope,$document, username) {
+app.controller('LoginCtrl', ['$http','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
 	var selt = this;
 
 	/**
 	 * 登录
 	 */
-	this.login = function() {
+	this.submit = function() {
 		var params = {
 			version:"0",
-			loginchannel:"1003",
+			loginchannel:"1002",
 			username:selt.username,
-			userpass:selt.userpass
+			userpass:''
 		};
 		//console.log(params);
 
@@ -18,12 +18,18 @@ app.controller('LoginCtrl', ['$http','$log','$scope','$document', 'username',fun
 			if (result.code == 0) {
 				alert(result.msg);
 			}else{
-				username = result.data.username;
 				sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-				sessionStorage.setItem("username", result.data.username);
 				window.location.href="index.html#/home";
 			}
 		});
+
+
+
+
+
+
 	}
 
 }]);
+
+

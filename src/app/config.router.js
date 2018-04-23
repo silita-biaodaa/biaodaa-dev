@@ -8,7 +8,6 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
-app.constant('username', sessionStorage.getItem("username"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
@@ -17,6 +16,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     // $httpProvider.defaults.headers.common = {'X-TOKEN': 'zxh0000001234'};
     // $httpProvider.interceptors.push('loadingInterceptor');
     $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
+
     /**
      * 定义路由
      */
@@ -33,7 +33,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-
         .state('About', {
             url: '/about/:id',
             templateUrl: window.rootSrc + 'app/about/index.tpl.html',
@@ -48,7 +47,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-
         .state('Company', {
             url: '/company',
             templateUrl: window.rootSrc + 'app/company/index.tpl.html',
@@ -63,8 +61,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-
-
         .state('Home', {
             url: '/home',
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
@@ -76,7 +72,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     return $ocLazyLoad.load([
                         'app/home/controller.js'
                     ]);
-                }],
+                }]
             }
         })
 
@@ -94,8 +90,54 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
         .state('Tender', {
             url: '/tender',
-            templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
+
+            templateUrl: window.rootSrc + 'app/tender/index.html',
+            params: {'id': null},
             controller: 'TenderCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/tender/controller.js'
+                    ]);
+                }]
+            }
+        }).state('TenderSay', {
+            url: '/tenderSay/:id/:type',
+            templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
+            controller: 'TenderSayCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/tender/controller.js'
+                    ]);
+                }]
+            }
+        }).state('TenderDtail', {
+        url: '/tenderDetail/:id',
+        templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
+        controller: 'tenderDetailCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    }).state('WinBid', {
+        url: '/win_bid',
+        templateUrl: window.rootSrc + 'app/winbid/index.html',
+        controller: 'WinBidCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/winbid/controller.js'
+                ]);
+            }]
+        }
+    }).state('Winbding', {
+            url: '/winbding/:id',
+            templateUrl: window.rootSrc + 'app/tender/winbding.html',
+            controller: 'WinbdingCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -116,18 +158,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-        .state('WXLogin', {
-            url: '/wxLogin',
-            templateUrl: window.rootSrc + 'app/wxlogin/wxLogin.html',
-            controller: 'WXLoginCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/wxlogin/controller.js'
-                    ]);
-                }]
-            }
-        })
         .state('Register', {
             url: '/register',
             templateUrl: window.rootSrc + 'app/register/bdd_register.html',
@@ -139,70 +169,29 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        })
-        .state('Forget', {
-            url: '/forget',
-            templateUrl: window.rootSrc + 'app/forget/bdd_forgetpd.html',
-            controller: 'ForgetCtrl as ctrl',
+        }) .state('workmore', {
+            url: '/workmore',
+            templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
+            controller: 'WorkMoreCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        'app/forget/controller.js'
+                        'app/workmore/controller.js'
                     ]);
                 }]
             }
-        })
-        
-    ;
-    /*.state('home', {
-     url: '/home',
-     templateUrl: window.rootSrc + 'app/home/index.tpl.html',
-     controller: 'HomeCtrl as $ctrl'
-     })
-     .state('zhaobiao', {
-     url: '/zhaobiao',
-     templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
-     controller: 'tenderCtrl as $ctrl'
-     })
-     .state('trend', {
-     url: '/trend',
-     templateUrl: window.rootSrc + 'app/trendstatu/index.tpl.html',
-     controller: 'trendCtrl as $ctrl'
-     }).state('companyDetail', {
-     url: '/companydetail',
-     templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
-     controller: 'CompanyDetailCtrl as $ctrl'
-     })
-     .state('qiyemsg', {
-     url: '/qiyemsg',
-     templateUrl: window.rootSrc + 'app/qiyemsg/index.tpl.html',
-     controller: 'qiyemsgCtrl as $ctrl'
-     }).state('society', {
-     url: '/society',
-     templateUrl: window.rootSrc + 'app/society/index.tpl.html',
-     controller: 'SocietyCtrl as $ctrl'
-     }).state('Reput', {
-     url: '/reput',
-     templateUrl: window.rootSrc + 'app/reput/index.tpl.html',
-     controller: 'ReputCtrl as $ctrl'
-     }).state('Loginpage', {
-     url: '/loginpage',
-     templateUrl: window.rootSrc + 'app/loginpage/index.tpl.html',
-     controller: 'LoginpageCtrl as $ctrl'
-     }).state('Information', {
-     url: '/information',
-     templateUrl: window.rootSrc + 'app/information/index.tpl.html',
-     controller: 'InformationCtrl as $ctrl'
-     }).state('Basicinfor', {
-     url: '/basicinfor',
-     templateUrl: window.rootSrc + 'app/basicinfor/index.tpl.html',
-     controller: 'BasicinforCtrl as $ctrl'
-     }).state('Staff', {
-     url: '/staff',
-     templateUrl: window.rootSrc + 'app/stall/index.tpl.html',
-     controller: 'StaffCtrl as $ctrl'
-     });*/
-
+        }) .state('workmoreDetail', {
+            url: '/workmoreDetail',
+            templateUrl: window.rootSrc + 'app/workmore/detail.html',
+            controller: 'WorkMoreDetailCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/workmore/controller.js'
+                    ]);
+                }]
+            }
+        });
     /**
      * 什么都匹配不到的时候就跳转到首页
      */

@@ -69,6 +69,7 @@
                     <li><a href="javascript:;">app</a></li><li><a href="javascript:;">logo</a></li><li><a href="javascript:;">icon</a></li><li><a href="javascript:;">AE</a></li><li><a href="javascript:;">作品集</a></li>								</ul>
             </div>
         </div>
+
             <input type="hidden" name="type" value="project" id="sType"></div>
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
@@ -80,15 +81,36 @@
     <div class="bdd_binding_content_conter">
         <div class="bdd_binding_content_conter_header">绑定手机号</div>
         <div class="bdd_binding_content_plone">
-            <div class="bdd_binding_text">输入手机号</div>
+            <input class="bdd_binding_text" type="text" value="请输入手机号:" placeholder="请输入手机号">
             <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text">验证码<span class="bdd_binging_aide">发送验证码</span></div>
+            <input class="bdd_binding_text" type="text" value="验证码:" placeholder="验证码"> <input type="text"/><button id="bt01">发送验证码</button>
             <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text">设置密码</div>
+            <input class="bdd_binding_text" type="text" value="设置密码:" placeholder="设置密码">
             <div class="bdd_binding_text_br"></div>
-            <div class="bdd_binding_text_news">确定</div>
-            <div class="bdd_binding_text_con">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
-        </div>
+             <buttom class="bdd_binding_text_news">确定</buttom>
+            <input class="bdd_binding_text_con" type="submit" value="点击确认即同意">《标大大用户协议》</span></div>
+    </div>
+
+
+<script type="text/javascript">
+    var bt01 = document.getElementById("bt01");
+    bt01.onclick = function() {
+        bt01.disabled = true;  //当点击后倒计时时候不能点击此按钮
+        var time = 60;  //倒计时5秒
+        var timer = setInterval(fun1, 1000);  //设置定时器
+        function fun1() {
+            time--;
+            if(time>=0) {
+                bt01.innerHTML = time + "s后重新发送";
+            }else{
+                bt01.innerHTML = "重新发送验证码";
+                bt01.disabled = false;  //倒计时结束能够重新点击发送的按钮
+                clearTimeout(timer);  //清除定时器
+                time = 5;  //设置循环重新开始条件
+            }
+        }
+    }
+</script>
 
 
     </div>

@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
     <style>
         button{
-            padding:10px;
-            border:none;
-            border-radius: 5px;
-            background: deepskyblue;
-            color: #ffffff;
+           border:none;
+            outline:none;
+            color: #cea63f;
+            font-size: 16px;
+            background: white;
+
         }
     </style>
     <!--引入首页的js文件-->
@@ -107,6 +108,7 @@
                     <input style="margin-top:28px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass" type="password" placeholder="设置密码">
                     <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
 
+                    <!--<input class="bdd_login_buttom" type="button"  ng-click="ctrl.register()"  value="注册">-->
                     <input class="bdd_login_buttom" ng-click="ctrl.register()" type="button" value="注册">
                     <div class="bdd_login_pic">
                         <div class="bdd_login_pic_left">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>

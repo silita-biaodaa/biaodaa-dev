@@ -1,4 +1,4 @@
-/*µÇÂ¼Ò³Ãæ*/
+/*ï¿½ï¿½Â¼Ò³ï¿½ï¿½*/
 body{
     background-color: #F8F8F8;
 }
@@ -115,6 +115,7 @@ body{
     font-size: 14px;
     font-family: Arial;
     padding-left:90px;
+    cursor: pointer;
 }
 
 .bdd_login_banner_right_conter{

@@ -1,4 +1,5 @@
-app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document', 'username', function ($http, $log, $scope, $interval, $document, username) {
+// app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$document', function ($http, $uibModal, $log, $scope, $document) {
+app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document', function ($http, $log, $scope, $interval, $document) {
     var selt = this;
 
     var second = 59;
@@ -6,18 +7,18 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     selt.isDisable = false;
     selt.description = "获取验证码";
 
-    function checkCode() {
+    function checkCode(){
         timerHandler = $interval(function () {
-            if (second <= 0) {
-                $interval.cancel(timerHandler);
-                second = 59;
-                selt.isDisable = false;
-                selt.description = "获取验证码";
-            } else {
-                selt.description = second + "秒后重发";
-                second--;
-                selt.isDisable = true;
-            }
+           if(second <= 0) {
+               $interval.cancel(timerHandler);
+               second = 59;
+               selt.isDisable = false;
+               selt.description = "获取验证码";
+           } else {
+               selt.description = second + "秒后重发";
+               second--;
+               selt.isDisable = true;
+           }
         }, 1000, 100);
     }
 
@@ -35,6 +36,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             if (result.code == "1") {
                 checkCode();
             } else {
+                checkCode();
                 alert(result.msg);
             }
         });
@@ -57,9 +59,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             if (result.code == 0) {
                 alert(result.msg);
             } else {
-                username = result.data.username;
                 sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                sessionStorage.setItem("username", result.data.username);
                 window.location.href = "index.html#/home";
             }
         });
