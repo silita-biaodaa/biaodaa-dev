@@ -1,5 +1,14 @@
 app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope, $document, username) {
 	var selt = this;
+
+	if(username != null && username != '') {
+		selt.user = {
+			username : username
+		};
+	} else {
+		selt.user = null;
+	}
+
 	var paramsPage = {
 		type:2,
 		pageNo:1,

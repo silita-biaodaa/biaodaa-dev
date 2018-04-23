@@ -8,6 +8,7 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
+app.constant('username', sessionStorage.getItem("username"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
@@ -16,7 +17,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     // $httpProvider.defaults.headers.common = {'X-TOKEN': 'zxh0000001234'};
     // $httpProvider.interceptors.push('loadingInterceptor');
     $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
-
     /**
      * 定义路由
      */
