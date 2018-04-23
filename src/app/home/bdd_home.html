@@ -138,7 +138,7 @@
                 <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
             </div>
             <div class="bdd_win_conter" style="margin-top: 0px" ng-repeat="notice in $ctrl.zhongbiaoList">
-                <div class="bdd_text_z" ng-bind="notice.title"></div>
+                <div class="bdd_text_z"><a href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a></div>
                 <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                 <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -160,7 +160,7 @@
             </div>
 
             <div class="bdd_win_conter" style="margin-top: 0px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
-                <div class="bdd_text_z" ng-bind="zhaobiao.title"></div>
+                <div class="bdd_text_z" > <a href="#/tenderDetail/{{zhaobiao.id}}"><span ng-bind="zhaobiao.title"></span></a></div>
                 <div class="bdd_text_y" >资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
                 <div class="bdd_text_p" >评标办法：<span>{{zhaobiao.pbMode ? zhaobiao.pbMode:'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
