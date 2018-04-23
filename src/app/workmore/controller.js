@@ -1,8 +1,5 @@
 app.controller('WorkMoreCtrl', ['$http','$uibModal','$log','$scope','$state','locals',function($http,$uibModal, $log, $scope,$state,locals) {
     $scope.isCompany = true;
-    /*
-     * 获取数据
-     * */
         var params = {
             pageNo:1,
             pageSize:20,
@@ -17,7 +14,7 @@ app.controller('WorkMoreCtrl', ['$http','$uibModal','$log','$scope','$state','lo
             });
         $scope.toDiffMsg = function(type){
             params.type=type;
-            if(type=='0'){//0 表示行业动态 1表示平台资讯
+            if(type=='0'){
                 $scope.isCompany = true;
             }else{
                 $scope.isCompany = false;
