@@ -10,7 +10,7 @@ app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'us
 	}
 
 
-	//¹«¸æÎÄÕÂÁĞ±í
+	//å…¬å‘Šæ–‡ç« åˆ—è¡¨
 	this.queryArticleList = function (type){
 		var articleParam ={
 			pageNo:1,
@@ -76,7 +76,7 @@ app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'us
 	};
 
 
-	//Ò³Ãæ³õÊ¼»¯ÇëÇó
+	//é¡µé¢åˆå§‹åŒ–è¯·æ±‚
 	this.choiceType(2,'');
 	this.choiceType(0,'');
 }]);
