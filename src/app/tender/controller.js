@@ -1,5 +1,5 @@
 
-app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','username', function ($http, $uibModal, $log, $scope, $state,username) {
+app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','username', 'Demo',function ($http, $uibModal, $log, $scope, $state,username,Demo) {
 
     var selt = this;
 
@@ -10,6 +10,7 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','
     } else {
         selt.user = null;
     }
+    $scope.demo = new Demo(0);
     var tenderType = 0;//Ĭ���б�
     var paramsPage = {
         pageNo: 1,
@@ -41,19 +42,26 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','
         }
     }
 
+
     $scope.chageToTender = function(){
         paramsPage.type=0;
         tenderType = 0;
+        $scope.demo = new Demo(tenderType);
         $scope.isTender = true;
         $http.post("/notice/queryList", angular.toJson(paramsPage),
             {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
+
                 $scope.dataList = result.data;
+
             });
+
     }
 
     $scope.chageToWinBid = function(){
-        paramsPage.type=2;
         tenderType = 2;
+        $scope.demo = new Demo(tenderType);
+        paramsPage.type=2;
+
         $scope.isTender = false;
         $http.post("/notice/queryList", angular.toJson(paramsPage),
             {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
@@ -72,6 +80,55 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','
     };
 
 }]);
+
+
+
+
+app.factory('Demo', function ($http) {
+    var paramsPage = {
+        pageNo: 1,
+        pbModes: '',
+        type: 0,
+        kbDateStart: '',
+        projSumStart: '',
+        projSumEnd: '',
+        pageSize: 20,
+        kbDateEnd: '',
+        regions: '',
+        zzType: '',
+        projectType: ''
+    };
+         var Demo = function (tenderType) {
+                 this.dataList = [];
+                 this.busy = false;
+                 this.after = '';
+                 this.page = 0;
+                 this.tenderType = tenderType;
+             };
+
+         Demo.prototype.nextPage = function () {
+                 if (this.busy) return;
+                 this.busy = true;
+
+             paramsPage.pageNo = this.page;
+             paramsPage.type = this.tenderType;
+             $http.post("/notice/queryList", angular.toJson(paramsPage),
+                 {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
+                     var dataList = result.data;
+                     if(dataList!=null){
+                     for (var i = 0; i < dataList.length; i++) {
+                         this.dataList.push(dataList[i]);
+                     }
+                     this.after = "t3_" + this.dataList[this.dataList.length - 1].id;
+                     this.busy = false;
+                     this.page += 1;
+                     }
+                 }.bind(this));
+
+             };
+
+         return Demo;
+     });
 
 
 app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','username', function ($http, $scope, utils, $stateParams, $state,username) {
@@ -111,7 +168,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         $scope.currentTender = result.data[0];
         $scope.bdSize = result.data.length;
         $scope.fileCount = result.fileCount;
-        $scope.relNoticeCount = result.data[0].relNoticeCount;
+        $scope.relNoticeCount = result.relNoticeCount;
         if(result.data.length>0){
             $scope.currentNum =1;
         }
@@ -146,7 +203,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 }]);
 
 
-//�б깫����ļ�����ҳ��??
+//�б깫����ļ�����ҳ��??
 app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'username',function ($http, $scope, utils, $stateParams,username) {
     var selt = this;
 

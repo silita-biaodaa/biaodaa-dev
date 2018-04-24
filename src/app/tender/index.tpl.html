@@ -128,8 +128,8 @@
         font-size: 16px;
         color: #cea63f;
         position: relative;
-        top:33px;
-        left: 69px;
+        top:60px;
+        left: 7px;
     }
     .bdd_style_value_one{
         top: 32px;
@@ -526,7 +526,6 @@
 </nav>
 <!--nav-->
 <div class="bdd_details_nav" ng-controller="tenderDetailCtrl">
-
     <div class="bdd_details_nav" ng-if="mSize<1">
         <div class="bdd_details_value">
             <div class="bdd_details_value_hold">
@@ -543,14 +542,12 @@
                         <span style="margin-top: 13px"
                               class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_data_c">项目地区：<span
                                 style="color:#4d3a3a">湖北荆州市</span></span>
-                        <span style="margin-top: 13px"
-                              class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">项目金额：<span
-                                style="color: #4d3a3a">10000万元</span></span><br>
+                      <br>
 
                         <div style="margin-top: 20px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
-                            评标办法：<span style="color: #cea63f">合理低价法</span></div>
+                            报名地点：<span style="color: #cea63f">合理低价法</span></div>
                         <div style="margin-top: 7px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
-                            资质要求：<span style="color: #cea63f">建筑工程施工总承包</span></div>
+                            开标地点：<span style="color: #cea63f">建筑工程施工总承包</span></div>
                     </div>
                 </div>
                 <div class="bdd_details_html">
@@ -567,7 +564,7 @@
                     <div class="bdd_details_html_left bdd_details_zf">
                         <a class="bdd_style_img" href="#"><img style="margin-top: -6px" src="../../../vendor/images/zb_icon_zbwj.png"
                                                                alt=""></a>
-                        <a class="bdd_style_value" href="#">招标文件{{fileCount==null?0:fileCount}}</a>
+                        <a class="bdd_style_value" href="#">招标文件{{fileCount==null?0:fileCount}}个</a>
                     </div>
                     <div class="bdd_details_html_right bdd_details_zf">
                         <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span
@@ -579,7 +576,7 @@
                         <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span
                                 class="bdd_details_span" style="font-size:24px">00</span><span
                                 class="bdd_details_ke">秒</span></a>
-                        <a class="bdd_details_what" href="#">离报名截止时间还剩</a>
+                        <div class="bdd_details_what" href="#">离报名截止时间还剩</div>
                     </div>
                     <div class="bdd_bond bdd_bond_fit">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">保证金</span></div>
@@ -591,19 +588,15 @@
                     </div>
                     <div class="bdd_bond">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">报名</span></div>
-                        <span class="bdd_bond_r bdd_bond_span ">保证金截止时间：2018-02-10</span>
+                        <span class="bdd_bond_r bdd_bond_span ">报名截止时间：2018-02-10</span>
                         <span class="bdd_bond_l bdd_bond_span ">保证金金额：10000万</span>
-                        <br>
-
-                        <div class="bdd_bond_b bdd_bond_span">递交方式：银行保函</div>
                     </div>
                     <div class="bdd_bond">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">开标</span></div>
-                        <span class="bdd_bond_r bdd_bond_span ">保证金截止时间：2018-02-10</span>
-                        <span class="bdd_bond_l bdd_bond_span ">保证金金额：10000万</span>
+                        <span class="bdd_bond_r bdd_bond_span ">开标截止时间：2018-02-10</span>
+                        <span class="bdd_bond_l bdd_bond_span ">开标人员：10000万</span>
                         <br>
-
-                        <div class="bdd_bond_b bdd_bond_span">递交方式：银行保函</div>
+                        <div style="padding-left:18px;" class="bdd_bond_b bdd_bond_span">报名地址：</div>
                     </div>
                     <div class="bdd_follow bdd_follow_foll"><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
                     <div class="bdd_follow bdd_follow_pyq bdd_follow_zb"><img src="../../../vendor/images/zb_icon_weibo.png" alt="">
@@ -630,13 +623,10 @@
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-    <div  ng-if="mSize>0">
+    <div  ng-if="mSize<0">
         <div class="bdd_details_value">
             <div class="bdd_details_value_hold_me">
                 <div class="bdd_details_value_left">
@@ -665,57 +655,43 @@
                 <div class="bdd_details_html">
                     <div class="bdd_details_html_left">
                         <a  ng-click="toTenderSayList(currentTender.id,0)">
-                        <div class="bdd_style_img_a "><img class="bdd_style_img_pic_c"
-                                                                src="../../../vendor/images/zb_icon_xggg.png"
-                                                                alt=""/></div>
+                        <div class="bdd_style_img_a "><img class="bdd_style_img_pic_c" src="../../../vendor/images/zb_icon_xggg.png" alt=""/></div>
                         <div class="bdd_style_value_a">相关公告 {{relNoticeCount==null?0:relNoticeCount}}个</div>
                         </a>
                     </div>
                     <div class="bdd_details_html_left bdd_details_zf">
                         <a  ng-click="toTenderSayList(currentTender.id,1)">
-                        <div class="bdd_style_img " href="#"><img class="bdd_style_img_pic"
-                                                                src="../../../vendor/images/zb_icon_zbwj.png"
-                                                                alt=""></div>
-                        <div class="bdd_style_value" href="#">招标文件{{fileCount==null?0:fileCount}}</div>
+                        <div class="bdd_style_img " href="#"><img class="bdd_style_img_pic" src="../../../vendor/images/zb_icon_zbwj.png" alt=""></div>
+                        <div class="bdd_style_value" href="#">招标文件{{fileCount==null?0:fileCount}}个</div>
                         </a>
                     </div>
                     <div class="bdd_details_html_right bdd_details_zf">
-                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png"
-                                                               alt=""><span class="bdd_details_span"
-                                                                            style="font-size:24px">00</span><span
-                                class="bdd_details_ke">时</span></a>
-                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png"
-                                                               alt=""><span class="bdd_details_span"
-                                                                            style="font-size:24px">00</span><span
-                                class="bdd_details_ke">分</span></a>
-                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png"
-                                                               alt=""><span class="bdd_details_span"
-                                                                            style="font-size:24px">00</span><span
-                                class="bdd_details_ke">秒</span></a>
-                        <div class="bdd_details_what" href="#">离开标截止时间还剩</div>
+                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">时</span></a>
+                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">分</span></a>
+                        <a class="bdd_style_img" href="#"><img src="../../../vendor/images/zb_icon_time.png" alt=""><span class="bdd_details_span" style="font-size:24px">00</span><span class="bdd_details_ke">秒</span></a><div class="bdd_details_what" href="#">离开标截止时间还剩</div>
                     </div>
                     <div class="bdd_stage">
                         <div class="bdd_stage_img"><span class="bdd_stage_one">{{currentNum}}标段</span><img
                                 src="../../../vendor/images/zb_lable_dbd.png" alt=""></div>
                         <div class="bdd_stage_conter">
                             <div class="bdd_stage_top">
-                                <div class="bdd_stage_top_left">报名截止时间：<span class="bdd_stage_color">{{currentTender.bmEndDate}}</span>
+                                <div class="bdd_stage_top_left">报名截止时间：<span class="bdd_stage_color">{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}</span>
                                 </div>
-                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}</span>
-                                </div>
-                            </div>
-                            <br>
-
-                            <div class="bdd_stage_top">
-                                <div class="bdd_stage_top_left">保证金：<span class="bdd_stage_color">{{currentTender.tbAssureSum}}</span>
-                                </div>
-                                <div class="bdd_stage_top_right">保证金截止时间：<span class="bdd_stage_color">{{currentTender.tbAssureEndDate}}</span>
+                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}{{currentTender.projSum==null?"":"万"}}</span>
                                 </div>
                             </div>
                             <br>
 
                             <div class="bdd_stage_top">
-                                <div class="bdd_stage_top_left">投标截止时间：<span class="bdd_stage_color">{{currentTender.tbAssureEndTime}}</span>
+                                <div class="bdd_stage_top_left">保证金：<span class="bdd_stage_color">{{currentTender.tbAssureSum}}&nbsp;{{currentTender.tbAssureSum==null?"":"万元"}}</span>
+                                </div>
+                                <div class="bdd_stage_top_right">保证金截止时间：<span class="bdd_stage_color">{{currentTender.tbAssureEndDate}}&nbsp;{{currentTender.tbAssureEndTime}}</span>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="bdd_stage_top">
+                                <div class="bdd_stage_top_left">投标截止时间：<span class="bdd_stage_color">{{currentTender.kbDate}}&nbsp;{{currentTender.kbTime}}</span>
                                 </div>
                                 <div class="bdd_stage_top_right">评标办法：<span
                                         class="bdd_stage_foll">{{currentTender.pbMode}}</span>
@@ -731,11 +707,10 @@
                             <br>
 
                             <div class="bdd_stage_top">
-                                <div class="bdd_stage_top_left">开标截止时间：<span
-                                        class="bdd_stage_color">{{currentTender.kbDateEnd}}</span>
+                                <div class="bdd_stage_top_left">开标人员：<span
+                                        class="bdd_stage_color">{{currentTender.kbStaffAsk}}</span>
                                 </div>
-                                <div class="bdd_stage_top_right">开标人员：<span class="bdd_stage_color">{{currentTender.kbStaffAsk}}</span>
-                                </div>
+
                             </div>
                             <br>
                         </div>
@@ -744,10 +719,7 @@
                         <div class="bdd_stage_bd">共<span style="color: #cea63f">{{bdSize}}</span>个标段</div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f"
-                                                                          class="bdd_stage_bottom_list"
-                                                                          type="button"><span style="color: white;"
-                                                                                              class="bdd_stage_bottom_span"> {{$index+1}}</span>
+                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f" class="bdd_stage_bottom_list" type="button"><span style="color: white;" class="bdd_stage_bottom_span"> {{$index+1}}</span>
                             </li>
                         </div>
                     </div>
@@ -786,7 +758,6 @@
         </div>
     </div>
 </div>
-
 <!--底部-->
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">
@@ -797,14 +768,9 @@
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
-                                                                         src="../../../vendor/images/bottom_icon_andriod.png"
-                                                                         alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                         src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a>
         </div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                         src="../../../vendor/images/bottom_icon_wechat.png"
-                                                         alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
     </div>
 </div>
