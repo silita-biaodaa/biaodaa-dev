@@ -61,6 +61,23 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
+
+        .state('CompanyTop', {
+            url: '/companyTop',
+            templateUrl: window.rootSrc + 'app/company/companyTop.html',
+
+            // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
+            controller: 'CompanyCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/company/companyTop.js'
+                    ]);
+                }]
+            }
+        })
+
+
         .state('home', {
             url: '/home',
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
