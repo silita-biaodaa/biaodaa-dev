@@ -1,12 +1,10 @@
-app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope,$document,username) {
+app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
 	var selt = this;
-	if(username != null && username != '') {
-		selt.user = {
-			username : username
-		};
-	} else {
-		selt.user = null;
-	}
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
+    } else {
+        selt.user = null;
+    }
 
 	$http.get("/company/filter").success(function (result) {
 		console.log(result.data.area);
@@ -257,13 +255,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
     };
 
 
-	this.logout = function() {
-		sessionStorage.removeItem("X-TOKEN");
-		sessionStorage.removeItem("username");
-		username = "";
-		selt.user = null;
-		window.location.href="index.html#/home";
-	};
+    this.logout = function () {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
+        selt.user = null;
+        window.location.href = "index.html#/home";
+    };
 }]);
 
 function setContentHeight(dataList){

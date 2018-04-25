@@ -1,9 +1,7 @@
-app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state','username', function ($http, $scope, utils, $stateParams, $state,username) {
+app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp', function ($http, $scope, utils, $stateParams, $state,userTemp) {
     var selt = this;
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -361,12 +359,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     //         $state.go('TenderSay', {id: id, type: type});
     //     };
     // }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 
 }]);
