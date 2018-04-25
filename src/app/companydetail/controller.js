@@ -1,12 +1,10 @@
-app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',function($http,$scope, utils,username) {
+app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',function($http,$scope, utils,userTemp) {
 	var selt = this;
-	if(username != null && username != '') {
-		selt.user = {
-			username : username
-		};
-	} else {
-		selt.user = null;
-	}
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
+    } else {
+        selt.user = null;
+    }
 
 	var comId =  utils.getUrlVar('comId');
 	console.log("=====comId:"+comId);
@@ -83,13 +81,13 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',functio
 		}
 
 	};
-	this.logout = function() {
-		sessionStorage.removeItem("X-TOKEN");
-		sessionStorage.removeItem("username");
-		username = "";
-		selt.user = null;
-		window.location.href="index.html#/home";
-	};
+    this.logout = function () {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
+        selt.user = null;
+        window.location.href = "index.html#/home";
+    };
 
     //企业资质
     this.qualList = [];
@@ -130,26 +128,53 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',functio
 
     });
 
-    this.setPage = function (pageNo,category) {
-        selt.category = category;
+    this.category = "";
+    this.selectCate = function (category) {
+		selt.category = category;
+    }
+
+    this.setPage = function () {
+        selt.companyList = [];
+        selt.busy = false;
+        selt.page = 1;
+        selt.category = "";
+        selt.nextPage();
+    };
+
+
+
+
+    this.personList = [];
+    this.busy = false;
+    this.page = 1;
+
+    this.nextPage = function () {
+        if (selt.busy) return;
+        selt.busy = true;
         var paramsPage = {
             keyWord:"",
             comId:comId,
-            category:category,
-            pageNo:pageNo,
-            pageSize:25
+            category:selt.category,
+            pageNo:selt.page,
+            pageSize:5
         };
 
         $http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
-            selt.personList = result.data;
-            selt.totalCount = result.total;
-            selt.pageSize = result.pageSize;;
-            selt.pageNo = result.pageNum;
-            selt.personSize = selt.totalCount;
+        	var personList = result.data;
+        	if(selt.page==result.pageNum){
+                angular.forEach(personList,function(person){
+                    selt.personList.push(person);
+                });
+                selt.totalCount = result.total;
+                selt.pageSize = result.pageSize;;
+                selt.pageNo = result.pageNum;
+                selt.busy = false;
+                selt.page += 1;
+			}
+
+
         });
     };
-
-    this.setPage(1,"");
 
 
 

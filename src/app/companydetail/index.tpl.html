@@ -232,9 +232,9 @@
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f" ng-click="ctrl.setPage(1,'')">全部</span>
+            <span style="color: #cea63f" ng-click="ctrl.setPage()">全部</span>
         </div>
-        <div class="bdd_Personl_table_header_title" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.setPage(1,cate.category)">
+        <div class="bdd_Personl_table_header_title" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
             {{cate.category}}({{cate.num}})
         </div>
         <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;" ng-bind="ctrl.personSize"></span>条人员信息</div>
@@ -247,6 +247,8 @@
             <th style="text-align: center;width: 20%;">专业</th>
             <th style="text-align: center;width: 20%;">有效期</th>
         </tr>
+        <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='ctrl.nextPage()'
+             infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
         <tr style="color:#4d3a3a;font-size: 16px" ng-repeat="person in ctrl.personList">
             <td ng-bind="person.name"></td>
             <td ng-bind="person.category"></td>
@@ -254,6 +256,7 @@
             <td ng-bind="person.major"></td>
             <td ng-bind="person.validDate"></td>
         </tr>
+        </div>
 
 
     </table>
