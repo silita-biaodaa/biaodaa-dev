@@ -14,7 +14,7 @@ app.controller('LoginCtrl', ['$http','$log','$scope','$document', 'username',fun
 		var params = {
 			version:"0",
 			loginchannel:"1003",
-			userphone:selt.userphone,
+			username:selt.username,
 			userpass:selt.userpass
 		};
 		//console.log(params);

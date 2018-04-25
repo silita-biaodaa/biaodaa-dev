@@ -66,16 +66,15 @@
 </nav>
 <!--公告-->
 
-<div  ng-controller="WorkMoreDetailCtrl">
-    <div style="margin: 20px auto"><h2 ng-bind="dataRes.title"></h2></div>
-
-    <div style="margin: 10px auto">作者：<span ng-bind="dataRes.username"></span></div>
-    <div style="margin: 10px auto">关键字：<span ng-bind="dataRes.keyword"></span></div>
-    <div style="margin: 10px auto">发布时间：<span ng-bind="dataRes.time"></span></div>
+<div style="margin-top: 40px;border-radius:100px" ng-controller="WorkMoreDetailCtrl">
+  <div style="background-color: white;width: 1200px;margin: 0 auto">
+    <div style="text-align:left;color: #0f0f0f;width: 1200px;margin: 0 auto;padding-left:28px;font-size: 24px;color: #4d3a3a;padding-top:20px;"><h2 ng-bind="dataRes.title"></h2></div>
+    <div style="text-align:left;color:#ccbebe;width: 1200px;margin: 0 auto;padding-left:28px;font-size:12px;margin: 20px auto;">发布时间：<span ng-bind="dataRes.time"></span></div>
     <div class="bdd_adver">
         <div class="bdd_adver_header" id="bdd_adver_header_content">
         </div>
     </div>
+  </div>
 </div>
 
 

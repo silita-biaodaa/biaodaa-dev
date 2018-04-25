@@ -209,30 +209,12 @@
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f">全部</span>
+            <span style="color: #cea63f" ng-click="ctrl.allQual()">全部</span>
         </div>
-        <div class="bdd_Personl_table_header_title">
-            勘察
+        <div class="bdd_Personl_table_header_title" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list)">
+
         </div>
-        <div class="bdd_Personl_table_header_title">
-            设计
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            建筑业
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            监理
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            招标代理
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            设计与施工
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            造价与咨询
-        </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f">1000</span>条人员信息</div>
+        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f" ng-bind="ctrl.qualSize"></span>条人员信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
@@ -241,59 +223,25 @@
             <th style="text-align: center;width: 20%;">有效期</th>
             <th style="text-align: center;width: 20%;">发证机关</th>
         </tr>
-        <tr style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
-        <tr style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
+        <tr style="color:#4d3a3a;font-size: 16px" ng-repeat="item in ctrl.qualList">
+            <td ng-bind="item.qualName"></td>
+            <td ng-bind="item.certNo"></td>
+            <td ng-bind="item.validDate"></td>
+            <td ng-bind="item.certOrg"></td>
         </tr>
     </table>
 </div>
 
 <!--人员信息-->
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
-    <!--<div infinite-scroll='ctrl.nextPage()' infinite-scroll-distance='1'>
-
-    </div>-->
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f">全部</span>
+            <span style="color: #cea63f" ng-click="ctrl.setPage(1,'')">全部</span>
         </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel">
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
+        <div class="bdd_Personl_table_header_title" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.setPage(1,cate.category)">
+            {{cate.category}}({{cate.num}})
         </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel">
-                <option>监理造价师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel">
-                <option>造价工程师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_title">
-            <select class="bdd_Personl_table_sel">
-                <option>建筑师</option>
-                <option>勘察设计</option>
-                <option>勘察设计</option>
-            </select>
-        </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;">1000</span>条人员信息</div>
+        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;" ng-bind="ctrl.personSize"></span>条人员信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
@@ -303,23 +251,16 @@
             <th style="text-align: center;width: 20%;">专业</th>
             <th style="text-align: center;width: 20%;">有效期</th>
         </tr>
-        <tr style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>注册建造师</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
+        <tr style="color:#4d3a3a;font-size: 16px" ng-repeat="person in ctrl.personList">
+            <td ng-bind="person.name"></td>
+            <td ng-bind="person.category"></td>
+            <td ng-bind="person.certNo"></td>
+            <td ng-bind="person.major"></td>
+            <td ng-bind="person.validDate"></td>
         </tr>
-        <tr style="color:#4d3a3a;font-size: 16px">
-            <td>希希</td>
-            <td>注册建造师</td>
-            <td>0123456789</td>
-            <td>公路一级、建筑一级、市政一级</td>
-            <td>2018-01-10</td>
-        </tr>
+
 
     </table>
-
 </div>
 
 <div class="bdd_footer_left">

@@ -11,6 +11,7 @@
         margin: 0 auto;
         height: 500px;
     }
+    /*����*/
     .bdd_announcement{
         width: 1200px;
         height: 94px;
@@ -39,10 +40,12 @@
 
     }
 
+    /*ɸѡ��*/
     .bdd_area{
         width:100%;
         margin:0 auto;
         height:550px;
+        background-color: white;
 
 
     }
@@ -306,6 +309,7 @@
         background-color: white;
         padding: 15px 0px 20px 20px;
         margin-top:10px;
+        border-radius:5px;
     }
     /*����*/
     .bdd_side_lift{
@@ -485,7 +489,12 @@
     </div>
 </nav>
 <div ng-controller="TenderCtrl">
-
+<!--图表-->
+<div class="bdd_chart">
+    <div class="bdd_chart_new">
+        <img src="../../../vendor/images/biaoxun_banner1.png" alt="">
+    </div>
+</div>
 <!--公告-->
 <div class="bdd_announcement">
     <div class="bdd_announcement_left bdd_announcement_mess {{isTender?'bdd_un_active':''}}"  ng-click="chageToTender()">招标公告</div>
@@ -642,9 +651,9 @@
         </div>
     </div>
 </div>
-<div class="bdd_adver">
-    <div class="bdd_adver_header">
-        <a ng-repeat="item in dataList" ng-click="toDetail(item.id)">
+<div class="bdd_adver" >
+    <div class="bdd_adver_header"  infinite-scroll='demo.nextPage()' infinite-scroll-disabled='demo.busy' infinite-scroll-distance='1'>
+        <a ng-repeat="item in demo.dataList" ng-click="toDetail(item.id)">
         <div class="bdd_win_conter" style="margin-top:10px;">
             <div class="bdd_text_z" ng-bind="item.title">湖南省沩水流域综合治理（宁乡段）工程施工监理第一标段（第二次）招标公告</div>
             <div class="bdd_text_y" >资质要求：{{item.certificate}}</div>
@@ -654,8 +663,10 @@
             <div class="bdd_text_riqi" >{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         </a>
-
+        <div style="text-align: center;margin-top: 20px;" ng-show='demo.busy'>数据加载中...</div>
     </div>
+
+
 </div>
 
 

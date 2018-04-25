@@ -159,7 +159,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
         .state('Register', {
             url: '/register',
-            templateUrl: window.rootSrc + 'app/register/wx_register.html',
+            templateUrl: window.rootSrc + 'app/register/bdd_register.html',
             controller: 'RegisterCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
