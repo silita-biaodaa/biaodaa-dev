@@ -223,7 +223,7 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'3')" >采购</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'1')" >设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')" >勘察</div>
-                <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
             <div class="bdd_win_conter" style="margin-top: 0px" ng-repeat="notice in $ctrl.zhongbiaoList">
                 <div class="bdd_text_z"><a href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a></div>
@@ -244,7 +244,7 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'1')" >设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'4')" >勘察</div>
 
-                <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
 
             <div class="bdd_win_conter" style="margin-top: 0px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
@@ -469,7 +469,7 @@
         olLis[square].className = "current";
     };
 
-    setInterval(right.onclick, 1000);//自动播放
+    setInterval(right.onclick, 2000);//自动播放
 
     function animate(obj, target) {
         clearInterval(obj.timer);

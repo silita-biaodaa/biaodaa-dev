@@ -26,6 +26,9 @@
 
     }
     .bdd_details_value_right{
+        position: absolute;
+        top:150px;
+        left: 1100px;
         width: 290px;
         margin-bottom:140px;
         float:right;
@@ -141,15 +144,14 @@
     }
     .bdd_follow_info{
         width: 890px;
-        height: 800px;
+        min-height: 800px;
         border: 1px solid #ccc;
         float: left;
     }
     .bdd_follow_info{
-        width: 890px;
-        height:800px;
         margin-top:70px;
         padding: 150px;
+        height: auto;
 
 
     }
@@ -331,7 +333,7 @@
                     <span style="margin-top: 13px" class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">  > </span><br>
 
                     <div class="bdd_stage">
-                        <div class="bdd_stage_img"><span class="bdd_stage_one">{{currentNum}}标段</span><img src="../../../vendor/images/zb_lable_dbd.png" alt=""></div>
+                        <div class="bdd_stage_img"><span class="bdd_stage_one">{{(dataArrayList!=null && dataArrayList.length>1)?currentNum+'标段':'详情'}}</span><img src="../../../vendor/images/zb_lable_dbd.png" alt=""></div>
                         <div class="bdd_stage_conter">
                             <div class="bdd_stage_top">
                                 <div class="bdd_stage_top_left">项目地区：<span class="bdd_stage_color">{{currentTender.projDq}}</span></div>
@@ -355,19 +357,15 @@
                                 <div  ng-if="currentTender.threeName!=null && currentTender.threeName!=''">
                                     <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span></div>
                                     <div>{{currentTender.threeOffer}}</div>
-
                                 </div>
                             </div><br>
                         </div>
                     </div>
-                    <div class="bdd_stage_bottom">
+                    <div class="bdd_stage_bottom" ng-show="dataArrayList!=null && dataArrayList.length>1">
                         <div class="bdd_stage_bd">共<span style="color: #cea63f">{{bdSize}}</span>个标段</div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f"
-                                                                          class="bdd_stage_bottom_list"
-                                                                          type="button"><span style="color: white;"
-                                                                                              class="bdd_stage_bottom_span"> {{$index+1}}</span>
+                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f" class="bdd_stage_bottom_list" type="button"><span style="color: white;" class="bdd_stage_bottom_span"> {{$index+1}}</span>
                             </li>
                         </div>
                     </div>
@@ -385,22 +383,24 @@
                 <div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>
                 <div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>
             </div>
-            <div class="bdd_details_value_right">
-                <div class="bdd_details_header">
-                    <div class="bdd_details_header_left"></div>
-                    <div class="bdd_details_header_conter">符合资质企业</div>
-                </div>
 
-                <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-                    <div class="bdd_details_js_two">{{item.comName}}
-                    </div>
-
-                    <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
-                    <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
-                    <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
+
+<div class="bdd_details_value_right">
+    <div class="bdd_details_header">
+        <div class="bdd_details_header_left"></div>
+        <div class="bdd_details_header_conter">符合资质企业</div>
+    </div>
+
+    <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
+        <div class="bdd_details_js_two">{{item.comName}}
+        </div>
+
+        <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
+        <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
+        <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
     </div>
 </div>
 
