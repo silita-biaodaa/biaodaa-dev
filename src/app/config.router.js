@@ -67,7 +67,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             templateUrl: window.rootSrc + 'app/company/companyTop.html',
 
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
-            controller: 'CompanyCtrl as ctrl',
+            controller: 'CompanyTopCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
