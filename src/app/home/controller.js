@@ -7,7 +7,7 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         selt.user = null;
     }
 
-    //公告文章列表
+//公告文章列表
     this.queryArticleList = function (type) {
         var articleParam = {
             pageNo: 1,
@@ -51,8 +51,8 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         selt.setPage()
     }
 
-    $http.post("/foundation/listBannerImage", {type: 1, showType: 1}).success(function (result) {
-        console.log(result);
+    $http.post("/foundation/listBannerImage", {type: 0, showType: 3}).success(function (result) {
+        selt.imageArr = result.data;
     });
 
     this.logout = function () {
@@ -64,7 +64,7 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
     };
 
 
-    //页面初始化请求
+//页面初始化请求
     this.choiceType(2, '');
     this.choiceType(0, '');
 }]);
