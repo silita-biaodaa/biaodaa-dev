@@ -177,7 +177,7 @@ body{
     width: 50px;
 }
 .jd_nav li p{
-    line-height:30px;
+    line-height:18px;
 }
 .bdd_notice{
     font-size: 16px;
@@ -188,7 +188,7 @@ body{
     font-size:32px;
     color: #e6b947;
     font-weight: 700;
-    margin-top:-2px;
+    margin-top:-8px;
     font-family: Arial;
 
 }
@@ -200,8 +200,9 @@ body{
 
 .bdd_win_left{
     width:850px;
-    height:2200px;
     float: left;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
 
 }
 .bdd_win_right{
@@ -244,12 +245,13 @@ body{
 
 .bdd_infor{
     width: 280px;
-    height:850px;
     margin-top:50px;
     margin-left:20px;
+    margin-bottom: 1000px;
+    background-color: white;
 }
 .bdd_use{
-    margin-top:50px;
+    margin-top:203px;
     width: 280px;
     height:420px;
     background-color:white;
@@ -271,7 +273,7 @@ body{
     float: right;
     font-size: 16px;
     color: #ccbebe;
-    margin-top:-17px;
+    margin-top:-13px;
     overflow: hidden;
     font-family: Arial;
 }
@@ -289,6 +291,7 @@ body{
     color:#4d3a3a;
     overflow: hidden;
     font-family: Arial;
+    cursor: pointer;
 }
 .bdd_header_a {
     padding-left:50px;
@@ -397,7 +400,7 @@ body{
     padding-left:224px;
     font-size: 16px;
     color: #ccbebe;
-    margin-top: -22px;
+    margin-top: -27px;
     overflow: hidden;
 }
 .bdd_infor_dv{
@@ -413,12 +416,11 @@ body{
 }
 .bdd_infor_mation_border{
     width: 290px;
-    height: 1000px;
-    margin-top:20px;
+    margin-bottom: 20px;
+
 }
 .bdd_infor_mation{
     width:280px;
-    height:100px;
     overflow: hidden;
     float: right;
 }

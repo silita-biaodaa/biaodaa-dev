@@ -26,7 +26,6 @@ app.controller('HomeCtrl', ['$http','$uibModal','$log','$scope','$document', 'us
 			}
 		});
 	}
-
 	this.queryArticleList('0');
 	this.queryArticleList('1');
 

@@ -1,0 +1,248 @@
+<style type="text/css">
+    @import url("../../../vendor/normalize.css/bdd_scerrn.css");
+</style>
+
+
+<!--头部-->
+<nav class="bdd-nav">
+    <div class="bdd-nav-div">
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
+        </div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
+        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
+            <div class="search-filter">
+                <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
+                <ul class="options">
+                    <li><a href="javascript:;" data-rel="project">作品</a></li>
+                    <li><a href="javascript:;" data-rel="experience">文章</a></li>
+                    <li><a href="javascript:;" data-rel="source">源文件</a></li>
+                    <li><a href="javascript:;" data-rel="designer">设计师</a></li>
+                    <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
+                    <li><a href="javascript:;" data-rel="talk">话题</a></li>
+                    <li><a href="javascript:;" data-rel="activity">活动</a></li>
+                    <li><a href="javascript:;" data-rel="veer">素材</a></li>
+                </ul>
+            </div>
+            <div class="search-select">
+                <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
+                <ul class="options" style="display: none;">
+                    <li><a href="javascript:;">app</a></li><li><a href="javascript:;">logo</a></li><li><a href="javascript:;">icon</a></li><li><a href="javascript:;">AE</a></li><li><a href="javascript:;">作品集</a></li>								</ul>
+            </div>
+        </div>
+            <input type="hidden" name="type" value="project" id="sType"></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-right">APP下载</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!--公告-->
+<div class="bdd_announcement">
+    <div class="bdd_announcement_left bdd_announcement_mess {{tender.paramsPage.type==0 ? 'bdd_un_active':''}}"  ng-click="tender.queryList(0)">招标公告</div>
+
+    <div class="bdd_announcement_left {{tender.paramsPage.type==2 ? 'bdd_un_active':''}}" ng-click="tender.queryList(2)">中标公告</div>
+    <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
+</div>
+<!--筛选框-->
+<div class="bdd_area">
+    <div class="bdd_area_header">
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</div>
+            <div class="bdd_area_content bdd_content_q" ng-click="tender.cancelArea()">全部</div>
+            <div class="bdd_area_content bdd_text_vib" ng-repeat="area in tender.areaList">
+                <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                   ng-click="tender.clickProvince(area)"></a>
+            </div>
+
+            <div class="bdd_area_content bdd_text_rifht">
+                <a class="span-cursor" id="to-pro-more"
+                   ng-click="tender.moreProvince($event)">
+                    <div class="to_more" id="more_provice">更多</div>
+                    <div class="to_more to_bottom"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="bdd_area_left">
+            <div id="more-pro" class="bdd_dev_area_pro_m bdd_more_dev_city" style="display:none">
+                <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in tender.areaList2">
+                    <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                       ng-click="tender.clickProvince(area)"></a>
+                </div>
+            </div>
+            <div id="bdd_dev_city" class="bdd_dev_city" ng-show="tender.isCity">
+                <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
+                </div>
+                <div class="bdd_comp_span_c" ng-repeat="city in tender.cityList" ng-if="city">
+                    <a class="span-cursor"  ng-click="tender.clickCity(city)"
+                                            ng-bind="city"></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类：</div>
+            <div class="bdd_area_content bdd_content_q">不限</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="tender.changeProjectType('0')">施工</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="tender.changeProjectType('2')">监理</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="tender.changeProjectType('3')">采购</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="tender.changeProjectType('1')">设计</div>
+            <div class="bdd_area_content bdd_text_vib" ng-click="tender.changeProjectType('4')">勘察</div>
+        </div>
+
+        <div class="bdd_area_left">
+            <div class="bdd_content_h">资质要求：</div>
+            <div class="bdd_content_m span-yellow" ng-click="tender.cancelQUal()">全部</div>
+            <div class="dropdown dropdown-div dropdown-div-border" ng-repeat="qual in tender.companyQualList">
+                <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a" data-target="#"
+                   href="javascript:;"><span ng-click="tender.clickQual1(qual)">{{qual.name}}</span> <span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
+                    ng-mouseleave="mouseOut()" role="menu" aria-labelledby="dropdownMenu">
+                    <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
+                        <a class="dropdown-yellow" href="javascript:;" data-index="2" ng-bind="qual2.name"
+                           ng-mouseenter="touchStart($event,qual2)"
+                           ng-click="tender.clickQual2($event,qual2,qual)"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown  dropdown-div dropdown-div-more">
+                <a id="more_select_zz" role="button" data-toggle="dropdown"
+                   class="btn btn-white btn-white-a" data-target="#"
+                   href="javascript:;" ng-click="tender.moreSelectZz($event)">
+                    <div class="to_more">更多</div>
+                    <div class="to_more to_bottom"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">评标办法：</div>
+            <div class="bdd_area_content bdd_content_q"><span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <span class="bdd_inputs"><input type="checkbox" name="vehicle" value="Bike" />合理低价法</span></div>
+            <div class="bdd_area_content bdd_text_vib bdd_text_h"> <span class="bdd_inputs"><input class="bdd_input_set" type="button" name="vehicle" value="多&nbsp;选" /></span></div>
+            <div class="bdd_area_content bdd_text_rifht">更多</div>
+        </div>
+        <div class="bdd_area_left bdd_area_html"><input class="bdd_button_val" type="button" value="确认">&nbsp;<input  class="bdd_button_val" type="button" value="取消"></div>
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">标的金额：</div>
+            <div class="bdd_area_content bdd_content_q"> <input class="bdd_select  bdd_font" type="text" value="最低价"><span>&nbsp;&nbsp;&nbsp;&nbsp;——</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font" type="text" value="最高价"></div>
+            <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认">&nbsp;<span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
+        </div>
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">开标时间：</div>
+            <div class="bdd_area_content bdd_content_q"> <input class="bdd_select  bdd_font" type="text" value="起始时间"><span>&nbsp;&nbsp;&nbsp;&nbsp;——</span></div>
+            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font" type="text" value="结束时间"></div>
+            <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认">&nbsp;<span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
+        </div>
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h">报名方式：</div>
+            <div class="bdd_area_content bdd_text_vib">现场报名</div>
+            <div class="bdd_area_content bdd_text_vib">网上报名</div>
+
+        </div>
+    </div>
+</div>
+<div class="bdd_side_left">
+    <div class="bdd_side_conter">
+        <div class="bdd_area_left">
+            <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.province">
+                <div class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        ng-click="tender.cancleEmProvince()">×</span></div>
+            </div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.city">
+                <div class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="tender.cancleEmCity()">×</span>
+                </div>
+            </div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.projectTypeDesc">
+                <div class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.projectTypeDesc}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        ng-click="tender.cancleProjectTypeDesc()">×</span></div>
+            </div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.qual1">
+                <div
+                        class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.qual1}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="tender.cancleEmQone()">×</span>
+                </div>
+            </div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.qual2">
+                <div
+                        class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.qual2}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="tender.cancleEmQTwo()">×</span>
+                </div>
+            </div>
+            <div class="bdd_area_content bdd_text_vib" ng-if="tender.qual3">
+                <div
+                        class="bdd_select bdd_font  bdd_font_color">
+                    {{tender.qual3}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="tender.cancleEmQThree()">×</span>
+                </div>
+            </div>
+
+            <div class="bdd_area_content bdd_text_vib">
+                <span class="bdd_font_span" ng-click="tender.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+            </div>
+            <div class="bdd_area_content bdd_text_vib"> <input class="bdd_button_val bdd_button_mews" type="button" value="立即订阅"></div>
+        </div>
+        <div class="bdd_side_news_val">
+            <div class="bdd_side_rihgt">综合排序</div>
+            <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f">10000</span>条广告</div>
+        </div>
+    </div>
+</div>
+
+<div class="bdd_adver">
+    <div class="bdd_adver_header" id="bdd_adver_header">
+        <a ng-repeat="item in dataList" >
+        <div class="bdd_win_conter" style="margin-top:10px;">
+            <div class="bdd_text_z" ng-bind="item.title"></div>
+            <div class="bdd_text_y" >资质要求：{{item.certificate}}</div>
+            <div class="bdd_text_p">评标办法：{{item.pbMode}}</div>
+            <div class="bdd_text_invite" >{{item.projectType}}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="bdd_text_invite bdd_text_pading" >{{item.noticeType}}</div>
+            <div class="bdd_text_riqi" >{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        </a>
+
+    </div>
+</div>
+
+
+<div class="bdd_footer_left">
+    <div class="bdd_footer_news">
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
+        <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
+    </div>
+</div>
+</div>

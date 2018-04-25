@@ -90,14 +90,13 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
         .state('Tender', {
             url: '/tender',
-
-            templateUrl: window.rootSrc + 'app/tender/index.html',
+            templateUrl: window.rootSrc + 'app/tender/tender.html',
             params: {'id': null},
-            controller: 'TenderCtrl as ctrl',
+            controller: 'tenderIndex as tender',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        'app/tender/controller.js'
+                        'app/tender/tender.js'
                     ]);
                 }]
             }
@@ -160,7 +159,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
         .state('Register', {
             url: '/register',
-            templateUrl: window.rootSrc + 'app/register/wx_register.html',
+            templateUrl: window.rootSrc + 'app/register/bdd_register.html',
             controller: 'RegisterCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {

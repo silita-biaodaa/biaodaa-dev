@@ -1,5 +1,12 @@
-app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$scope, utils) {
+app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',function($http,$scope, utils,username) {
 	var selt = this;
+	if(username != null && username != '') {
+		selt.user = {
+			username : username
+		};
+	} else {
+		selt.user = null;
+	}
 
 	var comId =  utils.getUrlVar('comId');
 	console.log("=====comId:"+comId);
@@ -50,8 +57,6 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 		selt.undesMap=result.data;
 	});
 
-
-
 	this.showReputation = function (reputList) {
 		selt.reputList = reputList;
 		if(reputList!=null&&reputList.length>0){
@@ -64,7 +69,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 	this.showUndesirable = function (undesList) {
 		selt.undesList = undesList;
 
-	};
+	}
 	this.changeOneMore = function (event) {
 		var elem = event.target;
 
@@ -78,111 +83,76 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils',function($http,$sc
 		}
 
 	};
-
-	//企业资质
-	this.qualList = [];
-	this.qualSize = 0;
-	$http.post("/company/qual/"+comId).success(function (result) {
-		selt.qualTypeList = result.data;
-		angular.forEach(selt.qualTypeList,function(item){
-			angular.forEach(item.list,function(qual){
-				selt.qualList.push(qual);
-			});
-		});
-		selt.qualSize = selt.qualList.length;
-	});
-
-	this.allQual = function () {
-		selt.qualList = [];
-		angular.forEach(selt.qualTypeList,function(item){
-			angular.forEach(item.list,function(qual){
-				selt.qualList.push(qual);
-			});
-		});
-		selt.qualSize = selt.qualList.length;
+	this.logout = function() {
+		sessionStorage.removeItem("X-TOKEN");
+		sessionStorage.removeItem("username");
+		username = "";
+		selt.user = null;
+		window.location.href="index.html#/home";
 	};
 
-	this.typeToQual = function (list) {
-		selt.qualList = [];
-		angular.forEach(list,function(qual){
-			selt.qualList.push(qual);
-		});
-		selt.qualSize = selt.qualList.length;
-	};
-	//---------------------
+    //企业资质
+    this.qualList = [];
+    this.qualSize = 0;
+    $http.post("/company/qual/"+comId).success(function (result) {
+        selt.qualTypeList = result.data;
+        angular.forEach(selt.qualTypeList,function(item){
+            angular.forEach(item.list,function(qual){
+                selt.qualList.push(qual);
+            });
+        });
+        selt.qualSize = selt.qualList.length;
+    });
 
-	//企业注册人员
-	this.personSize = 0;
-	$http.post("/company/personCategory/"+comId).success(function (result) {
-		selt.categoryList = result.data;
+    this.allQual = function () {
+        selt.qualList = [];
+        angular.forEach(selt.qualTypeList,function(item){
+            angular.forEach(item.list,function(qual){
+                selt.qualList.push(qual);
+            });
+        });
+        selt.qualSize = selt.qualList.length;
+    };
 
-	});
+    this.typeToQual = function (list) {
+        selt.qualList = [];
+        angular.forEach(list,function(qual){
+            selt.qualList.push(qual);
+        });
+        selt.qualSize = selt.qualList.length;
+    };
+    //---------------------
 
-	this.setPage = function (pageNo,category) {
-		selt.category = category;
-		var paramsPage = {
-			keyWord:"",
-			comId:comId,
-			category:category,
-			pageNo:pageNo,
-			pageSize:25
-		};
+    //企业注册人员
+    this.personSize = 0;
+    $http.post("/company/personCategory/"+comId).success(function (result) {
+        selt.categoryList = result.data;
 
-		$http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
-			selt.personList = result.data;
-			selt.totalCount = result.total;
-			selt.pageSize = result.pageSize;;
-			selt.pageNo = result.pageNum;
-			selt.personSize = selt.totalCount;
-		});
-	};
+    });
 
-	this.setPage(1,"");
-	/*this.personList = [];
-	this.nextNo = 1;
-	this.busy = true;
-	this.items = [];
-	this.nextPage = function () {
-		var paramsPage = {
-			keyWord:"",
-			comId:comId,
-			category:selt.category,
-			pageNo:selt.nextNo,
-			pageSize:5
-		};
+    this.setPage = function (pageNo,category) {
+        selt.category = category;
+        var paramsPage = {
+            keyWord:"",
+            comId:comId,
+            category:category,
+            pageNo:pageNo,
+            pageSize:25
+        };
 
-		$http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
-			selt.list = result.data;
-			selt.totalCount = result.total;
-			selt.pageSize = result.pageSize;;
-			selt.pageNo = result.pageNum;
-			selt.pages = result.pages;
+        $http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
+            selt.personList = result.data;
+            selt.totalCount = result.total;
+            selt.pageSize = result.pageSize;;
+            selt.pageNo = result.pageNum;
+            selt.personSize = selt.totalCount;
+        });
+    };
 
-			if(selt.nextNo<=selt.pages){
-				angular.forEach(selt.list,function(person){
-					selt.personList.push(person);
-				});
-			}
-			selt.personSize = selt.totalCount;
-			selt.nextNo += 1;
-			selt.busy = false;
-		});
-
-	};*/
-
-
-
-
-
-
-
-
-
-
-
-
-
+    this.setPage(1,"");
 
 
 
 }]);
+
+

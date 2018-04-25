@@ -126,7 +126,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		selt.setPage(1);
 	};
 	this.cancleEmProvince = function () {
-
 		selt.province="";
 		selt.setPage(1);
 	};
@@ -229,130 +228,47 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
 		selt.setPage(1);
 	};
+    this.companyList = [];
+    this.busy = false;
+    this.page = 1;
 	this.setPage = function (pageNo) {
-		var paramsPage = {
-			regisAddress:selt.regisAddress,
-			qualCode:selt.qualCode,
-			minCapital:selt.minCapital,
-			maxCapital:selt.maxCapital,
-			pageNo:pageNo,
-			pageSize:5
-		};
-		$http.post("/company/query/filter",angular.toJson(paramsPage)).success(function (result) {
-			selt.companyList = result.data;
-			selt.totalCount = result.total;
-			selt.pageSize = result.pageSize;;
-			selt.pageNo = result.pageNum;
-			setContentHeight(result.data);
-		});
+        selt.companyList = [];
+        selt.busy = false;
+        selt.page = 1;
+        selt.nextPage();
 	};
 
-	this.pageChanged = function() {
-		var paramsPage = {
-			regisAddress:selt.regisAddress,
-			qualCode:selt.qualCode,
-			minCapital:selt.minCapital,
-			maxCapital:selt.maxCapital,
-			pageNo:this.pageNo,
-			pageSize:5
-		};
-		$http.post("/company/query/filter",angular.toJson(paramsPage)).success(function (result) {
-			selt.companyList = result.data;
-			selt.totalCount = result.total;
-			selt.pageSize = result.pageSize;;
-			selt.pageNo = result.pageNum;
-		});
-	};
-	this.maxSize = 3;
-	this.setPage(1);
+	this.nextPage = function () {
+        if (selt.busy) return;
+        selt.busy = true;
+        var paramsPage = {
+            regisAddress:selt.regisAddress,
+            qualCode:selt.qualCode,
+            minCapital:selt.minCapital,
+            maxCapital:selt.maxCapital,
+            pageNo:selt.page,
+            pageSize:5
+        };
 
-	function setPosition(arr,offX,offY,tocWidth){
-		var secondMenu = document.getElementById('bdd_second_menu');
-		$('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
-		//secondMenu.style.left = (offX + tocWidth +100) + 'px';
-		$('#bdd_second_menu').css('top',offY + 'px');
-//	secondMenu.style.top = (offY)+'px';
-		if(arr!=null && arr.length>0) {
-			$('#bdd_second_menu').css('border', '1px solid #ccc');
-			$('#bdd_second_menu').show();
-		}else{
-			//secondMenu.style.display='none';
-			$('#bdd_second_menu').hide();
-		}
-	}
+        $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
+            var companyList = result.data;
+            if(companyList!=null){
+                for (var i = 0; i < companyList.length; i++) {
+                    //原有列表数据再加上新获取数据组成新的列表数据
+                    selt.companyList.push(companyList[i]);
+                }
+                selt.totalCount = result.total;
+                selt.pageSize = result.pageSize;;
+                selt.pageNo = result.pageNum;
+                selt.after = "t3_" + selt.companyList[selt.companyList.length - 1].id;
+                selt.busy = false;
+                selt.page += 1;
+                setContentHeight(result.data);
+            }
+        });
+    };
 
 
-	(function ($) {
-		document.addEventListener('click',function (e) {
-			var parent=$(e.target).parents('#bdd_second_menu');
-			if(parent.length===0){
-				$('#bdd_second_menu').hide();
-
-			}
-		})
-	})(jQuery);
-
-
-
-	$('.bdd_drop_scroll').hover(
-		function(){
-			$('body').css('overflow', 'hidden');
-		},
-		function(){
-			$('body').css('overflow', 'auto');
-		});
-	function mourseMoveIn(){
-		document.getElementsByTagName("html")[0].style.overflow="hidden";
-		document.getElementsByTagName("html")[0].style.height="100%";
-		document.getElementsByTagName("body")[0].style.overflow="hidden";
-		document.getElementsByTagName("body")[0].style.height="100%";
-	}
-	function mourseMoveOut(){
-		document.getElementsByTagName("html")[0].style.overflow="visible";
-		document.getElementsByTagName("html")[0].style.height="auto";
-		document.getElementsByTagName("body")[0].style.overflow="visible";
-		document.getElementsByTagName("body")[0].style.height="auto";
-	}
-
-	function setContentHeight(dataList){
-		var bdd_adver_header = document.getElementById("bdd_adver_header");
-		if(dataList.length>2){
-			bdd_adver_header.style.height="auto";
-		}else{
-			bdd_adver_header.style.height="500px";
-		}
-
-	}
-
-	function changeStaus(obj){
-		var text = obj.innerText;
-		var morePro = document.getElementById("more-pro");
-		var moreCity = document.getElementById("bdd_dev_city");
-
-		if(text=="更多"){
-
-			$("#to-pro-more").html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
-			morePro.style.display="block";
-			moreCity.style.display="block";
-		}else{
-			$("#to-pro-more").html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
-			morePro.style.display="none";
-			moreCity.style.display="none";
-		}
-	}
-
-	function changeSelectStaus(obj){
-
-		var text = obj.innerText;
-		var morePro = document.getElementById("more-select-zz");
-		if(text=="更多"){
-			$('#more_select_zz').html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
-			morePro.style.display="block";
-		}else{
-			$('#more_select_zz').html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
-			morePro.style.display="none";
-		}
-	}
 	this.logout = function() {
 		sessionStorage.removeItem("X-TOKEN");
 		sessionStorage.removeItem("username");
@@ -362,5 +278,92 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 	};
 }]);
 
+function setContentHeight(dataList){
+	var bdd_adver_header = document.getElementById("bdd_adver_header");
+	if(dataList.length>2){
+		bdd_adver_header.style.height="auto";
+	}else{
+		bdd_adver_header.style.height="500px";
+	}
+
+}
+
+function setPosition(arr,offX,offY,tocWidth){
+	var secondMenu = document.getElementById('bdd_second_menu');
+	$('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
+	//secondMenu.style.left = (offX + tocWidth +100) + 'px';
+	$('#bdd_second_menu').css('top',offY + 'px');
+//	secondMenu.style.top = (offY)+'px';
+	if(arr!=null && arr.length>0) {
+		$('#bdd_second_menu').css('border', '1px solid #ccc');
+		$('#bdd_second_menu').show();
+	}else{
+		//secondMenu.style.display='none';
+		$('#bdd_second_menu').hide();
+	}
+}
 
 
+(function ($) {
+	document.addEventListener('click',function (e) {
+		var parent=$(e.target).parents('#bdd_second_menu');
+		if(parent.length===0){
+			$('#bdd_second_menu').hide();
+
+		}
+	})
+})(jQuery);
+
+
+
+$('.bdd_drop_scroll').hover(
+	function(){
+		$('body').css('overflow', 'hidden');
+	},
+	function(){
+		$('body').css('overflow', 'auto');
+	});
+function mourseMoveIn(){
+	document.getElementsByTagName("html")[0].style.overflow="hidden";
+	document.getElementsByTagName("html")[0].style.height="100%";
+	document.getElementsByTagName("body")[0].style.overflow="hidden";
+	document.getElementsByTagName("body")[0].style.height="100%";
+}
+function mourseMoveOut(){
+	document.getElementsByTagName("html")[0].style.overflow="visible";
+	document.getElementsByTagName("html")[0].style.height="auto";
+	document.getElementsByTagName("body")[0].style.overflow="visible";
+	document.getElementsByTagName("body")[0].style.height="auto";
+}
+
+
+
+function changeStaus(obj){
+	var text = obj.innerText;
+	var morePro = document.getElementById("more-pro");
+	var moreCity = document.getElementById("bdd_dev_city");
+
+	if(text=="更多"){
+
+		$("#to-pro-more").html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
+		morePro.style.display="block";
+		moreCity.style.display="block";
+	}else{
+		$("#to-pro-more").html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
+		morePro.style.display="none";
+		moreCity.style.display="none";
+	}
+}
+
+function changeSelectStaus(obj){
+
+	var text = obj.innerText;
+	var morePro = document.getElementById("more-select-zz");
+	if(text=="更多"){
+		$('#more_select_zz').html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
+		morePro.style.display="block";
+	}else{
+		$('#more_select_zz').html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
+		morePro.style.display="none";
+	}
+}
