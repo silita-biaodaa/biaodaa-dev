@@ -238,15 +238,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
         $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
             var companyList = result.data;
-            if(companyList!=null){
-                for (var i = 0; i < companyList.length; i++) {
-                    //原有列表数据再加上新获取数据组成新的列表数据
-                    selt.companyList.push(companyList[i]);
-                }
+            if(companyList!=null&&selt.page==result.pageNum){
+                angular.forEach(companyList,function(company){
+                    selt.companyList.push(company);
+                });
                 selt.totalCount = result.total;
                 selt.pageSize = result.pageSize;;
                 selt.pageNo = result.pageNum;
-                selt.after = "t3_" + selt.companyList[selt.companyList.length - 1].id;
                 selt.busy = false;
                 selt.page += 1;
                 setContentHeight(result.data);
