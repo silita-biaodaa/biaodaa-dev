@@ -8,7 +8,7 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
-app.constant('username', sessionStorage.getItem("username"));
+app.constant('userTemp', sessionStorage.getItem("userTemp"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
@@ -185,7 +185,20 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        }) .state('workmore', {
+        })
+        .state('Forget', {
+            url: '/forget',
+            templateUrl: window.rootSrc + 'app/forget/bdd_forget.html',
+            controller: 'ForgetCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/forget/controller.js'
+                    ]);
+                }]
+            }
+        })
+        .state('workmore', {
             url: '/workmore',
             templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
             controller: 'WorkMoreCtrl as ctrl',

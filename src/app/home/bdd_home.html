@@ -51,7 +51,7 @@
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
             </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+            <div ng-if="$ctrl.user != null">
                 <label>{{$ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
                 <a href="">个人中心</a>

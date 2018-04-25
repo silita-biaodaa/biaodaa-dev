@@ -1,6 +1,9 @@
 app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document', function ($http, $log, $scope, $interval, $document) {
     var selt = this;
 
+    selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
+    selt.pwdRegx = "[a-zA-Z0-9]*";
+
     var second = 59;
     var timerHandler;
     selt.isDisable = false;
@@ -43,7 +46,7 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
     /**
      * 找回密码
      */
-    this.forgot = function () {
+    this.forget = function () {
         var params = {
             version: "1",
             loginchannel: "1003",

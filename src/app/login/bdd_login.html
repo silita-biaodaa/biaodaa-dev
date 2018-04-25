@@ -1,8 +1,7 @@
-
-    <link rel="stylesheet" href="../../../vendor/normalize.css/calendar.css"/>
-    <link rel="stylesheet" href="../../../vendor/normalize.css/base.css">
-    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd_login.css">
-    <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
+<link rel="stylesheet" href="../../../vendor/normalize.css/calendar.css"/>
+<link rel="stylesheet" href="../../../vendor/normalize.css/base.css">
+<link rel="stylesheet" href="../../../vendor/normalize.css/bdd_login.css">
+<link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
 
 
 <nav class="bdd-nav">
@@ -11,32 +10,40 @@
             <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a  ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
         <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
         <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
         <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
-            <div class="search-filter">
-                <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                <ul class="options">
-                    <li><a href="javascript:;" data-rel="project">作品</a></li>
-                    <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                    <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                    <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                    <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                    <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                    <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                    <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                </ul>
+        <div class="bdd-nav-title bdd-nav-title-hide">
+            <div class="search-status">
+                <div class="search-filter">
+                    <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
+                    <ul class="options">
+                        <li><a href="javascript:;" data-rel="project">作品</a></li>
+                        <li><a href="javascript:;" data-rel="experience">文章</a></li>
+                        <li><a href="javascript:;" data-rel="source">源文件</a></li>
+                        <li><a href="javascript:;" data-rel="designer">设计师</a></li>
+                        <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
+                        <li><a href="javascript:;" data-rel="talk">话题</a></li>
+                        <li><a href="javascript:;" data-rel="activity">活动</a></li>
+                        <li><a href="javascript:;" data-rel="veer">素材</a></li>
+                    </ul>
+                </div>
+                <div class="search-select">
+                    <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value=""
+                           name="keywords" id="keywords">
+                    <ul class="options" style="display: none;">
+                        <li><a href="javascript:;">app</a></li>
+                        <li><a href="javascript:;">logo</a></li>
+                        <li><a href="javascript:;">icon</a></li>
+                        <li><a href="javascript:;">AE</a></li>
+                        <li><a href="javascript:;">作品集</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="search-select">
-                <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
-                <ul class="options" style="display: none;">
-                    <li><a href="javascript:;">app</a></li><li><a href="javascript:;">logo</a></li><li><a href="javascript:;">icon</a></li><li><a href="javascript:;">AE</a></li><li><a href="javascript:;">作品集</a></li>								</ul>
-            </div>
-        </div>
             <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
+                                                                   alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">
             <div ng-if="$ctrl.user == null">
@@ -59,24 +66,41 @@
                     <div class="bdd_logoin_banner_bor_l"><a href="index.html#/login">登录</a></div>
                     <div class="bdd_logoin_banner_bor_r"><a href="index.html#/register">注册</a></div>
                 </div>
-                <div class="bdd_logoin_banner_conter">
-                    <input class="bdd_logoin_placeholder" ng-model="ctrl.username" type="text" placeholder="用户名/邮箱/手机号">
-                    <div class="bdd_logoin_hr"></div>
-                    <input style="margin-top:34px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass"type="password" placeholder="密码">
-                    <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
-                    <div class="bdd_logoin_mi">
-                        <div  class="bdd_logoin_mi_l"><div style="float: left"><img  src="../../../vendor/images/login_icon_Hook.png" alt=""></div><span style="padding-left: 10px">记住我</span></div>
-                        <div class="bdd_logoin_mi_r"><a href="index.html#/forget">忘记密码</a></div>
-                    </div>
-                    <input class="bdd_login_buttom" type="button" ng-click="ctrl.login()" value="登录">
-                    <div class="bdd_login_pic">
-                        <div class="bdd_login_pic_left">其他账号登录</div>
-                        <div class="bdd_login_pic_right">
-                            <a href="index.html#/wxLogin"><img src="../../../vendor/images/login_icon_wechat.png" alt=""></a>
-                            <img style="margin-left: 20px;" src="../../../vendor/images/login_icon_qq.png" alt="">
+                <form name="loginForm" ng-submit="ctrl.login()">
+                    <div class="bdd_logoin_banner_conter">
+                        <div class="form-group">
+                            <input class="bdd_logoin_placeholder" name="username" ng-model="ctrl.username" type="text"
+                                   placeholder="用户名/邮箱/手机号" required ng-pattern="mobileRegx"/>
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.username.$error.required">*手机号不能为空</span>
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.username.$error.pattern">*手机号不合法</span>
+                        </div>
+                        <div class="bdd_logoin_hr"></div>
+                        <div class="form-group">
+                            <input style="margin-top:34px;color: #ccbebe" class="bdd_logoin_placeholder" name="userpass" ng-model="ctrl.userpass" type="password"
+                                   placeholder="密码" required ng-pattern="pwdRegx" />
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.userpass.$error.required">*密码不能为空</span>
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.userpass.$error.pattern">*密码地址不合法</span>
+                        </div>
+                        <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
+                        <div class="bdd_logoin_mi">
+                            <div class="bdd_logoin_mi_l">
+                                <div style="float: left"><img src="../../../vendor/images/login_icon_Hook.png" alt="">
+                                </div>
+                                <span style="padding-left: 10px">记住我</span></div>
+                            <div class="bdd_logoin_mi_r"><a href="index.html#/forget">忘记密码</a></div>
+                        </div>
+                        <input class="bdd_login_buttom" type="submit" value="登录"/>
+                        <!--<input class="bdd_login_buttom" type="button" ng-click="ctrl.login()" value="登录">-->
+                        <div class="bdd_login_pic">
+                            <div class="bdd_login_pic_left">其他账号登录</div>
+                            <div class="bdd_login_pic_right">
+                                <a href="index.html#/wxLogin"><img src="../../../vendor/images/login_icon_wechat.png"
+                                                                   alt=""></a>
+                                <img style="margin-left: 20px;" src="../../../vendor/images/login_icon_qq.png" alt="">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="bdd_login_banner_right">
@@ -84,37 +108,39 @@
                 <div class="bdd_login_banner_right_text">大数据时代的精益求精</div>
                 <div style="margin-top: 10px;" class="bdd_login_banner_right_text">让您与数据随心沟通</div>
                 <div class="bdd_login_banner_logo">
-                    <div class="bdd_login_banner_logo_text"><img src="../../../vendor/images/login_logo.png" alt=""></div>
+                    <div class="bdd_login_banner_logo_text"><img src="../../../vendor/images/login_logo.png" alt="">
+                    </div>
                     <div class="bdd_login_banner_logo_text_br"></div>
                     <div class="bdd_login_banner_logo_text_span">
                         <div class="bdd_login_banner_logo_list">专注-建筑工程</div>
-                        <div style="margin-top:-2px;" class="bdd_login_banner_logo_li">招投标大数据分析</div></div>
+                        <div style="margin-top:-2px;" class="bdd_login_banner_logo_li">招投标大数据分析</div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <div class="bdd_footer_left">
+<div class="bdd_footer_left">
 
-        <div class="bdd_footer_news">
-            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                             src="../../../vendor/images/logo.png"
-                                                             alt=""/></a></div>
-            <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-            <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
-                                                                             src="../../../vendor/images/bottom_icon_andriod.png"
-                                                                             alt=""/></a></div>
-            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                             src="../../../vendor/images/bottom_icon_ios.png"
-                                                             alt=""/></a>
-            </div>
-            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                             src="../../../vendor/images/bottom_icon_wechat.png"
-                                                             alt=""/></a></div>
+    <div class="bdd_footer_news">
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../../../vendor/images/logo.png"
+                                                         alt=""/></a></div>
+        <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
+                                                                         src="../../../vendor/images/bottom_icon_andriod.png"
+                                                                         alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../../../vendor/images/bottom_icon_ios.png"
+                                                         alt=""/></a>
         </div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../../../vendor/images/bottom_icon_wechat.png"
+                                                         alt=""/></a></div>
     </div>
+</div>
