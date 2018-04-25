@@ -3,7 +3,96 @@
 <link rel="stylesheet" href="../../../vendor/normalize.css/index2.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
+<link href="http://libs.baidu.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border: 0;
+    }
 
+    .all {
+        width: 1200px;
+        height: 500px;
+        padding: 7px;
+        border: 1px solid #ccc;
+        margin: 0px auto;
+        position: relative;
+    }
+
+    .screen {
+        width: 1200px;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .screen li {
+        width: 1200px;
+        height: 500px;
+        overflow: hidden;
+        float: left;
+    }
+
+    .screen ul {
+        position: absolute;
+        left: 0;
+        top: 0px;
+        width:7200px;
+
+    }
+
+    .all ol {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .all ol li {
+        float: left;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .all ol li.current {
+        background: yellow;
+    }
+
+    #arr {
+        display: none;
+    }
+
+    #arr span {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        margin-top: -20px;
+        background: #000;
+        cursor: pointer;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+        font-family: '黑体';
+        font-size: 30px;
+        color: #fff;
+        opacity: 0.3;
+        border: 1px solid #fff;
+    }
+
+    #arr #right {
+        right: 5px;
+        left: auto;
+    }
+</style>
 
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
@@ -61,15 +150,17 @@
 </nav>
 <div class="jd_layout">
     <!--轮播图-->
+    <!--轮播图-->
     <div class="jd_banner">
-        <!--图片-->
-        <ul class="jd_bannerImg clearfix">
-            <li>
-                <a ng-click="$ctrl.cancelAreaB()" href="javascript:;">
-                    <img src="../../../vendor/images/banner_3.png" alt="">
-                </a>
-            </li>
-        </ul>
+        <div class="all" id='box'>
+            <div class="screen">
+                <ul>
+                    <li ng-repeat="item in $ctrl.imageArr"><img src="{{item.imagesrc}}" width="1200" height="500"/></li>
+                </ul>
+                <ol></ol>
+            </div>
+            <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+        </div>
         <!--点标记-->
         <ul class="jd_bannerIndicator">
             <li class="active"></li>
@@ -89,7 +180,6 @@
                 </div>
             </slide>
         </carousel>
-
 
     </div>
     <!--导航块-->
@@ -197,49 +287,54 @@
         <div class="calendar bdd_data_conter" id="calendar" style="display: block;"></div>
 
 
-        <div class="bdd_infor">
-            <div class="bdd_infor_ul">
-                <!--<div class="bdd_infor_dv"></div>-->
-                <!--<div class="bdd_infor_title">最新资讯</div>-->
-                <!--<div class="bdd_infor_rihgt">更多></div>-->
-                <div class="bdd_infor_mation_border">
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
-                        <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1_60px.png" /></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
-                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
-                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
-                        </div>
-                    </div>
+        <div style="margin-top: 50px" class="bdd_infor_a">
+            <div  class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>最新资讯</div>
+            <div style="font-size: 16px;color:#ccbebe"  style="font-size: 16px" class="bdd_infor_a_right">更多&nbsp;></div>
+        </div>
 
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
-                        <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png" /></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
-                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
-                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
-                        </div>
+        <!--<div class="bdd_infor_dv"></div>-->
+        <!--<div class="bdd_infor_title">最新资讯</div>-->
+        <!--<div class="bdd_infor_rihgt">更多></div>-->
+        <div style="overflow: hidden;background-color: white;margin-top:15px;margin-bottom: 60px;">
+            <div class="bdd_infor_mation_border">
+                <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
+                    <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1_60px.png" /></div>
+                    <div class="bdd_infor_maright">
+                        <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                        <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                        <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
                     </div>
                 </div>
             </div>
+            <div class="bdd_infor_mation_border">
+                <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
+                    <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png" /></div>
+                    <div class="bdd_infor_maright">
+                        <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                        <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                        <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="bdd_infor_a">
+            <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>常用应用</div>
+            <div style="font-size: 16px;color:#ccbebe" class="bdd_infor_a_right">更多&nbsp;></div>
         </div>
 
         <div class="bdd_use">
-            <!--<div class="bdd_infor_ul">-->
-                <!--<div class="bdd_infor_dv"></div>-->
-                <!--<div class="bdd_infor_title">常用应用</div>-->
-                <!--<div class="bdd_infor_rihgt">更多></div>-->
-                <!--</div>-->
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p">评标计算</div>
-                </div>
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p bdd_bid_w">四库一平台</div>
-                </div>
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p bdd_bid_w">建筑施工特许证查询</div>
-                </div>
+            <div style="margin-top:15px;" class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
             </div>
         </div>
     </div>
