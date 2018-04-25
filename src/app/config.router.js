@@ -207,7 +207,9 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        }).state('society', {
+        })
+
+        .state('society', {
             url: '/society',
             templateUrl: window.rootSrc + 'app/society/index.tpl.html',
             controller: 'SocietyCtrl as ctrl',
@@ -218,7 +220,94 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        });
+        })
+
+        .state('ucenter', {
+            url: '/ucenter',
+            templateUrl: window.rootSrc + 'app/personal/ucenter.html',
+            controller: 'UcenterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/ucenter.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.feedback', {
+            url: '/feedback',
+            templateUrl: window.rootSrc + 'app/personal/feedback.html',
+            controller: 'FeedbackCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/feedback.js'
+                    ]);
+                }]
+            }
+        })
+
+
+
+        .state('ucenter.financial', {
+            url: '/financial',
+            templateUrl: window.rootSrc + 'app/personal/financial.html',
+            controller: 'FinancialCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/financial.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.myfollow', {
+            url: '/myfollow',
+            templateUrl: window.rootSrc + 'app/personal/myfollow.html',
+            controller: 'MyfollowCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/myfollow.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.personInfo', {
+            url: '/personInfo',
+            templateUrl: window.rootSrc + 'app/personal/personInfo.html',
+            controller: 'PersonInfoCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/personInfo.js'
+                    ]);
+                }]
+            }
+        })
+        .state('ucenter.messages', {
+            url: '/messages',
+            templateUrl: window.rootSrc + 'app/personal/messages.html',
+            controller: 'MessagesCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/messages.js'
+                    ]);
+                }]
+            }
+        })
+
+    ;
+
+
+
+
+
+    ;
     /**
      * 什么都匹配不到的时候就跳转到首页
      */
