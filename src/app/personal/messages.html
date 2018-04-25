@@ -1,36 +1,15 @@
 <div class="bdd_vitality_right_header">
-    <div class="bdd_vitality_right_hrader_li bdd_vita_right" >系统消息<div class="bdd_vita_span"></div>
-    </div>
-    <div class="bdd_vitality_right_hrader_li bdd_vita_top">服务消息</div>
+    <button class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.getMessage(0)">系统消息</button>
+    <button class="bdd_vitality_right_hrader_li bdd_vita_top" ng-click="ctrl.getMessage(1)">服务消息</button>
 </div>
 <div class="bdd_vitality_vita_br"></div>
 <div class="bdd_qinximessage_border">
-    <div class="bdd_qinximessage_boder_news">
+    <div class="bdd_qinximessage_boder_news" ng-repeat="info in ctrl.messageList">
         <div style="margin-top: 40px" class="bdd_qinximessage_text_side">
-            <div class="bdd_qinximessage_text">我是标题我是标题我是标题我是标题我是标题</div>
-            <div class="bdd_qinximessage_data">2018-01-01</div>
+            <div class="bdd_qinximessage_text"><span ng-bind="info.title"></span></div>
+            <div class="bdd_qinximessage_data"><span ng-bind="info.createdate"></span></div>
         </div>
-        <div class="bdd_qinximessage_tet">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
-        <div class="bdd_qinximessage_br"></div>
-    </div>
-</div>
-<div class="bdd_qinximessage_border">
-    <div class="bdd_qinximessage_boder_news">
-        <div class="bdd_qinximessage_text_side">
-            <div class="bdd_qinximessage_text">我是标题我是标题我是标题我是标题我是标题</div>
-            <div class="bdd_qinximessage_data">2018-01-01</div>
-        </div>
-        <div class="bdd_qinximessage_tet">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
-        <div class="bdd_qinximessage_br"></div>
-    </div>
-</div>
-<div class="bdd_qinximessage_border">
-    <div class="bdd_qinximessage_boder_news">
-        <div class="bdd_qinximessage_text_side">
-            <div class="bdd_qinximessage_text">我是标题我是标题我是标题我是标题我是标题</div>
-            <div class="bdd_qinximessage_data">2018-01-01</div>
-        </div>
-        <div class="bdd_qinximessage_tet">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
+        <div class="bdd_qinximessage_tet"><span ng-bind="info.message"></span></div>
         <div class="bdd_qinximessage_br"></div>
     </div>
 </div>
