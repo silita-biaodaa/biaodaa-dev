@@ -63,11 +63,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		selt.province = area.name;
 		selt.isCity = true;
 		selt.cityList = area.list;
-		var moreCity = document.getElementById("bdd_dev_city");
-		moreCity.style.display="block";
-
 		selt.setPage(1);
-
 	};
 
 	this.clickCity = function (city) {
@@ -119,14 +115,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 	this.cancleEmQTwo = function () {
 
 		selt.qual2="";
-		selt.setPage(1);
-	};
-	this.cancleEmProvince = function () {
-		selt.province="";
-		selt.setPage(1);
-	};
-	this.cancleEmProvince = function () {
-		selt.province="";
 		selt.setPage(1);
 	};
 
