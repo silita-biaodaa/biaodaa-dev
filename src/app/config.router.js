@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpPr
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
-     $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
+    $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
     // $httpProvider.interceptors.push('loadingInterceptor');
     //$httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
     /**
@@ -118,17 +118,17 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         }).state('TenderSay', {
-            url: '/tenderSay/:id/:type',
-            templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
-            controller: 'TenderSayCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/tender/controller.js'
-                    ]);
-                }]
-            }
-        }).state('TenderDtail', {
+        url: '/tenderSay/:id/:type',
+        templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
+        controller: 'TenderSayCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    }).state('TenderDtail', {
         url: '/tenderDetail/:id',
         templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
         controller: 'tenderDetailCtrl as ctrl',
@@ -151,17 +151,17 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }]
         }
     }).state('Winbding', {
-            url: '/winbding/:id',
-            templateUrl: window.rootSrc + 'app/tender/winbding.html',
-            controller: 'WinbdingCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/tender/controller.js'
-                    ]);
-                }]
-            }
-        })
+        url: '/winbding/:id',
+        templateUrl: window.rootSrc + 'app/tender/winbding.html',
+        controller: 'WinbdingCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    })
         .state('Login', {
             url: '/login',
             templateUrl: window.rootSrc + 'app/login/bdd_login.html',
@@ -210,17 +210,17 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         }) .state('workmoreDetail', {
-            url: '/workmoreDetail/:id',
-            templateUrl: window.rootSrc + 'app/workmore/detail.html',
-            controller: 'WorkMoreDetailCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/workmore/controller.js'
-                    ]);
-                }]
-            }
-        })
+        url: '/workmoreDetail/:id',
+        templateUrl: window.rootSrc + 'app/workmore/detail.html',
+        controller: 'WorkMoreDetailCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/workmore/controller.js'
+                ]);
+            }]
+        }
+    })
 
         .state('society', {
             url: '/society',
