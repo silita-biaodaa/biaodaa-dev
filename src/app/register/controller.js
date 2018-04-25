@@ -5,6 +5,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
     selt.pwdRegx = "[a-zA-Z0-9]*";
+    selt.codeRegx = "[0-9]{6}";
 
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
@@ -69,10 +70,10 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             if (result.code == 0) {
                 alert(result.msg);
             } else {
+                alert(result.msg);
                 userTemp = angular.toJson({
                     "username": result.data.username,
-                    "imgurl": result.data.imgurl,
-                    "userid": result.data.userid
+                    "imgurl": result.data.imgurl
                 });
                 sessionStorage.setItem("X-TOKEN", result.data.xtoken);
                 sessionStorage.setItem("userTemp", userTemp);
