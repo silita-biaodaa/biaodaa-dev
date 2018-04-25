@@ -575,6 +575,7 @@
                 </div>
             </div>
 
+
             <div class="bdd_side_left_did">
                 <div class="bdd_side_conter_do">
                     <div class="bdd_area_left">
@@ -628,10 +629,10 @@
     </div>
 
     <div class="bdd_adver">
-        <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='companyModel.nextPage()'
-             infinite-scroll-disabled='companyModel.busy' infinite-scroll-distance='1'>
+        <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
+             infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
 
-            <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in companyModel.companyList">
+            <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in $ctrl.companyList">
                 <div class="bdd_win_conter_left"><img src="../../../vendor/images/logo_default.png" alt=""></div>
                 <div class="bdd_win_conter_conter">
                     <a href="#/companydetail?comId={{company.comId}}">
@@ -652,7 +653,7 @@
                 </div>
                 <div class="bdd_win_conter_right"></div>
             </div>
-            <div style="margin-top: 20px;text-align: center" ng-show='companyModel.busy'>数据加载中...</div>
+            <div style="margin-top: 20px;text-align: center" ng-show='$ctrl.busy'>数据加载中...</div>
         </div>
 
     </div>

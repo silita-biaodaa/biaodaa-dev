@@ -1,4 +1,4 @@
-app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'username','CompanyModel',function($http,$uibModal, $log, $scope,$document,username,CompanyModel) {
+app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope,$document,username) {
 	var selt = this;
 	if(username != null && username != '') {
 		selt.user = {
@@ -228,12 +228,46 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
 		selt.setPage(1);
 	};
+    this.companyList = [];
+    this.busy = false;
+    this.page = 1;
 	this.setPage = function (pageNo) {
-		//1、创建对象并传参数  2 将该对象存放在作用域中
-		$scope.companyModel = new  CompanyModel(selt.regisAddress,selt.qualCode,selt.minCapital,selt.maxCapital);
+        selt.companyList = [];
+        selt.busy = false;
+        selt.page = 1;
+        selt.nextPage();
 	};
-	this.maxSize = 3;
-	this.setPage(1);
+
+	this.nextPage = function () {
+        if (selt.busy) return;
+        selt.busy = true;
+        var paramsPage = {
+            regisAddress:selt.regisAddress,
+            qualCode:selt.qualCode,
+            minCapital:selt.minCapital,
+            maxCapital:selt.maxCapital,
+            pageNo:selt.page,
+            pageSize:5
+        };
+
+        $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
+            var companyList = result.data;
+            if(companyList!=null){
+                for (var i = 0; i < companyList.length; i++) {
+                    //原有列表数据再加上新获取数据组成新的列表数据
+                    selt.companyList.push(companyList[i]);
+                }
+                selt.totalCount = result.total;
+                selt.pageSize = result.pageSize;;
+                selt.pageNo = result.pageNum;
+                selt.after = "t3_" + selt.companyList[selt.companyList.length - 1].id;
+                selt.busy = false;
+                selt.page += 1;
+                setContentHeight(result.data);
+            }
+        });
+    };
+
 
 	this.logout = function() {
 		sessionStorage.removeItem("X-TOKEN");
@@ -243,63 +277,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		window.location.href="index.html#/home";
 	};
 }]);
-
-//声明工厂类
-app.factory('CompanyModel', function ($http) {
-	var paramsPage = {
-		regisAddress:'',
-		qualCode:'',
-		minCapital:'',
-		maxCapital:'',
-		pageNo:'',
-		pageSize:5
-	};
-	//创造带参数的构造函数
-	var CompanyModel = function (regisAddress,qualCode,minCapital,maxCapital) {
-		this.companyList = [];
-		this.totalCount = 0;
-		this.pageSize = 20;
-		this.pageNo = 0;
-		this.busy = false;
-		this.after = '';
-		this.page = 0;
-		this.regisAddress = regisAddress;
-		this.qualCode = qualCode;
-		this.minCapital = minCapital;
-		this.maxCapital = maxCapital;
-	};
-	//声明nextPage方法
-	CompanyModel.prototype.nextPage = function () {
-		if (this.busy) return;
-		this.busy = true;
-		paramsPage.pageNo = this.page;
-		paramsPage.regisAddress = this.regisAddress;
-		paramsPage.qualCode = this.qualCode;
-		paramsPage.minCapital = this.minCapital;
-		paramsPage.maxCapital = this.maxCapital;
-		//调接口，请求列表数据
-		$http.post("/company/query/filter", angular.toJson(paramsPage),
-			{headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
-				var companyList = result.data;
-				if(companyList!=null){
-					for (var i = 0; i < companyList.length; i++) {
-						//原有列表数据再加上新获取数据组成新的列表数据
-						this.companyList.push(companyList[i]);
-					}
-					this.totalCount = result.total;
-					this.pageSize = result.pageSize;;
-					this.pageNo = result.pageNum;
-					this.after = "t3_" + this.companyList[this.companyList.length - 1].id;
-					this.busy = false;
-					this.page += 5;
-					setContentHeight(result.data);
-				}
-			}.bind(this));
-	};
-	return CompanyModel;
-});
-
-
 
 function setContentHeight(dataList){
 	var bdd_adver_header = document.getElementById("bdd_adver_header");
