@@ -56,9 +56,6 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',functio
 	$http.post("/company/undesirable/"+comId,angular.toJson(params)).success(function (result) {
 		selt.undesMap=result.data;
 	});
-	$http.post("/company/qual/5").success(function (result) {
-		console.log(result);
-	});
 
 	this.showReputation = function (reputList) {
 		selt.reputList = reputList;
@@ -85,7 +82,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',functio
 			siblingElem.style.display="block";
 		}
 
-	}
+	};
 	this.logout = function() {
 		sessionStorage.removeItem("X-TOKEN");
 		sessionStorage.removeItem("username");
@@ -93,6 +90,69 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','username',functio
 		selt.user = null;
 		window.location.href="index.html#/home";
 	};
+
+    //企业资质
+    this.qualList = [];
+    this.qualSize = 0;
+    $http.post("/company/qual/"+comId).success(function (result) {
+        selt.qualTypeList = result.data;
+        angular.forEach(selt.qualTypeList,function(item){
+            angular.forEach(item.list,function(qual){
+                selt.qualList.push(qual);
+            });
+        });
+        selt.qualSize = selt.qualList.length;
+    });
+
+    this.allQual = function () {
+        selt.qualList = [];
+        angular.forEach(selt.qualTypeList,function(item){
+            angular.forEach(item.list,function(qual){
+                selt.qualList.push(qual);
+            });
+        });
+        selt.qualSize = selt.qualList.length;
+    };
+
+    this.typeToQual = function (list) {
+        selt.qualList = [];
+        angular.forEach(list,function(qual){
+            selt.qualList.push(qual);
+        });
+        selt.qualSize = selt.qualList.length;
+    };
+    //---------------------
+
+    //企业注册人员
+    this.personSize = 0;
+    $http.post("/company/personCategory/"+comId).success(function (result) {
+        selt.categoryList = result.data;
+
+    });
+
+    this.setPage = function (pageNo,category) {
+        selt.category = category;
+        var paramsPage = {
+            keyWord:"",
+            comId:comId,
+            category:category,
+            pageNo:pageNo,
+            pageSize:25
+        };
+
+        $http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
+            selt.personList = result.data;
+            selt.totalCount = result.total;
+            selt.pageSize = result.pageSize;;
+            selt.pageNo = result.pageNum;
+            selt.personSize = selt.totalCount;
+        });
+    };
+
+    this.setPage(1,"");
+
+
+
 }]);
 
 
