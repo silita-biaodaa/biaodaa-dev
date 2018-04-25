@@ -291,7 +291,7 @@ app.factory('CompanyModel', function ($http) {
 					this.pageNo = result.pageNum;
 					this.after = "t3_" + this.companyList[this.companyList.length - 1].id;
 					this.busy = false;
-					this.page += 1;
+					this.page += 5;
 					setContentHeight(result.data);
 				}
 			}.bind(this));
