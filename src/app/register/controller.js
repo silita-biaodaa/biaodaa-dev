@@ -69,7 +69,13 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             if (result.code == 0) {
                 alert(result.msg);
             } else {
+                userTemp = angular.toJson({
+                    "username": result.data.username,
+                    "imgurl": result.data.imgurl,
+                    "userid": result.data.userid
+                });
                 sessionStorage.setItem("X-TOKEN", result.data.xtoken);
+                sessionStorage.setItem("userTemp", userTemp);
                 window.location.href = "index.html#/home";
             }
         });
