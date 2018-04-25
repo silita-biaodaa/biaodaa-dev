@@ -201,13 +201,11 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 
 
 //�б깫����ļ�����ҳ��??
-app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'username',function ($http, $scope, utils, $stateParams,username) {
+app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp',function ($http, $scope, utils, $stateParams,userTemp) {
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -249,23 +247,21 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
             $scope.fileSize = fileDataArray.length;
         });
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 }])
 
 //�б깫��ҳ��
-app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','username', function ($http, $scope, utils, $stateParams,$state,username) {
+app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp', function ($http, $scope, utils, $stateParams,$state,userTemp) {
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -316,12 +312,12 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 }]);
 
