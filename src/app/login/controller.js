@@ -27,8 +27,7 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
             } else {
                 userTemp = angular.toJson({
                     "username": result.data.username,
-                    "imgurl": result.data.imgurl,
-                    "userid": result.data.userid
+                    "imgurl": result.data.imgurl
                 });
                 sessionStorage.setItem("X-TOKEN", result.data.xtoken);
                 sessionStorage.setItem("userTemp", userTemp);

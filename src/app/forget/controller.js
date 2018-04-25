@@ -3,6 +3,7 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
     selt.pwdRegx = "[a-zA-Z0-9]*";
+    selt.codeRegx = "[0-9]{6}";
 
     var second = 59;
     var timerHandler;

@@ -6,8 +6,7 @@ app.controller('MessagesCtrl', ['$http','$uibModal','$log','$scope','$document',
         var articleParam = {
             pageNo: 1,
             pageSize: 5,
-            isSystem: isSystem,
-            userid:""
+            isSystem: isSystem
         };
         $http.post("/userCenter/listMessageByUserId", angular.toJson(articleParam)).success(function (result) {
             console.log(result);
