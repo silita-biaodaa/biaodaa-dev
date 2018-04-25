@@ -14,9 +14,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpPr
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
-    $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
+    // $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
     // $httpProvider.interceptors.push('loadingInterceptor');
-    //$httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
+    $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
     /**
      * 定义路由
      */
