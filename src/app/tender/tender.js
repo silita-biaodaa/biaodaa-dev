@@ -111,6 +111,23 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         changeStaus(elem);
     }
 
+    this.moreSelectZz=function($event){
+        var elem = $event.target;
+        changeSelectStaus(elem);
+    }
+    function changeSelectStaus(obj){
+
+        var text = obj.innerText;
+        var morePro = document.getElementById("more-select-zz");
+        if(text=="更多"){
+            $('#more_select_zz').html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
+            morePro.style.display="block";
+        }else{
+            $('#more_select_zz').html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
+            morePro.style.display="none";
+        }
+    }
+
     function changeStaus(obj){
         var text = obj.innerText;
         var morePro = document.getElementById("more-pro");
@@ -206,6 +223,63 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.setPage(1);
     };
 
+    $scope.touchStart=function($event,qual2){
+        var elem = $event.target;
+        var grandFather = elem.parentNode.parentNode;
+        var aArr = grandFather.getElementsByTagName("a");
+        for(var i=0;i<aArr.length;i++){
+            var aElem = aArr[i];
+            aElem.parentNode.style.backgroundColor='#fff';
+            aElem.style.color='#000';
+        }
+        elem.parentNode.style.backgroundColor='#A7BC6D';
+        elem.style.color='#fff';
+        var off = $($event.target).offset();
+        var tocWidth = $($event.target).width();
+        console.log(off.top);
+        console.log(off.left);
+        console.log(tocWidth);
+
+        selt.qual4 = qual2.list;
+        selt.setPage(1);
+
+        setPosition(qual2.list,off.left,off.top,tocWidth);
+    };
+
+    $scope.mouseIn=function(){
+        mourseMoveIn();
+    };
+    $scope.mouseOut=function(){
+        mourseMoveOut();
+    }
+
+    function setPosition(arr,offX,offY,tocWidth){
+        var secondMenu = document.getElementById('bdd_second_menu');
+        $('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
+        //secondMenu.style.left = (offX + tocWidth +100) + 'px';
+        $('#bdd_second_menu').css('top',offY + 'px');
+//	secondMenu.style.top = (offY)+'px';
+        if(arr!=null && arr.length>0) {
+            $('#bdd_second_menu').css('border', '1px solid #ccc');
+            $('#bdd_second_menu').show();
+        }else{
+            //secondMenu.style.display='none';
+            $('#bdd_second_menu').hide();
+        }
+    }
+
+    function mourseMoveIn(){
+        document.getElementsByTagName("html")[0].style.overflow="hidden";
+        document.getElementsByTagName("html")[0].style.height="100%";
+        document.getElementsByTagName("body")[0].style.overflow="hidden";
+        document.getElementsByTagName("body")[0].style.height="100%";
+    }
+    function mourseMoveOut(){
+        document.getElementsByTagName("html")[0].style.overflow="visible";
+        document.getElementsByTagName("html")[0].style.height="auto";
+        document.getElementsByTagName("body")[0].style.overflow="visible";
+        document.getElementsByTagName("body")[0].style.height="auto";
+    }
 
     //#####公告请求开始
     var paramsPage = {
