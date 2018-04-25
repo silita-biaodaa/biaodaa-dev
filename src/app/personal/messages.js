@@ -2,11 +2,12 @@ app.controller('MessagesCtrl', ['$http','$uibModal','$log','$scope','$document',
     var selt = this;
 
     this.getMessage = function (isSystem) {
+        selt.isSystem = isSystem
         var articleParam = {
             pageNo: 1,
             pageSize: 5,
             isSystem: isSystem,
-            userid:angular.fromJson(userTemp.userid)
+            userid:""
         };
         $http.post("/userCenter/listMessageByUserId", angular.toJson(articleParam)).success(function (result) {
             console.log(result);
@@ -14,7 +15,7 @@ app.controller('MessagesCtrl', ['$http','$uibModal','$log','$scope','$document',
                 selt.messageList = result.data;
             }
         });
-    }
+    };
 
     //页面初始化请求
     this.getMessage(0);

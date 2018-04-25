@@ -1,6 +1,12 @@
 <div class="bdd_vitality_right_header">
-    <button class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.getMessage(0)">系统消息</button>
-    <button class="bdd_vitality_right_hrader_li bdd_vita_top" ng-click="ctrl.getMessage(1)">服务消息</button>
+    <!--<button class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.getMessage(0)">系统消息</button>
+    <button class="bdd_vitality_right_hrader_li bdd_vita_top" ng-click="ctrl.getMessage(1)">服务消息</button>-->
+    <div class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.getMessage(0)">系统消息
+        <div class="bdd_vita_span" ng-if="ctrl.isSystem==0"></div>
+    </div>
+    <div class="bdd_vitality_right_hrader_li bdd_vita_top" ng-click="ctrl.getMessage(1)">服务消息
+        <div class="bdd_vita_span" ng-if="ctrl.isSystem==1"></div>
+    </div>
 </div>
 <div class="bdd_vitality_vita_br"></div>
 <div class="bdd_qinximessage_border">
