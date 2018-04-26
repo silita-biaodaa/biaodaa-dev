@@ -115,6 +115,7 @@ body{
 .bdd_vitality_right_hrader_li{
     font-size: 16px;
     color: #4d3a3a;
+
 }
 .bdd_vita_top{
     float: left;
@@ -145,6 +146,9 @@ body{
     font-size: 16px;
     border-radius: 5px;
     padding-top:3px;
+    cursor: pointer;
+
+
 
 }
 .bdd_feedblack_header{
