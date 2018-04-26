@@ -24,6 +24,14 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
         }
     });
 
+    var params ={
+        pageSize:200
+    }
+    $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
+        console.log(result);
+        selt.linkList = result.data;
+    });
+
     this.isCity = false;
     this.regisAddress = "";
     this.province = "";
@@ -52,7 +60,7 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     this.findLinks = function(region){
         var params = {
             region:region,
-            pageSize:32
+            pageSize:200
         }
         $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
             console.log(result);
