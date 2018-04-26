@@ -92,7 +92,7 @@
 
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
+                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor" ng-click="$ctrl.cancleEmCity()">全部</a>
                     </div>
                     <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
                         <a class="span-cursor"ng-click="$ctrl.clickCity(city)"ng-bind="city"></a>

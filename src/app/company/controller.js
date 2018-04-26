@@ -72,6 +72,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 	this.clickProvince = function (area) {
 		selt.regisAddress = area.name+"||";
 		selt.province = area.name;
+        this.city = "";
 		selt.isCity = true;
 		selt.cityList = area.list;
 		selt.setPage();
@@ -86,6 +87,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		this.regisAddress = "";
 		this.province = "";
 		this.city = "";
+        this.isCity = false;
 		selt.setPage();
 	};
     this.cancleEmCity = function () {
@@ -215,6 +217,9 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
 	this.morePro = false;
 	this.moreProvince=function(morePro){
+	    if(morePro){
+            selt.isCity = false;
+        }
         selt.morePro = !morePro;
 	};
 	this.moreZz = false;
