@@ -66,7 +66,7 @@
                     <div class="bdd_logoin_banner_bor_l"><a href="index.html#/login">登录</a></div>
                     <div class="bdd_logoin_banner_bor_r"><a href="index.html#/register">注册</a></div>
                 </div>
-                <form name="loginForm" ng-submit="ctrl.login()">
+                <form name="loginForm" novalidate ng-submit="ctrl.login(loginForm.$valid)">
                     <div class="bdd_logoin_banner_conter">
                         <div class="form-group">
                             <input class="bdd_logoin_placeholder" name="username" ng-model="ctrl.username" type="text"
