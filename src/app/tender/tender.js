@@ -337,7 +337,15 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
 
 
+    function setContentHeight(dataList){
+        var bdd_adver_header = document.getElementById("bdd_adver_header");
+        if(dataList.length>2){
+            bdd_adver_header.style.height="auto";
+        }else{
+            bdd_adver_header.style.height="500px";
+        }
 
+    }
 
     //#####公告请求开始
 
