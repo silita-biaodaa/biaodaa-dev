@@ -17,14 +17,14 @@
     margin:20px auto;
 }
 .bdd_announcement_left{
-    float: left;
+    display: inline-block;
     font-size: 18px;
     color: #4d3a3a;
     line-height: 88px;
     padding:0 40px;
 }
 .bdd_announcement_right{
-    float: right;
+    display: inline-block;
     font-size: 16px;
     color: #4d3a3a;
     line-height: 94px;

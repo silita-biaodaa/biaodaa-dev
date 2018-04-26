@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
 <link href="http://libs.baidu.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap-datetimepicker.min.css">
+
 <style type="text/css">
     * {
         padding: 0;
@@ -92,6 +94,11 @@
         right: 5px;
         left: auto;
     }
+    .jd_layout{
+        margin-top: 100px;
+        z-index: 999;
+    }
+
 </style>
 
 <nav class="bdd-nav">
@@ -161,50 +168,31 @@
             </div>
             <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
         </div>
-        <!--点标记-->
-        <ul class="jd_bannerIndicator">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <carousel interval="myInterval">
-            <slide ng-repeat="slide in slides" active="slide.active">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
-                <div class="carousel-caption">
-                    <p>{{slide.text}}</p>
-                </div>
-            </slide>
-        </carousel>
 
     </div>
     <!--导航块-->
     <div class="jd_nav">
         <ul class="clearfix">
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">进30天收入公告</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">信息来自企业网站</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">信息来自政府网站</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">招投标每天收录</p>
                 </a>
@@ -225,8 +213,8 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')" >勘察</div>
                 <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
-            <div class="bdd_win_conter" style="margin-top: 0px" ng-repeat="notice in $ctrl.zhongbiaoList">
-                <div class="bdd_text_z"><a href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a></div>
+            <div class="bdd_win_conter" style="margin-top:10px" ng-repeat="notice in $ctrl.zhongbiaoList">
+                <div class="bdd_text_z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a></div>
                 <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                 <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -247,35 +235,14 @@
                 <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
 
-            <div class="bdd_win_conter" style="margin-top: 0px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
-                <div class="bdd_text_z" > <a href="#/tenderDetail/{{zhaobiao.id}}"><span ng-bind="zhaobiao.title"></span></a></div>
+            <div class="bdd_win_conter" style="margin-top: 10px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
+                <div class="bdd_text_z" > <a href="#/tenderDetail/{{zhaobiao.id}}"><span ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
                 <div class="bdd_text_y" >资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
                 <div class="bdd_text_p" >评标办法：<span>{{zhaobiao.pbMode ? zhaobiao.pbMode:'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
                 <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
-
-            <!--<div class="bdd_win_header">企业信息</div>-->
-            <!--<div class="bdd_inc">-->
-            <!--<div class="bdd_inc_list_o">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
-            <!--<div class="bdd_inc_list_t">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
-            <!--<div class="bdd_inc_list_f">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
         </div>
     </div>
     <div class="bdd_win_right">
@@ -284,10 +251,17 @@
                 <div id="today-txt"></div>
             </div>
         </div>
-        <div class="calendar bdd_data_conter" id="calendar" style="display: block;"></div>
+        <div class="calendar bdd_data_conter" id="calendar" style="display: block;">
+            <div class="sidenav-header" id="datetimediv">
+
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"
+                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                </select>
+            </div>
+        </div>
 
 
-        <div style="margin-top: 50px" class="bdd_infor_a">
+        <div style="margin-top:60px" class="bdd_infor_a">
             <div  class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>最新资讯</div>
             <div style="font-size: 16px;color:#ccbebe"  style="font-size: 16px" class="bdd_infor_a_right">更多&nbsp;></div>
         </div>
@@ -295,7 +269,7 @@
         <!--<div class="bdd_infor_dv"></div>-->
         <!--<div class="bdd_infor_title">最新资讯</div>-->
         <!--<div class="bdd_infor_rihgt">更多></div>-->
-        <div style="overflow: hidden;background-color: white;margin-top:15px;margin-bottom: 60px;">
+        <div style="overflow: hidden;background-color: white;margin-top:15px;margin-bottom: 60px;padding-bottom: 20px;width: 280px;margin-left: 18px;">
             <div class="bdd_infor_mation_border">
                 <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
                     <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1_60px.png" /></div>
@@ -324,7 +298,7 @@
         </div>
 
         <div class="bdd_use">
-            <div style="margin-top:15px;" class="bdd_use_right_a">
+            <div class="bdd_use_right_a">
                 <div>评标计算</div>
             </div>
             <div class="bdd_use_right_a">
@@ -366,7 +340,31 @@
                                                          alt=""/></a></div>
     </div>
 </div>
+<script type="text/javascript" src="../../../vendor/js/jquery.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    var d = new Date();
+    d.setTime(d.getTime() - 24 * 60 * 60 * 1000);
 
+    initDatetimepicker();
+
+    function initDatetimepicker() {
+
+//初始化日期选择控件
+        $('.form_date').datetimepicker({
+            language: 'zh-CN',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            pickerPosition: "top-left"
+        });
+    }
+</script>
 <script>
     //需求 实现一个 完整的轮播图
     //找人

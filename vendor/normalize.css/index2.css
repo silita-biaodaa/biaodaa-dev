@@ -1,6 +1,4 @@
-body{
-    background-color:#f8f8f8;
-}
+
 /*头部*/
 .bdd_heade{
     width: 100%;
@@ -213,10 +211,10 @@ body{
 }
 
 .bdd_data_conter{
-    width: 304px;
+    width:280px;
     height: 235px;
     margin-top:5px;
-
+    margin-left: 18px;
     background-color:white;
 
 }
@@ -231,15 +229,16 @@ body{
     height: 166px;
     padding: 40px 0px 20px 20px;
     margin-top:20px;
-    background-color: white;
     border-right: 5px;
+    margin-top: 10px;
 
 }
 
 .bdd_data_header{
-    width:290px;
+    width:280px;
     height: 110px;
     margin-top:90px;
+    margin-left: 18px;
     background-image: url("../images/homepage_bg_cal.png");
 }
 
@@ -255,7 +254,7 @@ body{
     background-color:white;
     margin-left:20px;
     margin-bottom:100PX;
-    margin-top: -40PX;
+
 
 }
 /*招标公告*/
@@ -301,12 +300,24 @@ body{
     padding: 20px;
 }
 .bdd_text_z{
-    width: 900px;
+    width: 870px;
     font-size: 18px;
     color: #2e2e2e;
     height: 33px;
     font-family: Arial;
     margin-top:-25px;
+    text-decoration:none;
+    overflow: hidden;
+
+}
+.bdd_text_z>a:hover{
+    color: #e6b947;
+}
+.bdd_text_z>a{
+    color:#4d3a3a;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .bdd_text_y{
     padding-top:15px;
@@ -414,15 +425,12 @@ body{
 .bdd_infor_ul{
    background-color: white;
 }
-.bdd_infor_mation_border{
-    width: 290px;
-    margin-bottom: 20px;
 
-}
 .bdd_infor_mation{
     width:280px;
     overflow: hidden;
     float: right;
+
 }
 .bdd_infor_maleft{
     width: 60px;
@@ -445,6 +453,7 @@ body{
     color: #4d3a3a;
     margin-top: 30px;
     font-family: Arial;
+    cursor: pointer;
 }
 .bdd_infor_maright_news{
     font-size: 14px;
@@ -574,10 +583,13 @@ body{
     margin-right:10px;
 }
 .bdd_infor_a{
-    width:295px;
+    width:280px;
     height: 50px;
     line-height:50px;
     background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 18px;
 }
 .bdd_infor_a_left{
     float: left;
@@ -585,4 +597,13 @@ body{
 }
 .bdd_infor_a_right{
     float: right;
+    cursor: pointer;
+}
+.bdd_use_right_a{
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+    background-color: #ccc;
+    margin-top: 10px;
+    cursor: pointer;
 }
