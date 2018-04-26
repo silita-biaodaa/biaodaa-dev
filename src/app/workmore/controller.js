@@ -8,7 +8,6 @@ app.controller('WorkMoreCtrl', ['$http','$uibModal','$log','$scope','$state','lo
         selt.user = null;
     }
 
-
     this.type = '0';
     this.dataArray = [];
     this.busy = false;

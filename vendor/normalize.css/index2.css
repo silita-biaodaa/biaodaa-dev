@@ -34,7 +34,6 @@
     /*最小宽度*/
     min-width: 320px;
     margin:0 auto;
-    background-color: #eee;
 }
 .bdd_nav_left{
     width:700px;
@@ -217,6 +216,7 @@
     margin-left: 18px;
     background-color:white;
 
+
 }
 
 .bdd_win_header{
@@ -252,8 +252,9 @@
 .bdd_use{
     width: 280px;
     background-color:white;
-    margin-left:20px;
-    margin-bottom:100PX;
+    margin-bottom:200PX;
+    margin-left: -10px;
+    margin-top: -5px;
 
 
 }
@@ -362,7 +363,7 @@
     height: 110px;
 }
 .bdd_content{
-    width:1200px;
+    width:100%;
     max-width: 1200px;
     min-width: 360px;
     height:200px;
@@ -573,7 +574,7 @@
     padding-left:130px;
 }
 .bdd_footer_news{
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 .bdd_text_riqi{
@@ -584,12 +585,14 @@
 }
 .bdd_infor_a{
     width:280px;
-    height: 50px;
-    line-height:50px;
+    height: 40px;
+    line-height:40px;
     background-color: white;
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 18px;
+    margin-left: -10px;
+
+
 }
 .bdd_infor_a_left{
     float: left;
