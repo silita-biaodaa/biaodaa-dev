@@ -109,7 +109,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/tender',
             templateUrl: window.rootSrc + 'app/tender/tender.html',
             params: {'id': null},
-            controller: 'tenderIndex as tender',
+            controller: 'tenderIndex as $ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
