@@ -1,12 +1,5 @@
-app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
+app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document','userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
     var selt = this;
-
-    /*$http.post("/foundation/getProvinceCity", angular.toJson({})).success(function (result) {
-        if (result.code == 1) {
-            alert(result.data);
-        }
-    });*/
-
 
     $scope.selectDatas = [{
         "name": "湖南省",
@@ -26,5 +19,14 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
             {"name":"张家界"}
         ]
         }
-    ]
+    ];
+
+    this.submit = function () {
+        if (null != userTemp) {
+            var username = angular.fromJson(userTemp).username;
+
+        } else {
+            alert('您未登录，暂不能申请保证金借款！');
+        }
+    }
 }]);

@@ -1,7 +1,10 @@
+<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap-datetimepicker.min.css">
+<script src="../vendor/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
 <div class="bdd_vitality_right_header">
     <div class="bdd_vitality_right_hrader_li bdd_vita_right" >申请保证金借款</div>
     <div class="bdd_vitality_hr"></div>
-
+    <form name="finanialForm" ng-submit="ctrl.submit()">
         <div class="bdd_fin_parent" id="parent">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区
             <select class="bdd_fin_select" ng-model="province" ng-options="province.name for province in selectDatas">
                 <option value="">请选择</option>
@@ -18,17 +21,13 @@
             </select>
         </div>
         <div class="bdd_fin_parent" id="paren">开标时间
-            <select class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
+            <input type="text" readonly class="placeholder form_datetime">
         </div>
         <div style="margin-top: 20px;" class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
-            <input style="margin-left: 30px;" type="text" class=" placeholder" value="请输入">
+            <input style="margin-left: 30px;" type="text" class="placeholder" ng-model="borrower">
         </div>
         <div style="margin-top: 20px;" class="bdd_fin_parent" id="p">联系方式
-            <input style="margin-left: 33px;" type="text" class=" placeholder" value="请输入">
+            <input style="margin-left: 33px;" type="text" class="placeholder" ng-model="phone">
         </div>
         <div class="bdd_fin_parent" id="prt">借款时间
             <select class="bdd_fin_select">
@@ -37,5 +36,7 @@
                 <option>湖南</option>
             </select>
         </div>
+        <input type="submit" class="bdd_vita_footer_title_text" value="提交"/>
+    </form>
     </div>
 <div class="bdd_fin_nav"></div>
