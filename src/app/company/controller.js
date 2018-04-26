@@ -260,6 +260,30 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         selt.user = null;
         window.location.href = "index.html#/home";
     };
+
+	this.cancelCollectionCompany = function (companyid){
+		var cancelParam = {companyid:companyid};
+		$http.post("/userCenter/cancelCollectionCompany", angular.toJson(cancelParam)).success(function (result) {
+			console.log(result);
+			if(result.code==1){//取消成功
+				alert("取消收藏成功");
+			}else{
+				alert(result.msg);
+			}
+		});
+	};
+
+	this.collectionCompany = function (companyid){
+		var cancelParam = {companyid:companyid};
+		$http.post("/userCenter/collectionCompany", angular.toJson(cancelParam)).success(function (result) {
+			console.log(result);
+			if(result.code==1){//成功
+				alert("收藏成功");
+			}else{
+				alert(result.msg);
+			}
+		});
+	};
 }]);
 
 function setContentHeight(dataList){
