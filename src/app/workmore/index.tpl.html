@@ -85,7 +85,7 @@
         </div>
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
         <div class="bdd-nav-title"><a  ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a  ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a  ui-sref="CompanyTop">企信</a></div>
         <div class="bdd-nav-title"><a style="color:white" ui-sref="workmore">动态</a></div>
         <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
@@ -119,7 +119,7 @@
             <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
                 <label>{{$ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a href="">个人中心</a>
+                <a href="#/ucenter">个人中心</a>
             </div>
         </div>
     </div>

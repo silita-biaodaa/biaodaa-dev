@@ -4,11 +4,11 @@
         <div class="bdd-img-div">
             <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html"></a>首页</div>
-        <div class="bdd-nav-title"><a href="./bdd_scerrn.html">标讯</a></div>
-        <div class="bdd-nav-title">企信</div>
-        <div class="bdd-nav-title">动态</div>
-        <div class="bdd-nav-title">应用</div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="CompanyTop">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide">
             <div class="search-status">
                 <div class="search-filter">
@@ -37,13 +37,22 @@
                 </div>
             </div>
             <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
+                                                                   alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="$ctrl.user == null">
+                <a href="index.html#/login">登录</a>
+                <a href="index.html#/register">注册</a>
+            </div>
+            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+                <label>{{$ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+                <a href="#/ucenter">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
-</div>
-</div>
 
 </div>
 <div class="bdd_trends_contont">
@@ -53,13 +62,14 @@
             <div class="bdd_homepage_header_left">
                 <img src="../../../vendor/images/qx_title.png" alt="">
                 <div class="bdd_homepage_header_qin">热门企业画像</div>
-                <div class="bdd_homepage_header_qi"><span
-                        style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span><span><img
-                        style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span></div>
+                <div class="bdd_homepage_header_qi">
+                    <a href="#/company"><span style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span></a>
+                    <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span>
+                </div>
             </div>
             <div class="bdd_homepage_header_right">
                 <img src="../../../vendor/images/qx_title.png" alt="">
-                <div class="bdd_homepage_header_qin">热门企业画像</div>
+                <div class="bdd_homepage_header_qin">热门人员画像</div>
                 <div class="bdd_homepage_header_qi"><span
                         style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span><span><img
                         style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span></div>
@@ -75,10 +85,11 @@
                         </div>
                         <div class="bdd_pers_conter_border_right">
                             <div class="bdd_pers_conter_spans" ng-bind="company.comName"></div>
-                            <div class="bdd_pers_conter_aide"><span  ng-bind="company.subsist|limitTo:2"></span></div>
+                            <div ng-if="company.subsist" class="bdd_pers_conter_aide"><span  ng-bind="company.subsist|limitTo:2"></span></div>
+                            <div ng-if="!company.subsist" class="bdd_pers_conter_aide"><span>存续</span></div>
                         </div>
                         <div class="bdd_pers_top_boder">
-                            <div class="bdd_pers_top_boder_left">法定代表人：<span ng-bind="company.legalPerson"></div>
+                            <div class="bdd_pers_top_boder_left">法定代表人：<span ng-bind="company.legalPerson"></span></div>
                             <div class="bdd_pers_top_boder_left">注册资本：<span ng-bind="company.regisCapital"></span></div>
                         </div>
                         <div class="bdd_pers_top_boder_ad">
