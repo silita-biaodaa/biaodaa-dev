@@ -2,6 +2,12 @@
     @import url("../../../vendor/normalize.css/bdd_scerrn.css");
 </style>
 
+<style>
+
+    .bdd_adver_header{
+        overflow: hidden;
+    }
+</style>
 
 <!--头部-->
 <nav class="bdd-nav">
@@ -157,7 +163,7 @@
             <div class="bdd_area_content bdd_text_vib"> <input class="bdd_select bdd_font" type="text" value="结束时间"></div>
             <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认">&nbsp;<span class="bdd_font_span" >&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
         </div>
-        <div class="bdd_area_left">
+        <div class="bdd_area_left" style="overflow: hidden">
             <div class="bdd_area_content bdd_content_h">报名方式：</div>
             <div class="bdd_area_content bdd_text_vib">现场报名</div>
             <div class="bdd_area_content bdd_text_vib">网上报名</div>
@@ -167,7 +173,7 @@
 </div>
 <div class="bdd_side_left">
     <div class="bdd_side_conter">
-        <div class="bdd_area_left">
+        <div class="bdd_area_left" style="overflow: hidden">
             <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
             <div class="bdd_area_content bdd_text_vib" ng-if="tender.province">
                 <div class="bdd_select bdd_font  bdd_font_color">
@@ -244,5 +250,4 @@
         <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
         <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
     </div>
-</div>
 </div>

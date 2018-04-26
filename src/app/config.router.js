@@ -262,7 +262,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
 
 
-
         .state('ucenter.financial', {
             url: '/financial',
             templateUrl: window.rootSrc + 'app/personal/financial.html',
@@ -314,10 +313,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
-    ;
-
-
-
+        .state('Modify', {
+            url: '/modify',
+            templateUrl: window.rootSrc + 'app/modify/modify.html',
+            controller: 'ModifyCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/modify/controller.js'
+                    ]);
+                }]
+            }
+        })
 
 
     ;

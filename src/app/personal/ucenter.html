@@ -34,7 +34,17 @@
             <input type="hidden" name="type" value="project" id="sType"></div>
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
+        <div class="bdd-nav-title bdd-nav-right">
+            <div ng-if="ctrl.user == null">
+                <a ui-sref="Login">登录</a>
+                <a ui-sref="Register">注册</a>
+            </div>
+            <div ng-if="ctrl.user != null && ctrl.user.username != ''">
+                <label>{{ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
+                <a href="">个人中心</a>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -45,30 +55,12 @@
 <div>
     <div class="bdd_perso_nav_news">
         <div>
-            <div class="bdd_perso_left"></div>
+            <div class="bdd_perso_left"><img src="../../../vendor/images/icon_head_default110px.png" alt=""></div>
             <div class="bdd_perso_right">
-                <div class="bdd_perso_anv_li bdd_perso_color">希希</div>
-                <div class="bdd_perso_anv_li bdd_perso_tel bdd_perso_span">0716-7770058</div>
-                <div class="bdd_perso_anv_li bdd_perso_tel">湖南耀邦建设有限公司</div>
+                <div class="bdd_perso_anv_li bdd_perso_color" ng-bind="ucenter.nickname"></div>
+                <div class="bdd_perso_anv_li bdd_perso_tel bdd_perso_span" ng-bind="ucenter.userphone"></div>
             </div>
             <div class="bdd_vitality">
-                <div class="bdd_vitality_list">
-                    <div class="bdd_vitality_size">100</div>
-                    <div class="bdd_vitality_si">活跃度</div>
-                </div>
-                <div class="bdd_vitality_list">
-                    <div class="bdd_vitality_size">100</div>
-                    <div class="bdd_vitality_si">购买记录</div>
-                </div>
-                <div class="bdd_vitality_list">
-                    <div class="bdd_vitality_size">100</div>
-                    <div class="bdd_vitality_si">我的关注</div>
-                </div>
-                <div class="bdd_vitality_list">
-                    <div class="bdd_vitality_size">100</div>
-                    <div class="bdd_vitality_si">我的关注</div>
-                </div>
-
             </div>
         </div>
 

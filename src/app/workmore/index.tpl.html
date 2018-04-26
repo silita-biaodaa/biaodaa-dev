@@ -15,6 +15,7 @@
         width: 1200px;
         height: 500px;
         margin:  0 auto;
+        margin-top: 100px;
     }
     .bdd_trends_header{
         width: 1200px;
@@ -127,25 +128,28 @@
 </div>
 
 </div>
-<div class="bdd_trends_contont" ng-controller="WorkMoreCtrl">
+<div class="bdd_trends_contont">
     <div class="bdd_trends_border">
         <div class="bdd_trends_pic">
-            <img src="../../../vendor/images/banner_1.png" alt="">
+            <img  src="../../../vendor/images/banner_1.png" alt="">
         </div>
         <div class="bdd_trends_header">
-            <div class="bdd_trends_header_title {{isCompany?'bdd_trends_header_bot':''}}" ng-click="toDiffMsg('0')">行业资讯
+            <div class="bdd_trends_header_title {{ctrl.isCompany?'bdd_trends_header_bot':''}}" ng-click="ctrl.toDiffMsg('0')">行业资讯
          </div>
-            <div class="bdd_trends_header_title bdd_trends_hrader_tex {{isCompany?'':'bdd_trends_header_bot'}}" ng-click="toDiffMsg('1')">平台公示</div>
+            <div class="bdd_trends_header_title bdd_trends_hrader_tex {{ctrl.isCompany?'':'bdd_trends_header_bot'}}" ng-click="ctrl.toDiffMsg('1')">平台公示</div>
         </div>
-        <div  class="bdd_trends_conter_pic" ng-repeat="item in dataArray">
-            <a ng-click="toDetail(item.id)">
-            <div class="bdd_trends_conter_pic_left"><img src="../../../vendor/images/dt_icon_defa1.png" alt=""></div>
-            <div style="border-radius: 10px" class="bdd_trends_conter_pic_right">
-                <div class="bdd_trends_conter_pic_top">{{item.title}}</div>
-                <div class="bdd_trends_conter_pic_news">{{item.contentDescribe}}</div>
-                <div style="text-align: right;margin-top: -20px;font-size: 14px" class="bdd_trends_conter_pic_news">{{item.time}}</div>
+        <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='ctrl.nextPage()'
+             infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
+            <div  class="bdd_trends_conter_pic" ng-repeat="item in ctrl.dataArray">
+                <a ng-click="ctrl.toDetail(item.id)">
+                <div class="bdd_trends_conter_pic_left"><img src="../../../vendor/images/dt_icon_defa1.png" alt=""></div>
+                <div style="border-radius: 10px" class="bdd_trends_conter_pic_right">
+                    <div class="bdd_trends_conter_pic_top">{{item.title}}</div>
+                    <div class="bdd_trends_conter_pic_news">{{item.contentDescribe}}</div>
+                    <div style="text-align: right;margin-top: -20px;font-size: 14px" class="bdd_trends_conter_pic_news">{{item.time}}</div>
+                </div>
+                </a>
             </div>
-            </a>
         </div>
 
     </div>
