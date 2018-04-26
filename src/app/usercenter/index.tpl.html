@@ -191,53 +191,40 @@
         <div class="bdd_area_boder_left">
             <div class="bdd_area_boder_span">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
             <div class="bdd_area_aode">
-                <div class="bdd_area_boder_text">全部</div>
-                <div class="bdd_area_boder_text" ng-repeat="area in ctrl.areaList" ng-bind="area.name|limitTo:2"></div>
-
-
-
-
+                <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="ctrl.cancelArea()">全部</a>
+                <div class="bdd_comp_span" ng-repeat="area in ctrl.areaList" ng-bind="area.name|limitTo:2" ng-click="ctrl.clickProvince(area)">
+                </div>
+                <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="ctrl.morePro" >
+                    <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in ctrl.areaList2">
+                        <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                           ng-click="ctrl.clickProvince(area)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bdd_dev_city" class="bdd_dev_city" ng-show="ctrl.isCity">
+            <div class="bdd_comp_span_c" ng-if="city"><a class="span-yellow span-cursor">全部</a>
+            </div>
+            <div class="bdd_comp_span_c" ng-repeat="city in ctrl.cityList" ng-if="city">
+                <a class="span-cursor" ng-bind="city" ng-click="ctrl.clickCity(city)"></a>
             </div>
         </div>
         <div class="bdd_area_boder_right">
-            <div style="float:left;padding-left:148px;font-size: 14px;margin-top: 50px;">更多</div><div class="bdd_pic"></div>
+            <a class="span-cursor" id="to-pro-more"
+               ng-click="ctrl.moreProvince(ctrl.morePro)">
+                <div class="to_more" ng-show="!ctrl.morePro">更多</div>
+                <div class="to_more to_bottom" ng-show="!ctrl.morePro"></div>
+                <div class="to_more" ng-show="ctrl.morePro">收起</div>
+                <div class="to_more to_top" ng-show="ctrl.morePro"></div>
+            </a>
         </div>
     </div>
 </div>
 <div class="bdd_area_conter">
     <div class="bdd_area_conter_border">
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">四库一平台</div>
-        <div class="bdd_area_conter_border_text bdd_area_list">湖南省水利工程招标公共服务平台</div>
-        <div class="bdd_area_conter_border_text">湖南省公路水路建筑<br>与运输市场信用信息服务网</div>
-        <div class="bdd_area_conter_border_text bdd_area_list ">住建部企业资质查询</div>
+            <a href="{{link.linkUrl}}"class="bdd_area_conter_border_text bdd_area_list" ng-repeat="link in ctrl.linkList">
+                {{link.linkName}}
+            </a>
     </div>
 </div>
 
