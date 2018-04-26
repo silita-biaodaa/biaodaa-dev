@@ -161,7 +161,8 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 
         $http.post("/company/person",angular.toJson(paramsPage)).success(function (result) {
         	var personList = result.data;
-        	if(personList!=null&&selt.page==result.pageNum){
+        	if(personList!=null&&
+                selt.page==result.pageNum){
                 angular.forEach(personList,function(person){
                     selt.personList.push(person);
                 });
