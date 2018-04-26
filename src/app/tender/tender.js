@@ -6,39 +6,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.user = null;
     }
 
-    this.isCity = false;
-    this.projectTypeDesc=null;
-    this.projectType=null;//分类
-
-    //0:施工,2:监理,3:采购,1:设计,4:勘察
-    this.changeProjectType = function(projectType){
-        this.projectType=projectType;
-        switch(projectType){
-            case '0':this.projectTypeDesc='施工';break;
-            case '2':this.projectTypeDesc='监理';break;
-            case '3':this.projectTypeDesc='采购';break;
-            case '1':this.projectTypeDesc='设计';break;
-            case '4':this.projectTypeDesc='勘察';break;
-            default:this.projectTypeDesc=null;break;
-        }
-        console.log(this.projectType+"###"+this.projectTypeDesc);
-    };
-
-    this.cancleProjectTypeDesc = function () {
-        this.projectTypeDesc=null;
-        this.projectType=null;
-    };
-
-    function setContentHeight(dataList){
-        var bdd_adver_header = document.getElementById("bdd_adver_header");
-        if(dataList.length>2){
-            bdd_adver_header.style.height="auto";
-        }else{
-            bdd_adver_header.style.height="500px";
-        }
-
-    }
-
     $http.get("/company/filter").success(function (result) {
         console.log(result.data.area);
         var arr1 = [];
@@ -73,6 +40,63 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             selt.companyQualList2 = arr2;
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    this.isCity = false;
+    this.projectTypeDesc=null;
+    this.projectType=null;//分类
+
+    //0:施工,2:监理,3:采购,1:设计,4:勘察
+    this.changeProjectType = function(projectType){
+        this.projectType=projectType;
+        switch(projectType){
+            case '0':this.projectTypeDesc='施工';break;
+            case '2':this.projectTypeDesc='监理';break;
+            case '3':this.projectTypeDesc='采购';break;
+            case '1':this.projectTypeDesc='设计';break;
+            case '4':this.projectTypeDesc='勘察';break;
+            default:this.projectTypeDesc=null;break;
+        }
+        console.log(this.projectType+"###"+this.projectTypeDesc);
+    };
+
+    this.cancleProjectTypeDesc = function () {
+        this.projectTypeDesc=null;
+        this.projectType=null;
+    };
+
+    function setContentHeight(dataList){
+        var bdd_adver_header = document.getElementById("bdd_adver_header");
+        if(dataList.length>2){
+            bdd_adver_header.style.height="auto";
+        }else{
+            bdd_adver_header.style.height="500px";
+        }
+
+    }
+
+
 
     this.setPage = function (pageNo) {
         var paramsPage = {
@@ -221,28 +245,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.setPage(1);
     };
 
-    $scope.touchStart=function($event,qual2){
-        var elem = $event.target;
-        var grandFather = elem.parentNode.parentNode;
-        var aArr = grandFather.getElementsByTagName("a");
-        for(var i=0;i<aArr.length;i++){
-            var aElem = aArr[i];
-            aElem.parentNode.style.backgroundColor='#fff';
-            aElem.style.color='#000';
-        }
-        elem.parentNode.style.backgroundColor='#A7BC6D';
-        elem.style.color='#fff';
-        var off = $($event.target).offset();
-        var tocWidth = $($event.target).width();
-        console.log(off.top);
-        console.log(off.left);
-        console.log(tocWidth);
 
-        selt.qual4 = qual2.list;
-        selt.setPage(1);
-
-        setPosition(qual2.list,off.left,off.top,tocWidth);
-    };
 
     $scope.mouseIn=function(){
         mourseMoveIn();

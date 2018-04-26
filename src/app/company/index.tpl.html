@@ -75,14 +75,16 @@
                     </div>
                     <div class="bdd_comp_span bdd_comp_span_m">
                         <a class="span-cursor" id="to-pro-more"
-                           ng-click="$ctrl.moreProvince($event)">
-                            <div class="to_more" id="more_provice">更多</div>
-                            <div class="to_more to_bottom"></div>
+                           ng-click="$ctrl.moreProvince($ctrl.morePro)">
+                            <div class="to_more" ng-show="!$ctrl.morePro">更多</div>
+                            <div class="to_more to_bottom" ng-show="!$ctrl.morePro"></div>
+                            <div class="to_more" ng-show="$ctrl.morePro">收起</div>
+                            <div class="to_more to_top" ng-show="$ctrl.morePro"></div>
                         </a>
                     </div>
 
                 </div>
-                <div id="more-pro" class="bdd_dev_area_pro_m bdd_more_dev_city">
+                <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro" >
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
                         <a class="span-cursor" ng-bind="area.name|limitTo:2"
                            ng-click="$ctrl.clickProvince(area)"></a>
@@ -92,9 +94,8 @@
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
                     <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
                     </div>
-                    <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city"><a class="span-cursor"
-                                                                                                    ng-click="$ctrl.clickCity(city)"
-                                                                                                    ng-bind="city"></a>
+                    <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
+                        <a class="span-cursor"ng-click="$ctrl.clickCity(city)"ng-bind="city"></a>
                     </div>
                 </div>
 
@@ -113,42 +114,39 @@
                                href="javascript:;"><span
                                     ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
                                     class="caret"></span></a>
-                            <ul class="dropdown-menu multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
-                                ng-mouseleave="mouseOut()" role="menu" aria-labelledby="dropdownMenu">
+                            <ul class="dropdown-menu multi-level bdd_drop_scroll"  role="menu" aria-labelledby="dropdownMenu">
                                 <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
                                     <a class="dropdown-yellow" href="javascript:;" data-index="2" ng-bind="qual2.name"
-                                       ng-mouseenter="touchStart($event,qual2)"
-                                       ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>
-
+                                       ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
+                                       ng-click="$ctrl.clickQual2(qual2,qual)"></a>
                                 </li>
-
                             </ul>
-
                         </div>
 
                         <div class="dropdown  dropdown-div dropdown-div-more">
                             <a id="more_select_zz" role="button" data-toggle="dropdown"
                                class="btn btn-white btn-white-a" data-target="#"
-                               href="javascript:;" ng-click="$ctrl.moreSelectZz($event)">
-                                <div class="to_more">更多</div>
-                                <div class="to_more to_bottom"></div>
+                               href="javascript:;" ng-click="$ctrl.moreSelectZz($ctrl.moreZz)">
+                                <div class="to_more" ng-show="!$ctrl.moreZz">更多</div>
+                                <div class="to_more to_bottom" ng-show="!$ctrl.moreZz"></div>
+                                <div class="to_more" ng-show="$ctrl.moreZz">收起</div>
+                                <div class="to_more to_top" ng-show="$ctrl.moreZz"></div>
                             </a>
 
                         </div>
 
                     </div>
-                    <div id="more-select-zz" class="drop-margin">
+                    <div id="more-select-zz" class="drop-margin" ng-show="$ctrl.moreZz">
                         <div class="dropdown dropdown-div dropdown-div-border dropdown-div-border2"
                              ng-repeat="qual in $ctrl.companyQualList2">
                             <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a" data-target="#"
                                href="javascript:;"><span
                                     ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
                                     class="caret"></span></a>
-                            <ul class="dropdown-menu  multi-level bdd_drop_scroll" ng-mouseenter="mouseIn()"
-                                ng-mouseleave="mouseOut()" role="menu" aria-labelledby="dropdownMenu">
+                            <ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu" aria-labelledby="dropdownMenu">
                                 <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
                                     <a href="javascript:;" data-index="2" ng-bind="qual2.name"
-                                       ng-mouseenter="touchStart($event,qual2)"
+                                       ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
                                        ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>
 
                                 </li>
@@ -195,40 +193,33 @@
                         <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.province">
                             <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.cancleEmProvince()">×</span></div>
+                                {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancelArea()">×</span></div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.city">
-                            <div
-                                    class="bdd_select bdd_font  bdd_font_color">
+                            <div class="bdd_select bdd_font  bdd_font_color">
                                 {{$ctrl.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmCity()">×</span>
                             </div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual1">
-                            <div
-                                    class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual1}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQone()">×</span>
+                            <div class="bdd_select bdd_font  bdd_font_color">
+                                {{$ctrl.qual1.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancelQUal()">×</span>
                             </div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual2">
-                            <div
-                                    class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual2}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQTwo()">×</span>
+                            <div class="bdd_select bdd_font  bdd_font_color">
+                                {{$ctrl.qual2.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQTwo()">×</span>
                             </div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual3">
-                            <div
-                                    class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual3}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
+                            <div class="bdd_select bdd_font  bdd_font_color">
+                                {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
                             </div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.priceArea">
-                            <div
-                                    class="bdd_select bdd_font  bdd_font_color">{{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.canclePriceArea()">×</span></div>
+                            <div class="bdd_select bdd_font  bdd_font_color">
+                                {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.canclePrice()">×</span></div>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib"><span class="bdd_font_span"
-                                                                         ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+                        <div class="bdd_area_content bdd_text_vib"><span class="bdd_font_span" ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                         </div>
 
                     <div class="bdd_side_news_val">
@@ -244,7 +235,6 @@
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
              infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
-
             <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in $ctrl.companyList">
                 <div class="bdd_win_conter_left"><img src="../../../vendor/images/logo_default.png" alt=""></div>
                 <div class="bdd_win_conter_conter">
@@ -266,7 +256,6 @@
                 </div>
                 <div class="bdd_win_conter_right"></div>
             </div>
-            <div style="margin-top: 20px;text-align: center" ng-show='$ctrl.busy'>数据加载中...</div>
         </div>
 
     </div>
@@ -294,8 +283,8 @@
 
 <div id="bdd_second_menu"
      style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
-    <div style="width: 150px;height: 25px;" ng-repeat="qual5 in $ctrl.qual4"><a class="a-point" ng-bind="qual5.name"
-                                                                                ng-click="$ctrl.clickQual3($event,qual5,qual4)"></a>
+    <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"><a class="a-point" ng-bind="item.name"
+                                                                                ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)"></a>
     </div>
 </div>
 

@@ -51,148 +51,193 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 	this.qual3 = "";
 	this.minCapital = 0;
 	this.maxCapital = null;
-	this.priceArea = ""
+	this.priceArea = "";
+    this.cancelFilter = function () {
+        this.regisAddress = "";
+        this.qualCode = "";
+        this.province = "";
+        this.city = "";
+        this.qual1 = "";
+        this.qual2 = "";
+        this.qual3 = "";
+        this.minCapital = 0;
+        this.maxCapital = null;
+        this.priceArea = ""
+        selt.setPage();
+    };
 
-	$scope.qual4 = [];
-	this.qual5="";
 
+
+	//----省市----
 	this.clickProvince = function (area) {
 		selt.regisAddress = area.name+"||";
 		selt.province = area.name;
 		selt.isCity = true;
 		selt.cityList = area.list;
-		selt.setPage(1);
+		selt.setPage();
 	};
-
 	this.clickCity = function (city) {
 		selt.regisAddress = selt.province+"||"+city;
 		selt.city = city;
 		selt.isCity = true;
-		selt.setPage(1);
+		selt.setPage();
 	};
 	this.cancelArea = function () {
 		this.regisAddress = "";
 		this.province = "";
 		this.city = "";
-		selt.setPage(1);
+		selt.setPage();
 	};
+    this.cancleEmCity = function () {
+        selt.regisAddress = selt.province+"||";
+        selt.city="";
+        selt.setPage();
+    };
+    //---省市----end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //---资质----
 	this.clickQual1 = function (qual) {
-		selt.qual1 = qual.name;
+		selt.qual1 = qual;
 		selt.qual2 = "";
 		selt.qual3 = "";
 		selt.qualCode = qual.code+"||||";
-		selt.setPage(1);
+		selt.setPage();
 	};
-
-	this.clickQual2 = function ($event,qual2,quel1) {
-
-		// 获取到当前点击元素在页面中的坐标
-		var off = $($event.target).offset();
-		console.log(off.top);
-		console.log(off.left);
-		selt.qual2 = qual2.name;
+	this.clickQual2 = function (qual2,quel1) {
+        selt.qual1 = quel1;
+		selt.qual2 = qual2;
+        selt.qual3 = "";
 		selt.qualCode = quel1.code+"||"+qual2.code+"||";
-		selt.qual=quel1.name;
-		selt.setPage(1);
+        $("#bdd_second_menu").hide();
+		selt.setPage();
 	};
-	this.cancleEmProvince = function () {
+    this.clickQual3 = function (qual3,qual2,quel1) {
+        selt.qual1 = quel1;
+        selt.qual2 = qual2;
+        selt.qual3 = qual3;
+        selt.qualCode = quel1.code+"||"+qual2.code+"||"+qual3.code;
+        $("#bdd_second_menu").hide();
+        selt.setPage();
+    };
+    this.cancelQUal = function () {
+        this.qualCode = "";
+        this.qual1 = "";
+        this.qual2 = "";
+        this.qual3 = "";
+        selt.setPage();
+    };
+    this.cancleEmQTwo = function () {
+        selt.qualCode = selt.qual1.code+"||||";
+        selt.qual2="";
+        selt.qual3="";
+        selt.setPage();
+    };
+    this.cancleEmQThree = function () {
+        selt.qualCode = selt.qual1.code+"||"+selt.qual2.code+"||";
+        selt.qual3="";
+        selt.setPage();
+    };
+    this.zzList = [];
+    this.zzOne = "";
+    this.zzTwo = "";
+    this.touchStart = function($event,qual2,qual1){
+        var elem = $event.target;
+        var grandFather = elem.parentNode.parentNode;
+        var aArr = grandFather.getElementsByTagName("a");
+        for(var i=0;i<aArr.length;i++){
+            var aElem = aArr[i];
+            aElem.parentNode.style.backgroundColor='#fff';
+            aElem.style.color='#000';
+        }
+        elem.parentNode.style.backgroundColor='#A7BC6D';
+        elem.style.color='#fff';
+        var off = $($event.target).offset();
+        var tocWidth = $($event.target).width();
+        console.log(off.top);
+        console.log(off.left);
+        console.log(tocWidth);
 
-		selt.province="";
-		selt.setPage(1);
+        selt.zzList = qual2.list;
+        selt.zzOne = qual1;
+        selt.zzTwo = qual2;
+        selt.setPage();
+        selt.setPosition(qual2.list,off.left,off.top,tocWidth);
+    };
+    this.setPosition = function(arr,offX,offY,tocWidth){
+        var secondMenu = document.getElementById('bdd_second_menu');
+        $('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
+        $('#bdd_second_menu').css('top',offY + 'px');
+        if(arr!=null && arr.length>0) {
+            $('#bdd_second_menu').css('border', '1px solid #ccc');
+            $('#bdd_second_menu').show();
+        }else{
+            //secondMenu.style.display='none';
+            $('#bdd_second_menu').hide();
+        }
+    };
+    //----资质---end---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	this.morePro = false;
+	this.moreProvince=function(morePro){
+        selt.morePro = !morePro;
 	};
-	this.cancleEmCity = function () {
-
-		selt.city="";
-		selt.setPage(1);
-	};
-	this.cancleEmQone = function () {
-
-		selt.qual1="";
-		selt.setPage(1);
-	};
-	this.cancleEmQTwo = function () {
-
-		selt.qual2="";
-		selt.setPage(1);
+	this.moreZz = false;
+	this.moreSelectZz=function(moreZz){
+		selt.moreZz = !moreZz;
 	};
 
 
 
-	$scope.touchStart=function($event,qual2){
-		var elem = $event.target;
-		var grandFather = elem.parentNode.parentNode;
-		var aArr = grandFather.getElementsByTagName("a");
-		for(var i=0;i<aArr.length;i++){
-			var aElem = aArr[i];
-			aElem.parentNode.style.backgroundColor='#fff';
-			aElem.style.color='#000';
-		}
-		elem.parentNode.style.backgroundColor='#A7BC6D';
-		elem.style.color='#fff';
-		var off = $($event.target).offset();
-		var tocWidth = $($event.target).width();
-		console.log(off.top);
-		console.log(off.left);
-		console.log(tocWidth);
-
-		selt.qual4 = qual2.list;
-		selt.setPage(1);
-
-		setPosition(qual2.list,off.left,off.top,tocWidth);
-	};
-
-	$scope.mouseIn=function(){
-		mourseMoveIn();
-	};
-	$scope.mouseOut=function(){
-		mourseMoveOut();
-	}
-	this.moreProvince=function($event){
-		var elem = $event.target;
-
-		changeStaus(elem);
 
 
-	}
-	this.moreSelectZz=function($event){
-		var elem = $event.target;
 
-		changeSelectStaus(elem);
 
-	}
 
-	this.clickQual3 = function (qual3,qual2,qual1) {
-		selt.qual2 = qual2.name;
-		selt.qual3 = qual3.name;
-		selt.qualCode = qual1.code+"||"+qual2.code+"||"+qual3.code;
-		$("#bdd_second_menu").hide();
 
-		selt.setPage(1);
-	};
 
-	this.cancelQUal = function () {
-		this.qualCode = "";
-		this.qual1 = "";
-		this.qual2 = "";
-		this.qual3 = "";
-		selt.setPage(1);
-	};
-	this.cancelFilter = function () {
-		this.regisAddress = "";
-		this.qualCode = "";
-		this.province = "";
-		this.city = "";
-		this.qual1 = "";
-		this.qual2 = "";
-		this.qual3 = "";
-		this.priceArea = "";
-		selt.setPage(1);
-	};
+
+	//----注册资金---
 	this.clickCapital = function (min,max) {
 		selt.minCapital = min;
 		selt.maxCapital = max;
 		selt.priceArea = min+"-"+max+"万";
-		selt.setPage(1);
+		selt.setPage();
 	};
 	this.clickPrice = function () {
 		selt.priceArea = "";
@@ -206,18 +251,26 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		}else{
 			this.maxCapital = null;
 		}
-		selt.setPage(1);
+		selt.setPage();
 	};
 	this.canclePrice = function () {
+        selt.priceArea = "";
 		selt.minPrice="";
 		selt.maxPrice="";
-
-		selt.setPage(1);
+        this.minCapital = 0;
+        this.maxCapital = null;
+		selt.setPage();
 	};
+    //----注册资金---end
+
+
+
+
+	//--翻页---
     this.companyList = [];
     this.busy = false;
     this.page = 1;
-	this.setPage = function (pageNo) {
+	this.setPage = function () {
         selt.companyList = [];
         selt.busy = false;
         selt.page = 1;
@@ -248,9 +301,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
                 selt.busy = false;
                 selt.page += 1;
                 setContentHeight(result.data);
-            }
+            }else{
+                selt.totalCount = 0;
+			}
         });
     };
+	//------------翻页----end
+
 
 
     this.logout = function () {
@@ -273,82 +330,6 @@ function setContentHeight(dataList){
 
 }
 
-function setPosition(arr,offX,offY,tocWidth){
-	var secondMenu = document.getElementById('bdd_second_menu');
-	$('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
-	//secondMenu.style.left = (offX + tocWidth +100) + 'px';
-	$('#bdd_second_menu').css('top',offY + 'px');
-//	secondMenu.style.top = (offY)+'px';
-	if(arr!=null && arr.length>0) {
-		$('#bdd_second_menu').css('border', '1px solid #ccc');
-		$('#bdd_second_menu').show();
-	}else{
-		//secondMenu.style.display='none';
-		$('#bdd_second_menu').hide();
-	}
-}
-
-
-(function ($) {
-	document.addEventListener('click',function (e) {
-		var parent=$(e.target).parents('#bdd_second_menu');
-		if(parent.length===0){
-			$('#bdd_second_menu').hide();
-
-		}
-	})
-})(jQuery);
 
 
 
-$('.bdd_drop_scroll').hover(
-	function(){
-		$('body').css('overflow', 'hidden');
-	},
-	function(){
-		$('body').css('overflow', 'auto');
-	});
-function mourseMoveIn(){
-	document.getElementsByTagName("html")[0].style.overflow="hidden";
-	document.getElementsByTagName("html")[0].style.height="100%";
-	document.getElementsByTagName("body")[0].style.overflow="hidden";
-	document.getElementsByTagName("body")[0].style.height="100%";
-}
-function mourseMoveOut(){
-	document.getElementsByTagName("html")[0].style.overflow="visible";
-	document.getElementsByTagName("html")[0].style.height="auto";
-	document.getElementsByTagName("body")[0].style.overflow="visible";
-	document.getElementsByTagName("body")[0].style.height="auto";
-}
-
-
-
-function changeStaus(obj){
-	var text = obj.innerText;
-	var morePro = document.getElementById("more-pro");
-	var moreCity = document.getElementById("bdd_dev_city");
-
-	if(text=="更多"){
-
-		$("#to-pro-more").html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
-		morePro.style.display="block";
-		moreCity.style.display="block";
-	}else{
-		$("#to-pro-more").html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
-		morePro.style.display="none";
-		moreCity.style.display="none";
-	}
-}
-
-function changeSelectStaus(obj){
-
-	var text = obj.innerText;
-	var morePro = document.getElementById("more-select-zz");
-	if(text=="更多"){
-		$('#more_select_zz').html('<div class="to_more">收起</div><div class="to_more to_top"></div>');
-		morePro.style.display="block";
-	}else{
-		$('#more_select_zz').html('<div class="to_more">更多</div><div class="to_more to_bottom"></div>');
-		morePro.style.display="none";
-	}
-}
