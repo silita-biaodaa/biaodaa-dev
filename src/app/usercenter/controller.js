@@ -36,6 +36,7 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
         }else{
             selt.cityList = area.list;
         }
+        this.findLinks(selt.province);
     };
     this.clickCity = function (city) {
         selt.regisAddress = selt.province+"||"+city;
@@ -43,11 +44,15 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
         selt.isCity = true;
         this.findLinks(selt.regisAddress);
     };
+    this.allArea = function () {
+        this.findLinks(null);
+    }
     //---省市----end
 
     this.findLinks = function(region){
         var params = {
-            region:region
+            region:region,
+            pageSize:32
         }
         $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
             console.log(result);
