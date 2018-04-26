@@ -74,7 +74,8 @@
 </div>
 <!--微信-->
 <div class="bdd_follow_dv">
-    <div class="bdd_follow bdd_follow_foll "><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
+    <div class="bdd_follow bdd_follow_foll " ng-if="ctrl.isFollow==true" ng-click="ctrl.collectionCompany()"><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
+    <div class="bdd_follow bdd_follow_foll " ng-if="ctrl.isFollow==false" ng-click="ctrl.cancelCollectionCompany()"><img src="../../../vendor/images/zb_btn_follow_pre.png" alt=""></div>
     <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_span"><img
             src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
     <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_wechat.png" alt=""></div>

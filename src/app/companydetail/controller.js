@@ -10,9 +10,45 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 	console.log("=====comId:"+comId);
 
 	var params = {};
+    this.isFollow = true;
 	$http.post("/company/"+comId,angular.toJson(params)).success(function (result) {
 		selt.company=result.data;
+		if(selt.company.collected){
+		    selt.isFollow = false;
+        }
 	});
+
+	//关注和取消关注
+
+    this.cancelCollectionCompany = function (){
+        var cancelParam = {companyid:comId};
+        $http.post("/userCenter/cancelCollectionCompany", angular.toJson(cancelParam)).success(function (result) {
+            console.log(result);
+            if(result.code==1){//取消成功
+                alert("取消收藏成功");
+                selt.isFollow = true;
+            }else{
+                alert(result.msg);
+            }
+        });
+    };
+
+    this.collectionCompany = function (){
+        var cancelParam = {companyid:comId};
+        $http.post("/userCenter/collectionCompany", angular.toJson(cancelParam)).success(function (result) {
+            console.log(result);
+            if(result.code==1){//成功
+                alert("收藏成功");
+                selt.isFollow = false;
+            }else{
+                alert(result.msg);
+            }
+        });
+    };
+
+
+
+
 
 	this.showType = 1;
 	selt.showTip = 1;
