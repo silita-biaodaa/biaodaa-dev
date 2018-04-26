@@ -1,12 +1,12 @@
 body{
     background-color:#f8f8f8;
 }
-/*µ×²¿*/
+/*ï¿½×²ï¿½*/
 
 .bdd_footer_left{
+    width: 100%;
     height:150px;
     overflow: hidden;
-    width: 100%;
     display: block;
     vertical-align: middle;
     background-color:#212121;
@@ -41,4 +41,7 @@ body{
 }
 .bdd_footer_news{
     width: 1200px;
-    margin: 0 auto;}
+    margin: 0 auto;
+}
+
+
