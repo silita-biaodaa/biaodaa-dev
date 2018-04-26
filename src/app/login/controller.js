@@ -26,12 +26,13 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
                 if (result.code == 0) {
                     alert(result.msg);
                 } else {
-                    userTemp = angular.toJson({
+                    var vo = angular.toJson({
                         "username": result.data.username,
                         "imgurl": result.data.imgurl
                     });
+                    userTemp = vo;
                     sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                    sessionStorage.setItem("userTemp", userTemp);
+                    sessionStorage.setItem("userTemp", vo);
                     window.location.href = "index.html#/home";
                 }
             });
@@ -39,10 +40,10 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
     }
 
     this.logout = function () {
-        sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("userTemp");
         userTemp = null;
         selt.user = null;
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("userTemp");
         window.location.href = "index.html#/home";
     };
 }]);

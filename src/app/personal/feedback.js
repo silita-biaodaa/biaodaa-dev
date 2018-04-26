@@ -16,7 +16,9 @@ app.controller('FeedbackCtrl', ['$http','$uibModal','$log','$scope','$document',
             var params = {
                 pid: username,
                 type: selt.type,
-                problem: selt.problem
+                problem: selt.problem,
+                loginChannel: '1003',
+                version:'2.0'
             };
             if (selt.problem == '' || selt.problem == undefined) {
                 alert('反馈内容不能为空！');

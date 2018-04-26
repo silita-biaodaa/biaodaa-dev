@@ -26,6 +26,8 @@ app.controller('MessagesCtrl', ['$http', '$uibModal', '$log', '$scope', '$docume
             isSystem: selt.isSystem
         };
 
+        console.log(selt.page);
+
         $http.post("/userCenter/listMessageByUserId", angular.toJson(paramsPage)).success(function (result) {
             var messageList = result.data;
             console.log(messageList);

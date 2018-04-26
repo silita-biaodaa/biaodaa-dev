@@ -326,6 +326,19 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
+        .state('Usercenter', {
+            url: '/usercenter',
+            templateUrl: window.rootSrc + 'app/usercenter/index.tpl.html',
+            controller: 'userCenterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/usercenter/controller.js'
+                    ]);
+                }]
+            }
+        })
+
 
     ;
     /**
