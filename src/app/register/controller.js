@@ -37,6 +37,9 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
      * 发验证码
      */
     this.sendVerCode = function () {
+        if(!RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$").test(selt.invitationPhone)) {
+            return;
+        }
         var params = {
             invitationPhone: selt.invitationPhone,
             type: 1

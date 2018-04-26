@@ -69,10 +69,10 @@
                 <form name="loginForm" novalidate ng-submit="ctrl.login(loginForm.$valid)">
                     <div class="bdd_logoin_banner_conter">
                         <div class="form-group">
-                            <input class="bdd_logoin_placeholder" name="username" ng-model="ctrl.username" type="text"
+                            <input class="bdd_logoin_placeholder" name="userphone" ng-model="ctrl.userphone" type="text"
                                    placeholder="用户名/邮箱/手机号" required ng-pattern="ctrl.mobileRegx"/>
-                            <span class="error" ng-show="loginForm.$submitted && loginForm.username.$error.required">*手机号不能为空</span>
-                            <span class="error" ng-show="loginForm.$submitted && loginForm.username.$error.pattern">*手机号不合法</span>
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.userphone.$error.required">*手机号不能为空</span>
+                            <span class="error" ng-show="loginForm.$submitted && loginForm.userphone.$error.pattern">*手机号不合法</span>
                         </div>
                         <div class="bdd_logoin_hr"></div>
                         <div class="form-group">
