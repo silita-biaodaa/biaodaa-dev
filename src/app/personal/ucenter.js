@@ -1,5 +1,6 @@
 app.controller('UcenterCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
     var selt = this;
+    
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
