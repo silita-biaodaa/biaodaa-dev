@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="../../../vendor/normalize.css/calendar.css"/>
 <link rel="stylesheet" href="../../../vendor/normalize.css/base.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/index2.css">
@@ -108,59 +109,76 @@
     . table-condensed {
         padding: 0 100px;
     }
-    .jd_layout{
+
+    .jd_layout {
         margin-top: 105px;
     }
-    .bdd_footer_news{
+
+    .bdd_footer_news {
         width: 1200px;
         margin: 0 auto;
     }
+    .txt-inline{
+        display: inline-block;
+        height: 70px;
+    }
+    .search-tender{
+        width:auto;
+        height:20px;
+        position: fixed;
+        background-color:#212121;
+        z-index: 1009;
+    }
+    .bdd-nav-search{
+        position: fixed;
+        z-index: 2000;
+    }
+    .bdd-nav-app{
+        margin-left: 350px;
+    }
 
+    .bdd-nav-search{
+        margin-left: 1100px;
+    }
+    .bdd_black{
+        width: 100px;
+        background: #212121;
+        border: 0px;
+    }
+    .bdd_select_op{
+        background: #212121;
+        border: 0px;
+        font-size: 16px;
+    }
+    .bdd_select_op>option{
+        background: #212121;
+        border: 0px;
+        font-size: 16px;
+    }
+    .bdd-nav-ser-div{
+        width: 230px;
+        background: #212121;
+        text-align: left;
+        padding-left: 0;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .bdd-nav-title-t{
+        line-height: 80px;
+    }
+    .bdd-nav-div{
+        margin-left: 200px;
+
+    }
 </style>
 
-<nav class="bdd-nav">
-    <div class="bdd-nav-div">
-        <div class="bdd-img-div">
-            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
-        </div>
-        <div class="bdd-nav-title"><a style="color:white" ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Usercenter">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide" id="box_action_translateY">
-            <div class="search-status">
-                <div class="search-filter">
-                    <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                    <ul class="options">
-                        <li><a href="javascript:;" data-rel="project">作品</a></li>
-                        <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                        <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                        <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                        <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                        <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                        <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                        <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                    </ul>
-                </div>
-                <div class="search-select">
-                    <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value=""
-                           name="keywords" id="keywords">
-                    <ul class="options" style="display: none;">
-                        <li><a href="javascript:;">app</a></li>
-                        <li><a href="javascript:;">logo</a></li>
-                        <li><a href="javascript:;">icon</a></li>
-                        <li><a href="javascript:;">AE</a></li>
-                        <li><a href="javascript:;">作品集</a></li>
-                    </ul>
-                </div>
-            </div>
-            <input type="hidden" name="type" value="project" id="sType"/>
-        </div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#" onclick="showSearch()"><img
-                src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
-        <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">
+<div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
+    <div class="bdd-nav-ser-div">
+        <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:800px;"><img
+                style="z-index: 1101;" src="../../../vendor/images/nav_icon_search.png" alt=""></a>
+        <div class="txt-inline">APP下载</div>
+        <div class="txt-inline">
             <div ng-if="$ctrl.user == null">
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
@@ -171,6 +189,28 @@
                 <a href="">个人中心</a>
             </div>
         </div>
+    </div>
+</div>
+<div id="divD" class="search-tender">
+    <div class="txt-inline"><select class="bdd_select_op">
+        <option>搜标讯</option>
+        <option>招标</option>
+        <option>中标</option>
+    </select></div>
+    <div class="txt-inline"><input class="bdd_black" type="text" placeholder="请输入提示信息"/></div>
+</div>
+
+
+<nav class="bdd-nav">
+    <div class="bdd-nav-div">
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
+        </div>
+        <div class="bdd-nav-title"><a style="color:white" ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
     </div>
 </nav>
 <div class="jd_layout">
@@ -230,9 +270,7 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'3')">采购</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'1')">设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
-                <div class="bdd_win_header_right">
-                    <a href="#/tender"><span style="font-size: 16px;color: #ccbebe">更多&nbsp;</span></a>
-                    <img src="../../../vendor/images/icon_arrow_right.png" alt="">
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
             <div class="bdd_win_conter" style="margin-top:10px" ng-repeat="notice in $ctrl.zhongbiaoList">
@@ -240,9 +278,11 @@
                         ng-bind="notice.title"></span></a></div>
                 <div class="bdd_text_y">中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                 <div class="bdd_text_p">项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
-                <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
-                <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
 
             <div class="bdd_win_header">
@@ -255,9 +295,7 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'1')">设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
 
-                <div class="bdd_win_header_right">
-                    <a href="#/tender"><span style="font-size: 16px;color: #ccbebe">更多&nbsp;</span></a>
-                    <img src="../../../vendor/images/icon_arrow_right.png" alt="">
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
 
@@ -266,9 +304,11 @@
                         ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
                 <div class="bdd_text_y">资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
                 <div class="bdd_text_p">评标办法：<span>{{zhaobiao.pbMode ? zhaobiao.pbMode:'详见原文'}}</span></div>
-                <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
-                <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
         </div>
     </div>
@@ -290,8 +330,7 @@
 
             <div class="bdd_infor_a">
                 <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>最新资讯</div>
-                <div style="font-size: 16px;color:#ccbebe" style="font-size: 16px" class="bdd_infor_a_right">
-                    <a href="#/workmore"><span style="font-size: 16px;color: #ccbebe">更多&nbsp;></span></a>
+                <div style="font-size: 16px;color:#ccbebe" style="font-size: 16px" class="bdd_infor_a_right">更多&nbsp;>
                 </div>
             </div>
 
@@ -325,9 +364,7 @@
 
             <div style="margin-bottom: 30px;" class="bdd_infor_a">
                 <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>常用应用</div>
-                <div style="font-size: 16px;color:#ccbebe" class="bdd_infor_a_right">
-                    <a href="#/usercenter"><span style="font-size: 16px;color: #ccbebe">更多&nbsp;></span></a>
-                </div>
+                <div style="font-size: 16px;color:#ccbebe" class="bdd_infor_a_right">更多&nbsp;></div>
             </div>
 
             <div class="bdd_use">
@@ -363,15 +400,22 @@
 </div>
 <div class="bdd_footer_left">
     <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png"
+                                                         alt=""/></a></div>
         <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
         <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
+                                                                         src="../../../vendor/images/bottom_icon_andriod.png"
+                                                                         alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a>
+        </div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../../../vendor/images/bottom_icon_wechat.png"
+                                                         alt=""/></a></div>
     </div>
 </div>
 <script type="text/javascript" src="../../../vendor/js/jquery.js"></script>
@@ -518,4 +562,25 @@
             }
         }, 15);
     }
+
+
+
+    var isShow = false;
+    var left = $("#btnFadein").offset().left;
+    var top = $("#btnFadein").offset().top;
+    $("#divD").css('left',left);
+    $("#divD").css('top',top);
+    console.log(left+':'+top);
+    $("#divD").css('margin-top','40px');
+    $("#btnFadein").click(function(){
+        if(isShow){
+            $("#divD").animate({left:(left)+'px'}).fadeOut("fast");
+        }else{
+            $("#divD").animate({left:(left)+'px'}).fadeIn("fast");
+            //$("#divD").css('left','500px');
+            $("#divD").animate({left:left-180}).fadeIn("fast");
+        }
+        isShow = !isShow;
+
+    });
 </script>
