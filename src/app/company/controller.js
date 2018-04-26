@@ -243,11 +243,18 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 		selt.priceArea = "";
 		if(selt.minPrice&&selt.minPrice!=""){
 			selt.minCapital = selt.minPrice;
+            selt.priceArea = selt.minPrice+"万以上";
 		}else{
 			selt.minCapital = 0;
 		}
 		if(selt.maxPrice&&selt.maxPrice!=""){
 			selt.maxCapital = selt.maxPrice;
+			if(selt.minPrice&&selt.minPrice!=""){
+                selt.priceArea = selt.minPrice+"-"+selt.maxPrice+"万";
+            }else{
+                selt.priceArea = selt.maxPrice+"万以下";
+            }
+
 		}else{
 			this.maxCapital = null;
 		}
