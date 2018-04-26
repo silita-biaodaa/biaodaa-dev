@@ -47,7 +47,7 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
     /**
      * 找回密码
      */
-    this.forget = function () {
+    this.forget = function (valid) {
         var params = {
             version: "1",
             loginchannel: "1003",
@@ -55,14 +55,15 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
             userpass: selt.userpass,
             invitationCode: selt.invitationCode
         };
-
-        $http.post("/authorize/forgotPassword", angular.toJson(params)).success(function (result) {
-            if (result.code == 0) {
-                alert(result.msg);
-            } else {
-                window.location.href = "index.html#/login";
-            }
-        });
+        if (valid) {
+            $http.post("/authorize/forgotPassword", angular.toJson(params)).success(function (result) {
+                if (result.code == 0) {
+                    alert(result.msg);
+                } else {
+                    window.location.href = "index.html#/login";
+                }
+            });
+        }
     }
 
 }]);

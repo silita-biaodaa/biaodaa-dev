@@ -13,7 +13,7 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
     /**
      * 登录
      */
-    this.login = function () {
+    this.login = function (valid) {
         var params = {
             version: "0",
             loginchannel: "1003",
@@ -21,19 +21,21 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
             userpass: selt.userpass
         };
 
-        $http.post("/authorize/userLogin", angular.toJson(params)).success(function (result) {
-            if (result.code == 0) {
-                alert(result.msg);
-            } else {
-                userTemp = angular.toJson({
-                    "username": result.data.username,
-                    "imgurl": result.data.imgurl
-                });
-                sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                sessionStorage.setItem("userTemp", userTemp);
-                window.location.href = "index.html#/home";
-            }
-        });
+        if (valid) {
+            $http.post("/authorize/userLogin", angular.toJson(params)).success(function (result) {
+                if (result.code == 0) {
+                    alert(result.msg);
+                } else {
+                    userTemp = angular.toJson({
+                        "username": result.data.username,
+                        "imgurl": result.data.imgurl
+                    });
+                    sessionStorage.setItem("X-TOKEN", result.data.xtoken);
+                    sessionStorage.setItem("userTemp", userTemp);
+                    window.location.href = "index.html#/home";
+                }
+            });
+        }
     }
 
     this.logout = function () {

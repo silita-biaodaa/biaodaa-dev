@@ -98,7 +98,7 @@
 <div class="bdd_binding_content">
     <div class="bdd_binding_content_conter">
         <div class="bdd_binding_content_conter_header">忘记密码</div>
-        <form name="forgetForm" ng-submit="ctrl.forget()">
+        <form name="forgetForm" novalidate ng-submit="ctrl.forget(forgetForm.$valid)">
             <div class="bdd_binding_content_plone">
                 <div class="form-group">
                     <input class="bdd_logoin_placeholder" name="invitationPhone" ng-model="ctrl.invitationPhone" type="text"

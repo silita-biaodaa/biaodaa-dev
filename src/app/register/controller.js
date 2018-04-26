@@ -56,7 +56,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     /**
      * 注册
      */
-    this.register = function () {
+    this.register = function (valid) {
         var params = {
             version: "0",
             loginchannel: "1003",
@@ -66,20 +66,22 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             invitationCode: selt.invitationCode
         };
 
-        $http.post("/authorize/userRegister", angular.toJson(params)).success(function (result) {
-            if (result.code == 0) {
-                alert(result.msg);
-            } else {
-                alert(result.msg);
-                userTemp = angular.toJson({
-                    "username": result.data.username,
-                    "imgurl": result.data.imgurl
-                });
-                sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                sessionStorage.setItem("userTemp", userTemp);
-                window.location.href = "index.html#/home";
-            }
-        });
+        if (valid) {
+            $http.post("/authorize/userRegister", angular.toJson(params)).success(function (result) {
+                if (result.code == 0) {
+                    alert(result.msg);
+                } else {
+                    alert(result.msg);
+                    userTemp = angular.toJson({
+                        "username": result.data.username,
+                        "imgurl": result.data.imgurl
+                    });
+                    sessionStorage.setItem("X-TOKEN", result.data.xtoken);
+                    sessionStorage.setItem("userTemp", userTemp);
+                    window.location.href = "index.html#/home";
+                }
+            });
+        }
     }
 
     this.logout = function () {
