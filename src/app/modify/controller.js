@@ -75,7 +75,6 @@ app.controller('ModifyCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
                     sessionStorage.removeItem("userTemp");
                     alert(result.msg);
                     window.location.href = "index.html#/login";
-
                 }
             });
         }
