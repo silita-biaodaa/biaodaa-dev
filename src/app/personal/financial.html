@@ -1,9 +1,17 @@
 <div class="bdd_vitality_right_header">
     <div class="bdd_vitality_right_hrader_li bdd_vita_right" >申请保证金借款</div>
     <div class="bdd_vitality_hr"></div>
-    <div class="bdd_fin_nav">
+
         <div class="bdd_fin_parent" id="parent">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区
-            <select class="bdd_fin_select">
+            <select class="bdd_fin_select" ng-model="province" ng-options="province.name for province in selectDatas">
+                <option value="">请选择</option>
+            </select>
+            <select class="bdd_fin_select" ng-model="city" ng-options="city.name for city in province.citys">
+                <option value="">请选择</option>
+            </select>
+        </div>
+        <div class="bdd_fin_parent" id="par">项目名称
+            <select name="projName" class="bdd_fin_select">
                 <option>湖南</option>
                 <option>湖南</option>
                 <option>湖南</option>
@@ -16,26 +24,11 @@
                 <option>湖南</option>
             </select>
         </div>
-        <div class="bdd_fin_parent" id="par">项目名称
-            <select class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
-        </div>
         <div class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
-            <select class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
+            <input type="text">
         </div>
         <div class="bdd_fin_parent" id="p">联系方式
-            <select class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
+            <input type="text">
         </div>
         <div class="bdd_fin_parent" id="prt">借款时间
             <select class="bdd_fin_select">
@@ -44,6 +37,5 @@
                 <option>湖南</option>
             </select>
         </div>
-
     </div>
-</div>
+<div class="bdd_fin_nav"></div>
