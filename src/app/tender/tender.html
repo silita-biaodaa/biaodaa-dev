@@ -1,3 +1,4 @@
+
 <style type="text/css">
     @import url("../../../vendor/normalize.css/bdd_scerrn.css");
 </style>
@@ -6,6 +7,12 @@
 
     .bdd_adver_header{
         overflow: hidden;
+    }
+    .bdd_company_body{
+        margin-top: 180px;
+    }
+    .text-inline{
+        display: inline-block;
     }
 </style>
 
@@ -59,12 +66,14 @@
 
 
 <!--公告-->
-<div style="width:100%;text-align:center;position: fixed;margin: 0px auto" class="bdd_announcement">
+<div style="width:100%;text-align:center;position: fixed;margin: 100px auto" class="bdd_announcement">
     <div class="bdd_announcement_left bdd_announcement_mess {{tender.paramsPage.type==0 ? 'bdd_un_active':''}}"  ng-click="tender.queryList(0)">招标公告</div>
 
     <div class="bdd_announcement_left {{tender.paramsPage.type==2 ? 'bdd_un_active':''}}" ng-click="tender.queryList(2)">中标公告</div>
-   <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
+    <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
+
+
 <!--筛选框-->
 <div class="bdd_company_body">
     <div  class="bg-color">
@@ -102,10 +111,22 @@
                         <a class="span-cursor"ng-click="$ctrl.clickCity(city)"ng-bind="city"></a>
                     </div>
                 </div>
-
             </div>
             <div class="bdd_area_header_select_line"></div>
-
+            <div class="bdd_area_left">
+                <div class="bdd_content_h">评标办法</div>
+                <div class="text-inline"><input type="checkbox" name="a1" value="1" /> 合理低价法1</div>
+                <div class="text-inline"><input type="checkbox" name="a2" value="2" /> 合理低价法2</div>
+                <div class="text-inline"><input type="checkbox" name="a3" value="3" /> 合理低价法3</div>
+                <div class="text-inline"><input type="checkbox" name="a4" value="4" /> 合理低价法4</div>
+                <div class="text-inline"><input type="checkbox" name="a5" value="5" /> 合理低价法5</div>
+                <div class="text-inline"><input type="checkbox" name="a6" value="6" /> 合理低价法6</div>
+                <div class="text-inline"><input type="checkbox" name="a7" value="7" /> 合理低价法7</div>
+                <div class="text-inline"><input type="checkbox" name="a8" value="8" /> 合理低价法8</div>
+                <div class="text-inline"><input type="checkbox" name="a9" value="9" /> 合理低价法9</div>
+                <div class="text-inline"><input type="checkbox" name="a10" value="10" /> 合理低价法10</div>
+                <input type=checkbox  id=checkbox value="多选" checked=true />
+            </div>
             <!--筛选框-->
             <div class="bdd_area_li bdd_letter_li_ti">
                 <div class="bdd_area_header_select_li">
@@ -165,7 +186,7 @@
             <div class="bdd_area_header_select_li">
                 <div class="bdd_area_header_select_line2"></div>
                 <div class="bdd_area_left">
-                    <div class="bdd_area_content bdd_content_h">注册资金：</div>
+                    <div class="bdd_area_content bdd_content_h">标的金额：</div>
                     <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font" placeholder="最低价"
                                                                        type="text"
                                                                        ng-model="$ctrl.minPrice"><span
@@ -178,7 +199,33 @@
                                                                       ng-click="$ctrl.clickPrice()">&nbsp;<span
                             class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
                 </div>
-                div
+
+                <div class="bdd_area_left bdd_area_left_pad">
+                    <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(0,200)">0-200万
+                    </div>
+                    <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
+                         ng-click="$ctrl.clickCapital(200,500)">200-500万
+                    </div>
+                    <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(500,1000)">
+                        500-1000万
+                    </div>
+                </div>
+                <div class="bdd_area_header_select_line2"></div>
+                <div class="bdd_area_left">
+                    <div class="bdd_area_content bdd_content_h">评标办法：</div>
+                    <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font" placeholder="最低价"
+                                                                       type="text"
+                                                                       ng-model="$ctrl.minPrice"><span
+                            style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
+                    </div>
+                    <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高价"
+                                                                      type="text"
+                                                                      ng-model="$ctrl.maxPrice"></div>
+                    <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认"
+                                                                      ng-click="$ctrl.clickPrice()">&nbsp;<span
+                            class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
+                </div>
+
                 <div class="bdd_area_left bdd_area_left_pad">
                     <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(0,200)">0-200万
                     </div>
