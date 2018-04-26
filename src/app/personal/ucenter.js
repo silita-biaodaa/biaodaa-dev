@@ -7,6 +7,12 @@ app.controller('UcenterCtrl', ['$http','$uibModal','$log','$scope','$document', 
     }
 
 
+    $http.post("/userCenter/getUserTemp",null).success(function (result) {
+        console.log(result.data);
+        $scope.ucenter = result.data;
+    });
+
+
 
 
 
