@@ -1,11 +1,18 @@
 <style type="text/css">
-.my_text{
-    width:200px;
-    height:25px;
-    margin-left: 50px;
-    font-size: 14px;
-    color: #0f0f0f;
-}
+    .my_text{
+        width:200px;
+        height:25px;
+        margin-left: 50px;
+        font-size: 14px;
+        color: #0f0f0f;
+    }
+    .photo-edit{
+        height: 92px;
+        padding-top: 160px;
+        margin-left: -85px;
+        width: 86px;
+        cursor: pointer;
+    }
 </style>
 <div class="bdd_vitality_right_header">
     <div class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.userDetail()">账户信息
@@ -16,6 +23,10 @@
 </div>
 <div class="bdd_vitality_conter">
     <div class="bdd_perso_left bdd_perso_news"><img src="{{ctrl.user.imgurl}}"/> </div>
+    <label class="photo-edit">
+        <input name="file" type="file" ng-hide="true" onchange="angular.element(this).scope().upload()">
+        <p>设置头像</p>
+    </label>
 </div>
 <div class="bdd_vita_footer">
     <div class="bdd_vita_footer_title">昵&nbsp;&nbsp;&nbsp;称
