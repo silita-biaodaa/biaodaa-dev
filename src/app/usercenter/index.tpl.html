@@ -144,7 +144,7 @@
         </div>
         <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
         <div class="bdd-nav-title"><a  ui-sref="tender">标讯</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
         <div class="bdd-nav-title"><a  ui-sref="trend">动态</a></div>
         <div class="bdd-nav-title"><a style="color:white" ui-sref="UserCenter">应用</a></div>
         <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
@@ -192,20 +192,8 @@
             <div class="bdd_area_boder_span">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
             <div class="bdd_area_aode">
                 <div class="bdd_area_boder_text">全部</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
-                <div class="bdd_area_boder_text">湖南</div>
+                <div class="bdd_area_boder_text" ng-repeat="area in ctrl.areaList" ng-bind="area.name|limitTo:2"></div>
+
 
 
 
