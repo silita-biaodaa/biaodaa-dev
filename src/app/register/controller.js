@@ -1,31 +1,35 @@
 // app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$document', function ($http, $uibModal, $log, $scope, $document) {
-app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document','username', function ($http, $log, $scope, $interval, $document,username) {
+app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$document', 'userTemp', function ($http, $log, $scope, $interval, $document, userTemp) {
 
     var selt = this;
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+
+    selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
+    selt.pwdRegx = "[a-zA-Z0-9]*";
+    selt.codeRegx = "[0-9]{6}";
+
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
+
     var second = 59;
     var timerHandler;
     selt.isDisable = false;
     selt.description = "获取验证码";
 
-    function checkCode(){
+    function checkCode() {
         timerHandler = $interval(function () {
-           if(second <= 0) {
-               $interval.cancel(timerHandler);
-               second = 59;
-               selt.isDisable = false;
-               selt.description = "获取验证码";
-           } else {
-               selt.description = second + "秒后重发";
-               second--;
-               selt.isDisable = true;
-           }
+            if (second <= 0) {
+                $interval.cancel(timerHandler);
+                second = 59;
+                selt.isDisable = false;
+                selt.description = "获取验证码";
+            } else {
+                selt.description = second + "秒后重发";
+                second--;
+                selt.isDisable = true;
+            }
         }, 1000, 100);
     }
 
@@ -52,7 +56,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     /**
      * 注册
      */
-    this.register = function () {
+    this.register = function (valid) {
         var params = {
             version: "0",
             loginchannel: "1003",
@@ -62,21 +66,30 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
             invitationCode: selt.invitationCode
         };
 
-        $http.post("/authorize/userRegister", angular.toJson(params)).success(function (result) {
-            if (result.code == 0) {
-                alert(result.msg);
-            } else {
-                sessionStorage.setItem("X-TOKEN", result.data.xtoken);
-                window.location.href = "index.html#/home";
-            }
-        });
+        if (valid) {
+            $http.post("/authorize/userRegister", angular.toJson(params)).success(function (result) {
+                if (result.code == 0) {
+                    alert(result.msg);
+                } else {
+                    alert(result.msg);
+                    userTemp = angular.toJson({
+                        "username": result.data.username,
+                        "imgurl": result.data.imgurl
+                    });
+                    sessionStorage.setItem("X-TOKEN", result.data.xtoken);
+                    sessionStorage.setItem("userTemp", userTemp);
+                    window.location.href = "index.html#/home";
+                }
+            });
+        }
     }
-    this.logout = function() {
+
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 
 }]);

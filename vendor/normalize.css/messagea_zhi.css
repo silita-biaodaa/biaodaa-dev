@@ -1,4 +1,4 @@
-﻿/*个人资料*/
+﻿/*个人中心*/
 body{
     background-color: #F8F8F8;
 
@@ -7,7 +7,8 @@ body{
 .bdd_perso_nav_header{
     width: 1200px;
     margin: 0 auto;
-    margin-bottom:140px;
+    margin-bottom:140PX;
+
 
 }
 .bdd_perso_nav_news{
@@ -17,7 +18,7 @@ body{
     margin:0 auto;
     position: absolute;
     top: 200px;
-    left:10%;
+    left:21.6%;
     border-radius: 5px;
 
 }
@@ -88,7 +89,7 @@ body{
 .bdd_vitality_right{
     float: left;
     width: 900px;
-    height: 550px;
+    height: 600px;
     margin-left:19px;
     background-color: white;
 }
@@ -122,45 +123,60 @@ body{
     float: left;
     padding:20px 0 0 40px;
 }
-.bdd_vitality_conter{
-    width:900px;
-    height:200px;
-
-}
-.bdd_vitality_conter_span{
-    margin: 0 auto;
-}
-.bdd_perso_news{
-    margin-left:400px;
-}
-.bdd_vita_footer_title{
-    color: #ccbebe;
-    font-size: 18px;
-    line-height: 40px;
-    margin-left:30px;
-}
-.bdd_vita_footer_title_aido{
+/*下拉框*/
+.bdd_qinximessage_border{
     width: 900px;
-    height: 50px;
-    margin-top:80px;
+    height: 173px;
 
 }
-.bdd_vita_footer_title_text{
-    width: 100px;
-    height: 30px;
-    background-color: #cea63f;
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: 16px;
-    text-align: center;
-    padding-top:3px;
-    margin-left:790px;
-    margin-top:30px;
+.bdd_qinximessage_boder_news{
+    width: 840px;
+    height:173px;
+    margin: 0 auto;
+
 }
-.bdd_vitality_hr{
-    border-bottom: 1px solid #ccc;
-    opacity: 0.5;
-    padding-top:10px;
+.bdd_qinximessage_text{
+    font-size: 18px;
+    color: #4d3a3a;
+}
+.bdd_qinximessage_tet{
+    margin-top:30px;
+    font-size: 14px;
+    color: #4d3a3a;
+    letter-spacing:1px;
+    font-family: Arial;
+}
+.bdd_qinximessage_br{
+    width: 840px;
+    height: 1px;
+    background-color:#F1F1F1 ;
+    margin-top:40px;
+
+}
+.bdd_vitality_vita_br{
+    width: 840px;
+    height: 1px;
+    background-color:#F1F1F1 ;
+
+    margin: 0 auto;
+    margin-top:-22px;
+
+}
+.bdd_qinximessage_text_side{
+    width: 840px;
+    height: 20px;
+    overflow: hidden;
+
+}
+.bdd_qinximessage_text{
+    float: left;
+    font-family: Arial;
+}
+.bdd_qinximessage_data{
+    float: right;
+    font-size: 16px;
+    color: #ccbebe;
+    font-family: Arial;
 }
 .bdd_perso_piv_pic{
     width: 100%;

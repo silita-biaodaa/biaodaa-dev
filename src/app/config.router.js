@@ -8,15 +8,15 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
-app.constant('username', sessionStorage.getItem("username"));
+app.constant('userTemp', sessionStorage.getItem("userTemp"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
-     $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
+    // $httpProvider.defaults.headers.common = {'X-TOKEN': 'biaodaaTestToken'};
     // $httpProvider.interceptors.push('loadingInterceptor');
-    //$httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
+    $httpProvider.defaults.headers.common = { 'X-TOKEN' : sessionStorage.getItem("X-TOKEN") }
     /**
      * 定义路由
      */
@@ -61,6 +61,23 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
+
+        .state('CompanyTop', {
+            url: '/companyTop',
+            templateUrl: window.rootSrc + 'app/company/companyTop.html',
+
+            // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
+            controller: 'CompanyTopCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/company/companyTop.js'
+                    ]);
+                }]
+            }
+        })
+
+
         .state('home', {
             url: '/home',
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
@@ -101,17 +118,17 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         }).state('TenderSay', {
-            url: '/tenderSay/:id/:type',
-            templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
-            controller: 'TenderSayCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/tender/controller.js'
-                    ]);
-                }]
-            }
-        }).state('TenderDtail', {
+        url: '/tenderSay/:id/:type',
+        templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
+        controller: 'TenderSayCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    }).state('TenderDtail', {
         url: '/tenderDetail/:id',
         templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
         controller: 'tenderDetailCtrl as ctrl',
@@ -134,17 +151,17 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }]
         }
     }).state('Winbding', {
-            url: '/winbding/:id',
-            templateUrl: window.rootSrc + 'app/tender/winbding.html',
-            controller: 'WinbdingCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/tender/controller.js'
-                    ]);
-                }]
-            }
-        })
+        url: '/winbding/:id',
+        templateUrl: window.rootSrc + 'app/tender/winbding.html',
+        controller: 'WinbdingCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    })
         .state('Login', {
             url: '/login',
             templateUrl: window.rootSrc + 'app/login/bdd_login.html',
@@ -168,7 +185,20 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        }) .state('workmore', {
+        })
+        .state('Forget', {
+            url: '/forget',
+            templateUrl: window.rootSrc + 'app/forget/bdd_forget.html',
+            controller: 'ForgetCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/forget/controller.js'
+                    ]);
+                }]
+            }
+        })
+        .state('workmore', {
             url: '/workmore',
             templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
             controller: 'WorkMoreCtrl as ctrl',
@@ -180,17 +210,19 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         }) .state('workmoreDetail', {
-            url: '/workmoreDetail/:id',
-            templateUrl: window.rootSrc + 'app/workmore/detail.html',
-            controller: 'WorkMoreDetailCtrl as ctrl',
-            resolve: {
-                load: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'app/workmore/controller.js'
-                    ]);
-                }]
-            }
-        }).state('society', {
+        url: '/workmoreDetail/:id',
+        templateUrl: window.rootSrc + 'app/workmore/detail.html',
+        controller: 'WorkMoreDetailCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/workmore/controller.js'
+                ]);
+            }]
+        }
+    })
+
+        .state('society', {
             url: '/society',
             templateUrl: window.rootSrc + 'app/society/index.tpl.html',
             controller: 'SocietyCtrl as ctrl',
@@ -201,7 +233,94 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                     ]);
                 }]
             }
-        });
+        })
+
+        .state('ucenter', {
+            url: '/ucenter',
+            templateUrl: window.rootSrc + 'app/personal/ucenter.html',
+            controller: 'UcenterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/ucenter.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.feedback', {
+            url: '/feedback',
+            templateUrl: window.rootSrc + 'app/personal/feedback.html',
+            controller: 'FeedbackCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/feedback.js'
+                    ]);
+                }]
+            }
+        })
+
+
+
+        .state('ucenter.financial', {
+            url: '/financial',
+            templateUrl: window.rootSrc + 'app/personal/financial.html',
+            controller: 'FinancialCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/financial.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.myfollow', {
+            url: '/myfollow',
+            templateUrl: window.rootSrc + 'app/personal/myfollow.html',
+            controller: 'MyfollowCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/myfollow.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('ucenter.personInfo', {
+            url: '/personInfo',
+            templateUrl: window.rootSrc + 'app/personal/personInfo.html',
+            controller: 'PersonInfoCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/personInfo.js'
+                    ]);
+                }]
+            }
+        })
+        .state('ucenter.messages', {
+            url: '/messages',
+            templateUrl: window.rootSrc + 'app/personal/messages.html',
+            controller: 'MessagesCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/personal/messages.js'
+                    ]);
+                }]
+            }
+        })
+
+    ;
+
+
+
+
+
+    ;
     /**
      * 什么都匹配不到的时候就跳转到首页
      */

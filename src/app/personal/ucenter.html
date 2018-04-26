@@ -1,4 +1,7 @@
-﻿<!--头部-->
+<!--头部-->
+<div class="bdd_perso_piv"></div>
+
+
 <nav class="bdd-nav">
     <!--<div class="bdd_perso_piv">  <p style="background-image: url(../../../vendor/images/wode_bg.png);width: 1920px;height: 349px;"></p></div>-->
     <div class="bdd-nav-div">
@@ -34,16 +37,14 @@
         <div class="bdd-nav-title bdd-nav-right">登录/注册</div>
     </div>
 </nav>
-</div>
-</div>
+
 <div class="bdd_perso_piv">
     <img class="bdd_perso_piv_pic" src="../../../vendor/images/wode_bg.png" alt="">
 </div>
-
 <!--nav-->
-<div class="bdd_perso_nav_header">
+<div>
     <div class="bdd_perso_nav_news">
-        <div class="bdd_perso_nav_head">
+        <div>
             <div class="bdd_perso_left"></div>
             <div class="bdd_perso_right">
                 <div class="bdd_perso_anv_li bdd_perso_color">希希</div>
@@ -75,67 +76,15 @@
     <!--个人资料-->
     <div class="bdd_vitality_zi">
         <div class="bdd_vitality_left">
-            <li  class="bdd_vita_list"><a href="#">个人资料</a></li>
-            <li class="bdd_vita_list"><a href="#">我的资质</a></li>
-            <li class="bdd_vita_list"><a href="#">我的行程</a></li>
-            <li class="bdd_vita_list" ><a href="#">我的定制</a></li>
-            <li class="bdd_vita_list"><a href="#">分析报告</a></li>
-            <li style="background-color: #212121" class="bdd_vita_list"><a style="color:white "  href="#">金融服务</a></li>
-            <li class="bdd_vita_list"><a href="#">消息通知</a></li>
-            <li class="bdd_vita_list"><a href="#">帮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;助</a></li>
-            <li class="bdd_vita_list"><a  href="#">意见反馈</a></li>
+            <li class="bdd_vita_list"><a ui-sref=".personInfo">个人资料</a></li>
+            <li class="bdd_vita_list"><a ui-sref=".financial">金融服务</a></li>
+            <li class="bdd_vita_list"><a ui-sref=".messages">消息通知</a></li>
+            <li class="bdd_vita_list"><a ui-sref=".feedback">意见反馈</a></li>
+            <li class="bdd_vita_list"><a ui-sref=".myfollow">我的关注</a></li>
+            <li style="background-color: #212121;" class="bdd_vita_list"><a style="color: white" ui-sref=".feedback">意见反馈</a></li>
 
         </div>
-        <div class="bdd_vitality_right">
-            <div class="bdd_vitality_right_header">
-                <div class="bdd_vitality_right_hrader_li bdd_vita_right" >申请保证金借款</div>
-                <div class="bdd_vitality_hr"></div>
-                <div class="bdd_fin_nav">
-                    <div class="bdd_fin_parent" id="parent">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-                    <div class="bdd_fin_parent" id="paren">开标时间
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-                    <div class="bdd_fin_parent" id="par">项目名称
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-                    <div class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-                    <div class="bdd_fin_parent" id="p">联系方式
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-                    <div class="bdd_fin_parent" id="prt">借款时间
-                        <select class="bdd_fin_select">
-                            <option>湖南</option>
-                            <option>湖南</option>
-                            <option>湖南</option>
-                        </select>
-                    </div>
-
-                </div>
-            </div>
+        <div class="bdd_vitality_right" ui-view="">
 
         </div>
 

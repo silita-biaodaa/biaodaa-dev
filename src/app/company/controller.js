@@ -1,12 +1,10 @@
-app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'username',function($http,$uibModal, $log, $scope,$document,username) {
+app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
 	var selt = this;
-	if(username != null && username != '') {
-		selt.user = {
-			username : username
-		};
-	} else {
-		selt.user = null;
-	}
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
+    } else {
+        selt.user = null;
+    }
 
 	$http.get("/company/filter").success(function (result) {
 		console.log(result.data.area);
@@ -240,15 +238,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
         $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
             var companyList = result.data;
-            if(companyList!=null){
-                for (var i = 0; i < companyList.length; i++) {
-                    //原有列表数据再加上新获取数据组成新的列表数据
-                    selt.companyList.push(companyList[i]);
-                }
+            if(companyList!=null&&selt.page==result.pageNum){
+                angular.forEach(companyList,function(company){
+                    selt.companyList.push(company);
+                });
                 selt.totalCount = result.total;
                 selt.pageSize = result.pageSize;;
                 selt.pageNo = result.pageNum;
-                selt.after = "t3_" + selt.companyList[selt.companyList.length - 1].id;
                 selt.busy = false;
                 selt.page += 1;
                 setContentHeight(result.data);
@@ -257,13 +253,13 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
     };
 
 
-	this.logout = function() {
-		sessionStorage.removeItem("X-TOKEN");
-		sessionStorage.removeItem("username");
-		username = "";
-		selt.user = null;
-		window.location.href="index.html#/home";
-	};
+    this.logout = function () {
+        sessionStorage.removeItem("X-TOKEN");
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
+        selt.user = null;
+        window.location.href = "index.html#/home";
+    };
 }]);
 
 function setContentHeight(dataList){

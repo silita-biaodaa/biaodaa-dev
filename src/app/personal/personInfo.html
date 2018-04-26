@@ -1,0 +1,40 @@
+<style type="text/css">
+.my_text{
+    width:200px;
+    height:25px;
+    margin-left: 50px;
+    font-size: 14px;
+    color: #0f0f0f;
+}
+</style>
+<div class="bdd_vitality_right_header">
+    <div class="bdd_vitality_right_hrader_li bdd_vita_right" ng-click="ctrl.userDetail()">账户信息
+        <div class="bdd_vita_span"></div>
+    </div>
+    <div class="bdd_vitality_right_hrader_li bdd_vita_top">社交账户授权</div>
+    <div class="bdd_vitality_hr"></div>
+</div>
+<div class="bdd_vitality_conter">
+    <div class="bdd_perso_left bdd_perso_news"></div>
+</div>
+<div class="bdd_vita_footer">
+    <div class="bdd_vita_footer_title">昵&nbsp;&nbsp;&nbsp;称
+        <span style="color:#4d3a3a;font-size: 16px;padding-left: 50px; " ng-show="name_hide">{{ctrl.user.username}}</span>
+        <span style="font-size: 14px;color: #cea63f;padding-left: 30px;" ng-click="toggle()" ng-show="name_hide">修改</span>
+        <input  class="my_text" type="text" ng-show="visible" id = "user_name" placeholder="请输入昵称"/>
+        <span style="font-size: 14px;color: #cea63f;padding-left: 30px;" ng-show="visible" ng-click="ctrl.submit()">完成</span>
+    </div>
+    <div class="bdd_vita_footer_title">手机号<span style="color:#4d3a3a;font-size: 16px;padding-left: 50px; ">{{ctrl.user.phone}}</span>
+        <span style="font-size: 14px;color: #cea63f;padding-left: 30px;">修改</span></div>
+    <!--<div class="bdd_vita_footer_title">邮&nbsp;&nbsp;&nbsp;箱<span style="color:#e84842;font-size: 14px;padding-left: 50px; ">去绑定</span></div>-->
+    <div class="bdd_vita_footer_title">邮&nbsp;&nbsp;&nbsp;箱
+        <span style="color:#4d3a3a;font-size: 16px;padding-left: 50px; " ng-show="email_hide">{{ctrl.user.username}}</span>
+        <span style="color:#cea63f;font-size: 14px;padding-left: 50px; " ng-show="email_hide" ng-click="toggle_email()">修改</span>
+        <input  class="my_text" type="text" ng-show="email_visible" id = "user_email" placeholder="请输入邮箱"/>
+        <span style="font-size: 14px;color: #cea63f;padding-left: 30px;" ng-show="email_visible" ng-click="ctrl.submit()">完成</span>
+    </div>
+    <!--<div class="bdd_vita_footer_title_aido">-->
+        <!--<div class="bdd_vita_footer_title_text" ng-click = "ctrl.submit()">保存</div>-->
+    <!--</div>-->
+
+</div>

@@ -1,6 +1,10 @@
 app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document', function ($http, $log, $scope, $interval, $document) {
     var selt = this;
 
+    selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
+    selt.pwdRegx = "[a-zA-Z0-9]*";
+    selt.codeRegx = "[0-9]{6}";
+
     var second = 59;
     var timerHandler;
     selt.isDisable = false;
@@ -43,7 +47,7 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
     /**
      * 找回密码
      */
-    this.forgot = function () {
+    this.forget = function (valid) {
         var params = {
             version: "1",
             loginchannel: "1003",
@@ -51,14 +55,15 @@ app.controller('ForgetCtrl', ['$http', '$log', '$scope', '$interval', '$document
             userpass: selt.userpass,
             invitationCode: selt.invitationCode
         };
-
-        $http.post("/authorize/forgotPassword", angular.toJson(params)).success(function (result) {
-            if (result.code == 0) {
-                alert(result.msg);
-            } else {
-                window.location.href = "index.html#/login";
-            }
-        });
+        if (valid) {
+            $http.post("/authorize/forgotPassword", angular.toJson(params)).success(function (result) {
+                if (result.code == 0) {
+                    alert(result.msg);
+                } else {
+                    window.location.href = "index.html#/login";
+                }
+            });
+        }
     }
 
 }]);

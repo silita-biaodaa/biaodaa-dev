@@ -53,14 +53,14 @@
 
 
 <!--公告-->
-<div class="bdd_announcement">
+<div style="width:100%;text-align:center;position: fixed;margin: 100px auto" class="bdd_announcement">
     <div class="bdd_announcement_left bdd_announcement_mess {{tender.paramsPage.type==0 ? 'bdd_un_active':''}}"  ng-click="tender.queryList(0)">招标公告</div>
 
     <div class="bdd_announcement_left {{tender.paramsPage.type==2 ? 'bdd_un_active':''}}" ng-click="tender.queryList(2)">中标公告</div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
 <!--筛选框-->
-<div class="bdd_area">
+<div class="bdd_area" style="margin-top: 200px;">
     <div class="bdd_area_header">
         <div class="bdd_area_left">
             <div class="bdd_area_content bdd_content_h">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</div>

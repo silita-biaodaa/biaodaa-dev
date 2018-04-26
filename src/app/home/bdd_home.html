@@ -3,7 +3,103 @@
 <link rel="stylesheet" href="../../../vendor/normalize.css/index2.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-home.css">
 <link rel="stylesheet" href="../../../vendor/normalize.css/bdd-footer.css">
+<link href="http://libs.baidu.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap-datetimepicker.min.css">
 
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border: 0;
+    }
+    body{
+        background-color: #F8F8F8;
+    }
+    .all {
+        width: 1200px;
+        height: 500px;
+        margin: 0px auto;
+        position: relative;
+    }
+
+    .screen {
+        width: 1200px;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .screen li {
+        width: 1200px;
+        height: 500px;
+        overflow: hidden;
+        float: left;
+    }
+
+    .screen ul {
+        position: absolute;
+        left: 0;
+        top: 0px;
+        width:7200px;
+
+    }
+
+    .all ol {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .all ol li {
+        float: left;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .all ol li.current {
+        background: yellow;
+    }
+
+    #arr {
+        display: none;
+    }
+
+    #arr span {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        margin-top: -20px;
+        background: #000;
+        cursor: pointer;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+        font-family: '黑体';
+        font-size: 30px;
+        color: #fff;
+        opacity: 0.3;
+        border: 1px solid #fff;
+    }
+
+    #arr #right {
+        right: 5px;
+        left: auto;
+    }
+    .jd_layout{
+        margin-top: 100px;
+        z-index: 999;
+    }
+
+</style>
 
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
@@ -51,7 +147,7 @@
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
             </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
+            <div ng-if="$ctrl.user != null">
                 <label>{{$ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
                 <a href="">个人中心</a>
@@ -61,60 +157,42 @@
 </nav>
 <div class="jd_layout">
     <!--轮播图-->
+    <!--轮播图-->
     <div class="jd_banner">
-        <!--图片-->
-        <ul class="jd_bannerImg clearfix">
-            <li>
-                <a ng-click="$ctrl.cancelAreaB()" href="javascript:;">
-                    <img src="../../../vendor/images/banner_3.png" alt="">
-                </a>
-            </li>
-        </ul>
-        <!--点标记-->
-        <ul class="jd_bannerIndicator">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <carousel interval="myInterval">
-            <slide ng-repeat="slide in slides" active="slide.active">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
-                <div class="carousel-caption">
-                    <p>{{slide.text}}</p>
-                </div>
-            </slide>
-        </carousel>
-
+        <div class="all" id='box'>
+            <div class="screen">
+                <ul>
+                    <li ng-repeat="item in $ctrl.imageArr"><img src="{{item.imagesrc}}" width="1200" height="500"/></li>
+                </ul>
+                <ol></ol>
+            </div>
+            <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+        </div>
 
     </div>
     <!--导航块-->
     <div class="jd_nav">
         <ul class="clearfix">
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">进30天收入公告</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">信息来自企业网站</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">信息来自政府网站</p>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li style="text-decoration: none;">
+                <a href="javascript:;" style="text-decoration: none;">
                     <div class="bdd_notice_title_l">4000<span class="bdd_notice_title_r">条</span></div>
                     <p class="bdd_notice">招投标每天收录</p>
                 </a>
@@ -133,12 +211,12 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'3')" >采购</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'1')" >设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')" >勘察</div>
-                <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
-            <div class="bdd_win_conter" style="margin-top: 10px" ng-repeat="notice in $ctrl.zhongbiaoList">
-                <div class="bdd_text_z" ng-bind="notice.title"></div>
-                <div class="bdd_text_y" ng-show="notice.oneName">中标企业：<span ng-bind="notice.oneName"></span></div>
-                <div class="bdd_text_p" ng-show="notice.projSum" >项目金额：<span ng-bind="notice.projSum"></span>万元</div>
+            <div class="bdd_win_conter" style="margin-top:10px" ng-repeat="notice in $ctrl.zhongbiaoList">
+                <div class="bdd_text_z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a></div>
+                <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
+                <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
                 <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -154,38 +232,17 @@
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'1')" >设计</div>
                 <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'4')" >勘察</div>
 
-                <div class="bdd_win_header_right">更多&nbsp;&nbsp;></div>
+                <div class="bdd_win_header_right">更多&nbsp;<img src="../../../vendor/images/icon_arrow_right.png" alt=""></div>
             </div>
 
             <div class="bdd_win_conter" style="margin-top: 10px"  ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
-                <div class="bdd_text_z" ng-bind="zhaobiao.title"></div>
-                <div class="bdd_text_y" ng-show="zhaobiao.certificate">资质要求：<span ng-bind="zhaobiao.certificate"></span></div>
-                <div class="bdd_text_p" ng-show="zhaobiao.pbMode">评标办法：<span ng-bind="zhaobiao.pbMode"></span></div>
+                <div class="bdd_text_z" > <a href="#/tenderDetail/{{zhaobiao.id}}"><span ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
+                <div class="bdd_text_y" >资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
+                <div class="bdd_text_p" >评标办法：<span>{{zhaobiao.pbMode ? zhaobiao.pbMode:'详见原文'}}</span></div>
                 <div class="bdd_text_invite"><span ng-bind="zhaobiao.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
                 <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
-
-            <!--<div class="bdd_win_header">企业信息</div>-->
-            <!--<div class="bdd_inc">-->
-            <!--<div class="bdd_inc_list_o">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
-            <!--<div class="bdd_inc_list_t">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
-            <!--<div class="bdd_inc_list_f">-->
-            <!--<div class="bdd_inc_r">湖南耀邦建设有限公司</div>-->
-            <!--<div class="bdd_inc_c">历史中标数据：100</div>-->
-            <!--<div class="bdd_inc_l">擅长领域：建筑工程</div>-->
-            <!--<div class="bdd_inc_l">历史中标最低金额：1000万</div>-->
-            <!--</div>-->
         </div>
     </div>
     <div class="bdd_win_right">
@@ -194,52 +251,64 @@
                 <div id="today-txt"></div>
             </div>
         </div>
-        <div class="calendar bdd_data_conter" id="calendar" style="display: block;"></div>
+        <div class="calendar bdd_data_conter" id="calendar" style="display: block;">
+            <div class="sidenav-header" id="datetimediv">
+
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"
+                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                </select>
+            </div>
+        </div>
 
 
-        <div class="bdd_infor">
-            <div class="bdd_infor_ul">
-                <!--<div class="bdd_infor_dv"></div>-->
-                <!--<div class="bdd_infor_title">最新资讯</div>-->
-                <!--<div class="bdd_infor_rihgt">更多></div>-->
-                <div class="bdd_infor_mation_border">
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
-                        <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1_60px.png" /></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
-                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
-                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
-                        </div>
-                    </div>
+        <div style="margin-top:60px" class="bdd_infor_a">
+            <div  class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>最新资讯</div>
+            <div style="font-size: 16px;color:#ccbebe"  style="font-size: 16px" class="bdd_infor_a_right">更多&nbsp;></div>
+        </div>
 
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
-                        <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png" /></div>
-                        <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
-                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
-                            <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
-                        </div>
+        <!--<div class="bdd_infor_dv"></div>-->
+        <!--<div class="bdd_infor_title">最新资讯</div>-->
+        <!--<div class="bdd_infor_rihgt">更多></div>-->
+        <div style="overflow: hidden;background-color: white;margin-top:15px;margin-bottom: 60px;padding-bottom: 20px;width: 280px;margin-left: 18px;">
+            <div class="bdd_infor_mation_border">
+                <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
+                    <div class="bdd_infor_maleft" ><img src="../../../vendor/images/dt_icon_defa1_60px.png" /></div>
+                    <div class="bdd_infor_maright">
+                        <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                        <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                        <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
                     </div>
                 </div>
             </div>
+            <div class="bdd_infor_mation_border">
+                <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
+                    <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png" /></div>
+                    <div class="bdd_infor_maright">
+                        <div class="bdd_infor_maright_title"><span ng-bind="info.title" ></span></div>
+                        <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span ng-bind="info.contentDescribe" ></span></a></div>
+                        <div class="bdd_infor_maright_new"><span ng-bind="info.time" ></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="bdd_infor_a">
+            <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>常用应用</div>
+            <div style="font-size: 16px;color:#ccbebe" class="bdd_infor_a_right">更多&nbsp;></div>
         </div>
 
         <div class="bdd_use">
-            <!--<div class="bdd_infor_ul">-->
-                <!--<div class="bdd_infor_dv"></div>-->
-                <!--<div class="bdd_infor_title">常用应用</div>-->
-                <!--<div class="bdd_infor_rihgt">更多></div>-->
-                <!--</div>-->
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p">评标计算</div>
-                </div>
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p bdd_bid_w">四库一平台</div>
-                </div>
-                <div class="bdd_infor_bid">
-                    <div class="bdd_bid_p bdd_bid_w">建筑施工特许证查询</div>
-                </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
+            </div>
+            <div class="bdd_use_right_a">
+                <div>评标计算</div>
             </div>
         </div>
     </div>
@@ -271,3 +340,148 @@
                                                          alt=""/></a></div>
     </div>
 </div>
+<script type="text/javascript" src="../../../vendor/js/jquery.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    var d = new Date();
+    d.setTime(d.getTime() - 24 * 60 * 60 * 1000);
+
+    initDatetimepicker();
+
+    function initDatetimepicker() {
+
+//初始化日期选择控件
+        $('.form_date').datetimepicker({
+            language: 'zh-CN',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            pickerPosition: "top-left"
+        });
+    }
+</script>
+<script>
+    //需求 实现一个 完整的轮播图
+    //找人
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var ulLis = ul.children;//所有的广告
+    var imgWidth = screen.offsetWidth;
+    //alert(imgWidth);
+    //箭头
+    var arr = document.getElementById("arr");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    //1.动态生成结构
+    //1.1根据图片数量动态生成按钮
+    for (var i = 0; i < ulLis.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = i + 1;
+        ol.appendChild(li);
+    }
+    var olLis = ol.children;//所有的按钮
+    olLis[0].className = "current";
+    //1.2克隆第一张广告 放到最后
+    var firstImg = ulLis[0].cloneNode(true);
+    ul.appendChild(firstImg);
+    //2.鼠标经过按钮
+    //鼠标经过按钮 按钮排他 以动画的形式把ul移动到指定的位置
+    for (var j = 0; j < olLis.length; j++) {
+        olLis[j].index = j;
+        olLis[j].onmouseover = function () {
+            //排他
+            //干掉所有人
+            for (var k = 0; k < olLis.length; k++) {
+                olLis[k].className = "";
+            }
+            //留下我自己
+            this.className = "current";
+            //以动画的形式把ul移动到指定的位置
+            //目标 和 按钮索引有关 和 图片宽度有关 而且是负数
+            var target = -this.index * imgWidth;
+            animate(ul, target);
+        };
+    }
+    //3.鼠标点击箭头
+    //3.1鼠标经过盒子 显示箭头 鼠标离开盒子 隐藏箭头
+    box.onmouseover = function () {
+        arr.style.display = "block";
+    };
+    box.onmouseout = function () {
+        arr.style.display = "none";
+    };
+    //3.2点击右箭头 以动画的形式把ul移动到指定的位置
+    var pic = 0;//记录当前正在显示的图片的索引
+    var square = 0;//记录当前正在亮起的按钮的索引
+    right.onclick = function () {
+        //先判断 如果是最后一个图片 先让ul瞬间跳会开始位置 然后索引也要归零
+        if (pic === ulLis.length - 1) {
+            ul.style.left = 0 + "px";
+            pic = 0;//索引也要归零
+        }
+        pic++;//计算出将要显示的图片的索引
+        //目标 和pic有关 和 图片宽度有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        //按钮也要跟着走
+        if (square < olLis.length - 1) {
+            square++;
+        } else {
+            square = 0;
+        }
+        //干掉所有人
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        //留下对应的
+        olLis[square].className = "current";
+    };
+    left.onclick = function () {
+        //先判断 如果是第一个图片 先让ul瞬间跳到最后的位置 然后索引也要到最后
+        if (pic === 0) {
+            ul.style.left = -(ulLis.length - 1) * imgWidth + "px";
+            pic = ulLis.length - 1;//索引也要归零
+        }
+        pic--;//计算出将要显示的图片的索引
+        //目标 和pic有关 和 图片宽度有关 而且是负数
+        var target = -pic * imgWidth;
+        animate(ul, target);
+        //按钮也要跟着走
+        if (square > 0) {
+            square--;
+        } else {
+            square = olLis.length - 1;
+        }
+        //干掉所有人
+        for (var i = 0; i < olLis.length; i++) {
+            olLis[i].className = "";
+        }
+        //留下对应的
+        olLis[square].className = "current";
+    };
+
+    setInterval(right.onclick, 2000);//自动播放
+
+    function animate(obj, target) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var leader = obj.offsetLeft;
+            var step = 30;
+            step = leader < target ? step : -step;//step有了正负
+            if (Math.abs(leader - target) >= Math.abs(step)) {
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            } else {
+                obj.style.left = target + "px";//手动放到终点
+                clearInterval(obj.timer);
+            }
+        }, 15);
+    }
+</script>

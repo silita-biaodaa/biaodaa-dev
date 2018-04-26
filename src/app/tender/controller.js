@@ -1,12 +1,10 @@
 
-app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','username', 'Demo',function ($http, $uibModal, $log, $scope, $state,username,Demo) {
+app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 'Demo','userTemp',function ($http, $uibModal, $log, $scope, $state,Demo,userTemp) {
 
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -71,12 +69,12 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state','
             });
 
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 
 }]);
@@ -131,13 +129,11 @@ app.factory('Demo', function ($http) {
      });
 
 
-app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','username', function ($http, $scope, utils, $stateParams, $state,username) {
+app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp', function ($http, $scope, utils, $stateParams, $state,userTemp) {
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -174,6 +170,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         }
 
         $("#bdd_follow_info_one").html(result.data[0].content);
+        $("#bdd_follow_info_two").html(result.data[0].content);
         resArray = result.data;
     })
     $http.post("/notice/queryCompanyList/" + id, {
@@ -192,25 +189,23 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 
 }]);
 
 
-//�б깫����ļ�����ҳ��??
-app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'username',function ($http, $scope, utils, $stateParams,username) {
+//�б깫����ļ�����ҳ��??
+app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp',function ($http, $scope, utils, $stateParams,userTemp) {
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -252,23 +247,21 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
             $scope.fileSize = fileDataArray.length;
         });
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 }])
 
 //�б깫��ҳ��
-app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','username', function ($http, $scope, utils, $stateParams,$state,username) {
+app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp', function ($http, $scope, utils, $stateParams,$state,userTemp) {
     var selt = this;
 
-    if(username != null && username != '') {
-        selt.user = {
-            username : username
-        };
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
@@ -319,12 +312,12 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
-    this.logout = function() {
+    this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
-        sessionStorage.removeItem("username");
-        username = "";
+        sessionStorage.removeItem("userTemp");
+        userTemp = null;
         selt.user = null;
-        window.location.href="index.html#/home";
+        window.location.href = "index.html#/home";
     };
 }]);
 

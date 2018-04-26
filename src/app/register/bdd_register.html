@@ -75,27 +75,38 @@
                     <div class="bdd_logoin_banner_bor_l"><a href="index.html#/login">登录</a></div>
                     <div class="bdd_logoin_banner_bor_r"><a href="index.html#/register">注册</a></div>
                 </div>
-                <div class="bdd_logoin_banner_conter">
-                    <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationPhone" type="text" placeholder="输入手机号">
-
-                    <div class="bdd_logoin_hr"></div>
-                    <div class="bdd_logoin_mi">
-                        <div  class="bdd_logoin_mi_l"><div style="float: left"></div>
-                            <input class="bdd_logoin_placeholder" ng-model="ctrl.invitationCode" type="text" placeholder="验证码">
+                <form name="registerForm" novalidate ng-submit="ctrl.register(registerForm.$valid)">
+                    <div class="bdd_logoin_banner_conter">
+                        <div class="form-group">
+                            <input class="bdd_logoin_placeholder" name="invitationPhone" ng-model="ctrl.invitationPhone" type="text"
+                                   placeholder="输入手机号" required ng-pattern="ctrl.mobileRegx"/>
+                            <span class="error" ng-show="registerForm.$submitted && registerForm.invitationPhone.$error.required">*手机号不能为空</span>
+                            <span class="error" ng-show="registerForm.$submitted && registerForm.invitationPhone.$error.pattern">*手机号不合法</span>
                         </div>
-                        <button  class="button gettestcode col-40" ng-click="ctrl.sendVerCode()" ng-bind="ctrl.description" ng-disabled="ctrl.isDisable"/>
+                        <div class="bdd_logoin_hr"></div>
+                        <div class="bdd_logoin_mi">
+                            <div  class="bdd_logoin_mi_l"><div style="float: left"></div>
+                                <input class="bdd_logoin_placeholder" name="invitationCode" ng-model="ctrl.invitationCode" type="text"
+                                           placeholder="验证码" required ng-pattern="ctrl.codeRegx">
+                                <span class="error" ng-show="registerForm.$submitted && registerForm.invitationCode.$error.required">*验证码不能为空</span>
+                                <span class="error" ng-show="registerForm.$submitted && registerForm.invitationCode.$error.pattern">*验证码不合法</span>
+                            </div>
+                            <button  class="button gettestcode col-40" ng-click="ctrl.sendVerCode()" ng-bind="ctrl.description" ng-disabled="ctrl.isDisable"/>
+                        </div>
+                        <div class="bdd_logoin_hr_span"></div>
+                        <div class="form-group">
+                            <input style="margin-top:28px;color: #ccbebe" class="bdd_logoin_placeholder" name="userpass" ng-model="ctrl.userpass" type="password"
+                                   placeholder="设置密码" required ng-pattern="ctrl.pwdRegx" >
+                            <span class="error" ng-show="registerForm.$submitted && registerForm.userpass.$error.required">*密码不能为空</span>
+                            <span class="error" ng-show="registerForm.$submitted && registerForm.userpass.$error.pattern">*密码不合法</span>
+                        </div>
+                        <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
+                        <input class="bdd_login_buttom" type="submit" value="注册"/>
+                        <div class="bdd_login_pic">
+                            <div class="bdd_login_pic_left">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
+                        </div>
                     </div>
-                    <div class="bdd_logoin_hr_span"></div>
-
-                    <input style="margin-top:28px;color: #ccbebe" class="bdd_logoin_placeholder" ng-model="ctrl.userpass" type="password" placeholder="设置密码">
-                    <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
-
-                    <!--<input class="bdd_login_buttom" type="button"  ng-click="ctrl.register()"  value="注册">-->
-                    <input class="bdd_login_buttom" ng-click="ctrl.register()" type="button" value="注册">
-                    <div class="bdd_login_pic">
-                        <div class="bdd_login_pic_left">点击确认即同意<span style="color: #cea63f">《标大大用户协议》</span></div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="bdd_login_banner_right">
