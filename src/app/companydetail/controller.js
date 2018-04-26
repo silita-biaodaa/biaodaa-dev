@@ -129,12 +129,19 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
     });
 
     this.category = "";
+    this.personList = [];
+    this.busy = false;
+    this.page = 1;
     this.selectCate = function (category) {
+        selt.personList = [];
+        selt.busy = false;
+        selt.page = 1;
 		selt.category = category;
-    }
+        selt.nextPage();
+    };
 
     this.setPage = function () {
-        selt.companyList = [];
+        selt.personList = [];
         selt.busy = false;
         selt.page = 1;
         selt.category = "";
@@ -144,9 +151,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 
 
 
-    this.personList = [];
-    this.busy = false;
-    this.page = 1;
+
 
     this.nextPage = function () {
         if (selt.busy) return;
@@ -166,7 +171,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
                 angular.forEach(personList,function(person){
                     selt.personList.push(person);
                 });
-                selt.totalCount = result.total;
+                selt.personSize = result.total;
                 selt.pageSize = result.pageSize;;
                 selt.pageNo = result.pageNum;
                 selt.busy = false;
