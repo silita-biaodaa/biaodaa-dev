@@ -85,6 +85,7 @@ app.controller('PersonInfoCtrl', ['$http','$uibModal','$log','$scope','$document
             if(result.code == 1){
                 alert("设置图像成功");
                 selt.user.imgurl = imgUrl;
+                $scope.ucenter.imgurl = imgUrl;
             }else{
                 alert("设置图像失败");
             }
