@@ -314,10 +314,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
-    ;
-
-
-
+        .state('Modify', {
+            url: '/modify',
+            templateUrl: window.rootSrc + 'app/modify/modify.html',
+            controller: 'ModifyCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/modify/controller.js'
+                    ]);
+                }]
+            }
+        })
 
 
     ;
