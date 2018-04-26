@@ -78,6 +78,8 @@ body{
 .bdd_vitality_zi{
     width: 1200px;
     height: 550px;
+
+    margin: 0 auto;
     margin-top:200px;
 }
 .bdd_vitality_left{
@@ -100,6 +102,10 @@ body{
     padding-top:20px;
     font-size: 18px;
     color: #ffffff;
+    text-decoration: none;
+}
+.bdd_vita_list:hover{
+    color: #cea63f;
 }
 .bdd_vitality_right_header{
     width: 900px;
