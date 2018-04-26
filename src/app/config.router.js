@@ -262,7 +262,6 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         })
 
 
-
         .state('ucenter.financial', {
             url: '/financial',
             templateUrl: window.rootSrc + 'app/personal/financial.html',
