@@ -1,6 +1,19 @@
 app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
     var selt = this;
 
+    Array.prototype.indexOf = function(val) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == val) return i;
+        }
+        return -1;
+    };
+    Array.prototype.remove = function(val) {
+        var index = this.indexOf(val);
+        if (index > -1) {
+            this.splice(index, 1);
+        }
+    };
+
     this.clearAllList =function(){
         selt.biddingList=null;
         selt.tenderList=null;
@@ -8,22 +21,12 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
         selt.param.pageNo=1;
     }
 
-    this.clearData = function(type){
-        this.choiceCompanyList=false;
-        this.param.type=null;
-        if(type){
-            selt.companyList = null;
-            if (type == 0) {
-                selt.biddingList=null;
-            } else if (type == 2) {
-                selt.tenderList=null;
-            }
-        }else {
-            selt.biddingList=null;
-            selt.tenderList=null;
-        }
-        this.resultLength=0;
+    this.reset = function(type){
+        selt.choiceCompanyList=false;
+        selt.param.type=null;
+        selt.resultLength=0;
         selt.returnPageNum=0;
+        selt.noResultList=null;
     }
 
     this.resultLength=0;
@@ -40,23 +43,29 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
         if(!listData ){
             selt.noResultList="无关注列表，快去增加关注信息把。";
         }else{
-            if(length<1){
-                selt.noResultList="已经到底了！"
-            }
+            selt.noResultList=null;
         }
     };
 
-    this.loading = function (){
-        selt.info="正在加载中..."
-        selt.noResultList=null;
+    this.loading = function () {
+        if (selt.busy==true) {
+            alert("数据加载中，切换太频繁。。。");
+            return true;
+        } else {
+            selt.info = "正在加载中..."
+            selt.noResultList = null;
+            selt.busy = true;
+            return false;
+        }
     }
 
     //查询收藏公告
     this.queryCollNoticeList = function (type) {
-        this.loading();
-        this.clearData(type);
-        selt.busy = true;
-        this.param.type=type;
+        if(selt.loading()){
+            return ;
+        }
+        selt.reset(type);
+        selt.param.type=type;
         console.log(this.param);
         $http.post("/userCenter/listCollectionNotice", angular.toJson(this.param)).success(function (result) {
             console.log("##result.pageNum："+result.pageNum);
@@ -94,10 +103,11 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
 
     //查询收藏企业
     this.queryCollComList = function () {
-        this.loading();
-        this.clearData();
-        selt.busy = true;
-        this.choiceCompanyList=true;
+        if(selt.loading()){
+            return ;
+        }
+        selt.reset();
+        selt.choiceCompanyList=true;
         console.log(this.param);
         $http.post("/userCenter/listCollectionCompany", angular.toJson(this.param)).success(function (result) {
             console.log("##result.pageNum："+result.pageNum);
@@ -110,46 +120,52 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
             } else {
                 selt.companyList = result.data;
             }
+            selt.showTailInfo(selt.companyList, result.data.length);
             selt.turnPageFinished();
         });
     };
 
 
 
-    this.cancelCollectionNotice = function (noticeid,type){
+    this.cancelCollectionNotice = function (noticeid,type,obj){
         var cancelParam = {noticeid:noticeid};
         $http.post("/userCenter/cancelCollectionNotice", angular.toJson(cancelParam)).success(function (result) {
             console.log(result);
             if(result.code==1){//取消成功
                 alert("取消关注成功");
-                selt.clearAllList();
-                selt.queryCollNoticeList(type);
+                if(type == 2){
+                    selt.biddingList.remove(obj);
+                }else if(type == 0){
+                    selt.tenderList.remove(obj);
+                }
             }else{
                 alert(result.msg);
             }
         });
     };
 
-    this.cancelCollectionCompany = function (companyid){
+    this.cancelCollectionCompany = function (companyid,obj){
         var cancelParam = {companyid:companyid};
         $http.post("/userCenter/cancelCollectionCompany", angular.toJson(cancelParam)).success(function (result) {
             console.log(result);
             if(result.code==1){//取消成功
                 alert("取消关注成功");
-                selt.clearAllList();
-                selt.queryCollComList();
+                selt.companyList.remove(obj);
             }else{
                 alert(result.msg);
             }
         });
     };
 
+    selt.nextPageBusy=false;
     this.nextPage =function (){
-        console.log('selt.returnPageNum:'+selt.returnPageNum);
-        if (selt.busy || selt.resultLength<=0) return;
-        selt.busy = true;
+        console.log('selt.resultLength:'+selt.resultLength);
+        if (selt.busy || selt.nextPageBusy){
+            return;
+        }
+        console.log( selt.nextPageBusy+'@@@@selt.param.pageNo:' + selt.param.pageNo + "##selt.returnPageNum:" + selt.returnPageNum);
+        selt.nextPageBusy=true;
 
-        console.log('selt.param.pageNo:'+selt.param.pageNo+"##selt.returnPageNum:"+selt.returnPageNum);
         if (selt.param.pageNo == selt.returnPageNum) {
             selt.param.pageNo += 1;
             if (this.param.type) {
@@ -157,17 +173,21 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
             } else {
                 selt.queryCollComList();
             }
-            this.turnPageFinished();
+            // this.turnPageFinished();
+        } else {
+            if (!selt.noResultList || selt.noResultList == null) {
+                selt.noResultList = "没有更多数据了，已经到底了！"
+            }
         }
     };
 
     this.turnPageFinished = function (){
         selt.busy = false;
         selt.info=null;
+        selt.nextPageBusy=false;
     };
 
     //页面初始化
     this.queryCollNoticeList('0');
-
 
 }]);

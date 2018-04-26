@@ -7,12 +7,12 @@
 <!--下拉框-->
 
 <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll="ctrl.nextPage()"
-     infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
+     infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1' style="height:auto;" >
 
-    <div style="margin-top: 40px" class="bdd_win_conter bdd_win_conter_last" ng-repeat="tender in ctrl.tenderList ">
+    <div   class="bdd_win_conter bdd_win_conter_last" ng-repeat="tender in ctrl.tenderList ">
         <div class="bdd_text_z" > <a href="#/tenderDetail/{{tender.id}}"><span ng-bind="tender.title"></span></a>
             <span ng-if="tender.id">
-                <span ng-click="ctrl.cancelCollectionNotice({{tender.id}},'0')"><img style="vertical-align: middle;margin-left:140px;" src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
+                <span ng-click="ctrl.cancelCollectionNotice({{tender.id}},0,tender)"><img style="vertical-align: middle;margin-left:140px;" src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
             </span>
         </div>
         <div class="bdd_text_y" >资质要求：<span>{{tender.certificate ? tender.certificate:'详见原文'}}</span></div>
@@ -26,7 +26,7 @@
     <div class="bdd_win_conter bdd_win_conter_last" ng-repeat="notice in ctrl.biddingList ">
         <div class="bdd_text_z">
             <a href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a>
-            <span ng-if="notice.id"></ng-if><span ng-click="ctrl.cancelCollectionNotice({{notice.id}},'2')">
+            <span ng-if="notice.id"></ng-if><span ng-click="ctrl.cancelCollectionNotice({{notice.id}},2,notice)">
                 <img style="vertical-align: middle;margin-left:140px;" src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
             </span>
         </div>
@@ -43,7 +43,7 @@
             </a>
             <div class="bdd_win_conter_d"><span class="bdd_win_conter_span"  ng-bind="company.subsist|limitTo:2"></span>
                 <span ng-if="company.comId">
-                    <span ng-click="ctrl.cancelCollectionCompany({{company.comId}})"><img style="vertical-align: middle;margin-left:140px;" src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
+                    <span ng-click="ctrl.cancelCollectionCompany({{company.comId}},company)"><img style="vertical-align: middle;margin-left:140px;" src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
                 </span>
             </div>
             <br>
@@ -54,10 +54,10 @@
             <div class="bdd_hold_top bdd_hold_top_addr">地址：<span ng-bind="company.comAddress"></span></div>
     </div>
 
-    <div style="margin-top: 40px" class="bdd_win_conter bdd_win_conter_last" ng-if="ctrl.info">
-        <span ng-bind="ctrl.info"></span>
+    <div  class="bdd_win_conter bdd_win_conter_last" ng-if="ctrl.info">
+        <span style="font-weight:bold" ng-bind="ctrl.info"></span>
     </div>
-    <div style="margin-top: 40px" class="bdd_win_conter bdd_win_conter_last" ng-if="ctrl.noResultList">
-        <span ng-bind="ctrl.noResultList"></span>
+    <div  class="bdd_win_conter bdd_win_conter_last" ng-if="ctrl.noResultList" style="margin-bottom:1cm;">
+        <span style="font-weight:bold" ng-bind="ctrl.noResultList"></span>
     </div>
 </div>
