@@ -41,13 +41,13 @@
                                                                    alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">
-            <div ng-if="$ctrl.user == null">
+            <div ng-if="ctrl.user == null">
                 <a href="index.html#/login">登录</a>
                 <a href="index.html#/register">注册</a>
             </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+            <div ng-if="ctrl.user != null && ctrl.user.username != ''">
+                <label>{{ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
                 <a href="#/ucenter">个人中心</a>
             </div>
         </div>
@@ -55,146 +55,60 @@
 </nav>
 </div>
 </div>
-<!--资质要求框-->
 
+
+<!--资质证书框-->
 <div class="bdd_aptitude_content">
     <div class="bdd_apt_border">
         <div class="bdd_apt_tittle_zizhi">资质要求：</div>
-        <div class="bdd_apt_tittle">全部</div>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
-        ‍‍<select class="bdd_select_news" style="padding-left: 15px">
-        <option>注册建筑师</option>
-    </select>
+        <div class="bdd_dev_area bdd_dev_area_pro">
+            <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="ctrl.cancelCategory()">全部</a>
+            <div class="bdd_comp_span" ng-repeat="book in ctrl.bookList">
+                <a class="span-cursor" ng-bind="book.category|limitTo:6"
+                   ng-click="ctrl.clickBook(book)"></a>
+            </div>
+            <div class="dropdown  dropdown-div dropdown-div-more">
+                <a id="more_select_zz" role="button" data-toggle="dropdown"
+                   class="btn btn-white btn-white-a" data-target="#"
+                   href="javascript:;" ng-click="ctrl.moreSelectZs(ctrl.moreZs)">
+                    <div class="to_more" ng-show="!ctrl.moreZs">更多</div>
+                    <div class="to_more to_bottom" ng-show="!ctrl.moreZs"></div>
+                    <div class="to_more" ng-show="ctrl.moreZs">收起</div>
+                    <div class="to_more to_top" ng-show="ctrl.moreZs"></div>
+                </a>
+            </div>
+        </div>
+
+        <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="ctrl.moreZs">
+            <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="book in ctrl.bookList2">
+                <a class="span-cursor" ng-bind="book.category|limitTo:6"
+                   ng-click="ctrl.clickBook(book)"></a>
+            </div>
+        </div>
     </div>
 </div>
+
 <!--已筛选条件-->
 <div class="bdd_screening_content">
-    <div class="bdd_screening_header">
-        <div class="bdd_screening_header_tittle"><span style="font-family: Arial">已筛选条件：</span></div>
-        <div style="margin-left:22px;width: 200px;height: 30px;background-color: #ccbebe;text-align: center;padding-top: 6px;margin-top:33px;color:white;border-radius: 5px;font-size: 12px " class="bdd_screening_header_tittle">建筑师一级临时注册建筑师&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 700">×</span></div>
-        <div style="margin-left: 30px;" class="bdd_screening_header_tittle">清空</div>
-    </div>
     <!--综合排序-->
     <div class="bdd_colligate">
         <div style="padding-left: 10px" class="bdd_colligate_text">综合排序</div>
-        <div style="padding-left:50px;" class="bdd_colligate_text">发布时间</div>
-        <div style="float:right;margin-right: 10px;"; class="bdd_colligate_tex">共找到<span style="color: #cea63f">1000</span>个人员信息</div>
+        <div style="float:right;margin-right: 10px;" ; class="bdd_colligate_tex">共找到<span
+                style="color: #cea63f"><span ng-bind="ctrl.personSize"></span></span>个人员信息
+        </div>
     </div>
-    <!--内容-->
-    <div class="bdd_per_content">
-        <div class="bdd_per_content_left">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
 
-        </div>
-        <div class="bdd_per_content_right">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
+    <!-- 内容 -->
+    <div class="bdd_per_content" id="bdd_adver_header" infinite-scroll='ctrl.nextPage()'
+         infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
+        <div ng-class="$index%2==0?'bdd_per_content_left':'bdd_per_content_right'" ng-repeat="person in ctrl.personList">
+            <div class="bdd_per_content_left_news"><span ng-bind="person.name"></span></div>
+            <div class="bdd_per_content_left_data"><span ng-bind="person.certDate"></span></div>
             <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-        </div>
-        <div class="bdd_per_content_left">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-
-        </div>
-        <div class="bdd_per_content_right">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-        </div>
-        <div class="bdd_per_content_left">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-
-        </div>
-        <div class="bdd_per_content_right">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-        </div>
-        <div class="bdd_per_content_left">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-
-        </div>
-        <div class="bdd_per_content_right">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-        </div>
-        <div class="bdd_per_content_left">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
-            </div>
-
-        </div>
-        <div class="bdd_per_content_right">
-            <div class="bdd_per_content_left_news">张三</div>
-            <div class="bdd_per_content_left_data">2018-01-01</div>
-            <div class="bdd_per_border">
-                <div class="bdd_per_content_text">注册类别：注册建筑师二级</div>
-                <div class="bdd_per_content_text">专业：建筑一级、市政一级、公路一级</div>
+                <div class="bdd_per_content_text">注册类别：<span ng-bind="person.category"></span></div>
+                <div class="bdd_per_content_text">专业：<span ng-bind="person.major"></span></div>
             </div>
         </div>
     </div>
-</div>
 
-
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
-        <div class="bdd_footer_content  bdd_footer_side"><a href="#">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
-    </div>
 </div>
