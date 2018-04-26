@@ -339,6 +339,19 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
+        .state('person', {
+            url: '/person',
+            templateUrl: window.rootSrc + 'app/searchperson/use.html',
+            controller: 'PersonCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/searchperson/person.js'
+                    ]);
+                }]
+            }
+        })
+
 
     ;
     /**
