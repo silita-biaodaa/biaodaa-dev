@@ -27,9 +27,9 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
     $http.post("/notice/queryList", angular.toJson(paramsPage),
         {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
 
-            $scope.dataList = result.data;
+        $scope.dataList = result.data;
 
-        });
+    });
     $scope.isTender = true;
 
     $scope.toDetail = function (id) {
@@ -49,9 +49,9 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
         $http.post("/notice/queryList", angular.toJson(paramsPage),
             {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
 
-                $scope.dataList = result.data;
+            $scope.dataList = result.data;
 
-            });
+        });
 
     }
 
@@ -64,9 +64,9 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
         $http.post("/notice/queryList", angular.toJson(paramsPage),
             {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
 
-                $scope.dataList = result.data;
+            $scope.dataList = result.data;
 
-            });
+        });
 
     }
     this.logout = function () {
@@ -96,37 +96,37 @@ app.factory('Demo', function ($http) {
         zzType: '',
         projectType: ''
     };
-         var Demo = function (tenderType) {
-                 this.dataList = [];
-                 this.busy = false;
-                 this.after = '';
-                 this.page = 0;
-                 this.tenderType = tenderType;
-             };
+    var Demo = function (tenderType) {
+        this.dataList = [];
+        this.busy = false;
+        this.after = '';
+        this.page = 0;
+        this.tenderType = tenderType;
+    };
 
-         Demo.prototype.nextPage = function () {
-                 if (this.busy) return;
-                 this.busy = true;
+    Demo.prototype.nextPage = function () {
+        if (this.busy) return;
+        this.busy = true;
 
-             paramsPage.pageNo = this.page;
-             paramsPage.type = this.tenderType;
-             $http.post("/notice/queryList", angular.toJson(paramsPage),
-                 {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
-                     var dataList = result.data;
-                     if(dataList!=null){
-                     for (var i = 0; i < dataList.length; i++) {
-                         this.dataList.push(dataList[i]);
-                     }
-                     this.after = "t3_" + this.dataList[this.dataList.length - 1].id;
-                     this.busy = false;
-                     this.page += 1;
-                     }
-                 }.bind(this));
+        paramsPage.pageNo = this.page;
+        paramsPage.type = this.tenderType;
+        $http.post("/notice/queryList", angular.toJson(paramsPage),
+            {headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}}).success(function (result) {
+            var dataList = result.data;
+            if(dataList!=null){
+                for (var i = 0; i < dataList.length; i++) {
+                    this.dataList.push(dataList[i]);
+                }
+                this.after = "t3_" + this.dataList[this.dataList.length - 1].id;
+                this.busy = false;
+                this.page += 1;
+            }
+        }.bind(this));
 
-             };
+    };
 
-         return Demo;
-     });
+    return Demo;
+});
 
 
 app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp', function ($http, $scope, utils, $stateParams, $state,userTemp) {
@@ -200,7 +200,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 }]);
 
 
-//�б깫����ļ�����ҳ��??
+//�б깫����ļ�����ҳ��???
 app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp',function ($http, $scope, utils, $stateParams,userTemp) {
     var selt = this;
 
@@ -231,7 +231,7 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
             $scope.fileDataArr = fileDataArray;
             $scope.fileSize = fileDataArray.length;
         });
-        }else if(showType == 2){
+    }else if(showType == 2){
         paramsPage.type = 2;
         $http.post("/notice/queryRelNotice/" + id, angular.toJson(paramsPage)).success(function (result) {
 
@@ -239,7 +239,7 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
             $scope.tenderArrayData = dataArray;
             $scope.firstTender = dataArray[0];
         })
-        }else if(showType == 3){
+    }else if(showType == 3){
         paramsPage.type = 2;
         $http.post("/notice/queryNoticeFile/" + id, angular.toJson(paramsPage)).success(function (result) {
             var fileDataArray = result.data;
@@ -265,9 +265,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     } else {
         selt.user = null;
     }
-
     var id = $stateParams.id;
-
     var dataArray = [];
     var resArray = [];
     $scope.currentNum = 0;
@@ -288,6 +286,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         //console.log(result);
         $scope.mSize = result.data.length;
         $scope.dataArrayList = result.data;
+        resArray =  result.data;
         $scope.currentTender = result.data[0];
         $scope.bdSize = result.data.length;
         $scope.fileCount = result.fileCount;
