@@ -112,13 +112,13 @@
         <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">
-            <div ng-if="$ctrl.user == null">
+            <div ng-if="ctrl.user == null">
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
             </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+            <div ng-if="ctrl.user != null && ctrl.user.username != ''">
+                <label>{{ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
                 <a href="#/ucenter">个人中心</a>
             </div>
         </div>
