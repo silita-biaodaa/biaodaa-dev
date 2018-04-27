@@ -659,6 +659,11 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
             if ('' == money || money == undefined) {
                 alert('借款金额不能为空！');
                 return;
+            } else {
+                var reg=/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+                if (!reg.test(money)) {
+                    alert('请输入正确的贷款金额！');
+                }
             }
             var params = {
                 region: region,

@@ -26,7 +26,7 @@
             <input name="borrowTime" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.borrowTime">
         </div>
         <div class="bdd_fin_parent">借款金额
-            <input name="money" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.money" onkeyup= "this.value=this.value.replace(/[^\d]/g,'');">
+            <input name="money" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.money" onkeyup="this.value=this.value.replace(/[^\d|\.]/g,'');">
         </div>
         <input type="submit" class="bdd_vita_footer_title_text" value="提交"/>
     </form>
