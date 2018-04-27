@@ -126,3 +126,41 @@
     margin-top:70px;
     margin-bottom:140PX;
 }
+
+.bdd_per_span {
+    display: inline-block;
+    width: 75px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-left: 15px;
+    font-size: 14px;
+    color: #4d3a3a;
+    height: 40px;
+    letter-spacing: 2px;
+    color: #4d3a3a;
+}
+
+.bdd_book_content{
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    margin-top: 100px;
+}
+.bdd_book_border{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.bdd_dev_per_pro_m {
+    padding-left: 10px;
+    padding-right: 90px;
+    overflow: hidden;
+}
+
+.bdd_per_left {
+    display: inline-block;
+    width: 1200px;
+    height: 90px;
+    margin-top: 0px;
+    margin: 0px auto 0px auto;
+}

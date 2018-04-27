@@ -4,7 +4,7 @@ app.controller('RegisterCtrl', ['$http', '$log', '$scope', '$interval', '$docume
     var selt = this;
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
-    selt.pwdRegx = "[a-zA-Z0-9]*";
+    selt.pwdRegx = "[a-zA-Z0-9]{8,16}";
     selt.codeRegx = "[0-9]{6}";
 
     if (userTemp != null) {
