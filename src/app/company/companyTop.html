@@ -41,13 +41,13 @@
                                                                    alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">
-            <div ng-if="$ctrl.user == null">
+            <div ng-if="ctrl.user == null">
                 <a href="index.html#/login">登录</a>
                 <a href="index.html#/register">注册</a>
             </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
+            <div ng-if="ctrl.user != null && ctrl.user.username != ''">
+                <label>{{ctrl.user.username}}</label>
+                <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
                 <a href="#/ucenter">个人中心</a>
             </div>
         </div>
@@ -85,8 +85,9 @@
                         </div>
                         <div class="bdd_pers_conter_border_right">
                             <div class="bdd_pers_conter_spans" ng-bind="company.comName"></div>
-                            <div  class="bdd_pers_conter_aide"><span>存续</span></div>
+                            <div  class="bdd_pers_conter_aide"><span ng-bind="company.subsist|limitTo:2"></span></div>
                         </div>
+                        66
                         <div class="bdd_pers_top_boder">
                             <div class="bdd_pers_top_boder_left">法定代表人：<span ng-bind="company.legalPerson"></span></div>
                             <div class="bdd_pers_top_boder_left">注册资本：<span ng-bind="company.regisCapital"></span></div>

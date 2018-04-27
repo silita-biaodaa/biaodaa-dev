@@ -383,7 +383,8 @@
                     </a>
 
                     <div class="bdd_win_conter_d">
-                        <span class="bdd_win_conter_span">存续</span></div>
+                        <span class="bdd_win_conter_span" ng-bind="company.subsist|limitTo:2"></span>
+                    </div>
                     <br>
 
                     <div style="margin-top:-2px" class="bdd_hold_top">法定代表人：<span ng-bind="company.legalPerson"></span>
