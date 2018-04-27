@@ -1,4 +1,116 @@
+<style>
 
+
+    .bdd_adver_header {
+        overflow: hidden;
+    }
+
+    .bdd_company_body {
+        margin-top: 180px;
+    }
+
+    .text-inline {
+        display: inline-block;
+        color: #666;
+        font-size: 14px;
+        margin-left: 10px;
+        letter-spacing: 1px;
+
+    }
+
+    .text-inline-first {
+        margin-left: 78px;
+    }
+
+    .bdd-pb-more {
+        cursor: default;
+    }
+
+    .text-inline-second {
+        margin-top: 20px;
+        padding-left: 38px;
+    }
+
+    .bdd_un_active {
+        border-bottom: 2px solid #cea63f;
+    }
+
+    .bdd_announcement_mess {
+        padding-left: 20px;
+        margin-left: 100px;
+
+    }
+
+    .bdd_announcement_left {
+        cursor: default;
+    }
+
+    .bdd_announcement {
+        background: #ffffff;
+    }
+
+    .text-inline-more {
+        border-bottom: 1px solid #ccc;
+
+    }
+
+    .text-inline-more {
+        padding: 1px 2px;
+        border: 1px solid #ccc;
+
+    }
+
+    .span-cursor-a {
+        width: 200px;
+        text-align: left;
+    }
+
+    .bdd-pb-more-c {
+        width: 980px;
+        padding-left: 22px;
+    }
+
+    .bdd_content_h {
+        margin-top: 10px;
+    }
+
+    .bdd_content_k {
+        margin-top: 0px;
+    }
+
+    .bdd_text_vib_a {
+        margin-top: 10px;
+    }
+    .bdd_content-inline{
+        display: inline-block;
+        width:1020px;
+    }
+    .bdd_tender_inline{
+        display: inline-block;
+    }
+    .dropdown-div-border{
+        margin-left: 5px;
+    }
+    .dropdown-div-more{
+        margin-left: 20px;
+    }
+    .bdd_tender_a{
+        width:1060px;
+    }
+    .bdd_comp_span_m{
+        margin-left: 0px;
+    }
+    .bdd_dev_area_pro_a{
+        width: 1120px;
+    }
+    .bdd_company_body{
+        margin-top: 60px;
+    }
+    .bdd_area_header_select_line{
+        background-color: #0f0f0f;
+        z-index: 1009;
+    }
+</style>
 
 <nav class="bdd-nav">
     <div class="bdd-nav-div">
@@ -63,15 +175,17 @@
 
 <div class="bdd_company_body">
     <div  class="bg-color">
-        <div  class="bg-color-c">
-            <div style="padding-top: 100px"  class="bdd_comp_f">
-                <div class="bdd_dev_area bdd_dev_area_txt">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
-                <div class="bdd_dev_area bdd_dev_area_pro">
-                    <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelArea()">全部</a>
+        <div class="bg-color-c">
+            <div style="padding-top: 100px" class="bdd_comp_f">
+                <div class="bdd_dev_area bdd_dev_area_txt">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
+                <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
+                    <div class="bdd_tender_inline bdd_tender_a">
+                        <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelArea()">全部</a>
 
-                    <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                        <a class="span-cursor" ng-bind="area.name|limitTo:2"
-                           ng-click="$ctrl.clickProvince(area)"></a>
+                        <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
+                            <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                               ng-click="$ctrl.clickProvince(area)"></a>
+                        </div>
                     </div>
                     <div class="bdd_comp_span bdd_comp_span_m">
                         <a class="span-cursor" id="to-pro-more"
@@ -82,9 +196,8 @@
                             <div class="to_more to_top" ng-show="$ctrl.morePro"></div>
                         </a>
                     </div>
-
                 </div>
-                <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro" >
+                <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
                         <a class="span-cursor" ng-bind="area.name|limitTo:2"
                            ng-click="$ctrl.clickProvince(area)"></a>
@@ -92,145 +205,172 @@
 
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor" ng-click="$ctrl.cancleEmCity()">全部</a>
+                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
                     </div>
                     <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
-                        <a class="span-cursor"ng-click="$ctrl.clickCity(city)"ng-bind="city"></a>
+                        <a class="span-cursor" ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
                     </div>
                 </div>
-
             </div>
             <div class="bdd_area_header_select_line"></div>
 
-            <!--筛选框-->
-            <div class="bdd_area_li bdd_letter_li_ti">
+
+
+
+                <!--筛选框-->
+                <div class="bdd_area_li bdd_letter_li_ti">
+                    <div class="bdd_area_header_select_li">
+                        <div class="bdd_area_left">
+                            <div class="bdd_content_h">资质要求：</div>
+                            <div class="bdd_content_n bdd_content-inline">
+                                <div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">全部</div>
+                                <div class="bdd_tender_inline dropdown dropdown-div dropdown-div-border"
+                                     ng-repeat="qual in $ctrl.companyQualList">
+                                    <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
+                                       data-target="#"
+                                       href="javascript:;"><span
+                                            ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                            class="caret"></span></a>
+                                    <ul class="dropdown-menu multi-level bdd_drop_scroll" role="menu"
+                                        aria-labelledby="dropdownMenu">
+                                        <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
+                                            <a class="dropdown-yellow" href="javascript:;" data-index="2"
+                                               ng-bind="qual2.name"
+                                               ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
+                                               ng-click="$ctrl.clickQual2(qual2,qual)"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown  dropdown-div dropdown-div-more">
+                                <a id="more_select_zz" role="button" data-toggle="dropdown"
+                                   class="btn btn-white btn-white-a" data-target="#"
+                                   href="javascript:;" ng-click="$ctrl.moreSelectZz($ctrl.moreZz)">
+                                    <div class="to_more" ng-show="!$ctrl.moreZz">更多</div>
+                                    <div class="to_more to_bottom" ng-show="!$ctrl.moreZz"></div>
+                                    <div class="to_more" ng-show="$ctrl.moreZz">收起</div>
+                                    <div class="to_more to_top" ng-show="$ctrl.moreZz"></div>
+                                </a>
+
+                            </div>
+
+                        </div>
+                        <div id="more-select-zz" class="drop-margin" ng-show="$ctrl.moreZz">
+                            <div class="dropdown dropdown-div dropdown-div-border dropdown-div-border2"
+                                 ng-repeat="qual in $ctrl.companyQualList2">
+                                <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
+                                   data-target="#"
+                                   href="javascript:;"><span
+                                        ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu"
+                                    aria-labelledby="dropdownMenu">
+                                    <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
+                                        <a href="javascript:;" data-index="2" ng-bind="qual2.name"
+                                           ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
+                                           ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bdd_area_header_select_li">
+                    <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
-                        <div class="bdd_content_h">资质要求：</div>
-                        <div class="bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">全部</div>
-                        <div class="dropdown dropdown-div dropdown-div-border"
-                             ng-repeat="qual in $ctrl.companyQualList">
-                            <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a" data-target="#"
-                               href="javascript:;"><span
-                                    ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu multi-level bdd_drop_scroll"  role="menu" aria-labelledby="dropdownMenu">
-                                <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
-                                    <a class="dropdown-yellow" href="javascript:;" data-index="2" ng-bind="qual2.name"
-                                       ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
-                                       ng-click="$ctrl.clickQual2(qual2,qual)"></a>
-                                </li>
-                            </ul>
+                        <div class="bdd_area_content bdd_content_h">注册资金：</div>
+                        <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font"
+                                                                           placeholder="最低价"
+                                                                           type="text"
+                                                                           ng-model="$ctrl.minPrice"><span
+                                style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
                         </div>
-
-                        <div class="dropdown  dropdown-div dropdown-div-more">
-                            <a id="more_select_zz" role="button" data-toggle="dropdown"
-                               class="btn btn-white btn-white-a" data-target="#"
-                               href="javascript:;" ng-click="$ctrl.moreSelectZz($ctrl.moreZz)">
-                                <div class="to_more" ng-show="!$ctrl.moreZz">更多</div>
-                                <div class="to_more to_bottom" ng-show="!$ctrl.moreZz"></div>
-                                <div class="to_more" ng-show="$ctrl.moreZz">收起</div>
-                                <div class="to_more to_top" ng-show="$ctrl.moreZz"></div>
-                            </a>
-
+                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高价"
+                                                                          type="text"
+                                                                          ng-model="$ctrl.maxPrice"></div>
+                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"
+                                                                          value="确认"
+                                                                          ng-click="$ctrl.clickPrice()">&nbsp;<span
+                                class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                         </div>
-
                     </div>
-                    <div id="more-select-zz" class="drop-margin" ng-show="$ctrl.moreZz">
-                        <div class="dropdown dropdown-div dropdown-div-border dropdown-div-border2"
-                             ng-repeat="qual in $ctrl.companyQualList2">
-                            <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a" data-target="#"
-                               href="javascript:;"><span
-                                    ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu" aria-labelledby="dropdownMenu">
-                                <li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">
-                                    <a href="javascript:;" data-index="2" ng-bind="qual2.name"
-                                       ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"
-                                       ng-click="$ctrl.clickQual2($event,qual2,qual)"></a>
 
-                                </li>
+                    <div class="bdd_area_left bdd_area_left_pad">
+                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(0,200)">
+                            0-200万
+                        </div>
+                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
+                             ng-click="$ctrl.clickCapital(200,500)">200-500万
+                        </div>
+                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(500,1000)">
+                            500-1000万
+                        </div>
+                    </div>
+                </div>
 
-                            </ul>
 
+
+
+                <div class="bdd_side_left_did">
+                    <div class="bdd_side_conter_do">
+                        <div class="bdd_area_left">
+                            <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.province">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelArea()">×</span></div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.city">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmCity()">×</span>
+                                </div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual1">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.qual1.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelQUal()">×</span>
+                                </div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual2">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.qual2.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancleEmQTwo()">×</span>
+                                </div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual3">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
+                                </div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.priceArea">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.canclePrice()">×</span></div>
+                            </div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"><span class="bdd_font_span"
+                                                                                            ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+                            </div>
+
+                            <div class="bdd_side_news_val">
+                                <div class="bdd_side_rihgt">综合排序</div>
+                                <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f"
+                                                                       ng-bind="$ctrl.totalCount"></span>公告
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bdd_area_header_select_li">
-                <div class="bdd_area_header_select_line2"></div>
-                <div class="bdd_area_left">
-                    <div class="bdd_area_content bdd_content_h">注册资金：</div>
-                    <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font" placeholder="最低价"
-                                                                       type="text"
-                                                                       ng-model="$ctrl.minPrice"><span
-                            style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
-                    </div>
-                    <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高价"
-                                                                      type="text"
-                                                                      ng-model="$ctrl.maxPrice"></div>
-                    <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button" value="确认"
-                                                                      ng-click="$ctrl.clickPrice()">&nbsp;<span
-                            class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span></div>
-                </div>
-                <div class="bdd_area_left bdd_area_left_pad">
-                    <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(0,200)">0-200万
-                    </div>
-                    <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
-                         ng-click="$ctrl.clickCapital(200,500)">200-500万
-                    </div>
-                    <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(500,1000)">
-                        500-1000万
-                    </div>
-                </div>
-            </div>
 
-
-            <div class="bdd_side_left_did">
-                <div class="bdd_side_conter_do">
-                    <div class="bdd_area_left">
-                        <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.province">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancelArea()">×</span></div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.city">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmCity()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual1">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual1.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancelQUal()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual2">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual2.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQTwo()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.qual3">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib" ng-if="$ctrl.priceArea">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.canclePrice()">×</span></div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib"><span class="bdd_font_span" ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
-                        </div>
-
-                    <div class="bdd_side_news_val">
-                        <div class="bdd_side_rihgt">综合排序</div>
-                        <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f" ng-bind="$ctrl.totalCount"></span>家企业
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+
 
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'

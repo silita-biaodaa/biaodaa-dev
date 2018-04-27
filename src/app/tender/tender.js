@@ -43,6 +43,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     this.isCity = false;
     this.regisAddress = "";
+    this.qualCode = "";
     this.province = "";
     this.city = "";
     this.qual1 = "";
@@ -53,7 +54,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.priceArea = "";
     this.cancelFilter = function () {
         this.regisAddress = "";
-        this.zzType = "";
+        this.qualCode = "";
         this.province = "";
         this.city = "";
         this.qual1 = "";
@@ -61,41 +62,43 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         this.qual3 = "";
         this.minCapital = 0;
         this.maxCapital = null;
-        this.priceArea = "";
-        selt.resetParam();
-        selt.queryList();
+        this.priceArea = ""
+        selt.setPage();
     };
 
 
 
     //----省市----
     this.clickProvince = function (area) {
-        selt.regions = area.name+"||";
+        selt.regisAddress = area.name+"||";
         selt.province = area.name;
         selt.isCity = true;
         selt.cityList = area.list;
-        selt.queryList();
+        selt.setPage();
     };
     this.clickCity = function (city) {
-        selt.regions = selt.province+"||"+city;
+        selt.regisAddress = selt.province+"||"+city;
         selt.city = city;
         selt.isCity = true;
-        selt.queryList();
-
+        selt.setPage();
     };
     this.cancelArea = function () {
-        this.regions = "";
+        this.regisAddress = "";
         this.province = "";
         this.city = "";
         selt.setPage();
     };
     this.cancleEmCity = function () {
-        selt.regions = selt.province+"||";
+        selt.regisAddress = selt.province+"||";
         selt.city="";
         selt.setPage();
     };
     //---省市----end
-
+    //评标办法
+    selt.isShowMore = false;
+    this.showMore = function(isShowMore){
+        selt.isShowMore = !isShowMore;
+    }
 
 
 
@@ -118,44 +121,43 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.qual1 = qual;
         selt.qual2 = "";
         selt.qual3 = "";
-        selt.zzType = qual.code+"||||";
-        selt.queryList();
+        selt.qualCode = qual.code+"||||";
+        selt.setPage();
     };
     this.clickQual2 = function (qual2,quel1) {
         selt.qual1 = quel1;
         selt.qual2 = qual2;
         selt.qual3 = "";
-        selt.zzType = quel1.code+"||"+qual2.code+"||";
+        selt.qualCode = quel1.code+"||"+qual2.code+"||";
         $("#bdd_second_menu").hide();
-        selt.queryList();
+        selt.setPage();
     };
     this.clickQual3 = function (qual3,qual2,quel1) {
         selt.qual1 = quel1;
         selt.qual2 = qual2;
         selt.qual3 = qual3;
-        selt.zzType = quel1.code+"||"+qual2.code+"||"+qual3.code;
+        selt.qualCode = quel1.code+"||"+qual2.code+"||"+qual3.code;
         $("#bdd_second_menu").hide();
-        selt.queryList();
+        selt.setPage();
     };
     this.cancelQUal = function () {
-        this.zzType =null;
+        this.qualCode = "";
         this.qual1 = "";
         this.qual2 = "";
         this.qual3 = "";
-        selt.queryList();
+        selt.setPage();
     };
     this.cancleEmQTwo = function () {
-        selt.zzType = selt.qual1.code+"||||";
+        selt.qualCode = selt.qual1.code+"||||";
         selt.qual2="";
         selt.qual3="";
-        selt.queryList();
+        selt.setPage();
     };
     this.cancleEmQThree = function () {
-        selt.zzType = selt.qual1.code+"||"+selt.qual2.code+"||";
+        selt.qualCode = selt.qual1.code+"||"+selt.qual2.code+"||";
         selt.qual3="";
-        selt.queryList();
+        selt.setPage();
     };
-
     this.zzList = [];
     this.zzOne = "";
     this.zzTwo = "";
@@ -200,6 +202,21 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.morePro = false;
     this.moreProvince=function(morePro){
         selt.morePro = !morePro;
@@ -209,7 +226,17 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.moreZz = !moreZz;
     };
 
- //----注册资金---
+
+
+
+
+
+
+
+
+
+
+    //----注册资金---
     this.clickCapital = function (min,max) {
         selt.minCapital = min;
         selt.maxCapital = max;
@@ -261,33 +288,45 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.nextPage = function () {
         if (selt.busy) return;
         selt.busy = true;
-        // var paramsPage = {
-        //     regisAddress:selt.regisAddress,
-        //     qualCode:selt.qualCode,
-        //     minCapital:selt.minCapital,
-        //     maxCapital:selt.maxCapital,
-        //     pageNo:selt.page,
-        //     pageSize:5
-        // };
-        //
-        // $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
-        //     var companyList = result.data;
-        //     if(companyList!=null&&selt.page==result.pageNum){
-        //         angular.forEach(companyList,function(company){
-        //             selt.companyList.push(company);
-        //         });
-        //         selt.totalCount = result.total;
-        //         selt.pageSize = result.pageSize;;
-        //         selt.pageNo = result.pageNum;
-        //         selt.busy = false;
-        //         selt.page += 1;
-        //         setContentHeight(result.data);
-        //     }else{
-        //         selt.totalCount = 0;
-        //     }
-        // });
+        var paramsPage = {
+            regisAddress:selt.regisAddress,
+            qualCode:selt.qualCode,
+            minCapital:selt.minCapital,
+            maxCapital:selt.maxCapital,
+            pageNo:selt.page,
+            pageSize:5
+        };
+
+        $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
+            var companyList = result.data;
+            if(companyList!=null&&selt.page==result.pageNum){
+                angular.forEach(companyList,function(company){
+                    selt.companyList.push(company);
+                });
+                selt.totalCount = result.total;
+                selt.pageSize = result.pageSize;;
+                selt.pageNo = result.pageNum;
+                selt.busy = false;
+                selt.page += 1;
+                setContentHeight(result.data);
+            }else{
+                selt.totalCount = 0;
+            }
+        });
     };
     //------------翻页----end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -313,88 +352,29 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     }
 
     //#####公告请求开始
-    //筛选条件
-    this.pbModes=null;
-    this.kbDateStart=null;
-    this.kbDateEnd=null;
-    this.projSumStart=null;
-    this.projSumEnd=null;
-    this.regions=null;
-    this.zzType=null;
-    this.projectType=null;
-    this.type=0;
 
-    this.resetParam =function () {
-        this.pbModes=null;
-        this.kbDateStart=null;
-        this.kbDateEnd=null;
-        this.projSumStart=null;
-        this.projSumEnd=null;
-        this.regions=null;
-        this.zzType=null;
-        this.projectType=null;
-    }
-
-    this.queryList= function (type){
-        if(type){
-            selt.type=type;
-        }
-
-        if(selt.type==0){
+    selt.tendType = true;//默认为招标
+    this.queryList= function (type,tendType){
+        if(type==0){
             selt.isTender =true;
-        }else if(selt.type==2){
+        }else if(type==2){
             selt.isTender =false;
         }
         var paramsPage = {
             pageNo:1,
             pageSize:20,
-            type: selt.type
+            type: type
         };
 
-        selt.pbModes='合理定价评审抽取法||综合评估法Ⅰ';
-        selt.kbDateStart="2018-04-20";
-        selt.kbDateEnd="2018-04-30";
-        selt.projSumStart="0";
-        selt.projSumEnd="500";
-        // if(selt.province){
-        //     selt.regions=selt.province+"||"+selt.city;
-        // }
-
-
-        if(selt.pbModes){
-            paramsPage.pbModes=selt.pbModes;
-        }
-        if(selt.kbDateStart){
-            paramsPage.kbDateStart=selt.kbDateStart;
-        }
-        if(selt.kbDateEnd){
-            paramsPage.kbDateEnd=selt.kbDateEnd;
-        }
-        if(selt.projSumStart){
-            paramsPage.projSumStart=selt.projSumStart;
-        }
-        if(selt.projSumEnd){
-            paramsPage.projSumEnd=selt.projSumEnd;
-        }
-        if(selt.regions){
-            paramsPage.regions=selt.regions;
-        }
-        if(selt.zzType){
-            paramsPage.zzType=selt.zzType;
-        }
-        if(selt.projectType){
-            paramsPage.projectType=selt.projectType;
-        }
-
-        console.log(paramsPage);
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
             console.log(result);
+            selt.tendType = !tendType;
             selt.dataList = result.data;
         });
     };
 
     //页面初始化
-    this.queryList(0);
+    this.queryList(2);
 
 
     this.logout = function () {
@@ -406,4 +386,9 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
 
 }]);
+
+
+
+
+
 
