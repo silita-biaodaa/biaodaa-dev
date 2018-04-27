@@ -173,7 +173,7 @@
         line-height: 80px;
     }
     .bdd-nav-div{
-        margin-left: 200px;
+        margin-left: 363px;
 
     }
     .bdd_user_top{
@@ -193,6 +193,15 @@
         top:0px;
         width: 100px;
     }
+    .btn-default{
+        position: absolute;
+        top:5px;
+    }
+    .dropup, .dropdown {
+        position: relative;
+        top:-20px;
+        left:217px;
+    }
 </style>
 
 <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
@@ -208,7 +217,19 @@
             <div ng-if="$ctrl.user != null">
                 <label class="bdd_user_top">{{$ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a class=bdd_black_a href="">个人中心</a>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        个人中心
+                    </button>
+                    <ul style="margin-top:30px;" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">个人资料</a></li>
+                        <li><a href="#">金融服务</a></li>
+                        <li><a href="#">消息通知</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -582,7 +603,6 @@
             }
         }, 15);
     }
-
 
 
     var isShow = false;
