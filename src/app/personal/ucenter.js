@@ -1,4 +1,4 @@
-app.controller('UcenterCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
+app.controller('UcenterCtrl', ['$http','$state','$log','$scope','$document', 'userTemp',function($http,$state, $log, $scope,$document,userTemp) {
     var selt = this;
     
     if (userTemp != null) {
@@ -14,7 +14,9 @@ app.controller('UcenterCtrl', ['$http','$uibModal','$log','$scope','$document', 
         selt.ucenter = result.data;
     });
 
-    this.menu = "personInfo"
+
+    console.log( $state.current.name);
+    this.menu = $state.current.name;
     this.selectMenu = function (menu) {
         selt.menu = menu;
     };
