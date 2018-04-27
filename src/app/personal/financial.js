@@ -663,6 +663,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 var reg=/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
                 if (!reg.test(money)) {
                     alert('请输入正确的贷款金额！');
+                    return;
                 }
             }
             var params = {
