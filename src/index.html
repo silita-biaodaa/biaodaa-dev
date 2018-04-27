@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="../vendor/normalize.css/normalize.css">
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../vendor/angular/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="./app/index/index.css">
     <link rel="stylesheet" href="../vendor/normalize.css/calendar.css"/>
     <link rel="stylesheet" href="../vendor/normalize.css/base.css">
@@ -25,6 +26,7 @@
     <link rel="stylesheet" href="../vendor/normalize.css/bdd_tenter_page.css">
     <link rel="stylesheet" href="../vendor/normalize.css/bdd-home.css">
     <link rel="stylesheet" href="../vendor/normalize.css/bdd-footer.css">
+    <link rel="stylesheet" href="../vendor/normalize.css/index2.css">
     <style type="text/css">
         .dropdown-submenu {
             position: relative;
@@ -75,9 +77,88 @@
     <title>webapp</title>
 </head>
 
-<body  class="container-fluid">
+<body  class="container-fluid" ng-controller="IndexCtrl as ctrl">
+
+
+
+    <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
+        <div class="bdd-nav-ser-div">
+            <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:1080px;"><img
+                    style="z-index: 1101;" src="../../../vendor/images/nav_icon_search.png" alt=""></a>
+            <div class="txt-inline"><img src="../../../vendor/images/nav_icon_iphone.png" alt=""><span style="font-size: 14px">APP下载</span></div>
+            <div class="txt-inline">
+                <div style="font-size: 14px;" ng-if="$ctrl.user == null">
+                    <a ui-sref="Login">登录</a>
+                    <a ui-sref="Register">注册</a>
+                </div>
+                <div ng-if="ctrl.user != null">
+                    <label class="bdd_user_top">{{ctrl.user.username}}</label>
+                    <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            个人中心
+                        </button>
+                        <ul style="margin-top:30px;" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">个人资料</a></li>
+                            <li><a href="#">金融服务</a></li>
+                            <li><a href="#">消息通知</a></li>
+                            <li><a href="#">意见反馈</a></li>
+                            <li><a href="#">加入我们</a></li>
+                            <li><a href="#">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divD" class="search-tender search-tender-select">
+        <div class="txt-inline"><select class="bdd_select_op">
+            <option>搜标讯</option>
+            <option>招标</option>
+            <option>中标</option>
+        </select></div>
+        <div class="txt-inline"><input class="bdd_black" type="text" placeholder="搜索关键字"/></div>
+    </div>
+
+    <nav class="bdd-nav">
+        <div class="bdd-nav-div">
+            <div class="bdd-img-div">
+                <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
+            </div>
+            <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+            <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
+            <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
+            <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+            <div class="bdd-nav-title"><a ui-sref="Usercenter">应用</a></div>
+        </div>
+    </nav>
 
     <ui-view> </ui-view>
+
+    <div class="bdd_footer_left">
+        <div class="bdd_footer_news">
+            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png"
+                                                             alt=""/></a></div>
+            <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
+            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
+            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
+            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
+            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
+            <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
+                                                                             src="../../../vendor/images/bottom_icon_andriod.png"
+                                                                             alt=""/></a></div>
+            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                             src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a>
+            </div>
+            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                             src="../../../vendor/images/bottom_icon_wechat.png"
+                                                             alt=""/></a></div>
+        </div>
+    </div>
+
+
+
+
     <script>
         window.rootSrc = '/src/';
     </script>
@@ -89,12 +170,16 @@
     <script src="../vendor/angular/ng-infinite-scroll.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
     <!--<script src="../vendor/js/echarts.min.js"></script>-->
 
     <script src="./app/app.js"></script>
     <script src="./app/config.router.js"></script>
     <script src="./app/config.lazyload.js"></script>
     <script src="./app/utils.js"></script>
+    <script src="index.js"></script>
+
 
 
 </body>
