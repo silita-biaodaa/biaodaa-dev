@@ -1,3 +1,15 @@
+<style>
+    .bdd_perso_left{
+        width: 110px;
+        height: 110px;
+        border-radius:110px;
+    }
+    .img_top{
+        border-radius:110px;
+        height: 110px;
+        width:110px
+    }
+</style>
 <!--头部-->
 <div class="bdd_perso_piv"></div>
 
@@ -55,7 +67,7 @@
 <div>
     <div class="bdd_perso_nav_news">
         <div>
-            <div class="bdd_perso_left"><img src="{{ucenter.imgurl}}" alt=""style="width: 110px;height: 110px"></div>
+            <div class="bdd_perso_left"><img src="{{ucenter.imgurl}}" alt=""  class="img_top"></div>
             <div class="bdd_perso_right">
                 <div class="bdd_perso_anv_li bdd_perso_color" ng-bind="ucenter.nickname"></div>
                 <div class="bdd_perso_anv_li bdd_perso_tel bdd_perso_span" ng-bind="ucenter.userphone"></div>
