@@ -663,10 +663,12 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 var reg=/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
                 if (money.length >= 11) {
                     alert('借款金额过大！');
+                    selt.money = '';
                     return;
                 }
                 if (!reg.test(money)) {
                     alert('请输入正确的借款金额！');
+                    selt.money = '';
                     return;
                 }
             }
