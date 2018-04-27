@@ -420,21 +420,16 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         this.projectType=null;
         this.totalCount=0;
     };
-
+    selt.isTender = true;
     this.queryList= function (type){
         if(type){
             selt.type=type;
         }
 
-        if(selt.type==0){
-            selt.isTender =true;
-        }else if(selt.type==2){
-            selt.isTender =false;
-        }
         var paramsPage = {
             pageNo:1,
             pageSize:20,
-            type: selt.type
+            type: type
         };
 
         // selt.pbModes='合理定价评审抽取法||综合评估法Ⅰ';
@@ -479,6 +474,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             console.log(result);
             selt.dataList = result.data;
             selt.totalCount=result.total;
+            selt.isTender = !type;
         });
     };
 
@@ -493,6 +489,14 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.user = null;
         window.location.href = "index.html#/home";
     };
+    this.toTenderDetail=function(id,type){
+
+            if(type!=null||type==0){
+                $state.go("TenderDtail",{id:id});
+            }else{
+                $state.go("Winbding",{id:id});
+            }
+    }
 
 }]);
 

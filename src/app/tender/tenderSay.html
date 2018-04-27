@@ -6,7 +6,6 @@
     }
     .bdd_adver_header{
         width: 1200px;
-        height:500px;
         margin: 0 auto;
     }
 
@@ -16,6 +15,7 @@
         color: #2e2e2e;
         height: 33px;
         font-family: Arial;
+        padding-top: 8px;
     }
     .bdd_text_y{
         padding-top:16px;
@@ -51,14 +51,26 @@
         width: 1200px;
         height: 166px;
         background-color: white;
-        padding: 15px 0px 20px 20px;
+        padding: 30px 0px 20px 20px;
         margin-top:10px;
+
     }
     .bdd_text_riqi{
         font-size: 14px;
         color:#ccbebe;
         float: right;
-        margin-right:10px;
+        margin-right:300px;
+    }
+    .text-inline{
+        display: inline-block;
+    }
+    .tender-say-div{
+        min-width: 800px;
+        overflow: hidden;
+    }
+    .bdd_text_first{
+        background-color: #fdefe3;
+        color:#ef873a;
     }
 
 </style>
@@ -110,16 +122,18 @@
 </nav>
 <!--公告-->
 
-<div ng-controller="TenderSayCtrl">
+<div class="tender-say-div" ng-controller="TenderSayCtrl">
  <div class="bdd_adver">
      <div class="bdd_adver_header" style="margin-top: 40px">
          <div class="bdd_win_conter" ng-show="showType==0" ng-repeat="item in tenderArrayData" style="margin-top:10px">
+           <a ng-click="toTenderDetail(item.id,item.type)">
              <div class="bdd_text_z">{{item.title}}</div>
-             <div class="bdd_text_y">资质要求：{{item.zzRank}}</div>
-             <div class="bdd_text_p">评标办法：{{item.pbMode}}</div>
-             <div class="bdd_text_invite" ng-show="item.type=='0'">招标公告</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <div class="bdd_text_invite bdd_text_pading" ng-show="item.type=='2'">中标公告</div>
-             <div class="bdd_text_riqi">2018-01-01</div>&nbsp;&nbsp;&nbsp;&nbsp;
+               <div class="bdd_text_y">资质要求：<span>{{item.certificate ? item.certificate:'详见原文'}}</span></div>
+               <div class="bdd_text_p">评标办法：<span>{{item.pbMode ? item.pbMode:'详见原文'}}</span></div>
+               <div class="text-inline bdd_text_invite bdd_text_pading bdd_text_first">{{item.noticeType}}</div>
+               <div class="text-inline bdd_text_invite bdd_text_pading">{{item.projectType}}</div>
+             <div class="bdd_text_riqi">{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
+           </a>
          </div>
 
 
@@ -132,18 +146,4 @@
      </div>
  </div>
 
-
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
-        <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
-    </div>
-</div>
 </div>

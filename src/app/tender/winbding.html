@@ -31,7 +31,6 @@
         left: 1349px;
         width: 290px;
         margin-bottom:140px;
-        float:right;
         margin-left:18px;
         overflow: hidden;
     }
@@ -270,6 +269,11 @@
     .bdd_follow_zb{
         padding-left:139px;
     }
+    .bdd_details_nav{
+        min-height: 800px;
+        overflow: hidden;
+        margin-top: 110px;
+    }
 </style>
 <!--头部-->
 <nav class="bdd-nav">
@@ -328,7 +332,7 @@
                     <span style="margin-top: 13px" class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_one">发布时间：{{currentTender.opendate}}</span>
                     <span style="margin-top: 13px" class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_one"><a href="{{currentTender.url}}">访问公告源</a></span><br/>
                     <div class="bdd_br" style="margin-top:23px;width: 800px;height: 1px;background-color:#f0f0f0;"></div>
-                    <a style="margin-top: 13px" class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_data_c"  ng-click="toTenderSayList(currentTender.id,2)">相关公告：{{relNoticeCount}}个<span style="color:#4d3a3a"></span></a>
+                    <a style="margin-top: 13px" class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_data_c"  ng-click="toTenderSayList(currentTender.id,2)">相关公告：{{relNoticeCount==null?0:relNoticeCount}}个<span style="color:#4d3a3a"></span></a>
                     <span style="margin-top: 13px" class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">  > </span><br>
 
                     <div class="bdd_stage">
@@ -336,7 +340,7 @@
                         <div class="bdd_stage_conter">
                             <div class="bdd_stage_top">
                                 <div class="bdd_stage_top_left">项目地区：<span class="bdd_stage_color">{{currentTender.projDq}}</span></div>
-                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}万</span></div>
+                                <div class="bdd_stage_top_right">项目金额：<span class="bdd_stage_color">{{currentTender.projSum}}{{currentTender.projSum?'万元':'0万元'}}</span></div>
                             </div><br>
 
                             <div class="bdd_stage_top">
@@ -344,18 +348,18 @@
                             </div><br>
                             <div class="bdd_stage_top">
                                <div  ng-if="currentTender.oneName && currentTender.oneName!=''">
-                                   <div><img src="../../../vendor/images/bx_zb_icon_Candidate1.png" alt="">&nbsp;&nbsp; {{currentTender.oneName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.oneOffer}}万</span></div>
+                                   <div><img src="../../../vendor/images/bx_zb_icon_Candidate1.png" alt="">&nbsp;&nbsp; {{currentTender.oneName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.oneOffer}}{{currentTender.oneOffer?'万元':'0万元'}}</span></div>
 
 
                                </div>
                                 <div ng-if="currentTender.twoName && currentTender.twoName!=''">
-                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate2.png" alt="">&nbsp;&nbsp; {{currentTender.twoName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.twoOffer}}万</span></div>
+                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate2.png" alt="">&nbsp;&nbsp; {{currentTender.twoName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.twoOffer}}{{currentTender.twoOffer?'万元':'0万元'}}</span></div>
 
 
                                 </div>
                                 <div  ng-if="currentTender.threeName!=null && currentTender.threeName!=''">
-                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span></div>
-                                    <div>{{currentTender.threeOffer}}</div>
+                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span><span>{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':'0万元'}}</span></div>
+
                                 </div>
                             </div><br>
                         </div>
@@ -400,20 +404,5 @@
         <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
         <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
         <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
-    </div>
-</div>
-
-<!--底部-->
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a></div>
-        <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"  src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img  class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png" alt=""/></a></div>
     </div>
 </div>

@@ -201,7 +201,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 
 
 //�б깫����ļ�����ҳ��???
-app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp',function ($http, $scope, utils, $stateParams,userTemp) {
+app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp','$state',function ($http, $scope, utils, $stateParams,userTemp,$state) {
     var selt = this;
 
     if (userTemp != null) {
@@ -254,6 +254,14 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
         selt.user = null;
         window.location.href = "index.html#/home";
     };
+
+    $scope.toTenderDetail=function(id,type){
+        if(type!=null&&type==0){
+            $state.go("TenderDtail",{id:id});
+        }else{
+            $state.go("Winbding",{id:id});
+        }
+    }
 }])
 
 //�б깫��ҳ��
@@ -290,7 +298,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $scope.currentTender = result.data[0];
         $scope.bdSize = result.data.length;
         $scope.fileCount = result.fileCount;
-        $scope.relNoticeCount = result.data[0].relNoticeCount;
+        $scope.relNoticeCount = result.relNoticeCount;
         if(result.data.length>0){
             $scope.currentNum =1;
         }

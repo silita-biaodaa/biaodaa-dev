@@ -53,6 +53,7 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
 
     $http.post("/foundation/listBannerImage",{type:0,showType:3}).success(function (result) {
         selt.imageArr = result.data;
+
         console.log(result);
     });
 
@@ -68,6 +69,12 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
 //页面初始化请求
     this.choiceType(2, '');
     this.choiceType(0, '');
+
+
+
+
+
+
 
 
 }]);

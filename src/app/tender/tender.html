@@ -106,6 +106,11 @@
     .bdd_dev_area_pro_a{
         width: 1120px;
     }
+    .dropdown-div-border, .dropdown-div-more{
+        left:0;
+        top:0px;
+    }
+
 
 </style>
 
@@ -113,11 +118,11 @@
 
 <!--公告-->
 <div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
-    <div class="bdd_announcement_left bdd_announcement_mess {{$ctrl.tendType ? 'bdd_un_active':''}}"
+    <div class="bdd_announcement_left bdd_announcement_mess {{$ctrl.isTender ? 'bdd_un_active':''}}"
          ng-click="$ctrl.queryList(0)">招标公告
     </div>
 
-    <div class="bdd_announcement_left {{$ctrl.tendType ? '':'bdd_un_active'}}"
+    <div class="bdd_announcement_left {{$ctrl.isTender ? '':'bdd_un_active'}}"
          ng-click="$ctrl.queryList(2)">中标公告
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
@@ -188,7 +193,7 @@
                     </div>
                 </div>
                 <div class="bdd_area_left">
-                    <div class="bdd_content_h">评标办法:</div>
+                    <div class="bdd_content_h bdd_content_h_m">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
                             <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
@@ -405,7 +410,7 @@
 
             <div class="bdd_adver">
                 <div class="bdd_adver_header" id="bdd_adver_header">
-                    <a ng-repeat="item in $ctrl.dataList">
+                    <a ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.toTenderDetail(item.id,item.type)">
                         <div class="bdd_win_conter" style="margin-top:10px;">
                             <div class="bdd_text_z" ng-bind="item.title"></div>
                             <div class="bdd_text_y">资质要求：{{item.certificate}}</div>

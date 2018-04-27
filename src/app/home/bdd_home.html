@@ -5,11 +5,11 @@
         <div class="all" id='box'>
             <div class="screen">
                 <ul>
-                    <li ng-repeat="item in $ctrl.imageArr"><img src="{{item.imagesrc}}" width="1200" height="500"/></li>
+                    <li ng-repeat="item in $ctrl.imageArr"><a><img src="{{item.imagesrc}}" width="1200" height="500"/></a></li>
                 </ul>
-                <ol></ol>
+                <ol style="display: none"></ol>
             </div>
-            <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+            <div id="arr"><span  style="display: none" id="left">&lt;</span><span style="display: none" id="right">&gt;</span></div>
         </div>
     </div>
 
@@ -306,7 +306,7 @@
         olLis[square].className = "current";
     };
 
-    setInterval(right.onclick, 2000);//自动播放
+    setInterval(right.onclick, 3000);//自动播放
 
     function animate(obj, target) {
         clearInterval(obj.timer);
@@ -321,6 +321,6 @@
                 obj.style.left = target + "px";//手动放到终点
                 clearInterval(obj.timer);
             }
-        }, 15);
+        }, 30);
     }
 </script>

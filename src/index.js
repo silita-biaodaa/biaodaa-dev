@@ -15,23 +15,20 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp',function($http,$scope,u
     };
 
     var isShow = false;
-    var left = $("#btnFadein").offset().left;
-    var top = $("#btnFadein").offset().top;
-    $("#divD").css('left',left);
-    $("#divD").css('top',top);
-    console.log(left+':'+top);
-    $("#divD").css('margin-top','40px');
+
     $("#btnFadein").click(function(){
         if(isShow){
-            $("#divD").animate({left:(left)+'px'}).fadeOut("fast",function(){
+            $("#divD").animate({left:'220px'}).fadeOut("fast",function(){
                 $("#divD").css("visibility","hidden");
             });
 
         }else{
             $("#divD").css("visibility","visible");
-            $("#divD").animate({left:(left)+'px'}).fadeIn("fast");
+            $("#divD").animate({left:'220px'}).fadeIn("fast");
             //$("#divD").css('left','500px');
-            $("#divD").animate({left:left-180}).fadeIn("fast");
+            $("#divD").animate({left:'0px'}).fadeIn("fast",function(){
+
+            });
         }
         isShow = !isShow;
 
