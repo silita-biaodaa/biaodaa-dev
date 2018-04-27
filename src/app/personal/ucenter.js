@@ -5,13 +5,19 @@ app.controller('UcenterCtrl', ['$http','$uibModal','$log','$scope','$document', 
         selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
+        window.location.href="index.html#/login";
     }
 
 
     $http.post("/userCenter/getUserTemp",null).success(function (result) {
         console.log(result.data);
-        $scope.ucenter = result.data;
+        selt.ucenter = result.data;
     });
+
+    this.menu = "personInfo"
+    this.selectMenu = function (menu) {
+        selt.menu = menu;
+    };
 
 
 

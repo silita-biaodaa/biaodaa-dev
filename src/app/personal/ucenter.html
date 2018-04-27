@@ -15,46 +15,55 @@
 
 
 <nav class="bdd-nav">
-    <!--<div class="bdd_perso_piv">  <p style="background-image: url(../../../vendor/images/wode_bg.png);width: 1920px;height: 349px;"></p></div>-->
     <div class="bdd-nav-div">
-        <div class="bdd-img-div"><div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div></div>
-        <div class="bdd-nav-title"><a href="./bdd-test.html"></a>首页</div>
-        <div class="bdd-nav-title"><a href="./bdd_scerrn.html">标讯</a></div>
-        <div class="bdd-nav-title">企信</div>
-        <div class="bdd-nav-title">动态</div>
-        <div class="bdd-nav-title">应用</div>
-        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
-            <div class="search-filter">
-                <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                <ul class="options">
-                    <li><a href="javascript:;" data-rel="project">作品</a></li>
-                    <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                    <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                    <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                    <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                    <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                    <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                    <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                </ul>
-            </div>
-            <div class="search-select">
-                <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
-                <ul class="options" style="display: none;">
-                    <li><a href="javascript:;">app</a></li><li><a href="javascript:;">logo</a></li><li><a href="javascript:;">icon</a></li><li><a href="javascript:;">AE</a></li><li><a href="javascript:;">作品集</a></li>								</ul>
-            </div>
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
         </div>
+        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
+        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a ui-sref="Usercenter">应用</a></div>
+        <div class="bdd-nav-title bdd-nav-title-hide">
+            <div class="search-status">
+                <div class="search-filter">
+                    <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
+                    <ul class="options">
+                        <li><a href="javascript:;" data-rel="project">作品</a></li>
+                        <li><a href="javascript:;" data-rel="experience">文章</a></li>
+                        <li><a href="javascript:;" data-rel="source">源文件</a></li>
+                        <li><a href="javascript:;" data-rel="designer">设计师</a></li>
+                        <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
+                        <li><a href="javascript:;" data-rel="talk">话题</a></li>
+                        <li><a href="javascript:;" data-rel="activity">活动</a></li>
+                        <li><a href="javascript:;" data-rel="veer">素材</a></li>
+                    </ul>
+                </div>
+                <div class="search-select">
+                    <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value=""
+                           name="keywords" id="keywords">
+                    <ul class="options" style="display: none;">
+                        <li><a href="javascript:;">app</a></li>
+                        <li><a href="javascript:;">logo</a></li>
+                        <li><a href="javascript:;">icon</a></li>
+                        <li><a href="javascript:;">AE</a></li>
+                        <li><a href="javascript:;">作品集</a></li>
+                    </ul>
+                </div>
+            </div>
             <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
+        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
+                                                                   alt=""></a></div>
         <div class="bdd-nav-title bdd-nav-right">APP下载</div>
         <div class="bdd-nav-title bdd-nav-right">
             <div ng-if="ctrl.user == null">
-                <a ui-sref="Login">登录</a>
-                <a ui-sref="Register">注册</a>
+                <a href="index.html#/login">登录</a>
+                <a href="index.html#/register">注册</a>
             </div>
             <div ng-if="ctrl.user != null && ctrl.user.username != ''">
                 <label>{{ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="ctrl.logout()">退出</span>
-                <a href="">个人中心</a>
+                <a href="#/ucenter">个人中心</a>
             </div>
         </div>
     </div>
@@ -67,10 +76,10 @@
 <div>
     <div class="bdd_perso_nav_news">
         <div>
-            <div class="bdd_perso_left"><img src="{{ucenter.imgurl}}" alt=""  class="img_top"></div>
+            <div class="bdd_perso_left"><img src="{{ctrl.ucenter.imgurl}}" alt=""  class="img_top"></div>
             <div class="bdd_perso_right">
-                <div class="bdd_perso_anv_li bdd_perso_color" ng-bind="ucenter.nickname"></div>
-                <div class="bdd_perso_anv_li bdd_perso_tel bdd_perso_span" ng-bind="ucenter.userphone"></div>
+                <div class="bdd_perso_anv_li bdd_perso_color" ng-bind="ctrl.ucenter.nickname"></div>
+                <div class="bdd_perso_anv_li bdd_perso_tel bdd_perso_span" ng-bind="ctrl.ucenter.userphone"></div>
             </div>
             <div class="bdd_vitality">
             </div>
@@ -80,15 +89,24 @@
     <!--个人资料-->
     <div class="bdd_vitality_zi">
         <div class="bdd_vitality_left">
-            <li class="bdd_vita_list"><a ui-sref=".personInfo">个人资料</a></li>
-            <li class="bdd_vita_list"><a ui-sref=".financial">金融服务</a></li>
-            <li class="bdd_vita_list"><a ui-sref=".messages">消息通知</a></li>
-            <li class="bdd_vita_list"><a ui-sref=".feedback">意见反馈</a></li>
-            <li class="bdd_vita_list"><a ui-sref=".myfollow">我的关注</a></li>
-            <li style="background-color: #212121;" class="bdd_vita_list"><a style="color: white" ui-sref=".feedback">意见反馈</a></li>
+            <li style="{{ctrl.menu=='personInfo'?'background-color: #212121;':''}}" class="bdd_vita_list">
+                <a style="{{ctrl.menu=='personInfo'?'color: white':''}}" ui-sref=".personInfo" ng-click="ctrl.selectMenu('personInfo')">个人资料</a>
+            </li>
+            <li style="{{ctrl.menu=='financial'?'background-color: #212121;':''}}" class="bdd_vita_list">
+                <a style="{{ctrl.menu=='financial'?'color: white':''}}" ui-sref=".financial" ng-click="ctrl.selectMenu('financial')">金融服务</a>
+            </li>
+            <li style="{{ctrl.menu=='messages'?'background-color: #212121;':''}}" class="bdd_vita_list">
+                <a style="{{ctrl.menu=='messages'?'color: white':''}}" ui-sref=".messages" ng-click="ctrl.selectMenu('messages')">消息通知</a>
+            </li>
+            <li style="{{ctrl.menu=='feedback'?'background-color: #212121;':''}}" class="bdd_vita_list">
+                <a style="{{ctrl.menu=='feedback'?'color: white':''}}" ui-sref=".feedback" ng-click="ctrl.selectMenu('feedback')">意见反馈</a>
+            </li>
+            <li style="{{ctrl.menu=='myfollow'?'background-color: #212121;':''}}" class="bdd_vita_list">
+                <a style="{{ctrl.menu=='myfollow'?'color: white':''}}" ui-sref=".myfollow" ng-click="ctrl.selectMenu('myfollow')">我的关注</a>
+            </li>
 
         </div>
-        <div class="bdd_vitality_right" ui-view="" style="height:auto;">
+        <div class="bdd_vitality_right" ui-view style="height:auto;">
 
         </div>
 
