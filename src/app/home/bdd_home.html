@@ -120,8 +120,8 @@
     }
     .txt-inline{
         display: inline-block;
-        padding-left: 20px;
-        
+
+
     }
     .search-tender{
         width:auto;
@@ -142,29 +142,32 @@
         margin-left: 1100px;
     }
     .bdd_black{
-        width: 100px;
+        width: 112px;
         background: #212121;
         border: 0px;
         background-color: white;
-        border-radius: 10px;
-
-
+        border-radius:5px;
+        font-size: 8px;
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
     }
     .bdd_select_op{
         background: #212121;
         border: 0px;
-        font-size: 16px;
+        font-size: 12px;
+
     }
     .bdd_select_op>option{
         background: #212121;
         border: 0px;
-        font-size: 16px;
+        font-size: 12px;
     }
     .bdd-nav-ser-div{
         width: 230px;
         background: #212121;
         text-align: left;
-        padding-left: 0;
+        margin-left:60px;
         color: #666;
         font-size: 16px;
     }
@@ -178,12 +181,12 @@
     }
     .bdd_user_top{
         position: absolute;
-        left:135px;
+        left:180px;
         top:0px;
     }
     .bdd_font_span{
         position: absolute;
-        left:311px;
+        left:321px;
         top:0px;
         width: 50px;
     }
@@ -191,7 +194,7 @@
         position: absolute;
         left:359px;
         top:0px;
-        width: 100px;
+        width: 112px;
     }
     .btn-default{
         position: absolute;
@@ -200,7 +203,7 @@
     .dropup, .dropdown {
         position: relative;
         top:-20px;
-        left:217px;
+        left:197px;
     }
 </style>
 
@@ -208,9 +211,9 @@
     <div class="bdd-nav-ser-div">
         <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:800px;"><img
                 style="z-index: 1101;" src="../../../vendor/images/nav_icon_search.png" alt=""></a>
-        <div class="txt-inline"><img src="../../../vendor" alt="">APP下载</div>
+        <div class="txt-inline"><img src="../../../vendor/images/nav_icon_iphone.png" alt=""><span style="font-size: 14px">APP下载</span></div>
         <div class="txt-inline">
-            <div ng-if="$ctrl.user == null">
+            <div style="font-size: 14px;" ng-if="$ctrl.user == null">
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
             </div>
@@ -240,7 +243,7 @@
         <option>招标</option>
         <option>中标</option>
     </select></div>
-    <div class="txt-inline"><input class="bdd_black" type="text" placeholder="请输入提示信息"/></div>
+    <div class="txt-inline"><input class="bdd_black" type="text" placeholder="搜索关键字"/></div>
 </div>
 
 <nav class="bdd-nav">
