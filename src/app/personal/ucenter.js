@@ -11,7 +11,7 @@ app.controller('UcenterCtrl', ['$http','$state','$log','$scope','$document', 'us
 
     $http.post("/userCenter/getUserTemp",null).success(function (result) {
         console.log(result.data);
-        selt.ucenter = result.data;
+        $scope.ucenter = result.data;
     });
 
 
