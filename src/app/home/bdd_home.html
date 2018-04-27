@@ -120,7 +120,8 @@
     }
     .txt-inline{
         display: inline-block;
-        height: 70px;
+        padding-left: 20px;
+        
     }
     .search-tender{
         width:auto;
@@ -144,6 +145,10 @@
         width: 100px;
         background: #212121;
         border: 0px;
+        background-color: white;
+        border-radius: 10px;
+
+
     }
     .bdd_select_op{
         background: #212121;
@@ -171,22 +176,39 @@
         margin-left: 200px;
 
     }
+    .bdd_user_top{
+        position: absolute;
+        left:135px;
+        top:0px;
+    }
+    .bdd_font_span{
+        position: absolute;
+        left:311px;
+        top:0px;
+        width: 50px;
+    }
+    .bdd_black_a{
+        position: absolute;
+        left:359px;
+        top:0px;
+        width: 100px;
+    }
 </style>
 
 <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
     <div class="bdd-nav-ser-div">
         <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:800px;"><img
                 style="z-index: 1101;" src="../../../vendor/images/nav_icon_search.png" alt=""></a>
-        <div class="txt-inline">APP下载</div>
+        <div class="txt-inline"><img src="../../../vendor" alt="">APP下载</div>
         <div class="txt-inline">
             <div ng-if="$ctrl.user == null">
                 <a ui-sref="Login">登录</a>
                 <a ui-sref="Register">注册</a>
             </div>
             <div ng-if="$ctrl.user != null">
-                <label>{{$ctrl.user.username}}</label>
+                <label class="bdd_user_top">{{$ctrl.user.username}}</label>
                 <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a href="">个人中心</a>
+                <a class=bdd_black_a href="">个人中心</a>
             </div>
         </div>
     </div>

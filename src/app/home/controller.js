@@ -53,6 +53,7 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
 
     $http.post("/foundation/listBannerImage",{type:0,showType:3}).success(function (result) {
         selt.imageArr = result.data;
+        console.log(result);
     });
 
     this.logout = function () {
