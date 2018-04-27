@@ -14,8 +14,10 @@ body{
 .bdd_perso_nav_news{
     width: 1200px;
     height:200px;
-    background-color: white;
     margin:0 auto;
+    background-color: white;
+    margin-left: 160px;
+
     position: absolute;
     top: 200px;
     left:10.5%;
@@ -117,6 +119,12 @@ body{
     background-color: #cea63f;
     margin-top:15px;
 }
+.bdd_vita_span_a{
+    width:60px;
+    height:3px;
+    background-color: #cea63f;
+    margin-top:15px;}
+
 .bdd_vitality_right_hrader_li{
     font-size: 16px;
     color: #4d3a3a;
