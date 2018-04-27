@@ -1,40 +1,32 @@
-<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap-datetimepicker.min.css">
-<script src="../vendor/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-
 <div class="bdd_vitality_right_header">
     <div class="bdd_vitality_right_hrader_li bdd_vita_right" >申请保证金借款</div>
     <div class="bdd_vitality_hr"></div>
     <form name="finanialForm" ng-submit="ctrl.submit()">
         <div class="bdd_fin_parent" id="parent">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区
-            <select class="bdd_fin_select" ng-model="province" ng-options="province.name for province in selectDatas">
+            <select class="bdd_fin_select" ng-model="ctrl.province" ng-options="province.name for province in selectDatas" ng-change="ctrl.changeProvince()">
                 <option value="">请选择</option>
             </select>
-            <select class="bdd_fin_select" ng-model="city" ng-options="city.name for city in province.citys">
+            <select class="bdd_fin_select" ng-model="ctrl.city" ng-options="city for city in ctrl.province.list" ng-change="ctrl.changeCity()">
                 <option value="">请选择</option>
             </select>
         </div>
         <div class="bdd_fin_parent" id="par">项目名称
-            <select name="projName" class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
+            <input name="projName" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.projName">
         </div>
         <div class="bdd_fin_parent" id="paren">开标时间
-            <input type="text" readonly class="placeholder form_datetime">
+            <input name="kbTime" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.kbTime">
         </div>
         <div style="margin-top: 20px;" class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
-            <input style="margin-left: 30px;" type="text" class="placeholder" ng-model="borrower">
+            <input name="borrower" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.borrower">
         </div>
-        <div style="margin-top: 20px;" class="bdd_fin_parent" id="p">联系方式
-            <input style="margin-left: 33px;" type="text" class="placeholder" ng-model="phone">
+        <div style="margin-top: 20px;" class="bdd_fin_parent" id="p">手机号码
+            <input name="phone" style="margin-left: 33px;" type="text" class="placeholder" ng-model="ctrl.phone">
         </div>
         <div class="bdd_fin_parent" id="prt">借款时间
-            <select class="bdd_fin_select">
-                <option>湖南</option>
-                <option>湖南</option>
-                <option>湖南</option>
-            </select>
+            <input name="borrowTime" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.borrowTime">
+        </div>
+        <div class="bdd_fin_parent">借款金额
+            <input name="money" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.money" onkeyup= "this.value=this.value.replace(/[^\d]/g,'');">
         </div>
         <input type="submit" class="bdd_vita_footer_title_text" value="提交"/>
     </form>
