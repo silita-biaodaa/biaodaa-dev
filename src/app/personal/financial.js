@@ -595,7 +595,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
 
     }
 
-    var regDateTime = /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/;
+    var regDateTime = /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]$/;
 
     this.submit = function () {
         if (null != userTemp) {
@@ -626,7 +626,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 return;
             } else {
                 if (!regDateTime.test(kbTime)) {
-                    alert('开标时间格式不正确！正确格式为 2018-01-01 00:00:00');
+                    alert('开标时间格式不正确！正确格式为 2018-01-01 00:00');
                     selt.kbTime='';
                     return;
                 }
@@ -651,7 +651,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 return;
             } else {
                 if (!regDateTime.test(borrowTime)) {
-                    alert('借款时间格式不正确！正确格式为 2018-01-01 00:00:00');
+                    alert('借款时间格式不正确！正确格式为 2018-01-01 00:00');
                     selt.borrowTime = '';
                     return;
                 }
@@ -661,8 +661,12 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 return;
             } else {
                 var reg=/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+                if (money.length >= 11) {
+                    alert('借款金额过大！');
+                    return;
+                }
                 if (!reg.test(money)) {
-                    alert('请输入正确的贷款金额！');
+                    alert('请输入正确的借款金额！');
                     return;
                 }
             }

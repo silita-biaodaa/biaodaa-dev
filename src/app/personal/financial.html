@@ -15,6 +15,7 @@
         </div>
         <div class="bdd_fin_parent" id="paren">开标时间
             <input name="kbTime" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.kbTime">
+            格式：2018-01-01 00:00
         </div>
         <div style="margin-top: 20px;" class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
             <input name="borrower" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.borrower">
@@ -24,9 +25,11 @@
         </div>
         <div class="bdd_fin_parent" id="prt">借款时间
             <input name="borrowTime" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.borrowTime">
+            格式：2018-01-01 00:00
         </div>
         <div class="bdd_fin_parent">借款金额
             <input name="money" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.money" onkeyup="this.value=this.value.replace(/[^\d|\.]/g,'');">
+            最多两位小数
         </div>
         <input type="submit" class="bdd_vita_footer_title_text" value="提交"/>
     </form>
