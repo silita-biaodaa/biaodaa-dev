@@ -84,26 +84,33 @@
     .bdd_text_vib_a {
         margin-top: 10px;
     }
-    .bdd_content-inline{
+
+    .bdd_content-inline {
         display: inline-block;
-        width:1020px;
+        width: 1020px;
     }
-    .bdd_tender_inline{
+
+    .bdd_tender_inline {
         display: inline-block;
     }
-    .dropdown-div-border{
+
+    .dropdown-div-border {
         margin-left: 5px;
     }
-    .dropdown-div-more{
+
+    .dropdown-div-more {
         margin-left: 20px;
     }
-    .bdd_tender_a{
-        width:1060px;
+
+    .bdd_tender_a {
+        width: 1060px;
     }
-    .bdd_comp_span_m{
+
+    .bdd_comp_span_m {
         margin-left: 0px;
     }
-    .bdd_dev_area_pro_a{
+
+    .bdd_dev_area_pro_a {
         width: 1120px;
     }
 
@@ -113,12 +120,14 @@
 
 <!--公告-->
 <div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
-    <div class="bdd_announcement_left bdd_announcement_mess {{$ctrl.tendType ? 'bdd_un_active':''}}"
+    <div class="bdd_announcement_left"
          ng-click="$ctrl.queryList(0)">招标公告
+        <div class="bdd_vita_span_a" ng-if="$ctrl.type==0"></div>
     </div>
 
-    <div class="bdd_announcement_left {{$ctrl.tendType ? '':'bdd_un_active'}}"
+    <div class="bdd_announcement_left"
          ng-click="$ctrl.queryList(2)">中标公告
+        <div class="bdd_vita_span_a" ng-if="$ctrl.type==2"></div>
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
@@ -132,12 +141,12 @@
                 <div class="bdd_dev_area bdd_dev_area_txt">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
                     <div class="bdd_tender_inline bdd_tender_a">
-                    <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelArea()">全部</a>
+                        <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelArea()">全部</a>
 
-                    <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                        <a class="span-cursor" ng-bind="area.name|limitTo:2"
-                           ng-click="$ctrl.clickProvince(area)"></a>
-                    </div>
+                        <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
+                            <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                               ng-click="$ctrl.clickProvince(area)"></a>
+                        </div>
                     </div>
                     <div class="bdd_comp_span bdd_comp_span_m">
                         <a class="span-cursor" id="to-pro-more"
@@ -191,22 +200,24 @@
                     <div class="bdd_content_h">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
-                            <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
-                                   ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]" ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
+                            <input id="{{mode.standardName}}" name="pb" type="checkbox"
+                                   ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
+                                   ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]"
+                                   ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
                             {{mode.standardName}}
                         </div>
                     </div>
 
                     <!--<div class="text-inline">-->
-                        <!--<div class="text-inline bdd-pb-more-a"><a class="bdd-pb-more"-->
-                                                                  <!--ng-click="$ctrl.showMore($ctrl.isShowMore)">{{$ctrl.isShowMore?'收起':'更多'}}</a>-->
-                            <!--<div class="text-inline-a to_more {{$ctrl.isShowMore?'to_top':'to_bottom'}}"></div>-->
-                        <!--</div>-->
+                    <!--<div class="text-inline bdd-pb-more-a"><a class="bdd-pb-more"-->
+                    <!--ng-click="$ctrl.showMore($ctrl.isShowMore)">{{$ctrl.isShowMore?'收起':'更多'}}</a>-->
+                    <!--<div class="text-inline-a to_more {{$ctrl.isShowMore?'to_top':'to_bottom'}}"></div>-->
+                    <!--</div>-->
                     <!--</div>-->
                     <!--<div class="text-inline-second bdd-pb-more-d" ng-show="$ctrl.isShowMore">-->
-                        <!--<div class="text-inline-first text-inline"><input type="checkbox" name="a11" value="10"/>-->
-                            <!--合理低价法10-->
-                        <!--</div>-->
+                    <!--<div class="text-inline-first text-inline"><input type="checkbox" name="a11" value="10"/>-->
+                    <!--合理低价法10-->
+                    <!--</div>-->
 
                     <!--</div>-->
 
@@ -217,7 +228,9 @@
                         <div class="bdd_area_left">
                             <div class="bdd_content_h">资质要求：</div>
                             <div class="bdd_content_n bdd_content-inline">
-                                <div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">全部</div>
+                                <div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">
+                                    全部
+                                </div>
                                 <div class="bdd_tender_inline dropdown dropdown-div dropdown-div-border"
                                      ng-repeat="qual in $ctrl.companyQualList">
                                     <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
@@ -285,8 +298,9 @@
                                                                            ng-model="$ctrl.projSumStart"><span
                                 style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高金额（万）"
-                                                                          type="text"   style="width: 150px;"
+                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font"
+                                                                          placeholder="最高金额（万）"
+                                                                          type="text" style="width: 150px;"
                                                                           ng-model="$ctrl.projSumEnd"></div>
                         <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"
                                                                           value="确认"
@@ -314,16 +328,18 @@
                     <div class="bdd_area_left">
                         <div class="bdd_area_content bdd_content_h bdd_content_k">开标时间：</div>
                         <div class="bdd_area_content bdd_content_q">
-                            <input id="startDate" class="bdd_select  bdd_font placeholder Wdate" placeholder="起始时间" type="text"   style="width: 150px;"
+                            <input id="startDate" class="bdd_select  bdd_font placeholder Wdate" placeholder="起始时间"
+                                   type="text" style="width: 150px;"
                                    ng-model="$ctrl.kbDateStart">
-                                   <!--onclick="WdatePicker({skin:'twoer',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'{%y-1}-%M-%d',maxDate:'#F{$dp.$D(\'endDate\')||\'2020-10-01\'}'})"-->
-                                   <span style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
+                            <!--onclick="WdatePicker({skin:'twoer',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'{%y-1}-%M-%d',maxDate:'#F{$dp.$D(\'endDate\')||\'2020-10-01\'}'})"-->
+                            <span style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
                         </div>
                         <div class="bdd_area_content bdd_text_vib">
-                            <input id="endDate" class="bdd_select bdd_font placeholder Wdate" placeholder="结束时间" type="text"   style="width: 150px;"
-                                   ng-model="$ctrl.kbDateEnd"  name="kbDateEnd">
-                                   <!--onclick="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd',maxDate:'2020-10-01',minDate:'#F{$dp.$D(\'startDate\')}'})"-->
-                                  </div>
+                            <input id="endDate" class="bdd_select bdd_font placeholder Wdate" placeholder="结束时间"
+                                   type="text" style="width: 150px;"
+                                   ng-model="$ctrl.kbDateEnd" name="kbDateEnd">
+                            <!--onclick="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd',maxDate:'2020-10-01',minDate:'#F{$dp.$D(\'startDate\')}'})"-->
+                        </div>
                         <div class="bdd_area_content bdd_text_vib">
                             <input class="bdd_button_val" type="button" value="确认" ng-click="$ctrl.clickKbDate()">&nbsp;<span
                                 class="bdd_font_span" ng-click="$ctrl.cancelKbDate()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
@@ -371,19 +387,23 @@
                                 </div>
                             </div>
 
-                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-repeat="mm in $ctrl.pbModes track by $index" >
-                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;" >
-                                    <span style="width: 10px;">{{mm}}</span>&nbsp;&nbsp;<span ng-click="$ctrl.canclePbMode('{{mm}}')">×</span></div>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-repeat="mm in $ctrl.pbModes track by $index">
+                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
+                                    <span style="width: 10px;">{{mm}}</span>&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.canclePbMode('{{mm}}')">×</span></div>
                             </div>
 
-                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.projSumStart || $ctrl.projSumEnd">
-                                <div class="bdd_select bdd_font  bdd_font_color"  style="width:auto;">
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.projSumStart || $ctrl.projSumEnd">
+                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
                                     {{$ctrl.projSumStart}}万—{{$ctrl.projSumEnd}}万&nbsp;&nbsp;<span
                                         ng-click="$ctrl.canclePrice()">×</span></div>
                             </div>
 
-                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.kbDateStart || $ctrl.kbDateEnd">
-                                <div class="bdd_select bdd_font  bdd_font_color"  style="width:auto;">
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.kbDateStart || $ctrl.kbDateEnd">
+                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
                                     {{$ctrl.kbDateStart}}—{{$ctrl.kbDateEnd}}&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelKbDate()">×</span></div>
                             </div>
@@ -403,22 +423,24 @@
                 </div>
             </div>
 
+            <!-- 内容 -->
             <div class="bdd_adver">
-                <div class="bdd_adver_header" id="bdd_adver_header">
-                    <a ng-repeat="item in $ctrl.dataList">
+                <div class="bdd_adver_header" id="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
+                     infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
+                    <a ng-repeat="notice in $ctrl.noticeList">
                         <div class="bdd_win_conter" style="margin-top:10px;">
-                            <div class="bdd_text_z" ng-bind="item.title"></div>
-                            <div class="bdd_text_y">资质要求：{{item.certificate}}</div>
-                            <div class="bdd_text_p">评标办法：{{item.pbMode}}</div>
-                            <div class="bdd_text_invite">{{item.projectType}}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="bdd_text_invite bdd_text_pading">{{item.noticeType}}</div>
-                            <div class="bdd_text_riqi">{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="bdd_text_z" ng-bind="notice.title"></div>
+                            <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
+                            <div class="bdd_text_p">评标办法：{{notice.pbMode}}</div>
+                            <div class="bdd_text_invite">{{notice.projectType}}</div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="bdd_text_invite bdd_text_pading">{{notice.noticeType}}</div>
+                            <div class="bdd_text_riqi">{{notice.opendate}}</div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </a>
-
                 </div>
             </div>
-
 
         </div>
 
