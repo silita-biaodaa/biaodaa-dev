@@ -71,16 +71,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.maxCapital = null;
     this.priceArea = "";
     this.cancelFilter = function () {
-        this.regisAddress = "";
-        this.zzType = "";
-        this.province = "";
-        this.city = "";
-        this.qual1 = "";
-        this.qual2 = "";
-        this.qual3 = "";
-        this.minCapital = 0;
-        this.maxCapital = null;
-        this.priceArea = "";
         selt.resetParam();
         selt.queryList();
     };
@@ -233,35 +223,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.moreZz = !moreZz;
     };
 
- //----注册资金---
-    this.clickCapital = function (min,max) {
-        selt.minCapital = min;
-        selt.maxCapital = max;
-        selt.priceArea = min+"-"+max+"万";
-        selt.setPage();
-    };
-    this.clickPrice = function () {
-        selt.priceArea = "";
-        if(selt.minPrice&&selt.minPrice!=""){
-            selt.minCapital = selt.minPrice;
-        }else{
-            selt.minCapital = 0;
-        }
-        if(selt.maxPrice&&selt.maxPrice!=""){
-            selt.maxCapital = selt.maxPrice;
-        }else{
-            this.maxCapital = null;
-        }
-        selt.setPage();
-    };
-    this.canclePrice = function () {
-        selt.priceArea = "";
-        selt.minPrice="";
-        selt.maxPrice="";
-        this.minCapital = 0;
-        this.maxCapital = null;
-        selt.setPage();
-    };
+
     //----注册资金---end
 
 
@@ -403,6 +365,34 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         return false;
     }
 
+    //项目金额
+    this.clickProjSum=function (start,end) {
+        console.log(start+"@@"+end);
+        if(start!=null && end!=null){
+            selt.projSumStart=start;
+            selt.projSumEnd=end;
+        }
+        selt.queryList();
+    }
+    this.canclePrice=function(){
+        selt.projSumStart=null;
+        selt.projSumEnd=null;
+        selt.queryList();
+    }
+
+    //开标时间
+    this.clickKbDate=function (){
+        console.log(selt.kbDateStart+"##"+selt.kbDateEnd)
+        selt.queryList();
+    }
+    this.cancelKbDate=function (){
+        selt.kbDateStart=null;
+        selt.kbDateEnd=null;
+        selt.queryList();
+    }
+
+
+
     //筛选条件
     this.pbModes=null;
     this.kbDateStart=null;
@@ -415,6 +405,11 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.type=0;
 
     this.resetParam =function () {
+        this.province = "";
+        this.city = "";
+        this.qual1 = "";
+        this.qual2 = "";
+        this.qual3 = "";
         this.pbModes=null;
         this.kbDateStart=null;
         this.kbDateEnd=null;
@@ -423,6 +418,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         this.regions=null;
         this.zzType=null;
         this.projectType=null;
+        this.totalCount=0;
     };
 
     this.queryList= function (type){
@@ -482,6 +478,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
             console.log(result);
             selt.dataList = result.data;
+            selt.totalCount=result.total;
         });
     };
 

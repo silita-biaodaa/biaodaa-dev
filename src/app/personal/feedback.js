@@ -1,13 +1,23 @@
 app.controller('FeedbackCtrl', ['$http','$uibModal','$log','$scope','$document','userTemp',function($http,$uibModal, $log, $scope,$document, userTemp) {
     var selt = this;
     selt.type = '程序错误';
+    selt.changeColor1 = 'color: #cea63f';
     this.problemType = function (type) {
         if (type == 1) {
             selt.type = '程序错误';
+            selt.changeColor1 = 'color: #cea63f';
+            selt.changeColor2 = '';
+            selt.changeColor3 = '';
         } else if (type == 2) {
             selt.type = '产品建议';
+            selt.changeColor2 = 'color: #cea63f';
+            selt.changeColor1 = '';
+            selt.changeColor3 = '';
         } else {
             selt.type = '吐槽';
+            selt.changeColor3 = 'color: #cea63f';
+            selt.changeColor2 = '';
+            selt.changeColor1 = '';
         }
     }
     this.submit = function () {
