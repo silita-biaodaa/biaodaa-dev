@@ -8,10 +8,20 @@
     }
     .photo-edit{
         height: 92px;
-        padding-top: 160px;
+        padding-top: 120px;
         margin-left: -85px;
         width: 86px;
         cursor: pointer;
+    }
+    .bdd_perso_left bdd_perso_news{
+        width: 110px;
+        height: 110px;
+        border-radius:110px
+    }
+    .img_center{
+        border-radius:110px;
+        height: 110px;
+        width:110px
     }
 </style>
 <div class="bdd_vitality_right_header">
@@ -22,7 +32,7 @@
     <div class="bdd_vitality_hr"></div>
 </div>
 <div class="bdd_vitality_conter">
-    <div class="bdd_perso_left bdd_perso_news" ><img src="{{ctrl.user.imgurl}}" style="width: 110px;height: 110px"/> </div>
+    <div class="bdd_perso_left bdd_perso_news" ><img src="{{ctrl.user.imgurl}}" class="img_center"> </div>
     <label class="photo-edit">
         <input name="file" type="file" ng-hide="true" onchange="angular.element(this).scope().upload()">
         <p>设置头像</p>
