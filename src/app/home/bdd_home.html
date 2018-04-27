@@ -132,15 +132,14 @@
     }
     .bdd-nav-search{
         position: fixed;
+        right:500px;
         z-index: 2000;
     }
     .bdd-nav-app{
         margin-left: 350px;
     }
 
-    .bdd-nav-search{
-        margin-left: 1100px;
-    }
+
     .bdd_black{
         width: 112px;
         background: #212121;
@@ -205,11 +204,14 @@
         top:-20px;
         left:197px;
     }
+    .search-tender-select{
+        visibility: hidden;
+    }
 </style>
 
 <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
     <div class="bdd-nav-ser-div">
-        <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:800px;"><img
+        <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;left:1080px;"><img
                 style="z-index: 1101;" src="../../../vendor/images/nav_icon_search.png" alt=""></a>
         <div class="txt-inline"><img src="../../../vendor/images/nav_icon_iphone.png" alt=""><span style="font-size: 14px">APP下载</span></div>
         <div class="txt-inline">
@@ -237,7 +239,7 @@
         </div>
     </div>
 </div>
-<div id="divD" class="search-tender">
+<div id="divD" class="search-tender search-tender-select">
     <div class="txt-inline"><select class="bdd_select_op">
         <option>搜标讯</option>
         <option>招标</option>
@@ -617,8 +619,12 @@
     $("#divD").css('margin-top','40px');
     $("#btnFadein").click(function(){
         if(isShow){
-            $("#divD").animate({left:(left)+'px'}).fadeOut("fast");
+            $("#divD").animate({left:(left)+'px'}).fadeOut("fast",function(){
+                $("#divD").css("visibility","hidden");
+            });
+
         }else{
+            $("#divD").css("visibility","visible");
             $("#divD").animate({left:(left)+'px'}).fadeIn("fast");
             //$("#divD").css('left','500px');
             $("#divD").animate({left:left-180}).fadeIn("fast");
