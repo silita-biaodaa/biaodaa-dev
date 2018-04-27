@@ -223,69 +223,46 @@
             <div class="bdd_area_left">
                 <div class="bdd_dev_area bdd_dev_area_txt">分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro">
-                    <a class="bdd_comp_span_all span-cursor span-yellow">不限</a>
+                    <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelProjectType();">不限</a>
 
                     <div class="bdd_comp_span">
-                        <a class="span-cursor">监理</a>
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('0');">施工</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor">设计</a>
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('2');">监理</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor">施工</a>
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('3');">采购</a>
                     </div>
-                    <div class="bdd_comp_span span-cursor-a">
-                        <a class="span-cursor span-cursor-a">施工与设计</a>
+                    <div class="bdd_comp_span">
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('1');">设计</a>
+                    </div>
+                    <div class="bdd_comp_span">
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('4');">勘察</a>
                     </div>
                 </div>
                 <div class="bdd_area_left">
                     <div class="bdd_content_h">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a1" value="1"/>
-                            合理低价法1
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a2" value="2"/>
-                            合理低价法2
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a3" value="3"/>
-                            合理低价法3
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a4" value="4"/>
-                            合理低价法4
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a5" value="5"/>
-                            合理低价法5
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a6" value="6"/>
-                            合理低价法6
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a7" value="7"/>
-                            合理低价法7
-                        </div>
-                        <div class="text-inline"><input type="checkbox" ng-checked="selectAll" name="a8" value="8"/>
-                            合理低价法8
+                        <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
+                            <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"  ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]" ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
+                            {{mode.standardName}}
                         </div>
                     </div>
-                    <div class="text-inline">
-                        <div class="text-inline text-inline-more">多选</div>
-                        <div class="text-inline bdd-pb-more-a"><a class="bdd-pb-more"
-                                                                  ng-click="$ctrl.showMore($ctrl.isShowMore)">{{$ctrl.isShowMore?'收起':'更多'}}</a>
-                            <div class="text-inline-a to_more {{$ctrl.isShowMore?'to_top':'to_bottom'}}"></div>
-                        </div>
-                    </div>
-                    <div class="text-inline-second bdd-pb-more-d" ng-show="$ctrl.isShowMore">
-                        <div class="text-inline-first text-inline"><input type="checkbox" name="a11" value="10"/>
-                            合理低价法10
-                        </div>
-                        <div class="text-inline"><input type="checkbox" name="a10" value="10"/> 合理低价法11</div>
-                        <div class="text-inline"><input type="checkbox" name="a12" value="12"/> 合理低价法12</div>
-                        <div class="text-inline"><input type="checkbox" name="a13" value="13"/> 合理低价法13</div>
-                        <div class="text-inline"><input type="checkbox" name="a14" value="14"/> 合理低价法14</div>
-                        <div class="text-inline"><input type="checkbox" name="a15" value="15"/> 合理低价法15</div>
-                        <div class="text-inline"><input type="checkbox" name="a9" value="9"/> 合理低价法9</div>
 
+                    <!--<div class="text-inline">-->
+                        <!--<div class="text-inline bdd-pb-more-a"><a class="bdd-pb-more"-->
+                                                                  <!--ng-click="$ctrl.showMore($ctrl.isShowMore)">{{$ctrl.isShowMore?'收起':'更多'}}</a>-->
+                            <!--<div class="text-inline-a to_more {{$ctrl.isShowMore?'to_top':'to_bottom'}}"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="text-inline-second bdd-pb-more-d" ng-show="$ctrl.isShowMore">-->
+                        <!--<div class="text-inline-first text-inline"><input type="checkbox" name="a11" value="10"/>-->
+                            <!--合理低价法10-->
+                        <!--</div>-->
 
-                    </div>
+                    <!--</div>-->
+
                 </div>
                 <!--筛选框-->
                 <div class="bdd_area_li bdd_letter_li_ti">
@@ -411,6 +388,13 @@
                     <div class="bdd_side_conter_do">
                         <div class="bdd_area_left">
                             <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.projectType">
+                                <div class="bdd_select bdd_font  bdd_font_color">
+                                    {{$ctrl.projectTypeDesc}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelProjectType()">×</span></div>
+                            </div>
+
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.province">
                                 <div class="bdd_select bdd_font  bdd_font_color">
                                     {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
@@ -438,6 +422,12 @@
                                     {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
                                 </div>
                             </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-repeat="mm in $ctrl.pbModes track by $index" >
+                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;" >
+                                    <span style="width: 10px;">{{mm}}</span>&nbsp;&nbsp;<span ng-click="$ctrl.canclePbMode('{{mm}}')">×</span></div>
+                            </div>
+
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.priceArea">
                                 <div class="bdd_select bdd_font  bdd_font_color">
                                     {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span
@@ -506,8 +496,6 @@
                                                                                         ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)"></a>
             </div>
         </div>
+
+
     </div>
-</div>
-
-
-
