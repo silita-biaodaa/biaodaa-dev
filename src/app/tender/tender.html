@@ -1,3 +1,4 @@
+<script src="../vendor/My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
     @import url("../../../vendor/normalize.css/bdd_scerrn.css");
 </style>
@@ -168,11 +169,11 @@
 <!--公告-->
 <div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
     <div class="bdd_announcement_left bdd_announcement_mess {{$ctrl.tendType ? 'bdd_un_active':''}}"
-         ng-click="$ctrl.queryList(0,$ctrl.tendType)">招标公告
+         ng-click="$ctrl.queryList(0)">招标公告
     </div>
 
     <div class="bdd_announcement_left {{$ctrl.tendType ? '':'bdd_un_active'}}"
-         ng-click="$ctrl.queryList(2,$ctrl.tendType)">中标公告
+         ng-click="$ctrl.queryList(2)">中标公告
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
@@ -245,7 +246,8 @@
                     <div class="bdd_content_h">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
-                            <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"  ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]" ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
+                            <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
+                                   ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]" ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
                             {{mode.standardName}}
                         </div>
                     </div>
@@ -331,31 +333,31 @@
                 <div class="bdd_area_header_select_li">
                     <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
-                        <div class="bdd_area_content bdd_content_h">标的金额：</div>
+                        <div class="bdd_area_content bdd_content_h">项目金额：</div>
                         <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font"
-                                                                           placeholder="最低价"
-                                                                           type="text"
-                                                                           ng-model="$ctrl.minPrice"><span
+                                                                           placeholder="最低金额（万）"
+                                                                           type="text" style="width: 150px;"
+                                                                           ng-model="$ctrl.projSumStart"><span
                                 style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高价"
-                                                                          type="text"
-                                                                          ng-model="$ctrl.maxPrice"></div>
+                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高金额（万）"
+                                                                          type="text"   style="width: 150px;"
+                                                                          ng-model="$ctrl.projSumEnd"></div>
                         <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"
                                                                           value="确认"
-                                                                          ng-click="$ctrl.clickPrice()">&nbsp;<span
+                                                                          ng-click="$ctrl.clickProjSum()">&nbsp;<span
                                 class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                         </div>
                     </div>
 
                     <div class="bdd_area_left bdd_area_left_pad">
-                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(0,200)">
+                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(0,200)">
                             0-200万
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
-                             ng-click="$ctrl.clickCapital(200,500)">200-500万
+                             ng-click="$ctrl.clickProjSum(200,500)">200-500万
                         </div>
-                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickCapital(500,1000)">
+                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(500,1000)">
                             500-1000万
                         </div>
                     </div>
@@ -366,19 +368,20 @@
                     <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
                         <div class="bdd_area_content bdd_content_h bdd_content_k">开标时间：</div>
-                        <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font"
-                                                                           placeholder="起始时间"
-                                                                           type="text"
-                                                                           ng-model="$ctrl.startTime"><span
-                                style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
+                        <div class="bdd_area_content bdd_content_q">
+                            <input id="startDate" class="bdd_select  bdd_font placeholder Wdate" placeholder="起始时间" type="text"   style="width: 150px;"
+                                   ng-model="$ctrl.kbDateStart">
+                                   <!--onclick="WdatePicker({skin:'twoer',readOnly:true,dateFmt:'yyyy-MM-dd',minDate:'{%y-1}-%M-%d',maxDate:'#F{$dp.$D(\'endDate\')||\'2020-10-01\'}'})"-->
+                                   <span style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="结束时间"
-                                                                          type="text"
-                                                                          ng-model="$ctrl.endTime"></div>
-                        <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"
-                                                                          value="确认"
-                                                                          ng-click="$ctrl.clickPrice()">&nbsp;<span
-                                class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+                        <div class="bdd_area_content bdd_text_vib">
+                            <input id="endDate" class="bdd_select bdd_font placeholder Wdate" placeholder="结束时间" type="text"   style="width: 150px;"
+                                   ng-model="$ctrl.kbDateEnd"  name="kbDateEnd">
+                                   <!--onclick="WdatePicker({skin:'twoer',dateFmt:'yyyy-MM-dd',maxDate:'2020-10-01',minDate:'#F{$dp.$D(\'startDate\')}'})"-->
+                                  </div>
+                        <div class="bdd_area_content bdd_text_vib">
+                            <input class="bdd_button_val" type="button" value="确认" ng-click="$ctrl.clickKbDate()">&nbsp;<span
+                                class="bdd_font_span" ng-click="$ctrl.cancelKbDate()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                         </div>
                     </div>
                 </div>
@@ -428,11 +431,18 @@
                                     <span style="width: 10px;">{{mm}}</span>&nbsp;&nbsp;<span ng-click="$ctrl.canclePbMode('{{mm}}')">×</span></div>
                             </div>
 
-                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.priceArea">
-                                <div class="bdd_select bdd_font  bdd_font_color">
-                                    {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.projSumStart || $ctrl.projSumEnd">
+                                <div class="bdd_select bdd_font  bdd_font_color"  style="width:auto;">
+                                    {{$ctrl.projSumStart}}万—{{$ctrl.projSumEnd}}万&nbsp;&nbsp;<span
                                         ng-click="$ctrl.canclePrice()">×</span></div>
                             </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.kbDateStart || $ctrl.kbDateEnd">
+                                <div class="bdd_select bdd_font  bdd_font_color"  style="width:auto;">
+                                    {{$ctrl.kbDateStart}}—{{$ctrl.kbDateEnd}}&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelKbDate()">×</span></div>
+                            </div>
+
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"><span class="bdd_font_span"
                                                                                             ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                             </div>
