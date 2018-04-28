@@ -199,6 +199,11 @@
                 <div class="bdd_area_left">
                     <div class="bdd_content_h">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
+                        <!--<div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.canclePbModeAll()">-->
+                            <!--全部-->
+                            <!--<input type="checkbox" ng-model="all" />-->
+                        <!--</div>-->
+
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
                             <input id="{{mode.standardName}}" name="pb" type="checkbox"
                                    ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"

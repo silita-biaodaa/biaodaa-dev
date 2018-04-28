@@ -21,10 +21,8 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
 
     $http.get("/company/filter").success(function (result) {
-        console.log(result.data.pbMode);
-        console.log(result.data.area);
-
-
+        // console.log(result.data.pbMode);
+        // console.log(result.data.area);
         var arr1 = [];
         var arr2 = [];
         if (result.code == 1) {
@@ -39,9 +37,9 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
                 }
             }
             selt.areaList = arr1;
-            console.log(arr1);
+            // console.log(arr1);
             selt.areaList2 = arr2;
-            console.log(arr2);
+            // console.log(arr2);
             var arr1 = [];
             var arr2 = [];
             var companyQualList = result.data.companyQual;
@@ -309,6 +307,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     //评标办法
     this.pbModeChange = function (obj) {
+        console.log(obj);
         selt.pbModes = [];
         // selt.pbModes=selt.pbModes.concat(obj);
         if (selt.pb) {
@@ -340,7 +339,30 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         console.log(selt.pbModes);
         selt.queryList();
     }
-
+    // this.canclePbModeAll = function () {
+    //     // selt.pbModes=null;
+    //     // for (var item in selt.pb) {
+    //     //     selt.pb[item]
+    //     // }
+    //     angular.forEach(selt.pbModeList,function(data){
+    //         // selt.pbModeChange(data.standardName.toString());
+    //         // selt.pbModes = [];
+    //         // // selt.pbModes=selt.pbModes.concat(obj);
+    //         // if (selt.pb) {
+    //         //     for (var item in selt.pb) {
+    //         //         if (selt.pb[item]) {
+    //         //             selt.pbModes.push(selt.pb[item]);
+    //         //         }
+    //         //
+    //         //     }
+    //         // }
+    //         selt.updateChecked(data.standardName.toString());
+    //     });
+    //
+    //
+    //     selt.pbModes=null;
+    //     selt.queryList();
+    // }
     this.updateChecked = function (str) {
         // console.log(str+'##'+selt.pbModes);
         for (var t in selt.pbModes) {
@@ -471,7 +493,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     if(keyword){
         selt.keyword = decodeURI(keyword);
-        console.log(selt.keyword);
+        // console.log(selt.keyword);
     }
     if(noticeType){
         selt.queryList(noticeType);
