@@ -113,11 +113,6 @@
     .bdd_dev_area_pro_a {
         width: 1120px;
     }
-    .dropdown-div-border, .dropdown-div-more{
-        left:0;
-        top:0px;
-    }
-
 
 </style>
 
@@ -125,12 +120,14 @@
 
 <!--公告-->
 <div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
-    <div class="bdd_announcement_left bdd_announcement_mess {{$ctrl.tendType ? 'bdd_un_active':''}}"
+    <div class="bdd_announcement_left"
          ng-click="$ctrl.queryList(0)">招标公告
+        <div class="bdd_vita_span_a" ng-if="$ctrl.type==0"></div>
     </div>
 
-    <div class="bdd_announcement_left {{$ctrl.tendType ? '':'bdd_un_active'}}"
+    <div class="bdd_announcement_left"
          ng-click="$ctrl.queryList(2)">中标公告
+        <div class="bdd_vita_span_a" ng-if="$ctrl.type==2"></div>
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
@@ -203,8 +200,10 @@
                     <div class="bdd_content_h">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
-                            <input id="{{mode.standardName}}" name="pb" type="checkbox" ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
-                                   ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]" ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
+                            <input id="{{mode.standardName}}" name="pb" type="checkbox"
+                                   ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
+                                   ng-change="$ctrl.pbModeChange('{{mode.standardName}}');" ng-model="$ctrl.pb[$index]"
+                                   ng-true-value="'{{mode.standardName}}'" ng-false-value="null"/>
                             {{mode.standardName}}
                         </div>
                     </div>

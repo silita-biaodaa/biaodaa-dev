@@ -1,4 +1,4 @@
-app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp', function ($http, $scope, utils, $stateParams, $state,userTemp) {
+app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', function ($http, $scope, utils, $stateParams, $state, userTemp) {
     var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
@@ -6,13 +6,13 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.user = null;
     }
 
-    Array.prototype.indexOf = function(val) {
+    Array.prototype.indexOf = function (val) {
         for (var i = 0; i < this.length; i++) {
             if (this[i] == val) return i;
         }
         return -1;
     };
-    Array.prototype.remove = function(val) {
+    Array.prototype.remove = function (val) {
         var index = this.indexOf(val);
         if (index > -1) {
             this.splice(index, 1);
@@ -27,14 +27,14 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
         var arr1 = [];
         var arr2 = [];
-        if(result.code==1){
+        if (result.code == 1) {
             selt.pbModeList = result.data.pbMode;
 
-            for(var i=0;i<result.data.area.length;i++){
+            for (var i = 0; i < result.data.area.length; i++) {
                 var areaArr = result.data.area;
-                if(i<14){
+                if (i < 14) {
                     arr1.push(areaArr[i]);
-                }else{
+                } else {
                     arr2.push(areaArr[i]);
                 }
             }
@@ -42,15 +42,15 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             console.log(arr1);
             selt.areaList2 = arr2;
             console.log(arr2);
-            var arr1=[];
-            var arr2=[];
-            var companyQualList= result.data.companyQual;
+            var arr1 = [];
+            var arr2 = [];
+            var companyQualList = result.data.companyQual;
 
-            if(companyQualList!=null &&companyQualList.length>0){
-                for(var i=0;i<companyQualList.length;i++){
-                    if(i<8){
+            if (companyQualList != null && companyQualList.length > 0) {
+                for (var i = 0; i < companyQualList.length; i++) {
+                    if (i < 8) {
                         arr1.push(companyQualList[i]);
-                    }else{
+                    } else {
                         arr2.push(companyQualList[i]);
                     }
                 }
@@ -76,17 +76,16 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
 
 
-
     //----省市----
     this.clickProvince = function (area) {
-        selt.regions = area.name+"||";
+        selt.regions = area.name + "||";
         selt.province = area.name;
         selt.isCity = true;
         selt.cityList = area.list;
         selt.queryList();
     };
     this.clickCity = function (city) {
-        selt.regions = selt.province+"||"+city;
+        selt.regions = selt.province + "||" + city;
         selt.city = city;
         selt.isCity = true;
         selt.queryList();
@@ -99,32 +98,17 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.setPage();
     };
     this.cancleEmCity = function () {
-        selt.regions = selt.province+"||";
-        selt.city="";
+        selt.regions = selt.province + "||";
+        selt.city = "";
         selt.setPage();
     };
     //---省市----end
 
     //评标办法
     selt.isShowMore = false;
-    this.showMore = function(isShowMore){
+    this.showMore = function (isShowMore) {
         selt.isShowMore = !isShowMore;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //---资质----
@@ -132,58 +116,58 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.qual1 = qual;
         selt.qual2 = "";
         selt.qual3 = "";
-        selt.zzType = qual.code+"||||";
+        selt.zzType = qual.code + "||||";
         selt.queryList();
     };
-    this.clickQual2 = function (qual2,quel1) {
+    this.clickQual2 = function (qual2, quel1) {
         selt.qual1 = quel1;
         selt.qual2 = qual2;
         selt.qual3 = "";
-        selt.zzType = quel1.code+"||"+qual2.code+"||";
+        selt.zzType = quel1.code + "||" + qual2.code + "||";
         $("#bdd_second_menu").hide();
         selt.queryList();
     };
-    this.clickQual3 = function (qual3,qual2,quel1) {
+    this.clickQual3 = function (qual3, qual2, quel1) {
         selt.qual1 = quel1;
         selt.qual2 = qual2;
         selt.qual3 = qual3;
-        selt.zzType = quel1.code+"||"+qual2.code+"||"+qual3.code;
+        selt.zzType = quel1.code + "||" + qual2.code + "||" + qual3.code;
         $("#bdd_second_menu").hide();
         selt.queryList();
     };
     this.cancelQUal = function () {
-        this.zzType =null;
+        this.zzType = null;
         this.qual1 = "";
         this.qual2 = "";
         this.qual3 = "";
         selt.queryList();
     };
     this.cancleEmQTwo = function () {
-        selt.zzType = selt.qual1.code+"||||";
-        selt.qual2="";
-        selt.qual3="";
+        selt.zzType = selt.qual1.code + "||||";
+        selt.qual2 = "";
+        selt.qual3 = "";
         selt.queryList();
     };
     this.cancleEmQThree = function () {
-        selt.zzType = selt.qual1.code+"||"+selt.qual2.code+"||";
-        selt.qual3="";
+        selt.zzType = selt.qual1.code + "||" + selt.qual2.code + "||";
+        selt.qual3 = "";
         selt.queryList();
     };
 
     this.zzList = [];
     this.zzOne = "";
     this.zzTwo = "";
-    this.touchStart = function($event,qual2,qual1){
+    this.touchStart = function ($event, qual2, qual1) {
         var elem = $event.target;
         var grandFather = elem.parentNode.parentNode;
         var aArr = grandFather.getElementsByTagName("a");
-        for(var i=0;i<aArr.length;i++){
+        for (var i = 0; i < aArr.length; i++) {
             var aElem = aArr[i];
-            aElem.parentNode.style.backgroundColor='#fff';
-            aElem.style.color='#000';
+            aElem.parentNode.style.backgroundColor = '#fff';
+            aElem.style.color = '#000';
         }
-        elem.parentNode.style.backgroundColor='#A7BC6D';
-        elem.style.color='#fff';
+        elem.parentNode.style.backgroundColor = '#A7BC6D';
+        elem.style.color = '#fff';
         var off = $($event.target).offset();
         var tocWidth = $($event.target).width();
         console.log(off.top);
@@ -194,16 +178,16 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.zzOne = qual1;
         selt.zzTwo = qual2;
         selt.setPage();
-        selt.setPosition(qual2.list,off.left,off.top,tocWidth);
+        selt.setPosition(qual2.list, off.left, off.top, tocWidth);
     };
-    this.setPosition = function(arr,offX,offY,tocWidth){
+    this.setPosition = function (arr, offX, offY, tocWidth) {
         var secondMenu = document.getElementById('bdd_second_menu');
-        $('#bdd_second_menu').css('left',(offX + tocWidth +45) + 'px');
-        $('#bdd_second_menu').css('top',offY + 'px');
-        if(arr!=null && arr.length>0) {
+        $('#bdd_second_menu').css('left', (offX + tocWidth + 45) + 'px');
+        $('#bdd_second_menu').css('top', offY + 'px');
+        if (arr != null && arr.length > 0) {
             $('#bdd_second_menu').css('border', '1px solid #ccc');
             $('#bdd_second_menu').show();
-        }else{
+        } else {
             //secondMenu.style.display='none';
             $('#bdd_second_menu').hide();
         }
@@ -211,15 +195,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     //----资质---end---
 
 
-
-
-
     this.morePro = false;
-    this.moreProvince=function(morePro){
+    this.moreProvince = function (morePro) {
         selt.morePro = !morePro;
     };
     this.moreZz = false;
-    this.moreSelectZz=function(moreZz){
+    this.moreSelectZz = function (moreZz) {
         selt.moreZz = !moreZz;
     };
 
@@ -227,18 +208,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     //----注册资金---end
 
 
-
-
-
-
-
-
     //--翻页---例子
-    this.companyList = [];
+    this.noticeList = [];
     this.busy = false;
     this.page = 1;
     this.setPage = function () {
-        selt.companyList = [];
+        selt.noticeList = [];
         selt.busy = false;
         selt.page = 1;
         selt.nextPage();
@@ -247,105 +222,109 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.nextPage = function () {
         if (selt.busy) return;
         selt.busy = true;
-        // var paramsPage = {
-        //     regisAddress:selt.regisAddress,
-        //     qualCode:selt.qualCode,
-        //     minCapital:selt.minCapital,
-        //     maxCapital:selt.maxCapital,
-        //     pageNo:selt.page,
-        //     pageSize:5
-        // };
-        //
-        // $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
-        //     var companyList = result.data;
-        //     if(companyList!=null&&selt.page==result.pageNum){
-        //         angular.forEach(companyList,function(company){
-        //             selt.companyList.push(company);
-        //         });
-        //         selt.totalCount = result.total;
-        //         selt.pageSize = result.pageSize;;
-        //         selt.pageNo = result.pageNum;
-        //         selt.busy = false;
-        //         selt.page += 1;
-        //         setContentHeight(result.data);
-        //     }else{
-        //         selt.totalCount = 0;
-        //     }
-        // });
+        var paramsPage = {
+            pageNo: selt.page,
+            pageSize: 5,
+            type: selt.type,
+            kbDateStart:selt.kbDateStart,
+            kbDateEnd:selt.kbDateEnd,
+            projSumStart:selt.projSumStart,
+            projSumEnd:selt.projSumEnd,
+            regions:selt.regions,
+            zzType:selt.zzType,
+            projectType:selt.projectType
+        };
+        if (selt.pbModes && selt.pbModes instanceof Array) {
+            paramsPage.pbModes = selt.pbModes.join("||");
+        }
+
+        $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
+            var noticeList = result.data;
+            selt.totalCount = result.total;
+            if (noticeList != null &&
+                selt.page == result.pageNo) {
+                angular.forEach(noticeList, function (notice) {
+                    selt.noticeList.push(notice);
+                });
+                selt.pageSize = result.pageSize;
+                selt.pageNo = result.pageNo;
+                selt.busy = false;
+                selt.page += 1;
+            }
+        });
+    };
+
+    this.setContentHeight = function (dataList) {
+        var bdd_adver_header = document.getElementById("bdd_adver_header");
+        if (dataList.length > 2) {
+            bdd_adver_header.style.height = "auto";
+        } else {
+            bdd_adver_header.style.height = "500px";
+        }
     };
     //------------翻页----end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    function setContentHeight(dataList){
-        var bdd_adver_header = document.getElementById("bdd_adver_header");
-        if(dataList.length>2){
-            bdd_adver_header.style.height="auto";
-        }else{
-            bdd_adver_header.style.height="500px";
-        }
-
-    }
-
     //#####公告请求开始
 
     //项目类型
-    this.choiceProjectType =function(projectType){
-        selt.projectType=projectType;
-        switch(projectType){
-            case '0':selt.projectTypeDesc='施工';break;
-            case '2':selt.projectTypeDesc='监理';break;
-            case '3':selt.projectTypeDesc='采购';break;
-            case '1':selt.projectTypeDesc='设计';break;
-            case '4':selt.projectTypeDesc='勘察';break;
-            default:selt.projectTypeDesc=null;break;
+    this.choiceProjectType = function (projectType) {
+        selt.projectType = projectType;
+        switch (projectType) {
+            case '0':
+                selt.projectTypeDesc = '施工';
+                break;
+            case '2':
+                selt.projectTypeDesc = '监理';
+                break;
+            case '3':
+                selt.projectTypeDesc = '采购';
+                break;
+            case '1':
+                selt.projectTypeDesc = '设计';
+                break;
+            case '4':
+                selt.projectTypeDesc = '勘察';
+                break;
+            default:
+                selt.projectTypeDesc = null;
+                break;
         }
         selt.queryList();
     };
 
-    this.cancelProjectType =function(){
-        selt.projectType=null;
-        selt.projectTypeDesc=null;
+    this.cancelProjectType = function () {
+        selt.projectType = null;
+        selt.projectTypeDesc = null;
         selt.queryList();
     };
 
     //评标办法
-   this.pbModeChange=function(obj){
-       selt.pbModes=[];
-       // selt.pbModes=selt.pbModes.concat(obj);
-       if(selt.pb) {
-           for (var item in selt.pb) {
-               if (selt.pb[item]) {
-                   selt.pbModes.push(selt.pb[item]);
-               }
+    this.pbModeChange = function (obj) {
+        selt.pbModes = [];
+        // selt.pbModes=selt.pbModes.concat(obj);
+        if (selt.pb) {
+            for (var item in selt.pb) {
+                if (selt.pb[item]) {
+                    selt.pbModes.push(selt.pb[item]);
+                }
 
-           }
-           console.info(selt.pbModes);
-           selt.queryList();
-       }
-       return true;
+            }
+            console.info(selt.pbModes);
+            selt.queryList();
+        }
+        return true;
     }
-    this.canclePbMode=function (obj){
-        if(selt.pbModes){
+    this.canclePbMode = function (obj) {
+        if (selt.pbModes) {
             selt.pbModes.remove(obj);
             for (var item in selt.pb) {
-                if(obj==selt.pb[item]){
+                if (obj == selt.pb[item]) {
                     // console.log(obj+'###'+selt.pb[item]);
                     var el = document.getElementById(obj);
-                    el.setAttribute("class","ng-pristine ng-untouched ng-valid ng-empty");
+                    el.setAttribute("class", "ng-pristine ng-untouched ng-valid ng-empty");
                     // console.log(el.getAttribute("class"));
-                    selt.pb[item]=null;
+                    selt.pb[item] = null;
                 }
             }
         }
@@ -353,10 +332,10 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.queryList();
     }
 
-    this.updateChecked=function(str){
+    this.updateChecked = function (str) {
         // console.log(str+'##'+selt.pbModes);
-        for(var t in selt.pbModes){
-            if(selt.pbModes[t].toString()==str.toString()){
+        for (var t in selt.pbModes) {
+            if (selt.pbModes[t].toString() == str.toString()) {
                 // console.log(selt.pbModes[t]+'@@@'+str);
                 // console.log("true");
                 return true;
@@ -366,124 +345,123 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     }
 
     //项目金额
-    this.clickProjSum=function (start,end) {
-        console.log(start+"@@"+end);
-        if(start!=null && end!=null){
-            selt.projSumStart=start;
-            selt.projSumEnd=end;
+    this.clickProjSum = function (start, end) {
+        console.log(start + "@@" + end);
+        if (start != null && end != null) {
+            selt.projSumStart = start;
+            selt.projSumEnd = end;
         }
         selt.queryList();
     }
-    this.canclePrice=function(){
-        selt.projSumStart=null;
-        selt.projSumEnd=null;
+    this.canclePrice = function () {
+        selt.projSumStart = null;
+        selt.projSumEnd = null;
         selt.queryList();
     }
 
     //开标时间
-    this.clickKbDate=function (){
-        console.log(selt.kbDateStart+"##"+selt.kbDateEnd)
+    this.clickKbDate = function () {
+        console.log(selt.kbDateStart + "##" + selt.kbDateEnd)
         selt.queryList();
     }
-    this.cancelKbDate=function (){
-        selt.kbDateStart=null;
-        selt.kbDateEnd=null;
+    this.cancelKbDate = function () {
+        selt.kbDateStart = null;
+        selt.kbDateEnd = null;
         selt.queryList();
     }
-
 
 
     //筛选条件
-    this.pbModes=null;
-    this.kbDateStart=null;
-    this.kbDateEnd=null;
-    this.projSumStart=null;
-    this.projSumEnd=null;
-    this.regions=null;
-    this.zzType=null;
-    this.projectType=null;
-    this.type=0;
+    this.pbModes = null;
+    this.kbDateStart = null;
+    this.kbDateEnd = null;
+    this.projSumStart = null;
+    this.projSumEnd = null;
+    this.regions = null;
+    this.zzType = null;
+    this.projectType = null;
+    this.type = 0;
 
-    this.resetParam =function () {
+    this.resetParam = function () {
         this.province = "";
         this.city = "";
         this.qual1 = "";
         this.qual2 = "";
         this.qual3 = "";
-        this.pbModes=null;
-        this.kbDateStart=null;
-        this.kbDateEnd=null;
-        this.projSumStart=null;
-        this.projSumEnd=null;
-        this.regions=null;
-        this.zzType=null;
-        this.projectType=null;
-        this.totalCount=0;
+        this.pbModes = null;
+        this.kbDateStart = null;
+        this.kbDateEnd = null;
+        this.projSumStart = null;
+        this.projSumEnd = null;
+        this.regions = null;
+        this.zzType = null;
+        this.projectType = null;
+        this.totalCount = 0;
     };
 
-    this.queryList= function (type){
-        if(type){
-            selt.type=type;
+/*    this.queryList = function (type) {
+        if (type) {
+            selt.type = type;
         }
 
-        if(selt.type==0){
-            selt.isTender =true;
-        }else if(selt.type==2){
-            selt.isTender =false;
+        if (selt.type == 0) {
+            selt.isTender = true;
+        } else if (selt.type == 2) {
+            selt.isTender = false;
         }
         var paramsPage = {
-            pageNo:1,
-            pageSize:20,
+            pageNo: 1,
+            pageSize: 20,
             type: selt.type
         };
 
-        // selt.pbModes='合理定价评审抽取法||综合评估法Ⅰ';
-        // selt.kbDateStart="2018-04-20";
-        // selt.kbDateEnd="2018-04-30";
-        // selt.projSumStart="0";
-        // selt.projSumEnd="500";
-        // if(selt.province){
-        //     selt.regions=selt.province+"||"+selt.city;
-        // }
-
-
-        if(selt.pb) {
+        if (selt.pb) {
             if (selt.pbModes && selt.pbModes instanceof Array) {
                 paramsPage.pbModes = selt.pbModes.join("||");
             }
         }
-        if(selt.kbDateStart){
-            paramsPage.kbDateStart=selt.kbDateStart;
+        if (selt.kbDateStart) {
+            paramsPage.kbDateStart = selt.kbDateStart;
         }
-        if(selt.kbDateEnd){
-            paramsPage.kbDateEnd=selt.kbDateEnd;
+        if (selt.kbDateEnd) {
+            paramsPage.kbDateEnd = selt.kbDateEnd;
         }
-        if(selt.projSumStart){
-            paramsPage.projSumStart=selt.projSumStart;
+        if (selt.projSumStart) {
+            paramsPage.projSumStart = selt.projSumStart;
         }
-        if(selt.projSumEnd){
-            paramsPage.projSumEnd=selt.projSumEnd;
+        if (selt.projSumEnd) {
+            paramsPage.projSumEnd = selt.projSumEnd;
         }
-        if(selt.regions){
-            paramsPage.regions=selt.regions;
+        if (selt.regions) {
+            paramsPage.regions = selt.regions;
         }
-        if(selt.zzType){
-            paramsPage.zzType=selt.zzType;
+        if (selt.zzType) {
+            paramsPage.zzType = selt.zzType;
         }
-        if(selt.projectType){
-            paramsPage.projectType=selt.projectType;
+        if (selt.projectType) {
+            paramsPage.projectType = selt.projectType;
         }
 
         console.log(paramsPage);
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
             console.log(result);
             selt.dataList = result.data;
-            selt.totalCount=result.total;
+            selt.totalCount = result.total;
         });
-    };
+    };*/
+    var noticeType =  utils.getUrlVar('type');
+    this.queryList = function (type) {
+        selt.type = type;
+        selt.setPage();
+    }
+    if(noticeType){
+        selt.queryList(noticeType);
+    }else{
+        //页面初始化
+        selt.queryList(0);
+    }
 
-    //页面初始化
-    this.queryList(0);
+
 
 
     this.logout = function () {
