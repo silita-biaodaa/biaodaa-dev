@@ -237,6 +237,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         if(selt.keyword){
             paramsPage.title=selt.keyword;
         }
+        console.log(paramsPage)
 
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
             var noticeList = result.data;
@@ -502,6 +503,54 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.queryList(0);
     }
 
+    // $('.form_date').datetimepicker({
+    //     language:  'zh-CN',
+    //     format:'yyyy-mm-dd',
+    //     weekStart: 1,
+    //     todayBtn:  1,
+    //     autoclose: 1,
+    //     todayHighlight: 1,
+    //     startView: 2,
+    //     minView: 2,
+    //     forceParse: 0
+    // }).on('dp.change', function (e) {
+    //     var result = new moment(e.date).format('YYYY-MM-DD');
+    //     selt.kbDateStart = result;
+    //     $scope.$apply();
+    // });
+
+    //在Controller中绑定选择控件
+    var datepicker1 = $('#datetimepicker1').datetimepicker({
+        language:  'zh-CN',
+        format:'yyyy-mm-dd',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    }).on('dp.change', function (e) {
+        var result = new moment(e.date).format('YYYY-MM-DD');
+        selt.kbDateStart = result;
+        $scope.$apply();
+    });
+
+    var datepicker2 = $('#datetimepicker2').datetimepicker({
+        language:  'zh-CN',
+        format:'yyyy-mm-dd',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    }).on('dp.change', function (e) {
+        var result = new moment(e.date).format('YYYY-MM-DD');
+        selt.kbDateEnd = result;
+        $scope.$apply();
+    });
 
 
 
