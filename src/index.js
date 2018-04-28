@@ -35,6 +35,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
 
     this.seachKeyword = function(){
         window.location.href=selt.goUrl+selt.keyword;
+        window.location.reload();
     };
 
 
