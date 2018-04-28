@@ -436,8 +436,8 @@
                 <div class="bdd_adver_header" id="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
                      infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
                     <a ng-repeat="notice in $ctrl.noticeList">
-                        <div class="bdd_win_conter" style="margin-top:10px;">
-                            <div class="bdd_text_z" ng-bind="notice.title"></div>
+                        <div class="bdd_win_conter" style="margin-top:10px;" ng-if="notice.type==0">
+                           <div class="bdd_text_z" ng-bind="notice.title"></div>
                             <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
                             <div class="bdd_text_p">评标办法：{{notice.pbMode}}</div>
                             <div class="bdd_text_invite">{{notice.projectType}}</div>
@@ -446,7 +446,16 @@
                             <div class="bdd_text_riqi">{{notice.opendate}}</div>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
+                        <div class="bdd_win_conter" style="margin-top:10px;" ng-if="notice.type==2">
+                            <div class="bdd_text_z" ng-bind="notice.title"></div>
+                            <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
+                            <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
+                            <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
+                            <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
                     </a>
+
                 </div>
             </div>
 
