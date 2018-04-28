@@ -87,20 +87,24 @@
             <div class="bdd-img-div">
                 <div class="bdd-img-one"><img class="bdd-img" src="../vendor/images/logo.png" alt=""/></div>
             </div>
-            <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-            <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
-            <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
-            <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
-            <div class="bdd-nav-title"><a ui-sref="Usercenter">应用</a></div>
+            <div class="bdd-nav-title"><a style="{{ctrl.menu=='home'?'color:white':''}}" ng-click="ctrl.selectMenu('home')" ui-sref="home">首页</a></div>
+            <div class="bdd-nav-title"><a style="{{ctrl.menu=='tender'?'color:white':''}}" ng-click="ctrl.selectMenu('tender')" ui-sref="Tender">标讯</a></div>
+            <div class="bdd-nav-title"><a style="{{ctrl.menu=='companyTop'?'color:white':''}}" ng-click="ctrl.selectMenu('companyTop')" ui-sref="CompanyTop">企信</a></div>
+            <div class="bdd-nav-title"><a style="{{ctrl.menu=='workmore'?'color:white':''}}" ng-click="ctrl.selectMenu('workmore')" ui-sref="workmore">动态</a></div>
+            <div class="bdd-nav-title"><a style="{{ctrl.menu=='usercenter'?'color:white':''}}" ng-click="ctrl.selectMenu('usercenter')" ui-sref="Usercenter">应用</a></div>
             <div class="bdd-nav-tend-rel">
             <div id="divD" class="search-tender search-tender-select">
-                <div class="txt-inline"><select class="bdd_select_op">
-                    <option>搜标讯</option>
-                    <option>招标</option>
-                    <option>中标</option>
+                <div class="txt-inline">
+                    <select class="bdd_select_op" ng-change="ctrl.selectGoMenu(ctrl.goMenu)" ng-model="ctrl.goMenu">
+                    <option value ="tender?type=99&keyword=">搜标讯</option>
+                    <option value ="tender?type=0&keyword=">招标</option>
+                    <option value ="tender?type=2&keyword=">中标</option>
+                    <option value ="company?keyword=">企业</option>
+                    <option value ="person?keyword=">人员</option>
+                    <option value ="usercenter?keyword=">应用</option>
                 </select></div>
                 <div class="txt-inline">
-                    <input class="bdd_black" type="text" placeholder="搜索关键字"/>
+                    <input class="bdd_black" type="text" placeholder="搜索关键字" ng-model="ctrl.keyword" ng-enter="ctrl.seachKeyword()"/>
                 </div>
             </div>
             </div>
@@ -120,12 +124,13 @@
                     <div ng-if="ctrl.user != null">
                         <label class="bdd_user_top_a txt-inline">asdasdas</label>
                         <span class="bdd_font_span_a txt-inline" ng-click="ctrl.logout()">退出</span>
-                        <select>
-                            <option value ="volvo">个人中心</option>
-                            <option value ="saab">金融服务</option>
-                            <option value="opel">反馈意见</option>
-                            <option value="audi">消息通知</option>
-                            <option value="audi">加入我们</option>
+                        <select ng-change="ctrl.selectChange(ctrl.dateValue)" ng-model="ctrl.dateValue">
+                            <option value ="default">个人中心</option>
+                            <option value ="personInfo">个人资料</option>
+                            <option value ="financial">金融服务</option>
+                            <option value="feedback">反馈意见</option>
+                            <option value="messages">消息通知</option>
+                            <option value="myfollow">我的关注</option>
                         </select>
                     </div>
 
