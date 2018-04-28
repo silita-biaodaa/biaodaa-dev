@@ -214,7 +214,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.page = 1;
     this.setPage = function () {
         selt.noticeList = [];
-        selt.busy = false;
         selt.page = 1;
         selt.nextPage();
     };
@@ -237,6 +236,9 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         if (selt.pbModes && selt.pbModes instanceof Array) {
             paramsPage.pbModes = selt.pbModes.join("||");
         }
+        if(selt.keyword){
+            paramsPage.title=selt.keyword;
+        }
 
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
             var noticeList = result.data;
@@ -248,9 +250,15 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
                 });
                 selt.pageSize = result.pageSize;
                 selt.pageNo = result.pageNo;
-                selt.busy = false;
+
                 selt.page += 1;
             }
+            selt.busy = false;
+            console.log(paramsPage);
+            console.log(result);
+        }).error(function (data){
+            console.log(data);
+            selt.busy = false;
         });
     };
 
@@ -316,6 +324,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         return true;
     }
     this.canclePbMode = function (obj) {
+        console.log(selt.pbModes+'###'+obj);
         if (selt.pbModes) {
             selt.pbModes.remove(obj);
             for (var item in selt.pb) {
@@ -449,10 +458,20 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             selt.totalCount = result.total;
         });
     };*/
+    this.keyword =  "";
+    var keyword = utils.getUrlVar('keyword');
     var noticeType =  utils.getUrlVar('type');
+
     this.queryList = function (type) {
-        selt.type = type;
+        if (type != undefined){
+            selt.type = type;
+        }
         selt.setPage();
+    }
+
+    if(keyword){
+        selt.keyword = decodeURI(keyword);
+        console.log(selt.keyword);
     }
     if(noticeType){
         selt.queryList(noticeType);
