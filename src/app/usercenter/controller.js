@@ -1,7 +1,12 @@
 
 
-app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
+app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document','utils',function($http,$uibModal, $log, $scope,$document,utils) {
 	var selt = this;
+	this.keywork = "";
+	var keyword = utils.getUrlVar('keyword');
+	if(keyword){
+	    selt.keywork = decodeURI(keyword);
+    }
     $http.get("/company/filter").success(function (result) {
         if(result.code==1){
             var arr1 = [];
@@ -25,6 +30,7 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     });
 
     var params ={
+        linkName: selt.keywork,
         pageSize:200
     }
     $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
