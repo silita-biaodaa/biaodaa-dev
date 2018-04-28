@@ -32,7 +32,6 @@ body{
 }
 .bdd_perso_nav_head{
     width: 1200px;
-    height: 800px;
     overflow: hidden;
 }
 .bdd_perso_right{
@@ -77,7 +76,6 @@ body{
 /*资料*/
 .bdd_vitality_zi{
     width: 1200px;
-    height: 550px;
 
     margin: 0 auto;
     margin-top:200px;
@@ -85,7 +83,6 @@ body{
 .bdd_vitality_left{
     float: left;
     width: 280px;
-    height: 550px;
     background-color: white;
     margin-top: -75px;
 }

@@ -18,12 +18,13 @@ body {
 }
 
 .bdd_basic_top_l {
-    width: 80px;
-    height: 80px;
-    background-color: #ccbebe;
     float: left;
-
+    /*background:url(../images/banner_1.png);*/
+    /*background-size:80px 80px;*/
+    /*background-repeat:no-repeat;*/
 }
+
+
 
 .bdd_basic_conter {
     width: 1170px;

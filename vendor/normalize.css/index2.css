@@ -738,7 +738,7 @@ body {
 
 
 .bdd_black{
-    width: 112px;
+    width: 130px;
     background: #212121;
     border: 0px;
     background-color: white;
@@ -790,7 +790,8 @@ body {
 }
 .btn-default{
     position: absolute;
-    top:5px;
+    top:-25px;
+    right:30px;
 }
 .dropup, .dropdown {
     position: relative;
