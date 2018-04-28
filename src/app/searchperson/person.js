@@ -1,4 +1,4 @@
-app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', function ($http, $uibModal, $log, $scope, $document, userTemp) {
+app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', 'utils', function ($http, $uibModal, $log, $scope, $document, userTemp, utils) {
     var selt = this;
 
     if (userTemp != null) {
@@ -38,6 +38,12 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
         selt.setPage();
     };
 
+    this.keyword =  "";
+    var keyword = utils.getUrlVar('keyword');
+    if(keyword){
+        selt.keyword = decodeURI(keyword);
+    }
+
     /**
      * 点击证书事件
      * @param book
@@ -66,7 +72,8 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
             pageNo: selt.page,
             pageSize: 6,
             keyWord: "",
-            category: selt.category
+            category: selt.category,
+            keyWord:selt.keyword
         };
 
         $http.post("/company/person", angular.toJson(paramsPage)).success(function (result) {
@@ -103,7 +110,6 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
     this.moreSelectZs = function (moreZs) {
         selt.moreZs = !moreZs;
     };
-
 
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
