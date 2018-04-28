@@ -15,7 +15,7 @@
             <input name="projName" style="margin-left: 30px; margin-top: 20px;" type="text" class="placeholder" ng-model="ctrl.projName">
         </div>
         <div style="margin-top: 10px;" class="bdd_fin_parent" id="paren">开标时间
-            <input name="kbTime" style="margin-left: 30px;" type="text" class="placeholder Wdate" ng-model="ctrl.kbTime" onclick="WdatePicker({skin:'twoer',readOnly:true,errDealMode:1,isShowToday:false,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:{%s+1}'})">
+            <input id="kbTime" name="kbTime" style="margin-left: 30px;" type="text" class="placeholder Wdate" ng-model="ctrl.kbTime" onclick="WdatePicker({skin:'twoer',readOnly:true,errDealMode:1,isShowToday:false,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:{%s+1}'})">
             格式：2018-01-01 00:00:00
         </div>
         <div style="margin-top: 10px;" class="bdd_fin_parent" id="pa">借&nbsp;&nbsp;款&nbsp;&nbsp;人
@@ -25,7 +25,7 @@
             <input name="phone" style="margin-left: 30px;" type="text" class="placeholder" ng-model="ctrl.phone">
         </div>
         <div style="margin-top: 10px;" class="bdd_fin_parent" id="prt">借款时间
-            <input name="borrowTime" style="margin-left: 30px;" type="text" class="placeholder Wdate" ng-model="ctrl.borrowTime" onclick="WdatePicker({skin:'twoer',readOnly:true,errDealMode:1,isShowToday:false,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:{%s+1}'})">
+            <input id="borrowTime" name="borrowTime" style="margin-left: 30px;" type="text" class="placeholder Wdate" ng-model="ctrl.borrowTime" onclick="WdatePicker({skin:'twoer',readOnly:true,errDealMode:1,isShowToday:false,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:{%s+1}'})">
             格式：2018-01-01 00:00:00
         </div>
         <div style="margin-top: 10px;" class="bdd_fin_parent">借款金额

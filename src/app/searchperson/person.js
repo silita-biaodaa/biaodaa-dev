@@ -78,7 +78,6 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
                 });
                 selt.personSize = result.total;
                 selt.pageSize = result.pageSize;
-                ;
                 selt.pageNo = result.pageNum;
                 selt.busy = false;
                 selt.page += 1;
