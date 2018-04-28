@@ -1,9 +1,15 @@
-app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
+app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 'userTemp','utils',function($http,$uibModal, $log, $scope,$document,userTemp,utils) {
 	var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
+    }
+
+    this.keyword =  "";
+    var keyword = utils.getUrlVar('keyword');
+    if(keyword){
+        selt.keyword = decodeURI(keyword);
     }
 
 	$http.get("/company/filter").success(function (result) {
@@ -293,6 +299,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         if (selt.busy) return;
         selt.busy = true;
         var paramsPage = {
+            keyWord:selt.keyword,
             regisAddress:selt.regisAddress,
             qualCode:selt.qualCode,
             minCapital:selt.minCapital,

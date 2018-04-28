@@ -7,36 +7,48 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
 	if(keyword){
 	    selt.keywork = decodeURI(keyword);
     }
-    $http.get("/company/filter").success(function (result) {
-        if(result.code==1){
-            var arr1 = [];
-            var arr2 = [];
-            selt.areaList = result.data.area;
-            for(var i=0;i<result.data.area.length;i++){
-                var areaArr = result.data.area;
-                if(i<12){
-                    arr1.push(areaArr[i]);
-                }else{
-                    arr2.push(areaArr[i]);
+    this.initRegion = function(){
+        $http.get("/company/filter").success(function (result) {
+            if(result.code==1){
+                var arr1 = [];
+                var arr2 = [];
+                selt.areaList = result.data.area;
+                for(var i=0;i<result.data.area.length;i++){
+                    var areaArr = result.data.area;
+                    if(i<12){
+                        arr1.push(areaArr[i]);
+                    }else{
+                        arr2.push(areaArr[i]);
+                    }
                 }
+                selt.areaList = arr1;
+                console.log(arr1);
+                selt.areaList2 = arr2;
+                console.log(arr2);
+            }else{
+                alert(result.msg);
             }
-            selt.areaList = arr1;
-            console.log(arr1);
-            selt.areaList2 = arr2;
-            console.log(arr2);
-        }else{
-            alert(result.msg);
-        }
-    });
-
-    var params ={
-        linkName: selt.keywork,
-        pageSize:200
+        });
     }
-    $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
-        console.log(result);
-        selt.linkList = result.data;
-    });
+
+    this.initData = function(){
+        var params = {
+            linkName: selt.keywork,
+            pageSize:200
+        }
+        $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
+            console.log(result);
+            if(result.code == 1){
+                selt.linkList = result.data;
+            }else {
+                alert(result.msg);
+            }
+        });
+    }
+
+    //----初始话地区和全部链接信息----
+    this.initRegion();
+    this.initData();
 
     this.isCity = false;
     this.regisAddress = "";
@@ -66,7 +78,8 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     this.findLinks = function(region){
         var params = {
             region:region,
-            pageSize:200
+            pageSize:200,
+            linkName:selt.keywork
         }
         $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
             console.log(result);
