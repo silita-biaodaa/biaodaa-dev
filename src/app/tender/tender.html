@@ -119,12 +119,12 @@
 <!--公告-->
 <div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
     <div class="bdd_announcement_left"
-         ng-click="$ctrl.queryList(0)">招标公告
+         ng-click="$ctrl.queryList(0);$ctrl.cancelFilter();">招标公告
         <div class="bdd_vita_span_a" ng-if="$ctrl.type==0"></div>
     </div>
 
     <div class="bdd_announcement_left"
-         ng-click="$ctrl.queryList(2)">中标公告
+         ng-click="$ctrl.queryList(2);$ctrl.cancelFilter();">中标公告
         <div class="bdd_vita_span_a" ng-if="$ctrl.type==2"></div>
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
