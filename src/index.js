@@ -26,6 +26,11 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     };
 
 
+    var keyword = utils.getUrlVar('keyword');
+    if(keyword){
+        selt.keyword = decodeURI(keyword);
+    }
+
     this.goMenu = "tender?type=99&keyword=";
     this.goUrl = "index.html#/"+this.goMenu;
     this.selectGoMenu = function(goMenu){
