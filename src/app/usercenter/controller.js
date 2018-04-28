@@ -78,7 +78,8 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     this.findLinks = function(region){
         var params = {
             region:region,
-            pageSize:200
+            pageSize:200,
+            linkName:selt.keywork
         }
         $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
             console.log(result);
