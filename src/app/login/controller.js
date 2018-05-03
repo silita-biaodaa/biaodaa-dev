@@ -1,6 +1,11 @@
-// app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', '$cookieStore', function ($http, $uibModal, $log, $scope, $document, userTemp, $cookieStore) {
 app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', function ($http, $uibModal, $log, $scope, $document, userTemp) {
     var selt = this;
+
+    var temp = angular.fromJson(getCookie("userCookie"));
+    if (temp != null) {
+        selt.userphone = temp.userphone;
+        selt.userpass = temp.userpass;
+    }
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
     selt.pwdRegx = "[a-zA-Z0-9]{8,16}";
@@ -43,7 +48,7 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
                     window.location.href = "index.html#/home";
 
                     if (flag) {
-                        setCookie("userCookie", vo, 7);
+                        setCookie("userCookie", angular.toJson(params), 7);
                     }
                 }
             });
@@ -62,6 +67,18 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
         var d = new Date();
         d.setDate(d.getDate() + timeout);
         document.cookie = name + '=' + value + ';expires=' + d;
+    }
+
+    function getCookie(name) {
+        var arr = document.cookie.split('; ');
+        for (var i = 0; i < arr.length; i++) {
+            var arr2 = arr[i].split('='); //['abc','cba']
+            if (arr2[0] == name) {
+                return arr2[1];
+                console.log(arr2[1]);
+            }
+        }
+        return '';
     }
 
 }]);

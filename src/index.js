@@ -1,20 +1,12 @@
-app.controller('IndexCtrl', ['$http', '$scope', 'userTemp', 'utils', function ($http, $scope, userTemp, utils) {
+app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,$scope,userTemp,utils) {
     var selt = this;
-
-    var vo = getCookie("userCookie");
 
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
-        if (vo != null) {
-            userTemp = angular.fromJson(vo);
-            selt.user = angular.fromJson(userTemp);
-        } else {
-            selt.user = null;
-        }
+        selt.user = null;
     }
-    ;
-
+    
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");
@@ -25,43 +17,44 @@ app.controller('IndexCtrl', ['$http', '$scope', 'userTemp', 'utils', function ($
 
     //select option改变触发的事件
     this.dateValue = "default"
-    this.selectChange = function (dateValue) {
+    this.selectChange = function(dateValue){
         console.log("value : " + dateValue);
-        if (dateValue == 'logout') {
+        if(dateValue == 'logout') {
             this.logout();
         }
-        if (dateValue == 'default') {
+        if(dateValue=='default'){
             dateValue = 'personInfo';
         }
-        window.location.href = "index.html#/ucenter/" + dateValue;
+        window.location.href="index.html#/ucenter/"+dateValue;
 
     };
 
 
     var keyword = utils.getUrlVar('keyword');
-    if (keyword) {
+    if(keyword){
         selt.keyword = decodeURI(keyword);
     }
 
     this.goMenu = "tender?type=99&keyword=";
-    this.goUrl = "index.html#/" + this.goMenu;
-    this.selectGoMenu = function (goMenu) {
+    this.goUrl = "index.html#/"+this.goMenu;
+    this.selectGoMenu = function(goMenu){
         console.log("value : index.html#/" + goMenu);
         selt.goUrl = "index.html#/" + goMenu;
     };
 
-    this.seachKeyword = function () {
-        window.location.href = selt.goUrl + selt.keyword;
+    this.seachKeyword = function(){
+        window.location.href=selt.goUrl+selt.keyword;
         window.location.reload();
     };
 
 
+
     console.log(utils.getShortUrl());
     this.menu = utils.getShortUrl();
-    if (this.menu == 'company') {
+    if(this.menu=='company'){
         selt.menu = 'companyTop';
     }
-    if (this.menu == 'person') {
+    if(this.menu=='person'){
         selt.menu = 'companyTop';
     }
     this.selectMenu = function (menu) {
@@ -69,19 +62,24 @@ app.controller('IndexCtrl', ['$http', '$scope', 'userTemp', 'utils', function ($
     };
 
 
+
+
+
+
+
     var isShow = false;
 
-    $("#btnFadein").click(function () {
-        if (isShow) {
-            $("#divD").animate({left: '220px'}).fadeOut("fast", function () {
-                $("#divD").css("visibility", "hidden");
+    $("#btnFadein").click(function(){
+        if(isShow){
+            $("#divD").animate({left:'220px'}).fadeOut("fast",function(){
+                $("#divD").css("visibility","hidden");
             });
 
-        } else {
-            $("#divD").css("visibility", "visible");
-            $("#divD").animate({left: '220px'}).fadeIn("fast");
+        }else{
+            $("#divD").css("visibility","visible");
+            $("#divD").animate({left:'220px'}).fadeIn("fast");
             //$("#divD").css('left','500px');
-            $("#divD").animate({left: '0px'}).fadeIn("fast", function () {
+            $("#divD").animate({left:'0px'}).fadeIn("fast",function(){
 
             });
         }
@@ -89,17 +87,10 @@ app.controller('IndexCtrl', ['$http', '$scope', 'userTemp', 'utils', function ($
 
     });
 
-    function getCookie(name) {
-        var arr = document.cookie.split('; ');
-        for (var i = 0; i < arr.length; i++) {
-            var arr2 = arr[i].split('='); //['abc','cba']
-            if (arr2[0] == name) {
-                return arr2[1];
-                console.log(arr2[1]);
-            }
-        }
-        return '';
-    }
+
+
+
+
 
 
 }]);
