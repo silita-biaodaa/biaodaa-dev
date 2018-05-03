@@ -124,12 +124,11 @@
                 <div  class="txt-inline">
                     <div ng-if="ctrl.user != null">
                         <div ng-if="ctrl.user.imgurl != null && ctrl.user.imgurl != ''">
-                            <img src="http://prefile.biaodaa.com/images/biaoxun_banner1.png" width="100px" height="100px" alt="..." class="img-circle">
+                            <img ng-src="{{ctrl.user.imgurl}}" width="60px" height="60px" alt="..." class="img-circle">
                         </div>
                         <div ng-if="ctrl.user.imgurl == null && ctrl.user.imgurl == ''">
-                            <img src="http://prefile.biaodaa.com/images/biaoxun_banner1.png" width="100px" height="100px" alt="..." class="img-circle">
+                            <img src="/vendor/images/icon_head_default30px.png" width="60px" height="60px" alt="..." class="img-circle">
                         </div>
-                        <span class="bdd_font_span_a txt-inline" ng-click="ctrl.logout()">退出</span>
                         <select ng-change="ctrl.selectChange(ctrl.dateValue)" ng-model="ctrl.dateValue">
                             <option value ="default">个人中心</option>
                             <option value ="personInfo">个人资料</option>
@@ -137,6 +136,7 @@
                             <option value="feedback">反馈意见</option>
                             <option value="messages">消息通知</option>
                             <option value="myfollow">我的关注</option>
+                            <option value="logout">退出</option>
                         </select>
                     </div>
 
