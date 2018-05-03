@@ -559,15 +559,16 @@
 }
 .bdd_footer_logo{
     vertical-align: middle;
+    margin-left: 0px;
 }
 .bdd_footer_megges{
-    padding-left: 80px;
+    padding-left: 70px;
 }
 .bdd_footer_side{
-    padding-left: 65px;
+    padding-left: 45px;
 }
 .bdd_footer_aido{
-    padding-left:213px;
+    padding-left:150px;
 }
 .bdd_footer_foot{
     padding-left:130px;
