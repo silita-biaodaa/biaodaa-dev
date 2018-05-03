@@ -139,6 +139,28 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 ]);
             }]
         }
+    }).state('TendList', {
+        url: '/TendList/:id',
+        templateUrl: window.rootSrc + 'app/tender/tender_list.html',
+        controller: 'TendListCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
+    }).state('TendListDetail', {
+        url: '/TendListDetail',
+        templateUrl: window.rootSrc + 'app/tender/tender_list_detail.html',
+        controller: 'TendListDetailCtrl as ctrl',
+        resolve: {
+            load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    'app/tender/controller.js'
+                ]);
+            }]
+        }
     }).state('WinBid', {
         url: '/win_bid',
         templateUrl: window.rootSrc + 'app/winbid/index.html',

@@ -39,8 +39,6 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
             $state.go('Winbding', {id: id});
         }
     }
-
-
     $scope.chageToTender = function(){
         paramsPage.type=0;
         tenderType = 0;
@@ -264,7 +262,6 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
     }
 }])
 
-//�б깫��ҳ��
 app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp', function ($http, $scope, utils, $stateParams,$state,userTemp) {
     var selt = this;
 
@@ -305,7 +302,9 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $("#bdd_follow_info_one").html(result.data[0].content);
 
     })
-    $http.post("/notice/queryCompanyList/" + id).success(function (result) {
+    $http.post("/notice/queryCompanyList/" + id, {
+        headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
+    }).success(function (result) {
         console.log(result);
         $scope.copanyResultArr = result.data;
 
@@ -328,6 +327,43 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     };
 }]);
 
+
+
+
+app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
+    var selt = this;
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
+    } else {
+        selt.user = null;
+    }
+        var id = $stateParams.id;
+        $http.post("/notice/queryCompanyList/" + id, {
+            headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
+        }).success(function (result) {
+            console.log(result);
+            $scope.copanyResultArr = result.data;
+        })
+    locals.setObject("companyData","");//数据清空
+    $scope.toTendListDetail=function(companyData){
+        locals.setObject("companyData",companyData);
+        $state.go("TendListDetail");
+    }
+    //------------翻页----end
+}]);
+
+
+
+app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
+    var selt = this;
+    if (userTemp != null) {
+        selt.user = angular.fromJson(userTemp);
+    } else {
+        selt.user = null;
+    }
+  $scope.company = locals.getObject("companyData");
+    //------------翻页----end
+}]);
 
 
 

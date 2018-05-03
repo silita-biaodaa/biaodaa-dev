@@ -340,30 +340,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         console.log(selt.pbModes);
         selt.queryList();
     }
-    // this.canclePbModeAll = function () {
-    //     // selt.pbModes=null;
-    //     // for (var item in selt.pb) {
-    //     //     selt.pb[item]
-    //     // }
-    //     angular.forEach(selt.pbModeList,function(data){
-    //         // selt.pbModeChange(data.standardName.toString());
-    //         // selt.pbModes = [];
-    //         // // selt.pbModes=selt.pbModes.concat(obj);
-    //         // if (selt.pb) {
-    //         //     for (var item in selt.pb) {
-    //         //         if (selt.pb[item]) {
-    //         //             selt.pbModes.push(selt.pb[item]);
-    //         //         }
-    //         //
-    //         //     }
-    //         // }
-    //         selt.updateChecked(data.standardName.toString());
-    //     });
-    //
-    //
-    //     selt.pbModes=null;
-    //     selt.queryList();
-    // }
     this.updateChecked = function (str) {
         // console.log(str+'##'+selt.pbModes);
         for (var t in selt.pbModes) {

@@ -33,6 +33,7 @@
     }
 
     .bdd_details_value_right {
+        margin-top: 150px;
         width: 290px;
         float: right;
 
@@ -264,7 +265,7 @@
         background-color: white;
         padding-left: 15px;
         position: absolute;
-        top: 110px;
+        top: 150px;
         border-radius: 5px;
 
 
@@ -671,7 +672,7 @@
             <div class="bdd_details_value_right">
                 <div class="bdd_details_header">
                     <div class="bdd_details_header_left"></div>
-                    <div class="bdd_details_header_conter">符合资质企业</div>
+                    <div class="bdd_details_header_conter">符合资质企业&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})">更多</a></div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
                     <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>
