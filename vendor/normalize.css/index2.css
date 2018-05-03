@@ -694,7 +694,6 @@ body {
     font-size: 30px;
     color: #fff;
     opacity: 0.3;
-    border: 1px solid #fff;
 }
 
 #arr #right {
@@ -779,8 +778,8 @@ body {
 }
 .bdd_font_span{
     position: absolute;
-    left:321px;
-    top:0px;
+    left:92px;
+    top:3px;
     width: 50px;
 }
 .bdd_black_a{

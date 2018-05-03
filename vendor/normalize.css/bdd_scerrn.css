@@ -186,6 +186,7 @@
 .bdd_adver{
     width: 100%;
     margin-bottom: 200px;
+
 }
 .bdd_adver_header{
     width: 1200px;
@@ -305,7 +306,7 @@
     width: 1200px;
     height: 166px;
     background-color: white;
-    padding: 15px 0px 20px 20px;
+    padding: 42px 0px 20px 20px;
     margin-top:10px;
 }
 /*����*/
