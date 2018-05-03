@@ -310,16 +310,18 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
         $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
             var companyList = result.data;
-            if(companyList!=null&&selt.page==result.pageNum){
-                angular.forEach(companyList,function(company){
-                    selt.companyList.push(company);
-                });
-                selt.totalCount = result.total;
-                selt.pageSize = result.pageSize;;
-                selt.pageNo = result.pageNum;
-                selt.busy = false;
-                selt.page += 1;
-                setContentHeight(result.data);
+            if(companyList!=null){
+                if(selt.page==result.pageNum){
+                    angular.forEach(companyList,function(company){
+                        selt.companyList.push(company);
+                    });
+                    selt.totalCount = result.total;
+                    selt.pageSize = result.pageSize;;
+                    selt.pageNo = result.pageNum;
+                    selt.busy = false;
+                    selt.page += 1;
+                    setContentHeight(result.data);
+                }
             }else{
                 selt.totalCount = 0;
 			}
@@ -336,6 +338,17 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         selt.user = null;
         window.location.href = "index.html#/home";
     };
+
+
+    //资质要求弹出资质等级后点击空白自动消失
+    $(document).on("click",function(e){//js
+        var $target = $(e.target);
+        if(!($target.parents().andSelf().is("#bdd_second_menu"))){
+            $scope.$apply(function(){
+                $('#bdd_second_menu').hide();
+            });
+        }
+    });
 
 }]);
 

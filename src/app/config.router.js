@@ -352,6 +352,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
+        .state('Joinus', {
+            url: '/joinus',
+            templateUrl: window.rootSrc + 'app/footer/Joinus.html',
+            controller: 'JoinusCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                    ]);
+                }]
+            }
+        })
+
 
     ;
     /**
