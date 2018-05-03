@@ -65,7 +65,7 @@
                 <div class="bdd_logoin_hr"></div>
                 <div class="bdd_logoin_mi">
                     <div  class="bdd_logoin_mi_l"><div style="float: left"></div>
-                        <input class="bdd_logoin_placeholder" name="invitationCode" ng-model="ctrl.invitationCode" type="text"
+                        <input class="bdd_logoin_placeholder" name="invitationCode" ng-model="ctrl.invitationCode" type="text" maxlength="6"
                                placeholder="验证码" required ng-pattern="ctrl.codeRegx">
                         <span class="error" ng-show="forgetForm.$submitted && forgetForm.invitationCode.$error.required">*验证码不能为空</span>
                         <span class="error" ng-show="forgetForm.$submitted && forgetForm.invitationCode.$error.pattern">*验证码不合法</span>

@@ -29,9 +29,8 @@
                         <div style="background-color: #ccbebe" class="bdd_logoin_hr"></div>
                         <div class="bdd_logoin_mi">
                             <div class="bdd_logoin_mi_l">
-                                <div style="float: left"><img src="../../../vendor/images/login_icon_Hook.png" alt="">
-                                </div>
-                                <span style="padding-left: 10px">记住我</span></div>
+                                <input type="checkbox" ng-click="ctrl.checked($event)">记住我
+                                <!--<span style="padding-left: 10px" ng-model="ctrl.checkbox">记住我</span></div>-->
                             <div class="bdd_logoin_mi_r"><a href="index.html#/forget">忘记密码</a></div>
                         </div>
                         <input class="bdd_login_buttom" type="submit" value="登录"/>
