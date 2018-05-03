@@ -168,7 +168,7 @@
             <th style="text-align: center;width: 20%;">有效期</th>
             <th style="text-align: center;width: 20%;">发证机关</th>
         </tr>
-        <tr style="color:#4d3a3a;font-size: 16px" ng-repeat="item in ctrl.qualList">
+        <tr style="color:#4d3a3a;font-size: 16px;line-height: 50px;" ng-repeat="item in ctrl.qualList">
             <td ng-bind="item.qualName"></td>
             <td ng-bind="item.certNo"></td>
             <td ng-bind="item.validDate"></td>
@@ -198,7 +198,7 @@
         </tr>
         <div id="bdd_adver_header" infinite-scroll='ctrl.nextPage()'
              infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
-        <tr style="color:#4d3a3a;font-size: 16px;line-height: 30px" ng-repeat="person in ctrl.personList">
+        <tr style="color:#4d3a3a;font-size: 16px;line-height: 60px" ng-repeat="person in ctrl.personList">
             <td ng-bind="person.name"></td>
             <td ng-bind="person.category"></td>
             <td ng-bind="person.certNo"></td>

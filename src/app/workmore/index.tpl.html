@@ -20,7 +20,7 @@
     .bdd_trends_header{
         width: 1200px;
         height: 80px;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #E4DDDD;
         margin: 0 auto;
         opacity: 0.8;
     }
@@ -73,7 +73,9 @@
         padding-top:20px;
     }
     .bdd_trends_header_bot{
-        border-bottom: 2px solid  #4d3a3a;
+        width: 70px;
+        height: 2px;
+        background-color: #4d3a3a;
     }
 </style>
 
@@ -84,8 +86,8 @@
             <img  src="../../../vendor/images/banner_1.png" alt="">
         </div>
         <div class="bdd_trends_header">
-            <div class="bdd_trends_header_title {{ctrl.isCompany?'bdd_trends_header_bot':''}}" ng-click="ctrl.toDiffMsg('0')">行业资讯
-         </div>
+            <div class="bdd_trends_header_title {{ctrl.isCompany?'bdd_trends_header_bot':''}}" ng-click="ctrl.toDiffMsg('0')">行业资讯 </div>
+
             <div class="bdd_trends_header_title bdd_trends_hrader_tex {{ctrl.isCompany?'':'bdd_trends_header_bot'}}" ng-click="ctrl.toDiffMsg('1')">平台公示</div>
         </div>
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='ctrl.nextPage()'

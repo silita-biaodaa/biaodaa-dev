@@ -35,11 +35,6 @@
     .bdd_details_value_right {
         width: 290px;
         float: right;
-        overflow: hidden;
-       position: absolute;
-        top:100px;
-        right:200px;
-
 
     }
 
@@ -286,15 +281,15 @@
 
     .bdd_details_header_conter {
         float: left;
-        margin-left: 5px;
-        margin-top: -95px;
+        /*margin-left: 5px;*/
+        /*margin-top: -95px;*/
         color: #4d3a3a;
         font-size: 18px;
+
     }
 
     .bdd_details_js {
         width: 290px;
-        height: 180px;
         margin-top: 10px;
         background-color: white;
 
@@ -305,8 +300,7 @@
         color: #4d3a3a;
         font-family: Arial;
         font-weight: 700;
-        padding-top: 82px;
-        padding-left: 20px;
+        padding-left:5px;
 
     }
 
@@ -339,8 +333,6 @@
         padding-left: 30px;
         padding-right: 30px;
         margin-bottom:10px;
-
-
     }
 
     .bdd_follow_left {
@@ -673,8 +665,8 @@
 
                 </div>
 
-                <div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>
-                <div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>
+                <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
+                <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
             </div>
             <div class="bdd_details_value_right">
                 <div class="bdd_details_header">
@@ -682,7 +674,7 @@
                     <div class="bdd_details_header_conter">符合资质企业</div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-                    <div class="bdd_details_js_two">{{item.comName}}</div>
+                    <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>
                     <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
