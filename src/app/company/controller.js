@@ -338,11 +338,12 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
     };
 
 
+    //资质要求弹出资质等级后点击空白自动消失
     $(document).on("click",function(e){//js
         var $target = $(e.target);
-        if(!($target.parents().andSelf().is("#myShaix"))){
+        if(!($target.parents().andSelf().is("#bdd_second_menu"))){
             $scope.$apply(function(){
-                selt.myShaix=false;
+                $('#bdd_second_menu').hide();
             });
         }
     });

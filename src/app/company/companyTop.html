@@ -30,7 +30,9 @@
                             </div>
                         </div>
                         <div class="bdd_pers_conter_border_right">
-                            <div class="bdd_pers_conter_spans" ng-bind="company.comName"></div>
+                            <a href="#/companydetail?comId={{company.comId}}">
+                                <div class="bdd_pers_conter_spans" ng-bind="company.comName"></div>
+                            </a>
                             <div  class="bdd_pers_conter_aide"><span ng-bind="company.subsist|limitTo:2"></span></div>
                         </div>
                         <div class="bdd_pers_top_boder">
