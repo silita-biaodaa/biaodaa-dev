@@ -210,10 +210,9 @@
 }
 
 .bdd_data_conter{
-    width:280px;
+    width:290px;
     height: 235px;
     margin-top:5px;
-    margin-left: 18px;
     background-color:white;
 
 }
@@ -224,7 +223,7 @@
     margin-top: 10px;
 }
 .bdd_win_conter{
-    width: 1200px;
+    width:890px;
     height: 166px;
     padding: 40px 0px 20px 20px;
     margin-top:20px;
@@ -234,10 +233,9 @@
 }
 
 .bdd_data_header{
-    width:280px;
+    width:290px;
     height: 110px;
     margin-top:35px;
-    margin-left: 18px;
     background-image: url("../images/homepage_bg_cal.png");
 }
 
@@ -249,7 +247,7 @@
     background-color: white;
 }
 .bdd_use{
-    width: 280px;
+    width: 290px;
     background-color:white;
     margin-bottom:200PX;
     margin-left: -10px;
@@ -584,13 +582,14 @@
     margin-right:10px;
 }
 .bdd_infor_a{
-    width:280px;
+    width:290px;
     height: 40px;
     line-height:40px;
     background-color: white;
-    padding-left: 20px;
     padding-right: 20px;
+    padding-left: 20px;
     margin-left: -10px;
+
 
 
 }
