@@ -123,7 +123,12 @@
                 </div>
                 <div  class="txt-inline">
                     <div ng-if="ctrl.user != null">
-                        <label class="bdd_user_top_a txt-inline">asdasdas</label>
+                        <div ng-if="ctrl.user.imgurl != null && ctrl.user.imgurl != ''">
+                            <img src="http://prefile.biaodaa.com/images/biaoxun_banner1.png" width="100px" height="100px" alt="..." class="img-circle">
+                        </div>
+                        <div ng-if="ctrl.user.imgurl == null && ctrl.user.imgurl == ''">
+                            <img src="http://prefile.biaodaa.com/images/biaoxun_banner1.png" width="100px" height="100px" alt="..." class="img-circle">
+                        </div>
                         <span class="bdd_font_span_a txt-inline" ng-click="ctrl.logout()">退出</span>
                         <select ng-change="ctrl.selectChange(ctrl.dateValue)" ng-model="ctrl.dateValue">
                             <option value ="default">个人中心</option>
