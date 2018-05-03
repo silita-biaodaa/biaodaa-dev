@@ -1,8 +1,9 @@
 app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', function ($http, $uibModal, $log, $scope, $document, userTemp) {
     var selt = this;
 
-    var temp = angular.fromJson(getCookie("userCookie"));
+    var temp = getCookie("userCookie");
     if (temp != null) {
+        temp = angular.fromJson(temp);
         selt.userphone = temp.userphone;
         selt.userpass = temp.userpass;
     }
