@@ -310,16 +310,18 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
         $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
             var companyList = result.data;
-            if(companyList!=null&&selt.page==result.pageNum){
-                angular.forEach(companyList,function(company){
-                    selt.companyList.push(company);
-                });
-                selt.totalCount = result.total;
-                selt.pageSize = result.pageSize;;
-                selt.pageNo = result.pageNum;
-                selt.busy = false;
-                selt.page += 1;
-                setContentHeight(result.data);
+            if(companyList!=null){
+                if(selt.page==result.pageNum){
+                    angular.forEach(companyList,function(company){
+                        selt.companyList.push(company);
+                    });
+                    selt.totalCount = result.total;
+                    selt.pageSize = result.pageSize;;
+                    selt.pageNo = result.pageNum;
+                    selt.busy = false;
+                    selt.page += 1;
+                    setContentHeight(result.data);
+                }
             }else{
                 selt.totalCount = 0;
 			}
