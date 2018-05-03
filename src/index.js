@@ -18,6 +18,9 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     this.dateValue = "default"
     this.selectChange = function(dateValue){
         console.log("value : " + dateValue);
+        if(dateValue == 'logout') {
+            this.logout();
+        }
         if(dateValue=='default'){
             dateValue = 'personInfo';
         }
