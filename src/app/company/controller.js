@@ -337,6 +337,16 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         window.location.href = "index.html#/home";
     };
 
+
+    $(document).on("click",function(e){//js
+        var $target = $(e.target);
+        if(!($target.parents().andSelf().is("#myShaix"))){
+            $scope.$apply(function(){
+                selt.myShaix=false;
+            });
+        }
+    });
+
 }]);
 
 function setContentHeight(dataList){
