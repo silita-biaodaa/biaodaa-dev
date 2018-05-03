@@ -199,7 +199,7 @@ function playImage(imageArr){
         clearInterval(obj.timer);
         obj.timer = setInterval(function () {
             var leader = obj.offsetLeft;
-            var step = 2;
+            var step = 4;
             step = leader < target ? step : -step;//step有了正负
             if (Math.abs(leader - target) >= Math.abs(step)) {
                 leader = leader + step;
