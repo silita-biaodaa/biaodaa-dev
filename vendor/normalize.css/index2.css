@@ -259,7 +259,6 @@
 .bdd_use{
     width: 290px;
     background-color:white;
-    margin-bottom:200PX;
     margin-left: -10px;
     margin-top: -16px;
 
@@ -844,6 +843,9 @@ body {
     left:11px;
     top:14px;
 
-
-
+}
+.bdd_use_in{
+    background-color: #ccbebe;
+    color: white;
+    border-radius: 10px;
 }
