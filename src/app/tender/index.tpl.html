@@ -33,7 +33,7 @@
     }
 
     .bdd_details_value_right {
-        margin-top: 150px;
+        padding-top:56px;
         width: 290px;
         float: right;
 
@@ -265,8 +265,9 @@
         background-color: white;
         padding-left: 15px;
         position: absolute;
-        top: 150px;
+        top: 142px;
         border-radius: 5px;
+        line-height: 45px;
 
 
     }
@@ -275,8 +276,10 @@
         width: 4px;
         height: 12px;
         background-color: #cea63f;
-        float: left;
-        margin-top:-90px;
+        position: absolute;
+        top:17px;
+        left:8px;
+
 
     }
 
@@ -286,6 +289,8 @@
         /*margin-top: -95px;*/
         color: #4d3a3a;
         font-size: 18px;
+        width: 290px;
+        height: 45px;
 
     }
 
@@ -672,7 +677,7 @@
             <div class="bdd_details_value_right">
                 <div class="bdd_details_header">
                     <div class="bdd_details_header_left"></div>
-                    <div class="bdd_details_header_conter">符合资质企业&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})">更多</a></div>
+                    <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">更多</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
                     <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>

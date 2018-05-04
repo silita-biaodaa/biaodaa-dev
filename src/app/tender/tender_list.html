@@ -80,13 +80,13 @@
         margin-top: 130px;
     }
     .bdd_win_conter_list{
-        margin: 130px auto;
+        margin: 20px auto;
     }
 </style>
 <div class="bdd_company_body" ng-controller="TendListCtrl">
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header_a">
-            <div class="bdd_win_conter bdd_win_conter_list" ng-repeat="company in copanyResultArr" style="cursor: default" ng-click="toTendListDetail(company)">
+            <div class="bdd_win_conter_a_b bdd_win_conter_list" ng-repeat="company in copanyResultArr" style="cursor: default" ng-click="toTendListDetail(company)">
                 <div class="bdd_win_conter_left">
                     <img ng-if="!company.logo"src="../../../vendor/images/logo_default.png" alt="">
                     <img ng-if="company.logo"  style="width: 110px;height: 110px;" src="{{company.logo}}" alt="">
