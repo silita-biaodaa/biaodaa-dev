@@ -405,9 +405,10 @@
 .bdd_win_conter_last{
     padding-bottom: 20px;
 }
-.bdd_header_color{
+.bdd_header_color:hover{
    color: #cea63f;
 }
+
 /*日期样式*/
 .calendar-week .item, .calendar-date .item{
     width: 40px;
