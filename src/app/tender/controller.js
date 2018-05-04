@@ -327,33 +327,6 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     };
 }]);
 
-
-
-
-app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
-    var selt = this;
-    if (userTemp != null) {
-        selt.user = angular.fromJson(userTemp);
-    } else {
-        selt.user = null;
-    }
-        var id = $stateParams.id;
-        $http.post("/notice/queryCompanyList/" + id, {
-            headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
-        }).success(function (result) {
-            console.log(result);
-            $scope.copanyResultArr = result.data;
-        })
-    locals.setObject("companyData","");//数据清空
-    $scope.toTendListDetail=function(companyData){
-        locals.setObject("companyData",companyData);
-        $state.go("TendListDetail");
-    }
-    //------------翻页----end
-}]);
-
-
-
 app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
     var selt = this;
     if (userTemp != null) {
@@ -365,5 +338,65 @@ app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams'
     //------------翻页----end
 }]);
 
+
+
+app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
+    var selt = this;
+
+    this.init = function () {
+        selt.setPage2();
+    }
+
+    this.companyList = [];
+    this.busy = false;
+    this.page = 1;
+    this.setPage2 = function () {
+        selt.companyList = [];
+        selt.busy = false;
+        selt.page = 1;
+        selt.nextPage2();
+    };
+
+    this.nextPage2 = function () {
+        if (selt.busy) return;
+        selt.busy = true;
+        var paramsPage2 = {
+            pageNo: selt.page,
+            pageSize: 5
+        };
+        console.log(paramsPage2);
+        var id = $stateParams.id;
+
+        $http.post("/notice/queryCompanyList/" + id, angular.toJson(paramsPage2)).success(function (result) {
+            var companyList = result.data;
+            if (companyList != null &&
+                selt.page == result.pageNo) {
+                angular.forEach(companyList, function (company) {
+                    selt.companyList.push(company);
+                });
+                selt.companySize = result.total;
+                selt.pageSize = result.pageSize;
+                selt.pageNo = result.pageNo;
+                selt.busy = false;
+                selt.page += 1;
+            }
+        });
+    }
+
+    this.toTendListDetail=function(companyData){
+        console.log(companyData);
+        locals.setObject("companyData",companyData);
+        $state.go("TendListDetail");
+    }
+
+    this.setContentHeight = function (dataList) {
+        var bdd_adver_header = document.getElementById("bdd_adver_header");
+        if (dataList.length > 2) {
+            bdd_adver_header.style.height = "auto";
+        } else {
+            bdd_adver_header.style.height = "500px";
+        }
+    };
+}]);
 
 

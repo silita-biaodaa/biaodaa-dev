@@ -17,7 +17,8 @@
         margin: 0 auto;
         width: 100%;
     }
-    .bdd_adver{
+
+    .bdd_adver {
         margin-top: 130px;
     }
 
@@ -76,20 +77,27 @@
         background-color: white;
         margin-top: 24px;
     }
-    .bdd_win_conter{
+
+    .bdd_win_conter {
         margin-top: 130px;
     }
-    .bdd_win_conter_list{
+
+    .bdd_win_conter_list {
         margin: 20px auto;
     }
 </style>
+
 <div class="bdd_company_body" ng-controller="TendListCtrl">
     <div class="bdd_adver">
-        <div id="bdd_adver_header" class="bdd_adver_header_a">
-            <div class="bdd_win_conter_a_b bdd_win_conter_list" ng-repeat="company in copanyResultArr" style="cursor: default" ng-click="toTendListDetail(company)">
+        <div class="bdd_side_rihgt_r">共找到<span
+                style="color: #cea63f"><span ng-bind="ctrl.companySize"></span></span>个公司
+        </div>
+        <div id="bdd_adver_header" class="bdd_adver_header_a" infinite-scroll='ctrl.nextPage2()'
+             infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='0.1'>
+            <div ng-repeat="company in ctrl.companyList" ng-click="toTendListDetail(company)">
                 <div class="bdd_win_conter_left">
-                    <img ng-if="!company.logo"src="../../../vendor/images/logo_default.png" alt="">
-                    <img ng-if="company.logo"  style="width: 110px;height: 110px;" src="{{company.logo}}" alt="">
+                    <img ng-if="!company.logo" src="../../../vendor/images/logo_default.png" alt="">
+                    <img ng-if="company.logo" style="width: 110px;height: 110px;" src="{{company.logo}}" alt="">
                 </div>
                 <div class="bdd_win_conter_conter">
                     <a href="#/companydetail?comId={{company.comId}}">
