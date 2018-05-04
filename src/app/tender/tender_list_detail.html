@@ -108,11 +108,23 @@
 
                     <div style="margin-top:-2px" class="bdd_hold_top">法定代表人：<span ng-bind="company.legalPerson"></span>
                     </div>
+
+
+                    <div style="margin-top:-2px" class="bdd_hold_top">公司性质：<span ng-bind="company.economicType"></span>
+                    </div>
+
+                    <div style="margin-top:-2px" class="bdd_hold_top">许可证：<span ng-bind="company.certNo"></span>
+                    </div>
+
                     <div class="bdd_hold_top bdd_hold_list">注册资本：<span ng-bind="company.regisCapital"></span></div>
                     <!--<div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>-->
                     <br>
+                    <div class="bdd_hold_top bdd_hold_list">注册日期：<span ng-bind="company.certDate"></span></div>
+                    <!--<div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>-->
+                    <br>
 
-                    <div class="bdd_hold_top bdd_hold_top_addr">地址：<span ng-bind="company.regisAddress"></span></div>
+                    <div class="bdd_hold_top bdd_hold_top_addr">注册地址：<span ng-bind="company.regisAddress"></span></div>
+                    <div class="bdd_hold_top bdd_hold_top_addr">详细地址：<span ng-bind="company.comAddress"></span></div>
                 </div>
                 <div class="bdd_win_conter_right"></div>
             </div>
