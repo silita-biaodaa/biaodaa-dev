@@ -125,7 +125,7 @@
 <div class="tender-say-div" ng-controller="TenderSayCtrl">
  <div class="bdd_adver">
      <div class="bdd_adver_header" style="margin-top: 40px">
-         <div class="bdd_win_conter" ng-show="showType==0" ng-repeat="item in tenderArrayData" style="margin-top:10px">
+         <div class="bdd_win_conter" ng-repeat="item in tenderArrayData" style="margin-top:10px">
            <a ng-click="toTenderDetail(item.id,item.type)">
              <div class="bdd_text_z">{{item.title}}</div>
                <div class="bdd_text_y">资质要求：<span>{{item.certificate ? item.certificate:'详见原文'}}</span></div>

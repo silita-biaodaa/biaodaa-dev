@@ -1,9 +1,9 @@
 
 <style>
 
-    .jd_layout{
-        margin-top: 131px;
-    }
+    /*.jd_layout{*/
+        /*margin-top: 131px;*/
+    /*}*/
 </style>
 <div class="jd_layout">
     <!--轮播图-->
@@ -54,12 +54,12 @@
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">招标公告</div>
                 <div class="bdd_icon"></div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'')">全部</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'0')">施工</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'2')">监理</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'3')">采购</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'1')">设计</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
+                <div class="bdd_header_lit  bdd_header_color" ng-click="$ctrl.choiceType(0,'')">全部</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'0')">施工</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'2')">监理</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'3')">采购</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'1')">设计</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
 
                 <div class="bdd_win_header_right">
                     <a href="#/tender?type=0">更多&nbsp;</a>
@@ -83,18 +83,18 @@
                 <div class="bdd_win_header_left">中标公告</div>
                 <div class="bdd_icon"></div>
                 <div class="bdd_header_lit  bdd_header_color" ng-click="$ctrl.choiceType(2,'')">全部</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'0')">施工</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'2')">监理</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'3')">采购</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'1')">设计</div>
-                <div class="bdd_header_lit" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'0')">施工</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'2')">监理</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'3')">采购</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'1')">设计</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
                 <div class="bdd_win_header_right">
                     <a href="#/tender?type=2">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
             <div class="bdd_win_conter" style="margin-top:10px" ng-repeat="notice in $ctrl.zhongbiaoList">
-                <div class="bdd_text_z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span
+                <div class="bdd_text_#z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span
                         ng-bind="notice.title"></span></a></div>
                 <div class="bdd_text_y">中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                 <div class="bdd_text_p">项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
@@ -167,14 +167,14 @@
                     <a href="#/usercenter">更多&nbsp;></a>
                 </div>
             </div>
-                <div class="bdd_use_right_a">
-                    <div style="margin-top: -15px;" class="bdd_use_in">湖南省四库一平台</div>
+                <div style="margin-top:-15px;" class="bdd_use_right_a">
+                   <a  target="_blank" href="http://qyryjg.hunanjz.com/public/index.aspx">四库一平台</a>
                 </div>
                 <div class="bdd_use_right_a">
-                    <div class="bdd_use_in">住建施工特种证书查询</div>
+                    <a  target="_blank" href="http://www.mohurd.gov.cn/wbdt/dwzzcx/index.html">住建部企业资质查询</a>
                 </div>
                 <div class="bdd_use_right_a">
-                    <div class="bdd_use_in">住建部企业资质查询</div>
+                    <a target="_blank" href="http://www.mohurd.gov.cn/wbdt/ryzgcx/index.html">住建部人员资质查询</a>
                 </div>
         </div>
     </div>

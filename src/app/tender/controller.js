@@ -334,7 +334,7 @@ app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams'
     } else {
         selt.user = null;
     }
-  $scope.company = locals.getObject("companyData");
+    $scope.company = locals.getObject("companyData");
     //------------翻页----end
 }]);
 
