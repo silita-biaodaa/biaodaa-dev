@@ -241,6 +241,16 @@
     background-color: white;
 
 }
+.bdd_win_conter_a_b{
+    width:1200px;
+    height: 166px;
+    margin-top:10px;
+    border-right: 5px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+
 
 .bdd_data_header{
     width:290px;
