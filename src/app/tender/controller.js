@@ -154,7 +154,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     $http.post("/notice/detail/" + id, angular.toJson(paramsPage), {
         headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
     }).success(function (result) {
-        //console.log(result);
+        console.log(result);
 
         $scope.projSum = result.projSum;
         $scope.mSize = result.data.length;
@@ -187,6 +187,28 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     $scope.toTenderSayList = function (id, type) {
         $state.go('TenderSay', {id: id, type: type});
     }
+    <!--分享-->
+    $scope.share = function (type) {
+        var url=document.location.href;
+        var sharesinastring;
+        var title = this.currentTender.title;
+        switch (type) {
+            case 'xinlang':
+                sharesinastring = 'http://v.t.sina.com.cn/share/share.php?url='+url+'&title='+title+'&content=utf-8'
+                break;
+            case 'qq':
+                sharesinastring='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&desc='+title+'&title='+title;
+                break;
+            case 'wechat':
+                break;
+            case 'renren':
+                sharesinastring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&url='+url+'&title='+title;
+                break;
+        }
+
+        window.open(sharesinastring);
+    }
+
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");
@@ -195,6 +217,10 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         window.location.href = "index.html#/home";
     };
 
+    $scope.addConcern = function () {
+        var url=document.location.href;
+        alert(url);
+    }
 }]);
 
 
@@ -325,6 +351,28 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         selt.user = null;
         window.location.href = "index.html#/home";
     };
+
+    <!--分享-->
+    $scope.share = function (type) {
+        var url=document.location.href;
+        var sharesinastring;
+        var title = this.currentTender.title;
+        switch (type) {
+            case 'xinlang':
+                sharesinastring = 'http://v.t.sina.com.cn/share/share.php?url='+url+'&title='+title+'&content=utf-8'
+                break;
+            case 'qq':
+                sharesinastring='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&desc='+title+'&title='+title;
+                break;
+            case 'wechat':
+                break;
+            case 'renren':
+                sharesinastring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&url='+url+'&title='+title;
+                break;
+        }
+
+        window.open(sharesinastring);
+    }
 }]);
 
 app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
