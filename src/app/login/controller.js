@@ -2,7 +2,7 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
     var selt = this;
 
     var temp = getCookie("userCookie");
-    if (temp != null) {
+    if (temp != null && temp != '') {
         temp = angular.fromJson(temp);
         selt.userphone = temp.userphone;
         selt.userpass = temp.userpass;

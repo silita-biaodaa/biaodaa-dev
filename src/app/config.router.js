@@ -377,10 +377,24 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         .state('Joinus', {
             url: '/joinus',
             templateUrl: window.rootSrc + 'app/footer/Joinus.html',
-            controller: 'JoinusCtrl as ctrl',
+            controller: 'FooterCtrl as ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
+                        'app/footer/controller.js'
+                    ]);
+                }]
+            }
+        })
+
+        .state('Perp', {
+            url: '/perp',
+            templateUrl: window.rootSrc + 'app/footer/prep.html',
+            controller: 'FooterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/footer/controller.js'
                     ]);
                 }]
             }
