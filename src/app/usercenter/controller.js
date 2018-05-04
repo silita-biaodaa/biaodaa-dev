@@ -1,5 +1,3 @@
-
-
 app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document','utils',function($http,$uibModal, $log, $scope,$document,utils) {
 	var selt = this;
 	this.keywork = "";
@@ -95,4 +93,24 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     this.moreSelectZz=function(moreZz){
         selt.moreZz = !moreZz;
     };
+
+    /**
+     * 常见链接
+     */
+    this.listCustomUrls = function () {
+        var params = {
+            pageNo : 1,
+            pageSize : 6
+        }
+
+        $http.post("/foundation/customUrls", angular.toJson(params)).success(function (result) {
+            console.log("********");
+            console.log(result);
+            if (result.code == "1") {
+                selt.commonLinkList = result.data;
+            }
+        });
+    }
+    this.listCustomUrls();
+
 }]);

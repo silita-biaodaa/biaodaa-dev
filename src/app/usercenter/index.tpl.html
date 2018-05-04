@@ -138,14 +138,13 @@
 </style>
 
 
+
 <!--常用-->
 <div class="bdd_used_boder">
-    <div class="bdd_used_boder_si">四库一平台</div>
-    <div class="bdd_used_boder_si">湖南四库一平台</div>
-    <div class="bdd_used_boder_si">鲁班建业通</div>
-    <div style="background-color: #cea63f;color: white" class="bdd_used_boder_si">组建部企业资质查询</div>
-    <div class="bdd_used_boder_si">岗位考试证书查询</div>
-    <div class="bdd_used_boder_si">评标计算</div>
+    <div class="bdd_used_boder_si" ng-repeat="commonLink in ctrl.commonLinkList">
+        <a href="{{commonLink.customUrl}}">{{commonLink.customName}}</a>
+    </div>
+    <!--<div class="bdd_used_boder_si">评标计算</div>-->
 </div>
 <!--行业链接-->
 <div class="bdd_catenation"><div class="bdd_catention_zheng"></div><div class="bdd_catenation_cat">行业链接</div></div>
