@@ -31,7 +31,7 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
             type: selt.type,
             projectType: selt.projectType,
             pageNo: 1,
-            pageSize: 4
+            pageSize: 5
         };
 
         $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
