@@ -169,15 +169,22 @@
                     <a href="#/usercenter">更多&nbsp;></a>
                 </div>
             </div>
-                <div style="margin-top:-15px;" class="bdd_use_right_a">
-                   <a  target="_blank" href="http://qyryjg.hunanjz.com/public/index.aspx">四库一平台</a>
+            <!--常用-->
+                <div ng-repeat="commonLink in $ctrl.commonLinkList">
+                    <div style="margin-top:-15px;" class="bdd_use_right_a" >
+                        <a href="{{commonLink.customUrl}}">{{commonLink.customName}}</a>
+                    </div>
                 </div>
-                <div class="bdd_use_right_a">
-                    <a  target="_blank" href="http://www.mohurd.gov.cn/wbdt/dwzzcx/index.html">住建部企业资质查询</a>
-                </div>
-                <div class="bdd_use_right_a">
-                    <a target="_blank" href="http://www.mohurd.gov.cn/wbdt/ryzgcx/index.html">住建部人员资质查询</a>
-                </div>
+
+                <!--<div style="margin-top:-15px;" class="bdd_use_right_a">-->
+                   <!--<a  target="_blank" href="http://qyryjg.hunanjz.com/public/index.aspx">四库一平台</a>-->
+                <!--</div>-->
+                <!--<div class="bdd_use_right_a">-->
+                    <!--<a  target="_blank" href="http://www.mohurd.gov.cn/wbdt/dwzzcx/index.html">住建部企业资质查询</a>-->
+                <!--</div>-->
+                <!--<div class="bdd_use_right_a">-->
+                    <!--<a target="_blank" href="http://www.mohurd.gov.cn/wbdt/ryzgcx/index.html">住建部人员资质查询</a>-->
+                <!--</div>-->
         </div>
     </div>
     <div class="bdd_content">

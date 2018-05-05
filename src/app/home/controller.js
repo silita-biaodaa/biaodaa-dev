@@ -80,10 +80,24 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
     this.choiceType(0, '');
 
 
+    /**
+     * 常见链接
+     */
+    this.listCustomUrls = function () {
+        var params = {
+            pageNo : 1,
+            pageSize : 3
+        }
 
-
-
-
+        $http.post("/foundation/customUrls", angular.toJson(params)).success(function (result) {
+            console.log("********");
+            console.log(result);
+            if (result.code == "1") {
+                selt.commonLinkList = result.data;
+            }
+        });
+    }
+    this.listCustomUrls();
 
 
 }]);
