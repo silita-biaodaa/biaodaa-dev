@@ -58,6 +58,14 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         console.log(result);
     });
 
+    /**点击跳转**/
+    this.clickHref = function (type) {
+        window.location.href="#/tenderDetail/"+type;
+    }
+    this.clickHrefWin = function (type){
+        window.location.href="#/winbding/"+type;
+    }
+
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");
