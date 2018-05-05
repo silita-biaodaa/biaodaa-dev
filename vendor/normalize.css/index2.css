@@ -372,7 +372,7 @@
 }
 .bdd_text_pading{
     margin-left:10px;
-   background-color: #e3e6f7;
+    background-color: #e3e6f7;
     color: #3676f0;
 }
 .bdd_banner_logo{
@@ -406,7 +406,7 @@
     padding-bottom: 20px;
 }
 .bdd_header_color:hover{
-   color: #cea63f;
+    color: #cea63f;
 }
 
 /*日期样式*/
@@ -443,7 +443,7 @@
     left:12px;
 }
 .bdd_infor_ul{
-   background-color: white;
+    background-color: white;
 }
 
 .bdd_infor_mation{
@@ -455,7 +455,7 @@
 .bdd_infor_maleft{
     width: 60px;
     height: 60px;
-   background-color:#f9f2f4;
+    background-color:#f9f2f4;
     float: left;
     margin-top:34px;
 
@@ -836,16 +836,17 @@ body {
 
 .bdd-nav-ser-div{
     margin-top: 40px;
+
 }
 .bdd-nav-tend-rel{
     position: relative;
-    width:250px;
+    width:380px;
     height: 100px;
     text-align: right;
 }
 .search-tender-select{
-    width:220px;
-    left:220px;
+    width:380px;
+    left:340px;
     top:40px;
 }
 .bdd_infor_tittle{

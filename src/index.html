@@ -83,17 +83,31 @@
 
         }
         .bdd-nav-ser-div {
-            margin-top: 20px;
+
+            margin-left: 5px;
         }
         .txt-cursor>li>a{
             cursor: default;
             color: white;
             font-size: 16px;
         }
+        .txt-cursor-a>li>a{
+            cursor: default;
+            color: white;
+            font-size: 13px;
+        }
         .txt-cursor>li>a:hover{
             color: #cea63f;
         }
         .txt-cursor>li{
+            padding:10px 20px;
+
+        }
+
+        .txt-cursor-a>li>a:hover{
+            color: #cea63f;
+        }
+        .txt-cursor-a>li{
             padding:10px 20px;
 
         }
@@ -119,6 +133,40 @@
             color: #cea63f;
 
         }
+        .bdd_select_op>option{
+            color:white;
+            font-size: 16px;
+            border:0;
+            padding: 20px;20px;
+            outline:none;
+        }
+        .bdd_select_op{
+            border: solid 1px #212121;
+            color:white;
+            font-size: 16px;
+            outline:none;
+            filter:chroma(color=#000000);
+
+
+        }
+        .bdd_black_input{
+            height: 25px;
+            width:260px;
+            font-size: 12px;
+            text-indent:6px;
+        }
+        .bdd-search-name{
+            font-size: 14px;
+            color: white;
+            padding: 2px;
+        }
+        .txt-inline-a-login{
+            margin-left: 10px;
+        }
+        .txt-inline-a-login>div>a{
+            margin-left: 5px;
+            color: white;
+        }
     </style>
     <title>webapp</title>
 </head>
@@ -139,28 +187,41 @@
         <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='usercenter'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('usercenter')" ui-sref="Usercenter">应用</a></div>
         <div class="bdd-nav-tend-rel">
             <div id="divD" class="search-tender search-tender-select">
+
+
+
+
+
+                <div  ng-mouseenter="showTenderList(ctrl.showTender)" ng-mouseleave="showTenderList(ctrl.showTender)" class="txt-inline txt-inline-a txt-inline-a-center">
+                    <div class="bdd-search-name"><div class="txt-inline">{{searchName}}</div><img class="txt-inline" src="../vendor/images/nav_icon_arrow_down.png"></div>
+                    <div style="position: fixed" ng-show="ctrl.showTender" >
+                        <ul class="txt-inline-a select-inline-ul txt-cursor-a">
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('tender?type=99&keyword=','搜标讯')">搜标讯</a></li>
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('tender?type=0&keyword=','招标')">招标</a></li>
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('tender?type=2&keyword=','中标')">中标</a></li>
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('company?keyword=','企业')">企业</a></li>
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('person?keyword=','人员')">人员</a></li>
+                            <li><a class="text-small" ng-click="ctrl.selectGoMenu('usercenter?keyword=','应用')">应用</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
                 <div class="txt-inline">
-                    <select class="bdd_select_op" ng-change="ctrl.selectGoMenu(ctrl.goMenu)" ng-model="ctrl.goMenu">
-                        <option value ="tender?type=99&keyword=">搜标讯</option>
-                        <option value ="tender?type=0&keyword=">招标</option>
-                        <option value ="tender?type=2&keyword=">中标</option>
-                        <option value ="company?keyword=">企业</option>
-                        <option value ="person?keyword=">人员</option>
-                        <option value ="usercenter?keyword=">应用</option>
-                    </select></div>
-                <div class="txt-inline">
-                    <input class="bdd_black" type="text" placeholder="搜索关键字" ng-model="ctrl.keyword" ng-enter="ctrl.seachKeyword()"/>
+                    <input class="bdd_black bdd_black_input" type="text" placeholder="搜索关键字" ng-model="ctrl.keyword" ng-enter="ctrl.seachKeyword()"/>
                 </div>
             </div>
         </div>
         <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
         </div>
-        <div class="bdd-nav-ser-div" >
+        <div class="bdd-nav-ser-div" style="{{ctrl.user?'margin-top: 20px;':' margin-top: 40px;'}}" >
             <a  class="txt-inline-a" id="btnFadein"  style="z-index: 1101;"><img
                     style="z-index: 1101;" src="../vendor/images/nav_icon_search.png" alt=""></a>
 
             <div class="txt-inline-a txt-inline-a-code" ng-mouseenter="showImageCode()" ng-mouseleave="hideImageCode()"> <img  class="txt-inline-a" src="../vendor/images/nav_icon_iphone.png" alt=""><div  class="txt-inline-a" style="font-size: 14px;position: relative;"><div style="cursor: default;color: white">APP下载</div><div ng-show="ctrl.showCode" style="position:fixed;z-index: 2001;margin-left: -40px;margin-top: 20px"><img src="../vendor/images/home_code.png"/></div></div></div>
-            <div class="txt-inline-a"  ng-if="ctrl.user == null">
+            <div class="txt-inline-a txt-inline-a-login"  ng-if="ctrl.user == null">
                 <div style="font-size: 14px;" >
                     <a ui-sref="Login">登录</a>
                     <a ui-sref="Register">注册</a>

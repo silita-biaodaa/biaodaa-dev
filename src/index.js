@@ -28,8 +28,6 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
         window.location.href="index.html#/ucenter/"+dateValue;
 
     };
-
-
     var keyword = utils.getUrlVar('keyword');
     if(keyword){
         selt.keyword = decodeURI(keyword);
@@ -37,7 +35,9 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
 
     this.goMenu = "tender?type=99&keyword=";
     this.goUrl = "index.html#/"+this.goMenu;
-    this.selectGoMenu = function(goMenu){
+    $scope.searchName="搜标讯";
+    this.selectGoMenu = function(goMenu,searchName){
+        $scope.searchName=searchName;
         console.log("value : index.html#/" + goMenu);
         selt.goUrl = "index.html#/" + goMenu;
     };
@@ -66,13 +66,13 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
 
     $("#btnFadein").click(function(){
         if(isShow){
-            $("#divD").animate({left:'220px'}).fadeOut("fast",function(){
+            $("#divD").animate({left:'340px'}).fadeOut("fast",function(){
                 $("#divD").css("visibility","hidden");
             });
 
         }else{
             $("#divD").css("visibility","visible");
-            $("#divD").animate({left:'220px'}).fadeIn("fast");
+            $("#divD").animate({left:'340px'}).fadeIn("fast");
             //$("#divD").css('left','500px');
             $("#divD").animate({left:'0px'}).fadeIn("fast",function(){
 
@@ -81,8 +81,6 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
         isShow = !isShow;
 
     });
-
-
     selt.showCode = false;
     $scope.showImageCode=function(){
         selt.showCode = true;
@@ -94,8 +92,9 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     $scope.showImageIcon=function(showHeadImage){
         selt.showHeadImage = !showHeadImage;
     }
-
-
-
+    selt.showTender = false;
+    $scope.showTenderList=function(showTender){
+        selt.showTender = !showTender;
+    }
 
 }]);
