@@ -142,9 +142,9 @@
                     <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
                         <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa1_60px.png"/></div>
                         <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title"></span></div>
+                            <div class="bdd_infor_maright_title"><span ng-bind="info.title |limitTo:16"></span></div>
                             <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span
-                                    ng-bind="info.contentDescribe"></span></a></div>
+                                    ng-bind="info.content | limitTo:14"></span></a></div>
                             <div class="bdd_infor_maright_new"><span ng-bind="info.time"></span></div>
                         </div>
                     </div>
@@ -153,9 +153,9 @@
                     <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
                         <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png"/></div>
                         <div class="bdd_infor_maright">
-                            <div class="bdd_infor_maright_title"><span ng-bind="info.title"></span></div>
+                            <div class="bdd_infor_maright_title"><span ng-bind="info.title | limitTo:16"></span></div>
                             <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span
-                                    ng-bind="info.contentDescribe"></span></a></div>
+                                    ng-bind="info.content | limitTo:14"></span></a></div>
                             <div class="bdd_infor_maright_new"><span ng-bind="info.time"></span></div>
                         </div>
                     </div>
