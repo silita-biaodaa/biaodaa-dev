@@ -655,7 +655,10 @@
                             <div>报名地址：{{currentTender.kbSite}}</div>
                         </div>
                     </div>
-                    <div class="bdd_follow bdd_follow_foll"><img src="../../../vendor/images/zb_btn_follow.png" alt="" ng-click="addConcern()">
+                    <div class="bdd_follow bdd_follow_foll">
+
+                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt="" ng-show="!currentTender.collected" ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
+                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt="" ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
                     </div>
                     <div class="bdd_follow bdd_follow_pyq bdd_follow_zb" ng-click="share('xinlang')" style=" cursor: pointer;"><img
                             src="../../../vendor/images/zb_icon_weibo.png" alt="">

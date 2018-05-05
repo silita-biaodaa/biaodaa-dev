@@ -218,9 +218,33 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         window.location.href = "index.html#/home";
     };
 
-    $scope.addConcern = function () {
-        var url=document.location.href;
-        alert(url);
+    <!--关注-->
+    $scope.addConcern = function (id,type) {
+       var params ={
+           noticeid:id,
+           type:type
+       };
+       console.log(params);
+       $http.post("/userCenter/collectionNotice",angular.toJson(params)).success(function (result) {
+           console.log(result);
+           if(result.code == 1){
+               $scope.currentTender.collected = true;
+           }
+       })
+    }
+
+    <!--取消关注-->
+    $scope.cancelConcern = function (id) {
+        var params = {
+            noticeid:id
+        };
+        console.log(params);
+        $http.post("/userCenter/cancelCollectionNotice",angular.toJson(params)).success(function (result) {
+            console.log(result);
+            if(result.code == 1){
+                $scope.currentTender.collected = false;
+            }
+        })
     }
 }]);
 
@@ -327,7 +351,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
             $scope.currentNum =1;
         }
         $("#bdd_follow_info_one").html(result.data[0].content);
-
+        console.log($scope.currentTender);
     })
     $http.post("/notice/queryCompanyList/" + id, {
         headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
@@ -374,6 +398,38 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         }
         $scope.isShow = false;
         window.open(sharesinastring);
+    }
+
+    <!--关注-->
+    $scope.addConcernWin = function (id,type) {
+        var params ={
+            noticeid:id,
+            type:type
+        };
+        console.log(params);
+        $http.post("/userCenter/collectionNotice",angular.toJson(params)).success(function (result) {
+            console.log(result);
+            if(result.code == 1){
+                $scope.currentTender.collected = true;
+            }else{
+                alert(result.msg);
+            }
+        })
+    }
+    <!--取消关注-->
+    $scope.cancelConcernWin = function (id) {
+        var params = {
+            noticeid:id
+        };
+        console.log(params);
+        $http.post("/userCenter/cancelCollectionNotice",angular.toJson(params)).success(function (result) {
+            console.log(result);
+            if(result.code == 1){
+                $scope.currentTender.collected = false;
+            }else{
+                alert(result.msg);
+            }
+        })
     }
 }]);
 

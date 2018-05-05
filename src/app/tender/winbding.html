@@ -373,7 +373,10 @@
                         </div>
                     </div>
 
-                    <div class="bdd_follow bdd_follow_foll"><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
+                    <div class="bdd_follow bdd_follow_foll">
+                        <img src="../../../vendor/images/zb_btn_follow.png"  style="cursor: pointer"  alt="" ng-show="!currentTender.collected" ng-click="addConcernWin(currentTender.id,currentTender.type)">
+                        <img src="../../../vendor/images/zb_btn_follow_pre.png"  style="cursor: pointer"  alt="" ng-show="currentTender.collected" ng-click="cancelConcernWin(currentTender.id)">
+                    </div>
                     <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span" style=" cursor: pointer;" ng-click="share('xinlang')"><img src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
                     <div class="bdd_follow bdd_follow_pyq" style=" cursor: pointer;" ng-click="share('wechat')">
                         <img src="../../../vendor/images/zb_icon_wechat.png" alt="">
