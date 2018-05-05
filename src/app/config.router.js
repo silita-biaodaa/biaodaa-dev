@@ -400,6 +400,20 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
+        .state('UserProtocol', {
+            url: '/userProtocol',
+            templateUrl: window.rootSrc + 'app/footer/user_protocol.html',
+            controller: 'FooterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/footer/controller.js'
+                    ]);
+                }]
+            }
+        })
+
+
 
     ;
     /**
