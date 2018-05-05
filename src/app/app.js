@@ -6,30 +6,30 @@
 *
 * */
 var app = angular.module('WEBAPP', [
-	'ui.router',
-	'ui.bootstrap',
-	'ngTouch',
-	'oc.lazyLoad',
-	'app.utils',
-	'infinite-scroll'
+    'ui.router',
+    'ui.bootstrap',
+    'ngTouch',
+    'oc.lazyLoad',
+    'app.utils',
+    'infinite-scroll'
 ]);
 
 
 app.factory('locals',['$window',function($window){
-	return {
-		set:function(key,value){
-			$window.localStorage[key]=value;
-		},
-		get:function(key,defaultValue){
-			return  $window.localStorage[key] || defaultValue;
-		},
-		setObject:function(key,value){
-			$window.localStorage[key]=JSON.stringify(value);
-		},
-		getObject:function(key){
-			return JSON.parse( $window.localStorage[key] || '{}');
-		}
-	}
+    return {
+        set:function(key,value){
+            $window.localStorage[key]=value;
+        },
+        get:function(key,defaultValue){
+            return  $window.localStorage[key] || defaultValue;
+        },
+        setObject:function(key,value){
+            $window.localStorage[key]=JSON.stringify(value);
+        },
+        getObject:function(key){
+            return JSON.parse( $window.localStorage[key] || '{}');
+        }
+    }
 }]);
 
 app.directive('ngEnter', function () {
@@ -45,16 +45,21 @@ app.directive('ngEnter', function () {
                     event.preventDefault();
                 }
             });
-}}});
+        }}});
 
 function logout(){
-	sessionStorage.removeItem("X-TOKEN");
-	sessionStorage.removeItem("username");
-	window.location.href="index.html#/home";
+    sessionStorage.removeItem("X-TOKEN");
+    sessionStorage.removeItem("username");
+    window.location.href="index.html#/home";
 }
 
 
 
-
+$(function () {
+    var r = document.body.offsetWidth / 1920; //window.screen.availWidth;
+    if (window.screen.availWidth < 1920) {
+        $(document.body).css("zoom", r);
+    }
+});
 
 
