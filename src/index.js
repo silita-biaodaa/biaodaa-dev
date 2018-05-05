@@ -6,7 +6,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     } else {
         selt.user = null;
     }
-    
+
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");
@@ -62,11 +62,6 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     };
 
 
-
-
-
-
-
     var isShow = false;
 
     $("#btnFadein").click(function(){
@@ -88,7 +83,17 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     });
 
 
-
+    selt.showCode = false;
+    $scope.showImageCode=function(){
+        selt.showCode = true;
+    }
+    $scope.hideImageCode=function(){
+        selt.showCode = false;
+    }
+    selt.showHeadImage = false;
+    $scope.showImageIcon=function(showHeadImage){
+        selt.showHeadImage = !showHeadImage;
+    }
 
 
 

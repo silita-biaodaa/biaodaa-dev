@@ -78,7 +78,47 @@
             padding: 0 0;
             margin: 0 auto;
         }
+        .txt-inline-a{
+            display: inline-block;
 
+        }
+        .bdd-nav-ser-div {
+            margin-top: 20px;
+        }
+        .txt-cursor>li>a{
+            cursor: default;
+            color: white;
+            font-size: 16px;
+        }
+        .txt-cursor>li>a:hover{
+            color: #cea63f;
+        }
+        .txt-cursor>li{
+            padding:10px 20px;
+
+        }
+
+        .select-inline-ul{
+            background-color: #212121;
+            color: white;
+            margin-top: 10px;
+            margin-left: -10px;
+        }
+        .txt-inline-a-center{
+            text-align: center;
+            margin-left: 20px;
+        }
+        .txt-inline-a-code{
+            margin-left: 20px;
+        }
+        .bdd-nav-title>a{
+            color: white;
+            text-decoration: none;
+        }
+        .bdd-nav-title>a:hover{
+            color: #cea63f;
+
+        }
     </style>
     <title>webapp</title>
 </head>
@@ -87,117 +127,119 @@
 
 
 
-    <nav class="bdd-nav">
-        <div class="bdd-nav-div bdd-nav-div-a">
-            <div class="bdd-img-div">
-                <div class="bdd-img-one"><img class="bdd-img" src="../vendor/images/logo.png" alt=""/></div>
-            </div>
-            <div class="bdd-nav-title"><a style="{{ctrl.menu=='home'?'color:white':''}}" ng-click="ctrl.selectMenu('home')" ui-sref="home">首页</a></div>
-            <div class="bdd-nav-title"><a style="{{ctrl.menu=='tender'?'color:white':''}}" ng-click="ctrl.selectMenu('tender')" ui-sref="Tender">标讯</a></div>
-            <div class="bdd-nav-title"><a style="{{ctrl.menu=='companyTop'?'color:white':''}}" ng-click="ctrl.selectMenu('companyTop')" ui-sref="CompanyTop">企信</a></div>
-            <div class="bdd-nav-title"><a style="{{ctrl.menu=='workmore'?'color:white':''}}" ng-click="ctrl.selectMenu('workmore')" ui-sref="workmore">动态</a></div>
-            <div class="bdd-nav-title"><a style="{{ctrl.menu=='usercenter'?'color:white':''}}" ng-click="ctrl.selectMenu('usercenter')" ui-sref="Usercenter">应用</a></div>
-            <div class="bdd-nav-tend-rel">
+<nav class="bdd-nav">
+    <div class="bdd-nav-div bdd-nav-div-a">
+        <div class="bdd-img-div">
+            <div class="bdd-img-one"><img class="bdd-img" src="../vendor/images/logo.png" alt=""/></div>
+        </div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='home'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('home')" ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='tender'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('tender')" ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='companyTop'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('companyTop')" ui-sref="CompanyTop">企信</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='workmore'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('workmore')" ui-sref="workmore">动态</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='usercenter'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('usercenter')" ui-sref="Usercenter">应用</a></div>
+        <div class="bdd-nav-tend-rel">
             <div id="divD" class="search-tender search-tender-select">
                 <div class="txt-inline">
                     <select class="bdd_select_op" ng-change="ctrl.selectGoMenu(ctrl.goMenu)" ng-model="ctrl.goMenu">
-                    <option value ="tender?type=99&keyword=">搜标讯</option>
-                    <option value ="tender?type=0&keyword=">招标</option>
-                    <option value ="tender?type=2&keyword=">中标</option>
-                    <option value ="company?keyword=">企业</option>
-                    <option value ="person?keyword=">人员</option>
-                    <option value ="usercenter?keyword=">应用</option>
-                </select></div>
+                        <option value ="tender?type=99&keyword=">搜标讯</option>
+                        <option value ="tender?type=0&keyword=">招标</option>
+                        <option value ="tender?type=2&keyword=">中标</option>
+                        <option value ="company?keyword=">企业</option>
+                        <option value ="person?keyword=">人员</option>
+                        <option value ="usercenter?keyword=">应用</option>
+                    </select></div>
                 <div class="txt-inline">
                     <input class="bdd_black" type="text" placeholder="搜索关键字" ng-model="ctrl.keyword" ng-enter="ctrl.seachKeyword()"/>
                 </div>
             </div>
-            </div>
-            <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
-            </div>
-            <div class="bdd-nav-ser-div" >
-                <a  class="txt-inline" id="btnFadein"  style="z-index: 1101;"><img
-                        style="z-index: 1101;" src="../vendor/images/nav_icon_search.png" alt=""></a>
-                <div class="txt-inline"><img src="../vendor/images/nav_icon_iphone.png" alt=""><span style="font-size: 14px">APP下载</span></div>
-                <div class="txt-inline"  ng-if="ctrl.user == null">
-                    <div style="font-size: 14px;" >
-                        <a ui-sref="Login">登录</a>
-                        <a ui-sref="Register">注册</a>
-                    </div>
-                </div>
-                <div  class="txt-inline">
-                    <div ng-if="ctrl.user != null">
-                        <div ng-if="ctrl.user.imgurl != null && ctrl.user.imgurl != ''">
-                            <img ng-src="{{ctrl.user.imgurl}}" width="60px" height="60px" alt="..." class="img-circle">
-                        </div>
-                        <div ng-if="ctrl.user.imgurl == null && ctrl.user.imgurl == ''">
-                            <img src="/vendor/images/icon_head_default30px.png" width="60px" height="60px" alt="..." class="img-circle">
-                        </div>
-                        <select ng-change="ctrl.selectChange(ctrl.dateValue)" ng-model="ctrl.dateValue">
-                            <option value ="default">个人中心</option>
-                            <option value ="personInfo">个人资料</option>
-                            <option value ="financial">金融服务</option>
-                            <option value="feedback">反馈意见</option>
-                            <option value="messages">消息通知</option>
-                            <option value="myfollow">我的关注</option>
-                            <option value="logout">退出</option>
-                        </select>
-                    </div>
+        </div>
+        <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
+        </div>
+        <div class="bdd-nav-ser-div" >
+            <a  class="txt-inline-a" id="btnFadein"  style="z-index: 1101;"><img
+                    style="z-index: 1101;" src="../vendor/images/nav_icon_search.png" alt=""></a>
 
+            <div class="txt-inline-a txt-inline-a-code" ng-mouseenter="showImageCode()" ng-mouseleave="hideImageCode()"> <img  class="txt-inline-a" src="../vendor/images/nav_icon_iphone.png" alt=""><div  class="txt-inline-a" style="font-size: 14px;position: relative;"><div style="cursor: default;color: white">APP下载</div><div ng-show="ctrl.showCode" style="position:fixed;z-index: 2001;margin-left: -40px;margin-top: 20px"><img src="../vendor/images/home_code.png"/></div></div></div>
+            <div class="txt-inline-a"  ng-if="ctrl.user == null">
+                <div style="font-size: 14px;" >
+                    <a ui-sref="Login">登录</a>
+                    <a ui-sref="Register">注册</a>
                 </div>
             </div>
+            <div  class="txt-inline-a">
+                <div ng-if="ctrl.user != null">
+                    <div  ng-mouseenter="showImageIcon(ctrl.showHeadImage)" ng-mouseleave="showImageIcon(ctrl.showHeadImage)" class="txt-inline-a txt-inline-a-center">
+                        <img  ng-src="{{ctrl.user.imgurl?ctrl.user.imgurl:'/vendor/images/icon_head_default30px.png'}}" width="60px" height="60px" alt="..." class="img-circle">
+                        <div style="position: fixed" ng-show="ctrl.showHeadImage" >
+                            <ul class="txt-inline-a select-inline-ul txt-cursor">
+                                <li><a ng-click="ctrl.selectChange('default')">个人中心</a></li>
+                                <li><a ng-click="ctrl.selectChange('personInfo')">个人资料</a></li>
+                                <li><a ng-click="ctrl.selectChange('financial')">金融服务</a></li>
+                                <li><a ng-click="ctrl.selectChange('feedback')">反馈意见</a></li>
+                                <li><a ng-click="ctrl.selectChange('messages')">消息通知</a></li>
+                                <li><a ng-click="ctrl.selectChange('myfollow')">我的关注</a></li>
+                                <li><a ng-click="ctrl.selectChange('logout')">退出</a></li>
+                            </ul>
 
+                        </div>
+                    </div>
 
-        </div>
-    </nav>
+                </div>
 
-    <ui-view > </ui-view>
-
-    <div class="bdd_footer_left">
-        <div class="bdd_footer_news">
-            <div class="bdd_footer_content">
-                <a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a>
             </div>
-            <div class="bdd_footer_content bdd_footer_side"><a ui-sref="Perp">关于我们</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a ui-sref="Joinus">加入我们</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-            <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-            <div class="bdd_footer_content bdd_footer_aido"><a href="http://www.biaodaa.com/file/biaodaa.apk"><img class="bdd_footer_logo"
-                                                                             src="../../../vendor/images/bottom_icon_andriod.png"
-                                                                             alt=""/></a></div>
-            <div class="bdd_footer_content"><a href="https://itunes.apple.com/cn/app/标大大/id1278802484?mt=8"><img class="bdd_footer_logo"
-                                                             src="../../../vendor/images/bottom_icon_ios.png" alt=""/></a>
-            </div>
-            <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
-                                                             src="../../../vendor/images/bottom_icon_wechat.png"
-                                                             alt=""/></a></div>
         </div>
+
+
     </div>
+</nav>
+
+<ui-view > </ui-view>
+
+<div class="bdd_footer_left">
+    <div class="bdd_footer_news">
+        <div class="bdd_footer_content">
+            <a href="#"><img class="bdd_footer_logo" src="../vendor/images/logo.png" alt=""/></a>
+        </div>
+        <div class="bdd_footer_content bdd_footer_side"><a ui-sref="Perp">关于我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a ui-sref="Joinus">加入我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
+        <div class="bdd_footer_content bdd_footer_aido"><a href="http://www.biaodaa.com/file/biaodaa.apk"><img class="bdd_footer_logo"
+                                                                                                               src="../vendor/images/bottom_icon_andriod.png"
+                                                                                                               alt=""/></a></div>
+        <div class="bdd_footer_content"><a href="https://itunes.apple.com/cn/app/标大大/id1278802484?mt=8"><img class="bdd_footer_logo"
+                                                                                                             src="../vendor/images/bottom_icon_ios.png" alt=""/></a>
+        </div>
+        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo"
+                                                         src="../vendor/images/bottom_icon_wechat.png"
+                                                         alt=""/></a></div>
+    </div>
+</div>
 
 
 
 
-    <script>
-        window.rootSrc = '/src/';
-    </script>
-    <script src="../vendor/js/jquery.js"></script>
-    <script src="../vendor/angular/angular.min.js"></script>
-    <script src="../vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="../vendor/angular/angular-touch/angular-touch.js"></script>
-    <script src="../vendor/angular/oclazyload/ocLazyLoad.js"></script>
-    <script src="../vendor/angular/ng-infinite-scroll.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
-    <script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-    <script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    window.rootSrc = '/src/';
+</script>
+<script src="../vendor/js/jquery.js"></script>
+<script src="../vendor/angular/angular.min.js"></script>
+<script src="../vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../vendor/angular/angular-touch/angular-touch.js"></script>
+<script src="../vendor/angular/oclazyload/ocLazyLoad.js"></script>
+<script src="../vendor/angular/ng-infinite-scroll.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../vendor/angular/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 
-    <script src="./app/app.js"></script>
-    <script src="./app/config.router.js"></script>
-    <script src="./app/config.lazyload.js"></script>
-    <script src="./app/utils.js"></script>
-    <script src="index.js"></script>
+<script src="./app/app.js"></script>
+<script src="./app/config.router.js"></script>
+<script src="./app/config.lazyload.js"></script>
+<script src="./app/utils.js"></script>
+<script src="index.js"></script>
 
 
 
