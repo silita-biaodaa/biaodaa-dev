@@ -48,7 +48,7 @@
             </li>
         </ul>
     </div>
-    <!--中标公告-->
+    <!--招标公告-->
     <div class="bdd_win">
         <div class="bdd_win_left">
             <div class="bdd_win_header">
@@ -60,14 +60,14 @@
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'3')">采购</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'1')">设计</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
-
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'5')">其他</div>
                 <div class="bdd_win_header_right">
                     <a href="#/tender?type=0">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
 
-            <div class="bdd_win_conter" style="margin-top: 10px" ng-repeat="zhaobiao in $ctrl.zhaobiaoList">
+            <div class="bdd_win_conter" style="margin-top: 10px;cursor: pointer" ng-repeat="zhaobiao in $ctrl.zhaobiaoList" ng-click="$ctrl.clickHref('{{zhaobiao.id}}')">
                 <div class="bdd_text_z"><a href="#/tenderDetail/{{zhaobiao.id}}"><span
                         ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
                 <div class="bdd_text_y">资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
@@ -79,6 +79,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
 
+            <!--中标公告-->
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">中标公告</div>
                 <div class="bdd_icon"></div>
@@ -88,13 +89,14 @@
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'3')">采购</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'1')">设计</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
+                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'5')">其他</div>
                 <div class="bdd_win_header_right">
                     <a href="#/tender?type=2">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
-            <div class="bdd_win_conter" style="margin-top:10px" ng-repeat="notice in $ctrl.zhongbiaoList">
-                <div class="bdd_text_#z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span
+            <div class="bdd_win_conter" style="margin-top:10px;cursor: pointer" ng-repeat="notice in $ctrl.zhongbiaoList" ng-click="$ctrl.clickHrefWin('{{notice.id}}')">
+                <div class="bdd_text_z"><a style="text-decoration: none;" href="#/winbding/{{notice.id}}"><span
                         ng-bind="notice.title"></span></a></div>
                 <div class="bdd_text_y">中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                 <div class="bdd_text_p">项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>

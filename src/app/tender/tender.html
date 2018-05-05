@@ -195,6 +195,9 @@
                     <div class="bdd_comp_span">
                         <a class="span-cursor" ng-click="$ctrl.choiceProjectType('4');">勘察</a>
                     </div>
+                    <div class="bdd_comp_span">
+                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('5');">其他</a>
+                    </div>
                 </div>
                 <div class="bdd_area_left">
                     <div class="bdd_content_h">评标办法:</div>
@@ -438,8 +441,9 @@
                 <div class="bdd_adver_header" id="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
                      infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
                     <a ng-repeat="notice in $ctrl.noticeList">
-                        <div class="bdd_win_conter" style="margin-top:10px;" ng-if="notice.type==0">
-                           <div class="bdd_text_z" ng-bind="notice.title"></div>
+                        <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}')">
+                           <div class="bdd_text_z" ng-bind="notice.title">
+                           </div>
                             <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
                             <div class="bdd_text_p">评标办法：{{notice.pbMode}}</div>
                             <div class="bdd_text_invite">{{notice.projectType}}</div>
@@ -448,7 +452,7 @@
                             <div class="bdd_text_riqi">{{notice.opendate}}</div>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
-                        <div class="bdd_win_conter" style="margin-top:10px;" ng-if="notice.type==2">
+                        <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==2" ng-click="$ctrl.clickHrefWin('{{notice.id}}')">
                             <div class="bdd_text_z" ng-bind="notice.title"></div>
                             <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                             <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>

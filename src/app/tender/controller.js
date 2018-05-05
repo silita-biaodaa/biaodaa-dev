@@ -188,6 +188,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         $state.go('TenderSay', {id: id, type: type});
     }
     <!--分享-->
+    $scope.isShow = false;
     $scope.share = function (type) {
         var url=document.location.href;
         var sharesinastring;
@@ -200,12 +201,12 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
                 sharesinastring='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&desc='+title+'&title='+title;
                 break;
             case 'wechat':
-                break;
-            case 'renren':
-                sharesinastring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&url='+url+'&title='+title;
-                break;
+                sharesinastring='http://pan.baidu.com/share/qrcode?w=150&h=150&url='+url;
+                $scope.imgCodeUrl = sharesinastring;
+                $scope.isShow = true;
+                return;
         }
-
+        $scope.isShow = false;
         window.open(sharesinastring);
     }
 
@@ -353,6 +354,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     };
 
     <!--分享-->
+    $scope.isShow = false;
     $scope.share = function (type) {
         var url=document.location.href;
         var sharesinastring;
@@ -365,12 +367,12 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
                 sharesinastring='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&desc='+title+'&title='+title;
                 break;
             case 'wechat':
-                break;
-            case 'renren':
-                sharesinastring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&url='+url+'&title='+title;
-                break;
+                sharesinastring='http://pan.baidu.com/share/qrcode?w=150&h=150&url='+url;
+                $scope.imgCodeUrlWin = sharesinastring;
+                $scope.isShow = true;
+                return;
         }
-
+        $scope.isShow = false;
         window.open(sharesinastring);
     }
 }]);

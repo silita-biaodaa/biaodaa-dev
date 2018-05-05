@@ -293,6 +293,9 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             case '4':
                 selt.projectTypeDesc = '勘察';
                 break;
+            case '5':
+                selt.projectTypeDesc = '其他';
+                break;
             default:
                 selt.projectTypeDesc = null;
                 break;
@@ -538,5 +541,13 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         window.location.href = "index.html#/home";
     };
 
+
+    /**点击跳转**/
+    this.clickHref = function (type) {
+        window.location.href="#/tenderDetail/"+type;
+    }
+    this.clickHrefWin = function (type){
+        window.location.href="#/winbding/"+type;
+    }
 }]);
 
