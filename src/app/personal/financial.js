@@ -1,6 +1,8 @@
 app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document','userTemp',function($http,$uibModal, $log, $scope,$document,userTemp) {
     var selt = this;
 
+    selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
+
     $scope.selectDatas = [
         {
             "name":"安徽省",
@@ -597,7 +599,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
 
     var regDateTime = /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/;
 
-    this.submit = function () {
+    this.submit = function (valid) {
         if (null != userTemp) {
             var region = '';
             var province = selt.province;
@@ -617,10 +619,6 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                     region = region + city;
                 }
             }
-            if ('' == projName || projName == undefined) {
-                alert('项目名称不能为空！');
-                return;
-            }
             if ('' == kbTime || kbTime == undefined) {
                 alert('开标时间不能为空！');
                 return;
@@ -628,21 +626,6 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 if (!regDateTime.test(kbTime)) {
                     alert('开标时间格式不正确！正确格式为 2018-01-01 00:00:00');
                     selt.kbTime='';
-                    return;
-                }
-            }
-            if ('' == borrower || borrower == undefined) {
-                alert('借款人不能为空！');
-                return;
-            }
-            if ('' == phone || phone == undefined) {
-                alert('手机号码不能为空！');
-                return;
-            } else {
-                var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-                if (!reg.test(phone)) {
-                    alert('请输入正确的手机号码！');
-                    selt.phone = '';
                     return;
                 }
             }
@@ -656,22 +639,6 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                     return;
                 }
             }
-            if ('' == money || money == undefined) {
-                alert('借款金额不能为空！');
-                return;
-            } else {
-                var reg=/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
-                if (money.length >= 11) {
-                    alert('借款金额过大！');
-                    selt.money = '';
-                    return;
-                }
-                if (!reg.test(money)) {
-                    alert('请输入正确的借款金额！');
-                    selt.money = '';
-                    return;
-                }
-            }
             var params = {
                 region: region,
                 projName: projName,
@@ -681,19 +648,21 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 phone: phone,
                 money: money
             };
-            $http.post("/foundation/borrow", angular.toJson(params)).success(function (result) {
-                if (result.code == 1) {
-                    alert('申请保证金借款成功！');
-                    selt.projName = '';
-                    selt.borrower = '';
-                    selt.borrowTime = '';
-                    selt.kbTime = '';
-                    selt.phone = '';
-                    selt.money = '';
-                } else {
-                    alert('申请保证金借款失败！');
-                }
-            });
+            if (valid) {
+                $http.post("/foundation/borrow", angular.toJson(params)).success(function (result) {
+                    if (result.code == 1) {
+                        alert('申请保证金借款成功！');
+                        selt.projName = '';
+                        selt.borrower = '';
+                        selt.borrowTime = '';
+                        selt.kbTime = '';
+                        selt.phone = '';
+                        selt.money = '';
+                    } else {
+                        alert('申请保证金借款失败！');
+                    }
+                });
+            }
         } else {
             alert('您未登录，暂不能申请保证金借款！');
         }
