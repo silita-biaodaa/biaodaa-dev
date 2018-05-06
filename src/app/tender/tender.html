@@ -151,10 +151,10 @@
                 <div class="bdd_dev_area bdd_dev_area_txt">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
                     <div class="bdd_tender_inline bdd_tender_a">
-                        <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelArea()">全部</a>
+                        <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelArea()">全部</a>
 
                         <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                            <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
                                ng-click="$ctrl.clickProvince(area)"></a>
                         </div>
                     </div>
@@ -170,16 +170,16 @@
                 </div>
                 <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
-                        <a class="span-cursor" ng-bind="area.name|limitTo:2"
+                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
                            ng-click="$ctrl.clickProvince(area)"></a>
                     </div>
 
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="span-yellow span-cursor">全部</a>
+                    <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}" ng-click="$ctrl.cancleEmCity()">全部</a>
                     </div>
                     <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
-                        <a class="span-cursor" ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
+                        <a class="{{$ctrl.city==city?'span-yellow span-cursor':'span-cursor'}}" ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
                     </div>
                 </div>
             </div>
@@ -188,25 +188,25 @@
             <div class="bdd_area_left">
                 <div class="bdd_dev_area bdd_dev_area_txt">分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro">
-                    <a class="bdd_comp_span_all span-cursor span-yellow" ng-click="$ctrl.cancelProjectType();">不限</a>
+                    <a class="{{$ctrl.projectTypeDesc==null?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelProjectType();">不限</a>
 
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('0');">施工</a>
+                        <a class="{{$ctrl.projectTypeDesc=='施工'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('0');">施工</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('2');">监理</a>
+                        <a class="{{$ctrl.projectTypeDesc=='监理'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('2');">监理</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('3');">采购</a>
+                        <a class="{{$ctrl.projectTypeDesc=='采购'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('3');">采购</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('1');">设计</a>
+                        <a class="{{$ctrl.projectTypeDesc=='设计'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('1');">设计</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('4');">勘察</a>
+                        <a class="{{$ctrl.projectTypeDesc=='勘察'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('4');">勘察</a>
                     </div>
                     <div class="bdd_comp_span">
-                        <a class="span-cursor" ng-click="$ctrl.choiceProjectType('5');">其他</a>
+                        <a class="{{$ctrl.projectTypeDesc=='其他'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.choiceProjectType('5');">其他</a>
                     </div>
                 </div>
                 <div class="bdd_area_left">
@@ -246,7 +246,7 @@
                         <div class="bdd_area_left">
                             <div class="bdd_content_h">资质要求：</div>
                             <div class="bdd_content_n bdd_content-inline">
-                                <div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.cancelQUal()">
+                                <div class="{{$ctrl.qual1==''?'bdd_tender_inline bdd_content_m span-yellow':'bdd_tender_inline bdd_content_m'}}" ng-click="$ctrl.cancelQUal()">
                                     全部
                                 </div>
                                 <div class="bdd_tender_inline dropdown dropdown-div dropdown-div-border"
@@ -254,7 +254,7 @@
                                     <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
                                        data-target="#"
                                        href="javascript:;"><span
-                                            ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                            ng-click="$ctrl.clickQual1(qual)" class="{{$ctrl.qual1==qual?'span-yellow':''}}">{{qual.name}}</span> <span
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu multi-level bdd_drop_scroll" role="menu"
                                         aria-labelledby="dropdownMenu">
@@ -288,7 +288,7 @@
                                 <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
                                    data-target="#"
                                    href="javascript:;"><span
-                                        ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                        ng-click="$ctrl.clickQual1(qual)" class="{{$ctrl.qual1==qual?'span-yellow':''}}">{{qual.name}}</span> <span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu"
                                     aria-labelledby="dropdownMenu">
@@ -484,9 +484,8 @@
 
         <div id="bdd_second_menu"
              style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
-            <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"><a class="a-point"
-                                                                                        ng-bind="item.name"
-                                                                                        ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)"></a>
+            <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList" ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)">
+                <a class="a-point" ng-bind="item.name"></a>
             </div>
         </div>
 
