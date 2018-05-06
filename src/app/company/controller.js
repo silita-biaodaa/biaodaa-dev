@@ -310,7 +310,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
         $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
             var companyList = result.data;
-            if(companyList!=null){
+            if(companyList!=null&&companyList.length>0){
                 if(selt.page==result.pageNum){
                     angular.forEach(companyList,function(company){
                         selt.companyList.push(company);

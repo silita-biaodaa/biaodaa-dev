@@ -80,6 +80,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.regions = area.name + "||";
         selt.province = area.name;
         selt.isCity = true;
+        this.city = "";
         selt.cityList = area.list;
         selt.queryList();
     };
@@ -94,6 +95,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         this.regions = "";
         this.province = "";
         this.city = "";
+        this.isCity = false;
         selt.setPage();
     };
     this.cancleEmCity = function () {
@@ -195,7 +197,10 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
 
     this.morePro = false;
-    this.moreProvince = function (morePro) {
+    this.moreProvince=function(morePro){
+        if(morePro){
+            selt.isCity = false;
+        }
         selt.morePro = !morePro;
     };
     this.moreZz = false;
@@ -549,6 +554,17 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     }
     this.clickHrefWin = function (type){
         window.location.href="#/winbding/"+type;
-    }
+    };
+
+
+    //资质要求弹出资质等级后点击空白自动消失
+    $(document).on("click",function(e){//js
+        var $target = $(e.target);
+        if(!($target.parents().andSelf().is("#bdd_second_menu"))){
+            $scope.$apply(function(){
+                $('#bdd_second_menu').hide();
+            });
+        }
+    });
 }]);
 

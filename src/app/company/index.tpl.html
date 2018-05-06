@@ -128,7 +128,7 @@
                         <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelArea()">全部</a>
 
                         <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
+                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                                ng-click="$ctrl.clickProvince(area)"></a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                 </div>
                 <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
-                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
+                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                            ng-click="$ctrl.clickProvince(area)"></a>
                     </div>
 
@@ -173,8 +173,7 @@
                                      ng-repeat="qual in $ctrl.companyQualList">
                                     <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
                                        data-target="#"
-                                       href="javascript:;"><span
-                                            ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                       href="javascript:;"><span class="{{$ctrl.qual1==qual?'span-yellow':''}}" ng-click="$ctrl.clickQual1(qual)" >{{qual.name}}</span> <span
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu multi-level bdd_drop_scroll" role="menu"
                                         aria-labelledby="dropdownMenu">
@@ -208,7 +207,7 @@
                                 <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
                                    data-target="#"
                                    href="javascript:;"><span
-                                        ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                        ng-click="$ctrl.clickQual1(qual)" class="{{$ctrl.qual1==qual?'span-yellow':''}}">{{qual.name}}</span> <span
                                         class="caret"></span></a>
                                 <ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu"
                                     aria-labelledby="dropdownMenu">
@@ -352,7 +351,7 @@
 
 <div id="bdd_second_menu"
      style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
-    <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"><a class="a-point" ng-bind="item.name"
-                                                                                ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)"></a>
+    <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList" ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)">
+        <a class="a-point" ng-bind="item.name"></a>
     </div>
 </div>

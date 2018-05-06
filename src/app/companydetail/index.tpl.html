@@ -67,7 +67,8 @@
         <div class="bdd_scope_conter_right"><span><div class="bdd_scope_conter_left"></div></span>经营范围</div>
     </div>
     <div class="bdd_scopr_top">
-        <div class="bdd_scopr_top_span" ng-bind="ctrl.company.comRange"></div>
+        <div class="bdd_scopr_top_span" ng-if="ctrl.company.comRange" ng-bind="ctrl.company.comRange"></div>
+        <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange">该企业暂时没有经营范围！</div>
     </div>
 </div>
 
@@ -127,10 +128,13 @@
                     <div class="bdd_scopr_prize bdd_scope_reput" ng-repeat="undes in ctrl.undesMap.undesirable"
                          ng-click="ctrl.showUndesirable(undes.list)">{{undes.name}}<span style="color: #cea63f">（{{undes.num}}）</span>
                     </div>
+                    <div class="display_inline"  style="padding-left: 100px">
+                        <a ng-click="ctrl.showUndesBoo()" ng-bind="ctrl.unshow"> </a>
+                    </div>
 
                 </div>
                 <!--鲁班奖-->
-                <div class="bdd_lauban">
+                <div class="bdd_lauban" ng-show="ctrl.boo">
                     <div class="bdd_lauban_news" ng-repeat="item in ctrl.undesList">
                         <div class="bdd_lauban_conter bdd_lauban_conter_mess">
                             <div>
@@ -159,7 +163,7 @@
         <div class="bdd_Personl_table_header_title" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list)">
 
         </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f" ng-bind="ctrl.qualSize"></span>条人员信息</div>
+        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f" ng-bind="ctrl.qualSize"></span>条资质信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
