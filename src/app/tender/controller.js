@@ -449,10 +449,6 @@ app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams'
 app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
     var selt = this;
 
-    this.init = function () {
-        selt.setPage2();
-    }
-
     this.companyList = [];
     this.busy = false;
     this.page = 1;
@@ -489,12 +485,6 @@ app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         });
     }
 
-    this.toTendListDetail=function(companyData){
-        console.log(companyData);
-        locals.setObject("companyData",companyData);
-        $state.go("TendListDetail");
-    }
-
     this.setContentHeight = function (dataList) {
         var bdd_adver_header = document.getElementById("bdd_adver_header");
         if (dataList.length > 2) {
@@ -503,6 +493,16 @@ app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
             bdd_adver_header.style.height = "500px";
         }
     };
+
+    this.toTendListDetail=function(companyData){
+        console.log(companyData);
+        locals.setObject("companyData",companyData);
+        $state.go("TendListDetail");
+    }
+
+    this.init = function () {
+        selt.setPage2();
+    }
 }]);
 
 
