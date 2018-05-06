@@ -96,14 +96,13 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 		if(reputList!=null&&reputList.length>0){
 			selt.showTip = 0;
 		}
-
-
 	};
 
 	this.showUndesirable = function (undesList) {
 		selt.undesList = undesList;
-
-	}
+        selt.boo = true;
+        selt.unshow = "收起"
+	};
 	this.changeOneMore = function (event) {
 		var elem = event.target;
 
@@ -117,6 +116,16 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 		}
 
 	};
+
+    this.showUndesBoo = function () {
+        selt.boo = !selt.boo;
+        if(selt.boo){
+            selt.unshow = "收起"
+        }else{
+            selt.unshow = "更多"
+        }
+
+    };
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");

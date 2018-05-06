@@ -173,8 +173,7 @@
                                      ng-repeat="qual in $ctrl.companyQualList">
                                     <a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"
                                        data-target="#"
-                                       href="javascript:;"><span
-                                            ng-click="$ctrl.clickQual1(qual)">{{qual.name}}</span> <span
+                                       href="javascript:;"><span class="{{$ctrl.qual1==qual?'span-yellow':''}}" ng-click="$ctrl.clickQual1(qual)" >{{qual.name}}</span> <span
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu multi-level bdd_drop_scroll" role="menu"
                                         aria-labelledby="dropdownMenu">
@@ -352,7 +351,7 @@
 
 <div id="bdd_second_menu"
      style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
-    <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"><a class="a-point" ng-bind="item.name"
-                                                                                ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)"></a>
+    <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList" ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)">
+        <a class="a-point" ng-bind="item.name"></a>
     </div>
 </div>
