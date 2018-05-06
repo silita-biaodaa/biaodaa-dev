@@ -128,7 +128,7 @@
                         <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelArea()">全部</a>
 
                         <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
+                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                                ng-click="$ctrl.clickProvince(area)"></a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                 </div>
                 <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
-                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
+                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                            ng-click="$ctrl.clickProvince(area)"></a>
                     </div>
 

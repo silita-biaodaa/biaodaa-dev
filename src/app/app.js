@@ -47,6 +47,16 @@ app.directive('ngEnter', function () {
             });
         }}});
 
+app.filter('areaLimit',function () {
+    return function (name) {
+        if('黑龙江省'==name){
+            return '黑龙江';
+        }else{
+            return name.substring(0,2);
+        }
+    }
+});
+
 function logout(){
     sessionStorage.removeItem("X-TOKEN");
     sessionStorage.removeItem("username");
