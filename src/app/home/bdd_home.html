@@ -170,8 +170,8 @@
                 </div>
             </div>
             <!--常用-->
-                <div ng-repeat="commonLink in $ctrl.commonLinkList">
-                    <div style="margin-top:-15px;" class="bdd_use_right_a" >
+                <div  style="margin-top:10px;text-align: center" ng-repeat="commonLink in $ctrl.commonLinkList | limitTo: 3">
+                    <div style="margin-top:10px;text-align: center" class="bdd_use_right_a" >
                         <a href="{{commonLink.customUrl}}">{{commonLink.customName}}</a>
                     </div>
                 </div>
