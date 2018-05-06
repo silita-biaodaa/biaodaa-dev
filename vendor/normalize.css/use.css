@@ -129,7 +129,6 @@
 
 .bdd_per_span {
     display: inline-block;
-    width: 75px;
     padding-bottom: 10px;
     text-align: center;
     margin-left: 15px;
@@ -152,7 +151,7 @@
 }
 
 .bdd_dev_per_pro_m {
-    padding-left: 10px;
+    padding-left: 23px;
     padding-right: 90px;
     overflow: hidden;
 }

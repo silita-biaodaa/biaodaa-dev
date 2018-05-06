@@ -372,7 +372,7 @@
 }
 .bdd_text_pading{
     margin-left:10px;
-    background-color: #e3e6f7;
+   background-color: #e3e6f7;
     color: #3676f0;
 }
 .bdd_banner_logo{
@@ -406,7 +406,7 @@
     padding-bottom: 20px;
 }
 .bdd_header_color:hover{
-    color: #cea63f;
+   color: #cea63f;
 }
 
 /*日期样式*/
@@ -443,7 +443,7 @@
     left:12px;
 }
 .bdd_infor_ul{
-    background-color: white;
+   background-color: white;
 }
 
 .bdd_infor_mation{
@@ -455,7 +455,7 @@
 .bdd_infor_maleft{
     width: 60px;
     height: 60px;
-    background-color:#f9f2f4;
+   background-color:#f9f2f4;
     float: left;
     margin-top:34px;
 
@@ -570,7 +570,7 @@
 }
 .bdd_footer_content {
     float: left;
-    height:150px;
+    height:100px;
     font-size: 16px;
     color: #ccbebe;
     line-height: 150px;
@@ -588,13 +588,13 @@
     padding-left: 45px;
 }
 .bdd_footer_aido{
-    padding-left:150px;
+    margin-left:340px;
+    padding-left: 0px;
 }
 .bdd_footer_foot{
     padding-left:130px;
 }
 .bdd_footer_news{
-    width: 100%;
     margin: 0 auto;
 }
 .bdd_text_riqi{
@@ -629,26 +629,14 @@
 
 }
 .bdd_use_right_a{
+    width: 270px;
+    line-height: 110px;
     text-align: center;
-    line-height: 100px;
-    height: 100px;
     background-color: white;
     margin-top: 10px;
-    cursor: pointer;
-    border-radius: 10px;
 }
 
-/*轮播图*/
-* {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    border: 0;
-}
 
-body {
-    background-color: #F8F8F8;
-}
 
 .all {
     width: 1200px;
@@ -746,7 +734,7 @@ body {
 }
 
 .bdd_footer_news {
-    width: 1200px;
+    width: 1300px;
     margin: 0 auto;
 }
 .txt-inline{
@@ -836,17 +824,16 @@ body {
 
 .bdd-nav-ser-div{
     margin-top: 40px;
-
 }
 .bdd-nav-tend-rel{
     position: relative;
-    width:380px;
+    width:350px;
     height: 100px;
     text-align: right;
 }
 .search-tender-select{
-    width:380px;
-    left:340px;
+    width:350px;
+    left:220px;
     top:40px;
 }
 .bdd_infor_tittle{
