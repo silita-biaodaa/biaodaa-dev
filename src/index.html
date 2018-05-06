@@ -82,6 +82,10 @@
             display: inline-block;
 
         }
+        .txt-inline{
+            display: inline-block;
+
+        }
         .bdd-nav-ser-div {
 
             margin-left: 5px;
@@ -151,7 +155,7 @@
         }
         .bdd_black_input{
             height: 25px;
-            width:260px;
+            width:220px;
             font-size: 12px;
             text-indent:6px;
         }
@@ -167,6 +171,22 @@
             margin-left: 5px;
             color: white;
         }
+        .ui_view_min_high{
+            min-height: 1000px;
+        }
+        .bdd_footer_left_a{
+            overflow: auto;
+            min-height: 100px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            vertical-align: middle;
+            background-color: #212121;
+            color: white;
+        }
+        .text-white{
+            color: white;
+        }
     </style>
     <title>webapp</title>
 </head>
@@ -180,18 +200,13 @@
         <div class="bdd-img-div">
             <div class="bdd-img-one"><img class="bdd-img" src="../vendor/images/logo.png" alt=""/></div>
         </div>
-        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='home'?'color:#cea63f;border-bottom: 3px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('home')" ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='tender'?'color:#cea63f;border-bottom: 3px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('tender')" ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='companyTop'?'color:#cea63f;border-bottom: px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('companyTop')" ui-sref="CompanyTop">企信</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='home'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('home')" ui-sref="home">首页</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='tender'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('tender')" ui-sref="Tender">标讯</a></div>
+        <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='companyTop'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('companyTop')" ui-sref="CompanyTop">企信</a></div>
         <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='workmore'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('workmore')" ui-sref="workmore">动态</a></div>
         <div class="bdd-nav-title"><a style="padding-bottom: 20px;{{ctrl.menu=='usercenter'?'color:#cea63f;border-bottom: 1px solid #cea63f;':''}}" ng-click="ctrl.selectMenu('usercenter')" ui-sref="Usercenter">应用</a></div>
         <div class="bdd-nav-tend-rel">
             <div id="divD" class="search-tender search-tender-select">
-
-
-
-
-
                 <div  ng-mouseenter="showTenderList(ctrl.showTender)" ng-mouseleave="showTenderList(ctrl.showTender)" class="txt-inline txt-inline-a txt-inline-a-center">
                     <div class="bdd-search-name"><div class="txt-inline">{{searchName}}</div><img class="txt-inline" src="../vendor/images/nav_icon_arrow_down.png"></div>
                     <div style="position: fixed" ng-show="ctrl.showTender" >
@@ -207,8 +222,6 @@
 
                     </div>
                 </div>
-
-
                 <div class="txt-inline">
                     <input class="bdd_black bdd_black_input" type="text" placeholder="搜索关键字" ng-model="ctrl.keyword" ng-enter="ctrl.seachKeyword()"/>
                 </div>
@@ -233,7 +246,6 @@
                         <img  ng-src="{{ctrl.user.imgurl?ctrl.user.imgurl:'/vendor/images/icon_head_default30px.png'}}" width="60px" height="60px" alt="..." class="img-circle">
                         <div style="position: fixed" ng-show="ctrl.showHeadImage" >
                             <ul class="txt-inline-a select-inline-ul txt-cursor">
-                                <li><a ng-click="ctrl.selectChange('default')">个人中心</a></li>
                                 <li><a ng-click="ctrl.selectChange('personInfo')">个人资料</a></li>
                                 <li><a ng-click="ctrl.selectChange('financial')">金融服务</a></li>
                                 <li><a ng-click="ctrl.selectChange('feedback')">反馈意见</a></li>
@@ -254,18 +266,18 @@
     </div>
 </nav>
 
-<ui-view > </ui-view>
+<ui-view class="ui_view_min_high"> </ui-view>
 
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
+<div class="bdd_footer_left_a">
+    <div class="bdd_footer_news" style="overflow: hidden;margin: 0 auto;padding-left: 50px">
         <div class="bdd_footer_content">
             <a href="#"><img class="bdd_footer_logo" src="../vendor/images/logo.png" alt=""/></a>
         </div>
-        <div class="bdd_footer_content bdd_footer_side"><a ui-sref="Perp">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a ui-sref="Joinus">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a ui-sref="UserProtocol">网站声明</a></div>
+        <div class="bdd_footer_content bdd_footer_side"><a class="text-white" ui-sref="Perp">关于我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a class="text-white" ui-sref="Joinus">加入我们</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a class="text-white" href="#">商务合作</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a class="text-white" href="#">新手指南</a></div>
+        <div class="bdd_footer_content  bdd_footer_megges"><a class="text-white" ui-sref="UserProtocol">网站声明</a></div>
         <div class="bdd_footer_content bdd_footer_aido"><a href="http://www.biaodaa.com/file/biaodaa.apk"><img class="bdd_footer_logo"
                                                                                                                src="../vendor/images/bottom_icon_andriod.png"
                                                                                                                alt=""/></a></div>
@@ -276,9 +288,9 @@
                                                          src="../vendor/images/bottom_icon_wechat.png"
                                                          alt=""/></a></div>
     </div>
+    <div style="background-color: #212121;width: 1200px;height:90px;text-align: center;margin: 0 auto;padding-right: 200px;padding-top: 30px">© 2017 思利他, Inc. All rights reserved  . 湘ICP备17019911号-1</div>
+
 </div>
-
-
 
 
 <script>

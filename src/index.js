@@ -63,16 +63,16 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
 
 
     var isShow = false;
-
+    $("#divD").css('left','350px');
     $("#btnFadein").click(function(){
         if(isShow){
-            $("#divD").animate({left:'340px'}).fadeOut("fast",function(){
+            $("#divD").animate({left:'350px'}).fadeOut("fast",function(){
                 $("#divD").css("visibility","hidden");
             });
 
         }else{
             $("#divD").css("visibility","visible");
-            $("#divD").animate({left:'340px'}).fadeIn("fast");
+            $("#divD").animate({left:'350px'}).fadeIn("fast");
             //$("#divD").css('left','500px');
             $("#divD").animate({left:'0px'}).fadeIn("fast",function(){
 
