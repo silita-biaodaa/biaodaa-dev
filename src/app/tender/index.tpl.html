@@ -500,60 +500,6 @@
 
     /**二维码**/
 </style>
-<nav class="bdd-nav">
-    <div class="bdd-nav-div">
-        <div class="bdd-img-div">
-            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
-        </div>
-        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
-        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide">
-            <div class="search-status">
-                <div class="search-filter">
-                    <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                    <ul class="options">
-                        <li><a href="javascript:;" data-rel="project">作品</a></li>
-                        <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                        <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                        <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                        <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                        <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                        <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                        <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                    </ul>
-                </div>
-                <div class="search-select">
-                    <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value=""
-                           name="keywords" id="keywords">
-                    <ul class="options" style="display: none;">
-                        <li><a href="javascript:;">app</a></li>
-                        <li><a href="javascript:;">logo</a></li>
-                        <li><a href="javascript:;">icon</a></li>
-                        <li><a href="javascript:;">AE</a></li>
-                        <li><a href="javascript:;">作品集</a></li>
-                    </ul>
-                </div>
-            </div>
-            <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png"
-                                                                   alt=""></a></div>
-        <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">
-            <div ng-if="$ctrl.user == null">
-                <a ui-sref="Login">登录</a>
-                <a ui-sref="Register">注册</a>
-            </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a href="">个人中心</a>
-            </div>
-        </div>
-    </div>
-</nav>
 <!--nav-->
 <div style="margin-top: 100px" class="bdd_details_nav" ng-controller="tenderDetailCtrl">
     <div class="bdd_details_nav" ng-if="mSize<2">
@@ -683,7 +629,7 @@
             <div class="bdd_details_value_right">
                 <div class="bdd_details_header">
                     <div class="bdd_details_header_left"></div>
-                    <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">更多</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
+                    <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
                     <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>

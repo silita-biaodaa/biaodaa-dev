@@ -1,15 +1,16 @@
 <style>
     /*广告*/
-    .bdd_adver{
+    .bdd_adver {
         width: 100%;
-        margin-top:150px;
+        margin-top: 150px;
     }
-    .bdd_adver_header{
+
+    .bdd_adver_header {
         width: 1200px;
         margin: 0 auto;
     }
 
-    .bdd_text_z{
+    .bdd_text_z {
         width: 900px;
         font-size: 18px;
         color: #2e2e2e;
@@ -17,133 +18,123 @@
         font-family: Arial;
         padding-top: 8px;
     }
-    .bdd_text_y{
-        padding-top:16px;
+
+    .bdd_text_y {
+        padding-top: 16px;
         font-size: 14px;
         color: #ccbebe;
         height: 64px;
     }
-    .bdd_text_p{
+
+    .bdd_text_p {
         width: 800px;
         height: 30px;
         font-size: 16px;
-        margin-top:-21px;
+        margin-top: -21px;
         color: #ccbebe;
 
     }
-    .bdd_text_invite{
-        width:80px;
+
+    .bdd_text_invite {
+        width: 80px;
         height: 25px;
         font-size: 14px;
         font-family: Arial;
         color: #ef873a;
         background-color: #fdefe3;
         text-align: center;
-        padding-top:4px;
+        padding-top: 4px;
         float: left;
     }
-    .bdd_text_pading{
-        margin-left:10px;
+
+    .bdd_text_pading {
+        margin-left: 10px;
         background-color: #e3e6f7;
         color: #3676f0;
     }
+
     .bdd_win_conter {
         width: 1200px;
         height: 166px;
         background-color: white;
         padding: 30px 0px 20px 20px;
-        margin-top:10px;
+        margin-top: 10px;
 
     }
-    .bdd_text_riqi{
+
+    .bdd_text_riqi {
         font-size: 14px;
-        color:#ccbebe;
+        color: #ccbebe;
         float: right;
-        margin-right:300px;
+        margin-right: 300px;
     }
-    .text-inline{
+
+    .text-inline {
         display: inline-block;
     }
-    .tender-say-div{
+
+    .tender-say-div {
         min-width: 800px;
+        min-height: 800px;
         overflow: hidden;
     }
-    .bdd_text_first{
+
+    .bdd_text_first {
         background-color: #fdefe3;
-        color:#ef873a;
+        color: #ef873a;
     }
 
 </style>
-<nav class="bdd-nav">
-    <div class="bdd-nav-div">
-        <div class="bdd-img-div">
-            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
-        </div>
-        <div class="bdd-nav-title"><a ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a style="color:white" ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Company">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="workmore">动态</a></div>
-        <div class="bdd-nav-title"><a ui-sref="society">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide"><div class="search-status">
-            <div class="search-filter">
-                <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                <ul class="options">
-                    <li><a href="javascript:;" data-rel="project">作品</a></li>
-                    <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                    <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                    <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                    <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                    <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                    <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                    <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                </ul>
-            </div>
-            <div class="search-select">
-                <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
-                <ul class="options" style="display: none;">
-                    <li><a href="javascript:;">app</a></li><li><a href="javascript:;">logo</a></li><li><a href="javascript:;">icon</a></li><li><a href="javascript:;">AE</a></li><li><a href="javascript:;">作品集</a></li>								</ul>
-            </div>
-        </div>
-            <input type="hidden" name="type" value="project" id="sType"></div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
-        <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div class="bdd-nav-title bdd-nav-right">
-            <div ng-if="$ctrl.user == null">
-                <a ui-sref="Login">登录</a>
-                <a ui-sref="Register">注册</a>
-            </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a href="">个人中心</a>
-            </div>
-        </div>
-    </div>
-</nav>
+
 <!--公告-->
 
 <div class="tender-say-div" ng-controller="TenderSayCtrl">
- <div class="bdd_adver">
-     <div class="bdd_adver_header" style="margin-top: 40px">
-         <div class="bdd_win_conter" ng-repeat="item in tenderArrayData" style="margin-top:10px">
-           <a ng-click="toTenderDetail(item.id,item.type)">
-             <div class="bdd_text_z">{{item.title}}</div>
-               <div class="bdd_text_y">资质要求：<span>{{item.certificate ? item.certificate:'详见原文'}}</span></div>
-               <div class="bdd_text_p">评标办法：<span>{{item.pbMode ? item.pbMode:'详见原文'}}</span></div>
-               <div class="text-inline bdd_text_invite bdd_text_pading bdd_text_first">{{item.noticeType}}</div>
-               <div class="text-inline bdd_text_invite bdd_text_pading">{{item.projectType}}</div>
-             <div class="bdd_text_riqi">{{item.opendate}}</div>&nbsp;&nbsp;&nbsp;&nbsp;
-           </a>
-         </div>
+    <div class="bdd_adver">
+        <div class="bdd_adver_header" style="margin-top: 40px">
+            <div class="" ng-if="(showType==0||showType==2)&&dataArraySize!=0">
+                <div class="bdd_win_conter" ng-repeat="item in tenderArrayData"
+                     style="margin-top:10px">
+                    <a ng-click="toTenderDetail(item.id,item.type)">
+                        <div class="bdd_text_z">{{item.title}}</div>
+
+                        <div class="bdd_text_y" ng-if="item.type==0">资质要求：<span>{{item.certificate ? item.certificate:'详见原文'}}</span></div>
+                        <div class="bdd_text_p" ng-if="item.type==0">评标办法：<span>{{item.pbMode ? item.pbMode:'详见原文'}}</span></div>
+                        <div class="bdd_text_y" ng-if="item.type==2">中标企业：<span>{{item.oneName}}</span></div>
+                        <div class="bdd_text_p" ng-if="item.type==2">项目金额：<span>{{item.projSum?(item.projSum+'万元'):''}}</span></div>
+
+                        <div class="text-inline bdd_text_invite bdd_text_pading bdd_text_first">{{item.noticeType}}
+                        </div>
+                        <div class="text-inline bdd_text_invite bdd_text_pading">{{item.projectType}}</div>
+                        <div class="bdd_text_riqi">{{item.opendate}}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                </div>
+            </div>
 
 
-         <div class="bdd_win_conter" ng-show="showType==1"  style="margin-top: 0px">
-             <div>可供下载的资源有:{{fileSize}}个</div>
+
+
+            <div style="margin: 0 auto;width: 100%;text-align: center" ng-if="(showType==0||showType==2)&&dataArraySize==0">
+                <img src="../../../vendor/images/kym_icon_nothing.png"/>
+                <div>没有找到符合条件的公告</div>
+
+            </div>
+
+            <div style="margin: 0 auto;width: 100%;text-align: center" class="" ng-if="(showType==1||showType==3)&&fileDataArraySize==0">
+                <img src="../../../vendor/images/kym_icon_nothing.png"/>
+                <div>没有找到符合条件的招标文件</div>
+
+            </div>
+
+            <div class="bdd_win_conter" ng-if="(showType==1||showType==3)&&fileDataArraySize!=0" style="margin-top: 0px">
+                <div ng-show="fileDataArraySize!=0">可供下载的资源有:{{fileSize}}个</div>
                 <br/>
-             <div class="bdd_text_m" ng-repeat="item in fileDataArr">下载地址：<a href="{{item.url}}">{{item.title}}</a></div>
-         </div>
 
-     </div>
- </div>
+                <div class="bdd_text_m" ng-repeat="item in fileDataArr">下载地址：<a href="{{item.url}}">{{item.title}}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>

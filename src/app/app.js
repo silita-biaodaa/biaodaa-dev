@@ -27,7 +27,7 @@ app.factory('locals',['$window',function($window){
             $window.localStorage[key]=JSON.stringify(value);
         },
         getObject:function(key){
-            return JSON.parse( $window.localSto473-rage[key] || '{}');
+            return JSON.parse( $window.localStorage[key] || '{}');
         }
     }
 }]);

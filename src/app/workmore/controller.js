@@ -1,7 +1,8 @@
-app.controller('WorkMoreCtrl', ['$http','$uibModal','$log','$scope','$state','locals','userTemp',function($http,$uibModal, $log, $scope,$state,locals,userTemp) {
+app.controller('WorkMoreCtrl', ['$http','$uibModal','$log','$scope','$state','locals','userTemp', '$anchorScroll',"$location",function($http,$uibModal, $log, $scope,$state,locals,userTemp,$anchorScroll,$location) {
 
     var selt = this;
-
+    $location.hash();
+    $anchorScroll();
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {

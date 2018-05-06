@@ -8,14 +8,15 @@
     }
     .photo-edit{
         height: 92px;
-        padding-top: 120px;
-        margin-left: -85px;
+        padding-top: 20px;
+        margin-left: 20px;
         width: 86px;
         cursor: pointer;
     }
-    .bdd_perso_left bdd_perso_news{
+    .bdd_perso_left_a{
         width: 110px;
         height: 110px;
+        margin-top: 20px;
         border-radius:110px
     }
     .img_center{
@@ -32,11 +33,11 @@
     <div class="bdd_vitality_hr"></div>
 </div>
 <div class="bdd_vitality_conter">
-    <div class="bdd_perso_left bdd_perso_news" ><img src="{{ctrl.user.imgurl}}" class="img_center"> </div>
-    <label class="photo-edit">
+    <div class="bdd_perso_left_a bdd_perso_news" ><img src="{{ctrl.user.imgurl}}" class="img_center"/>   <label class="photo-edit">
         <input name="file" type="file" ng-hide="true" onchange="angular.element(this).scope().upload()">
         <p>设置头像</p>
-    </label>
+    </label> </div>
+
 </div>
 <div class="bdd_vita_footer">
     <div class="bdd_vita_footer_title">昵&nbsp;&nbsp;&nbsp;称

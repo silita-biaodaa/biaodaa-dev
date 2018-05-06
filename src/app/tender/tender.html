@@ -114,6 +114,16 @@
     .bdd_dev_area_pro_a {
         width: 1120px;
     }
+    .bdd_content_h_a{
+        font-size: 16px;
+        color: #4d3a3a;
+        font-weight: 700;
+        padding-top: -20px;
+
+    }
+    .bdd_company_body{
+        background-color: white;
+    }
 
 </style>
 
@@ -200,7 +210,7 @@
                     </div>
                 </div>
                 <div class="bdd_area_left">
-                    <div class="bdd_content_h">评标办法:</div>
+                    <div class="bdd_content_h_a">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline">
                         <!--<div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.canclePbModeAll()">-->
                             <!--全部-->
@@ -361,7 +371,17 @@
                 </div>
 
 
-                <div class="bdd_side_left_did">
+
+            </div>
+
+
+
+        </div>
+        <!-- 内容 -->
+        <div class="bdd_adver bdd_adver_tender_back" style="background-color: #f8f8f8">
+            <div class="bdd_adver_header" id="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
+                 infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
+                <div class="bdd_side_left_did" style="margin: 0 auto">
                     <div class="bdd_side_conter_do">
                         <div class="bdd_area_left">
                             <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
@@ -421,9 +441,10 @@
                                         ng-click="$ctrl.cancelKbDate()">×</span></div>
                             </div>
 
-                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"><span class="bdd_font_span"
-                                                                                            ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-show="$ctrl.projectType||$ctrl.province||$ctrl.city||$ctrl.kbDateStart||$ctrl.kbDateEnd||$ctrl.projSumEnd||$ctrl.projSumStart||$ctrl.pbModes||$ctrl.qual3||$ctrl.qual1||$ctrl.qual2"><a class="bdd_font_span-a" style="cursor: default"
+                                                                                                                                                                                                                                                                                 ng-click="$ctrl.cancelFilter()">&nbsp;&nbsp;&nbsp;&nbsp;清空</a>
                             </div>
+
 
                             <div class="bdd_side_news_val">
                                 <div class="bdd_side_rihgt">综合排序</div>
@@ -431,42 +452,35 @@
                                                                        ng-bind="$ctrl.totalCount"></span>公告
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- 内容 -->
-            <div class="bdd_adver">
-                <div class="bdd_adver_header" id="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
-                     infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
-                    <a ng-repeat="notice in $ctrl.noticeList">
-                        <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}')">
-                           <div class="bdd_text_z" ng-bind="notice.title">
-                           </div>
-                            <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
-                            <div class="bdd_text_p">评标办法：{{notice.pbMode}}</div>
-                            <div class="bdd_text_invite">{{notice.projectType}}</div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="bdd_text_invite bdd_text_pading">{{notice.noticeType}}</div>
-                            <div class="bdd_text_riqi">{{notice.opendate}}</div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
+                <a ng-repeat="notice in $ctrl.noticeList">
+                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}')">
+                        <div class="bdd_text_z" ng-bind="notice.title">
                         </div>
-                        <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==2" ng-click="$ctrl.clickHrefWin('{{notice.id}}')">
-                            <div class="bdd_text_z" ng-bind="notice.title"></div>
-                            <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
-                            <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
-                            <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
-                            <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </div>
-                    </a>
+                        <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
+                        <div class="bdd_text_p">评标办法：{{notice.pbMode}}</div>
+                        <div class="bdd_text_invite">{{notice.projectType}}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="bdd_text_invite bdd_text_pading">{{notice.noticeType}}</div>
+                        <div class="bdd_text_riqi">{{notice.opendate}}</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==2" ng-click="$ctrl.clickHrefWin('{{notice.id}}')">
+                        <div class="bdd_text_z" ng-bind="notice.title"></div>
+                        <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
+                        <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
+                        <div class="bdd_text_invite"><span ng-bind="notice.projectType"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="bdd_text_invite bdd_text_pading"><span ng-bind="notice.noticeType"></span></div>
+                        <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </a>
 
-                </div>
             </div>
-
         </div>
-
 
         <div id="bdd_second_menu"
              style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">

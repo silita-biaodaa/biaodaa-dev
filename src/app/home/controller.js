@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', function ($http, $uibModal, $log, $scope, $document, userTemp) {
+app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', '$anchorScroll',"$location",function ($http, $uibModal, $log, $scope, $document, userTemp,$anchorScroll,$location) {
     var selt = this;
 
     if (userTemp != null) {
@@ -6,6 +6,8 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
 
 //公告文章列表
     this.queryArticleList = function (type) {

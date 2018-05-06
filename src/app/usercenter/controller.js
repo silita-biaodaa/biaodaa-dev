@@ -1,5 +1,7 @@
-app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document','utils',function($http,$uibModal, $log, $scope,$document,utils) {
+app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document','utils','$anchorScroll',"$location",function($http,$uibModal, $log, $scope,$document,utils,$anchorScroll,$location) {
 	var selt = this;
+    $location.hash();
+    $anchorScroll();
 	this.keywork = "";
 	var keyword = utils.getUrlVar('keyword');
 	if(keyword){

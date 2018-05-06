@@ -1,5 +1,5 @@
 
-app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 'Demo','userTemp',function ($http, $uibModal, $log, $scope, $state,Demo,userTemp) {
+app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 'Demo','userTemp','$anchorScroll',"$location",function ($http, $uibModal, $log, $scope, $state,Demo,userTemp,$anchorScroll,$location) {
 
     var selt = this;
 
@@ -8,6 +8,8 @@ app.controller('TenderCtrl', ['$http', '$uibModal', '$log', '$scope', '$state', 
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
     $scope.demo = new Demo(0);
     var tenderType = 0;//Ĭ���б�
     var paramsPage = {
@@ -127,7 +129,7 @@ app.factory('Demo', function ($http) {
 });
 
 
-app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp', function ($http, $scope, utils, $stateParams, $state,userTemp) {
+app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', '$state','userTemp','$anchorScroll',"$location", function ($http, $scope, utils, $stateParams, $state,userTemp,$anchorScroll,$location) {
     var selt = this;
 
     if (userTemp != null) {
@@ -135,6 +137,8 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
     var id = $stateParams.id;
     var dataArray = [];
     var resArray = [];
@@ -171,7 +175,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         $("#bdd_follow_info_two").html(result.data[0].content);
         resArray = result.data;
     })
-    $http.post("/notice/queryCompanyList/" + id, {
+    $http.post("/notice/queryCompanyList/" + id+'?pageSize=10&&pageNo=1', {
         headers: {'X-TOKEN':  sessionStorage.getItem('X-TOKEN')}
     }).success(function (result) {
         console.log(result);
@@ -250,7 +254,7 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
 
 
 //�б깫����ļ�����ҳ��???
-app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp','$state',function ($http, $scope, utils, $stateParams,userTemp,$state) {
+app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'userTemp','$state','$anchorScroll',"$location",function ($http, $scope, utils, $stateParams,userTemp,$state,$anchorScroll,$location) {
     var selt = this;
 
     if (userTemp != null) {
@@ -258,9 +262,13 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
     var id = $stateParams.id;
     var showType = $stateParams.type;
     $scope.showType = showType;
+    $scope.dataArraySize = 1;
+    $scope.fileDataArraySize = 1;
     var paramsPage = {
         type: 0
     }
@@ -270,6 +278,10 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
 
             var dataArray = result.data;
             $scope.tenderArrayData = dataArray;
+            if(dataArray==null||dataArray.length == 0){
+                $scope.dataArraySize = 0;
+                $scope.showDataType = 0;
+            }
             $scope.firstTender = dataArray[0];
         })
     } else if(showType == 1){
@@ -277,6 +289,10 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
         $http.post("/notice/queryNoticeFile/" + id, angular.toJson(paramsPage)).success(function (result) {
 
             var fileDataArray = result.data;
+            if(fileDataArray==null||fileDataArray.length == 0){
+                $scope.fileDataArraySize = 0;
+                $scope.fileDataArrayType = 0;
+            }
             $scope.fileDataArr = fileDataArray;
             $scope.fileSize = fileDataArray.length;
         });
@@ -285,6 +301,10 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
         $http.post("/notice/queryRelNotice/" + id, angular.toJson(paramsPage)).success(function (result) {
 
             var dataArray = result.data;
+            if(dataArray==null||dataArray.length == 0){
+                $scope.dataArraySize = 0;
+                $scope.showDataType =2;
+            }
             $scope.tenderArrayData = dataArray;
             $scope.firstTender = dataArray[0];
         })
@@ -292,6 +312,10 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
         paramsPage.type = 2;
         $http.post("/notice/queryNoticeFile/" + id, angular.toJson(paramsPage)).success(function (result) {
             var fileDataArray = result.data;
+            if(fileDataArray==null||fileDataArray.length == 0){
+                $scope.fileDataArraySize = 0;
+                $scope.fileDataArrayType = 0;
+            }
             $scope.fileDataArr = fileDataArray;
             $scope.fileSize = fileDataArray.length;
         });
@@ -313,7 +337,7 @@ app.controller('TenderSayCtrl', ['$http', '$scope', 'utils', '$stateParams', 'us
     }
 }])
 
-app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp', function ($http, $scope, utils, $stateParams,$state,userTemp) {
+app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp', '$anchorScroll',"$location",function ($http, $scope, utils, $stateParams,$state,userTemp,$anchorScroll,$location) {
     var selt = this;
 
     if (userTemp != null) {
@@ -321,6 +345,8 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
     var id = $stateParams.id;
     var dataArray = [];
     var resArray = [];
@@ -433,21 +459,29 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
     }
 }]);
 
-app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
+app.controller('TendListDetailCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals','$anchorScroll',"$location", function ($http, $scope, utils, $stateParams,$state,userTemp,locals,$anchorScroll,$location) {
     var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
     $scope.company = locals.getObject("companyData");
+    console.log( $scope.company);
     //------------翻页----end
 }]);
 
 
 
-app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals', function ($http, $scope, utils, $stateParams,$state,userTemp,locals) {
+app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$state','userTemp','locals','$anchorScroll',"$location", function ($http, $scope, utils, $stateParams,$state,userTemp,locals,$anchorScroll,$location) {
     var selt = this;
+    $location.hash();
+    $anchorScroll();
+    this.init = function () {
+        selt.setPage2();
+    }
 
     this.companyList = [];
     this.busy = false;
@@ -471,6 +505,7 @@ app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
 
         $http.post("/notice/queryCompanyList/" + id, angular.toJson(paramsPage2)).success(function (result) {
             var companyList = result.data;
+            if(companyList!=null){
             if (companyList != null &&
                 selt.page == result.pageNo) {
                 angular.forEach(companyList, function (company) {
@@ -482,7 +517,14 @@ app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
                 selt.busy = false;
                 selt.page += 1;
             }
+            }
         });
+    }
+
+    this.toTendListDetail=function(companyData){
+        console.log(companyData);
+        locals.setObject("companyData",companyData);
+        $state.go("TendListDetail");
     }
 
     this.setContentHeight = function (dataList) {
@@ -493,16 +535,6 @@ app.controller('TendListCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
             bdd_adver_header.style.height = "500px";
         }
     };
-
-    this.toTendListDetail=function(companyData){
-        console.log(companyData);
-        locals.setObject("companyData",companyData);
-        $state.go("TendListDetail");
-    }
-
-    this.init = function () {
-        selt.setPage2();
-    }
 }]);
 
 

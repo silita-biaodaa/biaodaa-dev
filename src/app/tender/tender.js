@@ -1,11 +1,12 @@
-app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', function ($http, $scope, utils, $stateParams, $state, userTemp) {
+app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', '$anchorScroll',"$location",function ($http, $scope, utils, $stateParams, $state, userTemp,$anchorScroll,$location) {
     var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
-
+    $location.hash();
+    $anchorScroll();
     Array.prototype.indexOf = function (val) {
         for (var i = 0; i < this.length; i++) {
             if (this[i] == val) return i;
