@@ -403,63 +403,7 @@
 
 </style>
 
-<nav class="bdd-nav">
-    <div class="bdd-nav-div">
-        <div class="bdd-img-div">
-            <div class="bdd-img-one"><img class="bdd-img" src="../../../vendor/images/logo.png" alt=""/></div>
-        </div>
-
-
-        <div class="bdd-nav-title"><a  style="color:white" ui-sref="home">首页</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Tender">标讯</a></div>
-        <div class="bdd-nav-title"><a ui-sref="CompanyTop">企信</a></div>
-        <div class="bdd-nav-title"><a ui-sref="trend">动态</a></div>
-        <div class="bdd-nav-title"><a ui-sref="Usercenter">应用</a></div>
-        <div class="bdd-nav-title bdd-nav-title-hide" id="box_action_translateY" >
-            <div class="search-status">
-                <div class="search-filter">
-                    <a href="javascript:;"><span class="tit">作品</span><i class="icon-down"></i></a>
-                    <ul class="options">
-                        <li><a href="javascript:;" data-rel="project">作品</a></li>
-                        <li><a href="javascript:;" data-rel="experience">文章</a></li>
-                        <li><a href="javascript:;" data-rel="source">源文件</a></li>
-                        <li><a href="javascript:;" data-rel="designer">设计师</a></li>
-                        <li><a href="javascript:;" data-rel="inspiration">灵感</a></li>
-                        <li><a href="javascript:;" data-rel="talk">话题</a></li>
-                        <li><a href="javascript:;" data-rel="activity">活动</a></li>
-                        <li><a href="javascript:;" data-rel="veer">素材</a></li>
-                    </ul>
-                </div>
-                <div class="search-select">
-                    <input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value=""
-                           name="keywords" id="keywords">
-                    <ul class="options" style="display: none;">
-                        <li><a href="javascript:;">app</a></li>
-                        <li><a href="javascript:;">logo</a></li>
-                        <li><a href="javascript:;">icon</a></li>
-                        <li><a href="javascript:;">AE</a></li>
-                        <li><a href="javascript:;">作品集</a></li>
-                    </ul>
-                </div>
-            </div>
-            <input type="hidden" name="type" value="project" id="sType"/>
-        </div>
-        <div class="bdd-nav-title bdd-nav-search"><a href="#" onclick="showSearch()"><img src="../../../vendor/images/nav_icon_search.png" alt=""></a></div>
-        <div class="bdd-nav-title bdd-nav-right">APP下载</div>
-        <div>
-            <div ng-if="$ctrl.user == null">
-                <a ui-sref="Login">登录</a>
-                <a ui-sref="Register">注册</a>
-            </div>
-            <div ng-if="$ctrl.user != null && $ctrl.user.username != ''">
-                <label>{{$ctrl.user.username}}</label>
-                <span class="bdd_font_span" ng-click="$ctrl.logout()">退出</span>
-                <a href="#/ucenter">个人中心</a>
-            </div>
-        </div>
-    </div>
-</nav>
-<div class="jd_layout">
+<div class="jd_layout" style="margin-top: 130px;">
     <!--轮播图-->
     <div class="jd_banner">
         <!--图片-->
@@ -768,24 +712,5 @@
     <div class="bdd_content_left"><img class="bdd_content_left_logo" src="../../../vendor/images/homepage_icon_gou.png" alt=""><span>海量且精准</span>
     </div>
     <div class="bdd_content_left"><img class="bdd_content_left_logo" src="../../../vendor/images/homepage_icon_gou.png" alt=""><span>智能且及时</span>
-    </div>
-</div>
-
-<div class="bdd_footer_left">
-    <div class="bdd_footer_news">
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/logo.png" alt=""/></a>
-        </div>
-        <div class="bdd_footer_content bdd_footer_side"><a href="#">关于我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">加入我们</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">商务合作</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">新手指南</a></div>
-        <div class="bdd_footer_content  bdd_footer_megges"><a href="#">网站声明</a></div>
-        <div class="bdd_footer_content bdd_footer_aido"><a href="#"><img class="bdd_footer_logo"
-                                                                         src="../../../vendor/images/bottom_icon_andriod.png" alt=""/></a>
-        </div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_ios.png"
-                                                         alt=""/></a></div>
-        <div class="bdd_footer_content"><a href="#"><img class="bdd_footer_logo" src="../../../vendor/images/bottom_icon_wechat.png"
-                                                         alt=""/></a></div>
     </div>
 </div>

@@ -102,7 +102,6 @@ body::-webkit-scrollbar {
 
 .bdd_comp_span {
     display: inline-block;
-    width: 50px;
     padding-bottom: 10px;
     text-align: center;
     margin-left: 10px;
@@ -175,13 +174,12 @@ a:hover {
 
 .bdd_dev_area_pro_t {
     font-size: 14px;
-    padding-left: 18px;
 
 }
 
 .bdd_dev_area_pro_m {
-    padding-left: 84px;
-    padding-right: 90px;
+    padding-left: 99px;
+    padding-right:159px;
     overflow: hidden;
 
 }

@@ -89,6 +89,7 @@
     .text-inline {
         display: inline-block;
         vertical-align: top;
+        margin-top:30px;
     }
 
     .bdd_adver_header_a {
@@ -101,12 +102,21 @@
     .bdd_tender_a{
         overflow: auto;
         text-decoration: none;
+
     }
     .bdd_tender_a:hover{
 
       color: #666;
     }
+    .bdd_win_conter_a{
+        width:1200px;
+        height: 166px;
+        padding: 5px 0px 20px 20px;
+        border-right: 5px;
+        margin-top: 10px;
+        background-color: white;
 
+    }
 
 
 </style>
@@ -118,16 +128,16 @@
         </div>
         <div id="bdd_adver_header" class="bdd_adver_header_a" infinite-scroll='ctrl.nextPage2()'
              infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='0.1'>
-            <div style="margin-top: 50px;" ng-repeat="company in ctrl.companyList">
+            <div class="bdd_win_conter_a" ng-repeat="company in ctrl.companyList">
                 <a class="bdd_tender_a" href="#/companydetail?comId={{company.comId}}">
                 <div class="text-inline bdd_win_conter_left_a">
                     <img src="{{company.logo?company.logo:'../../../vendor/images/logo_default.png'}}" alt="../../../vendor/images/logo_default.png">
                 </div>
                 <div class="text-inline bdd_win_conter_conter_a" style="margin-left: 100px;">
-                        <div class="bdd_win_conter_header_a" style="color:#000000;font-size: 16px;font-weight: 700;" ng-bind="company.comName"></div>
-                    <div class="bdd_win_conter_d_a">
+                        <div class="bdd_win_conter_header_a" style="color:#000000;font-size: 18px;font-weight: 700;color: #4d3a3a;" ng-bind="company.comName"></div>
+                    <span class="bdd_win_conter_d_a">
                         <span class="bdd_win_conter_span_a" ng-bind="company.subsist|limitTo:2"></span>
-                    </div>
+                    </span>
 
 
                     <div class="bdd_hold_top_a">法定代表人：<span ng-bind="company.legalPerson"></span>

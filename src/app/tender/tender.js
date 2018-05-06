@@ -47,7 +47,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
             if (companyQualList != null && companyQualList.length > 0) {
                 for (var i = 0; i < companyQualList.length; i++) {
-                    if (i < 8) {
+                    if (i < 7) {
                         arr1.push(companyQualList[i]);
                     } else {
                         arr2.push(companyQualList[i]);
