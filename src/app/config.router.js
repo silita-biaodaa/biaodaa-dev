@@ -413,6 +413,19 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             }
         })
 
+        .state('Business', {
+            url: '/business',
+            templateUrl: window.rootSrc + 'app/footer/business.html',
+            controller: 'FooterCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/footer/controller.js'
+                    ]);
+                }]
+            }
+        })
+
 
 
     ;
