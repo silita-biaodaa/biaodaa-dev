@@ -77,11 +77,11 @@
     }
 
     .bdd_content_h {
-        margin-top: 10px;
+        margin-top: 1px;
     }
 
     .bdd_content_k {
-        margin-top: 0px;
+        margin-top: -10px;
     }
 
     .bdd_text_vib_a {
@@ -136,7 +136,7 @@
 
 
 <!--公告-->
-<div style="width:100%;text-align:center;position: fixed;margin: 100px auto;z-index: 1001" class="bdd_announcement">
+<div style="width:100%;text-align:center;position: absolute;margin: 100px auto;" class="bdd_announcement">
     <div class="bdd_announcement_left"
          ng-click="$ctrl.queryList(0);$ctrl.cancelFilter();">招标公告
         <div class="bdd_vita_span_a" ng-if="$ctrl.type==0"></div>
@@ -316,7 +316,7 @@
                 <div class="bdd_area_header_select_li">
                     <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
-                        <div class="bdd_area_content bdd_content_h">项目金额：</div>
+                        <div class="bdd_area_content bdd_content_h ">项目金额：</div>
                         <div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font"
                                                                            placeholder="最低金额（万）"
                                                                            type="text" style="width: 150px;"
