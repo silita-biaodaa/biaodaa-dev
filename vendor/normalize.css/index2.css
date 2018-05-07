@@ -854,3 +854,6 @@
     color: white;
     border-radius: 10px;
 }
+.bdd_render_b:hover{
+    color: #cea63f;
+}
