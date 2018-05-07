@@ -71,8 +71,16 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
         this.findLinks(selt.regisAddress);
     };
     this.allArea = function () {
+        this.province = "";
+        this.city = "";
         this.findLinks(null);
     }
+
+    this.cancleEmCity = function () {
+        selt.regisAddress = selt.province+"||";
+        selt.city="";
+        this.findLinks(null);
+    };
     //---省市----end
 
     this.findLinks = function(region){
