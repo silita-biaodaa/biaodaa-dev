@@ -158,9 +158,9 @@
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f" ng-click="ctrl.allQual()">全部</span>
+            <span class="{{ctrl.qualType==''?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-click="ctrl.allQual()">全部</span>
         </div>
-        <div class="bdd_Personl_table_header_title" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list)">
+        <div class="{{ctrl.qualType==qual.qualType?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list,qual.qualType)">
 
         </div>
         <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f" ng-bind="ctrl.qualSize"></span> 条资质信息</div>
@@ -185,9 +185,9 @@
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
-            <span style="color: #cea63f" ng-click="ctrl.setPage()">全部</span>
+            <span class="{{ctrl.category==''?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-click="ctrl.setPage()">全部</span>
         </div>
-        <div class="bdd_Personl_table_header_title" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
+        <div class="{{ctrl.category==cate.category?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
             {{cate.category}}({{cate.num}})
         </div>
         <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f;" ng-bind="ctrl.personSize"></span> 条人员信息</div>

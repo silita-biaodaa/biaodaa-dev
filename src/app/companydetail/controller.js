@@ -1,4 +1,4 @@
-app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$anchorScroll',"$location",function($http,$scope, utils,userTemp,$anchorScroll,$location,) {
+app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$anchorScroll',"$location",function($http,$scope, utils,userTemp,$anchorScroll,$location) {
 	var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
@@ -173,6 +173,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
     });
 
     this.allQual = function () {
+        selt.qualType = '';
         selt.qualList = [];
         angular.forEach(selt.qualTypeList,function(item){
             angular.forEach(item.list,function(qual){
@@ -181,8 +182,9 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
         });
         selt.qualSize = selt.qualList.length;
     };
-
-    this.typeToQual = function (list) {
+    this.qualType = '';
+    this.typeToQual = function (list,qualType) {
+        selt.qualType = qualType;
         selt.qualList = [];
         angular.forEach(list,function(qual){
             selt.qualList.push(qual);
