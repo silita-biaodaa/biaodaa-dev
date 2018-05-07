@@ -91,7 +91,7 @@
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'5')">其他</div>
                 <div class="bdd_win_header_right">
-                    <a href="#/tender?type=2">更多&nbsp;</a>
+                    <a class="bdd_render_b" href="#/tender?type=2">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
@@ -130,7 +130,7 @@
                 <div class="bdd_infor_tittle"></div>
                 <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>最新资讯</div>
                 <div style="font-size: 14px;color:#ccbebe;"  class="bdd_infor_a_right">
-                    <a href="#/workmore">更多&nbsp;></a>
+                    <a class="bdd_render_b" href="#/workmore">更多&nbsp;></a>
                 </div>
             </div>
 
@@ -143,7 +143,7 @@
                         <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa1_60px.png"/></div>
                         <div class="bdd_infor_maright">
                             <div class="bdd_infor_maright_title"><span ng-bind="info.title |limitTo:16"></span></div>
-                            <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span
+                            <div class="bdd_infor_maright_news"><a class="bdd_render_b" href="{{info.url}}"><span
                                     ng-bind="info.content | limitTo:10"></span></a></div>
                             <div class="bdd_infor_maright_new"><span ng-bind="info.time"></span></div>
                         </div>
@@ -166,13 +166,13 @@
                 <div class="bdd_infor_tittle"></div>
                 <div class="bdd_infor_a_left"><span class="bdd_infor_dv"></span>常用应用</div>
                 <div style="font-size: 14px;color:#ccbebe;" class="bdd_infor_a_right">
-                    <a href="#/usercenter">更多&nbsp;></a>
+                    <a class="bdd_render_b" href="#/usercenter">更多&nbsp;></a>
                 </div>
             </div>
             <!--常用-->
                 <div  style="margin-top:-18px;text-align: center" ng-repeat="commonLink in $ctrl.commonLinkList | limitTo: 3">
                     <div style="margin-top:25px;text-align: center" class="bdd_use_right_a" >
-                        <a href="{{commonLink.customUrl}}">{{commonLink.customName}}</a>
+                        <a  href="{{commonLink.customUrl}}">{{commonLink.customName}}</a>
                     </div>
                 </div>
 
