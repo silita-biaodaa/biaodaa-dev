@@ -16,6 +16,7 @@ body::-webkit-scrollbar {
 
 }
 
+
 .span-cursor:hover {
     color: blue;
 }
@@ -208,7 +209,6 @@ a:hover {
 .bg-color {
     width: 100%;
     background-color:white;
-
 }
 
 .bg-color-c {
@@ -292,7 +292,7 @@ a:hover {
 }
 
 .bdd_text_vib_mid {
-    margin-left: 10px;
+    margin-left: 45px;
     margin-right: 10px;
 }
 
