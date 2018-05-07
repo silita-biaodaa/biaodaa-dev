@@ -1,10 +1,12 @@
-app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',function($http,$scope, utils,userTemp) {
+app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$anchorScroll',"$location",function($http,$scope, utils,userTemp,$anchorScroll,$location,) {
 	var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
     } else {
         selt.user = null;
     }
+    $location.hash();
+    $anchorScroll();
 
 	var comId =  utils.getUrlVar('comId');
 	console.log("=====comId:"+comId);
