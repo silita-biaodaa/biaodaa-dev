@@ -34,6 +34,7 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
      * 全部
      */
     this.cancelCategory = function () {
+        this.flag = "";
         this.category = "";
         selt.setPage();
     };
@@ -49,6 +50,7 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
      * @param book
      */
     this.clickBook = function (book) {
+        selt.flag = book.category;
         selt.category = book.category;
         selt.setPage();
     }

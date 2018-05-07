@@ -2,6 +2,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
     var selt = this;
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
+    selt.moneyReg = RegExp("^(([1-9]+)$|([0-9]+\.[0-9]{1,2})$)");
 
     $scope.selectDatas = [
         {
