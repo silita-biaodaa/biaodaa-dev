@@ -97,6 +97,10 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
                 }
             }
             selt.turnPageFinished();
+        }).error(function (data){
+            console.log(data);
+            alert(data);
+            selt.turnPageFinished();
         });
     };
 
@@ -122,6 +126,10 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
             }
             selt.showTailInfo(selt.companyList, result.data.length);
             selt.turnPageFinished();
+        }).error(function (data){
+            console.log(data);
+            alert(data);
+            selt.turnPageFinished();
         });
     };
 
@@ -141,6 +149,9 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
             }else{
                 alert(result.msg);
             }
+        }).error(function (data){
+            console.log(data);
+            alert(data);
         });
     };
 
