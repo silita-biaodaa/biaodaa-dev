@@ -331,7 +331,7 @@
                                                                           ng-model="$ctrl.projSumEnd" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')"></div>
                         <div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"
                                                                           value="确认"
-                                                                          ng-click="$ctrl.clickProjSum()">&nbsp;<span
+                                                                          ng-click="$ctrl.clickProjSum($ctrl.projSumStart, $ctrl.projSumEnd)">&nbsp;<span
                                 class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                         </div>
                     </div>

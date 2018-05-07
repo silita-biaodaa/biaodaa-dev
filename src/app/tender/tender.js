@@ -369,6 +369,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         if (start != null && end != null) {
             selt.projSumStart = start;
             selt.projSumEnd = end;
+            if( selt.projSumStart > selt.projSumEnd) {
+                selt.projSumStart = null;
+                selt.projSumEnd = null;
+                alert("最低金额不能大于最高金额！");
+                return;
+            }
         }
         selt.queryList();
     }
@@ -381,6 +387,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     //开标时间
     this.clickKbDate = function () {
         console.log(selt.kbDateStart + "##" + selt.kbDateEnd)
+        if(selt.kbDateStart > selt.kbDateEnd) {
+            selt.kbDateStart = null;
+            selt.kbDateEnd = null;
+            alert("开始时间不能大于结束时间！");
+            return;
+        }
         selt.queryList();
     }
     this.cancelKbDate = function () {
