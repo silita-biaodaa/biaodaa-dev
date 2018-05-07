@@ -185,7 +185,7 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         selt.zzList = qual2.list;
         selt.zzOne = qual1;
         selt.zzTwo = qual2;
-        selt.setPage();
+        //selt.setPage();
         selt.setPosition(qual2.list,off.left,off.top,tocWidth);
     };
     this.setPosition = function(arr,offX,offY,tocWidth){
@@ -225,6 +225,8 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 	this.moreProvince=function(morePro){
 	    if(morePro){
             selt.isCity = false;
+        }else if(selt.city!=""){
+	        selt.isCity = true;
         }
         selt.morePro = !morePro;
 	};
@@ -245,9 +247,15 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
 
 	//----注册资金---
 	this.clickCapital = function (min,max) {
-		selt.minCapital = min;
-		selt.maxCapital = max;
-		selt.priceArea = min+"-"+max+"万";
+	    if(max==null){
+            selt.minCapital = min;
+            selt.maxCapital = '';
+            selt.priceArea = min+"万以上";
+        }else{
+            selt.minCapital = min;
+            selt.maxCapital = max;
+            selt.priceArea = min+"-"+max+"万";
+        }
 		selt.setPage();
 	};
 	this.clickPrice = function () {

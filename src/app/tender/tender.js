@@ -200,6 +200,8 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.moreProvince=function(morePro){
         if(morePro){
             selt.isCity = false;
+        }else if(selt.city!=""){
+            selt.isCity = true;
         }
         selt.morePro = !morePro;
     };
