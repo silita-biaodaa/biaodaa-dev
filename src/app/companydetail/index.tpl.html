@@ -5,6 +5,7 @@
         <div class="bdd_basic_conter">
             <div class="bdd_basic_top_l">
                 <img ng-if="ctrl.company.logo" style="width: 80px;height: 80px;" src="{{ctrl.company.logo}}" alt="">
+                <img ng-if="!ctrl.company.logo" style="width: 80px;height: 80px;" src="../../../vendor/images/logo_default.png" alt="">
             </div>
             <div class="bdd_basic_top_r">
                 <div class="bdd_basic_top_p bdd_basic_P_size" ng-bind="ctrl.company.comName"></div>
