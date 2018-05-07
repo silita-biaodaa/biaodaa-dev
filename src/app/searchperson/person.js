@@ -7,6 +7,9 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
         selt.user = null;
     }
 
+    this.flag = "";
+    this.category = "";
+
     /**
      * 人员证书
      */
