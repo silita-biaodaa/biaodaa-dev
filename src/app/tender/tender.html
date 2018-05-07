@@ -1,3 +1,4 @@
+
 <style type="text/css">
     @import url("../../../vendor/normalize.css/bdd_scerrn.css");
 </style>
@@ -73,7 +74,7 @@
     .bdd-pb-more-c {
         width: 980px;
         padding-left: 22px;
-       
+
     }
 
     .bdd_content_h {
@@ -82,6 +83,7 @@
 
     .bdd_content_k {
         margin-top: -10px;
+        width:90px;
     }
 
 
@@ -98,12 +100,12 @@
     }
 
     .dropdown-div-more {
-        margin-left: 20px;
+        margin-left: 94px;
     }
 
 
     .bdd_comp_span_m {
-        margin-left: 100px;
+        margin-left: 253px;
     }
 
     .bdd_dev_area_pro_a {
@@ -127,6 +129,9 @@
     }
     .text-inline_a_top{
         margin-top: -5px;
+    }
+    .bdd_input_b{
+        width:150px;
     }
 
 </style>
@@ -217,8 +222,8 @@
                     <div class="bdd_content_h_a text-inline_a">评标办法:</div>
                     <div class="bdd-pb-more-c text-inline text-inline_a text-inline_a_top">
                         <!--<div class="bdd_tender_inline bdd_content_m span-yellow" ng-click="$ctrl.canclePbModeAll()">-->
-                            <!--全部-->
-                            <!--<input type="checkbox" ng-model="all" />-->
+                        <!--全部-->
+                        <!--<input type="checkbox" ng-model="all" />-->
                         <!--</div>-->
 
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
@@ -245,7 +250,7 @@
 
                 </div>
                 <!--筛选框-->
-                <div class="bdd_area_li bdd_letter_li_ti">
+                <div class="bdd_area_li bdd_letter_li_ti"  ng-show="$ctrl.type==0">
                     <div class="bdd_area_header_select_li">
                         <div class="bdd_area_left">
                             <div class="bdd_content_h">资质要求：</div>
@@ -333,33 +338,34 @@
 
                     <div class="bdd_area_left bdd_area_left_pad">
                         <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(0,200)">
-                            0-200万
+                            <!--0-200万-->
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
-                             ng-click="$ctrl.clickProjSum(200,500)">200-500万
+                             ng-click="$ctrl.clickProjSum(500,1000)">500-1000万
                         </div>
-                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(500,1000)">
-                            500-1000万
+                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(1000,5000)">
+                            1000-5000万
                         </div>
                     </div>
                 </div>
 
 
-                <div class="bdd_area_header_select_li">
+                <div class="bdd_area_header_select_li" ng-show="$ctrl.type==0">
                     <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
                         <div class="form-group">
                             <div class="col-md-1 bdd_area_content bdd_content_h bdd_content_k">开标时间：</div>
                             <div class="col-md-4">
-                                <div class='input-group date form_date' datetimepicker id='datetimepicker1'>
+                                <div class='input-group date form_date bdd_input_b ' datetimepicker id='datetimepicker1'>
                                     <input type='text' class="form-control"  ng-model="$ctrl.kbDateStart" placeholder="开始时间"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
+
                             <div class="col-md-4">
-                                <div class='input-group date form_date' datetimepicker id='datetimepicker2'>
+                                <div class='input-group date form_date bdd_input_b' datetimepicker id='datetimepicker2'>
                                     <input type='text' class="form-control"  ng-model="$ctrl.kbDateEnd" placeholder="结束时间"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -373,13 +379,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
-
-
         </div>
         <!-- 内容 -->
         <div class="bdd_adver bdd_adver_tender_back" style="background-color: #f8f8f8">
