@@ -68,7 +68,7 @@
     </div>
     <div class="bdd_scopr_top">
         <div class="bdd_scopr_top_span" ng-if="ctrl.company.comRange" ng-bind="ctrl.company.comRange"></div>
-        <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange">该企业暂时没有经营范围！</div>
+        <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange">sorry，暂未查询到该公司的经营范围</div>
     </div>
 </div>
 
@@ -92,7 +92,7 @@
     <!--鲁班奖-->
     <div class="bdd_basic_person_spans">
         <div class="bdd_lauban">
-            <div ng-show="ctrl.showTip==1">要努力哦！</div>
+            <div ng-show="ctrl.showTip==1">sorry，暂未查询到该公司信誉信息</div>
             <div ng-repeat="item in ctrl.reputList">
                 <div class="bdd_lauban_rihgt_a">
                     <div class="bdd_lauban_left display_inline"></div>
@@ -163,7 +163,7 @@
         <div class="bdd_Personl_table_header_title" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list)">
 
         </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f" ng-bind="ctrl.qualSize"></span>条资质信息</div>
+        <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f" ng-bind="ctrl.qualSize"></span> 条资质信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
@@ -190,7 +190,7 @@
         <div class="bdd_Personl_table_header_title" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
             {{cate.category}}({{cate.num}})
         </div>
-        <div class="bdd_Personl_table_header_right ">共有<span style="color: #cea63f;" ng-bind="ctrl.personSize"></span>条人员信息</div>
+        <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f;" ng-bind="ctrl.personSize"></span> 条人员信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
