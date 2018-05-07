@@ -61,8 +61,8 @@
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'1')">设计</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
                 <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'5')">其他</div>
-                <div class="bdd_win_header_right">
-                    <a href="#/tender?type=0">更多&nbsp;</a>
+                <div class="bdd_win_header_right bdd_win_a">
+                    <a class="bdd_render_b" href="#/tender?type=0">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
                 </div>
             </div>
@@ -144,7 +144,7 @@
                         <div class="bdd_infor_maright">
                             <div class="bdd_infor_maright_title"><span ng-bind="info.title |limitTo:16"></span></div>
                             <div class="bdd_infor_maright_news"><a href="{{info.url}}"><span
-                                    ng-bind="info.content | limitTo:14"></span></a></div>
+                                    ng-bind="info.content | limitTo:10"></span></a></div>
                             <div class="bdd_infor_maright_new"><span ng-bind="info.time"></span></div>
                         </div>
                     </div>

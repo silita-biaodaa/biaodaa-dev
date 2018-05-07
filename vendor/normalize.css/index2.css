@@ -289,12 +289,13 @@
 .bdd_win_header_right{
     float: right;
     font-size: 16px;
-    color: #ccbebe;
     margin-top:-13px;
     overflow: hidden;
     font-family: Arial;
     margin-right:10px;
 }
+
+
 .bdd_icon{
     width:8px;
     height:8px;
@@ -450,6 +451,7 @@
     width:280px;
     overflow: hidden;
     float: right;
+    margin-top: -10px;
 
 }
 .bdd_infor_maleft{
@@ -479,6 +481,8 @@
     font-size: 14px;
     color:#ccbebe;
     font-family: Arial;
+    margin-top: 3px;
+
 }
 .bdd_infor_maright_new{
     font-size: 14px;
