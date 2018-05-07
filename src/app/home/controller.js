@@ -1,5 +1,14 @@
-app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', '$anchorScroll',"$location",function ($http, $uibModal, $log, $scope, $document, userTemp,$anchorScroll,$location) {
+app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document', 'userTemp', '$anchorScroll',"$location", "utils",function ($http, $uibModal, $log, $scope, $document, userTemp,$anchorScroll,$location,utils) {
     var selt = this;
+
+    /**
+     * 强制刷新用户状态
+     */
+    var refresh = utils.getUrlVar('refresh');
+    if(refresh == 'true') {
+        window.location.href = "index.html#/home?refresh=false";
+        location.reload();
+    }
 
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);

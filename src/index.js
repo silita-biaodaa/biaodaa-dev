@@ -1,4 +1,5 @@
 app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,$scope,userTemp,utils) {
+
     var selt = this;
 
     if (userTemp != null) {

@@ -20,7 +20,7 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
         if (result.code == 1) {
             for (var i = 0; i < result.data.length; i++) {
                 var bookArr = result.data;
-                if (i < 7) {
+                if (i < 6) {
                     arr1.push(bookArr[i]);
                 } else {
                     arr2.push(bookArr[i]);

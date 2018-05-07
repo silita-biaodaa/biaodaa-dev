@@ -11,7 +11,7 @@
             -->
             <a class="{{ctrl.flag==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="ctrl.cancelCategory()">全部</a>
             <div class="bdd_per_span" ng-repeat="book in ctrl.bookList">
-                <a class="{{ctrl.flag==book.category?' span-cursor span-yellow':'span-cursor'}}" ng-bind="book.category|limitTo:7"
+                <a class="{{ctrl.flag==book.category?' span-cursor span-yellow':'span-cursor'}}" ng-bind="book.category|limitTo:9"
                    ng-click="ctrl.clickBook(book)"></a>
             </div>
             <div style="margin-left: 45px" class="dropdown  dropdown-div dropdown-div-more">

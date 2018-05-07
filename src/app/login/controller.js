@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', function ($http, $uibModal, $log, $scope, $document, userTemp) {
+app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', '$state', function ($http, $log, $scope, $document, userTemp, $state) {
     var selt = this;
 
     var temp = getCookie("userCookie");
@@ -46,11 +46,12 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
                     userTemp = vo;
                     sessionStorage.setItem("X-TOKEN", result.data.xtoken);
                     sessionStorage.setItem("userTemp", vo);
-                    window.location.href = "index.html#/home";
+                    window.location.href = "index.html#/home?refresh=true";
 
                     if (flag) {
                         setCookie("userCookie", angular.toJson(params), 7);
                     }
+                    // $state.go('home',{},{reload:true});
                 }
             });
         }

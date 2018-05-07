@@ -8,7 +8,7 @@ app.config(["$provide", "$compileProvider", "$controllerProvider", "$filterProvi
         app.constant = $provide.constant;
     }]);
 
-app.constant('userTemp', sessionStorage.getItem("userTemp"));
+app.value('userTemp', sessionStorage.getItem("userTemp"));
 
 app.config(['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', config]);
 function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
@@ -80,6 +80,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
 
         .state('home', {
             url: '/home',
+            cache:false,
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
 
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
