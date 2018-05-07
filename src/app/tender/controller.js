@@ -232,7 +232,10 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
        $http.post("/userCenter/collectionNotice",angular.toJson(params)).success(function (result) {
            console.log(result);
            if(result.code == 1){
+               alert('收藏成功');
                $scope.currentTender.collected = true;
+           }else {
+               alert(result.msg);
            }
        })
     }
@@ -246,7 +249,10 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         $http.post("/userCenter/cancelCollectionNotice",angular.toJson(params)).success(function (result) {
             console.log(result);
             if(result.code == 1){
+                alert('取消收藏成功');
                 $scope.currentTender.collected = false;
+            }else{
+                alert(result.msg);
             }
         })
     }
@@ -436,6 +442,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $http.post("/userCenter/collectionNotice",angular.toJson(params)).success(function (result) {
             console.log(result);
             if(result.code == 1){
+                alert('收藏成功');
                 $scope.currentTender.collected = true;
             }else{
                 alert(result.msg);
@@ -451,6 +458,7 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $http.post("/userCenter/cancelCollectionNotice",angular.toJson(params)).success(function (result) {
             console.log(result);
             if(result.code == 1){
+                alert('取消收藏成功');
                 $scope.currentTender.collected = false;
             }else{
                 alert(result.msg);

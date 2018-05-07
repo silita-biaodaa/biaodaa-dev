@@ -134,6 +134,29 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
         window.location.href = "index.html#/home";
     };
 
+    /*分享*/
+    this.shareShow = false;
+    this.companyShare = function (type) {
+        var url=document.location.href;
+        var sharesinastring;
+        var title = this.company.comName;
+        switch (type) {
+            case 'xinlang':
+                sharesinastring = 'http://v.t.sina.com.cn/share/share.php?url='+url+'&title='+title+'&content=utf-8'
+                break;
+            case 'qq':
+                sharesinastring='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&desc='+title+'&title='+title;
+                break;
+            case 'wechat':
+                sharesinastring='http://pan.baidu.com/share/qrcode?w=150&h=150&url='+url;
+                this.imgCodeUrlCompany = sharesinastring;
+                this.shareShow = true;
+                return;
+        }
+        this.shareShow = false;
+        window.open(sharesinastring);
+    }
+
     //企业资质
     this.qualList = [];
     this.qualSize = 0;
@@ -226,7 +249,6 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp',functio
 
         });
     };
-
 
 
 }]);

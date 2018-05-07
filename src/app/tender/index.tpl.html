@@ -755,17 +755,20 @@
                             </li>
                         </div>
                     </div>
-                    <div style="cursor: pointer" class="bdd_follow bdd_follow_foll"><img
-                            src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
-                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span"><img
+                    <div style="cursor: pointer" class="bdd_follow bdd_follow_foll">
+                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt="" ng-show="!currentTender.collected" ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
+                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt="" ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
+                    </div>
+                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span" ng-click="share('xinlang')" style=" cursor: pointer;"><img
                             src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
-                    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_wechat.png" alt="">
+                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('wechat')" style=" cursor: pointer;"><img src="../../../vendor/images/zb_icon_wechat.png" alt="">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_qq.png" alt="">
+                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('qq')" style=" cursor: pointer;"><img src="../../../vendor/images/zb_icon_qq.png" alt="">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt="">
+                    <!--<div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt="">-->
                     </div>
-                    <div class="bdd_follow "><div class="bdd_follow_weibo">分享到微博</div></div>
+                    <!--<div class="bdd_follow "><div class="bdd_follow_weibo">分享到微博</div></div>-->
+                <div class="bdd_follow " ><img style="width: 100px;height: 100px" src="{{imgCodeUrl}}" ng-show="isShow"></div>
                 </div>
                 <div class="bdd_follow_info_one" id="bdd_follow_info_one" style="background-color: white">
 

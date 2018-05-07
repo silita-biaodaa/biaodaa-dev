@@ -24,12 +24,13 @@
 <div class="bdd_follow_dv">
     <div class="bdd_follow bdd_follow_foll " ng-if="ctrl.isFollow==true" ng-click="ctrl.collectionCompany()"><img src="../../../vendor/images/zb_btn_follow.png" alt=""></div>
     <div class="bdd_follow bdd_follow_foll " ng-if="ctrl.isFollow==false" ng-click="ctrl.cancelCollectionCompany()"><img src="../../../vendor/images/zb_btn_follow_pre.png" alt=""></div>
-    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_span"><img
+    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_span" style="cursor: pointer" ng-click="ctrl.companyShare('xinlang')"><img
             src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
-    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_wechat.png" alt=""></div>
-    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_qq.png" alt=""></div>
-    <div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt=""></div>
-    <div class="bdd_follow "><input class="bdd_follow_weibo" type="text" value="分享到微博"></div>
+    <div class="bdd_follow bdd_follow_pyq" style="cursor: pointer" ng-click="ctrl.companyShare('wechat')"><img src="../../../vendor/images/zb_icon_wechat.png" alt=""></div>
+    <div class="bdd_follow bdd_follow_pyq" style="cursor: pointer" ng-click="ctrl.companyShare('qq')"><img src="../../../vendor/images/zb_icon_qq.png" alt=""></div>
+    <!--<div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt=""></div>-->
+    <!--<div class="bdd_follow "><input class="bdd_follow_weibo" type="text" value="分享到微博"></div>-->
+    <div class="bdd_follow "><img class="bdd_follow_weibo" style="width: 100px;height: 100px" src="{{ctrl.imgCodeUrlCompany}}" ng-show="ctrl.shareShow"></div>
 </div>
 <!--导航-->
 <div class="bdd_basic_nav">
