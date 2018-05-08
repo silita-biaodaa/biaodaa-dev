@@ -101,5 +101,4 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
         $location.hash();
         $anchorScroll();
     }
-
 }]);

@@ -27,7 +27,7 @@
     }
     .bdd_details_value_right{
         position: absolute;
-        top:1px;
+        top:150px;
         left: 1349px;
         width: 290px;
         margin-bottom:140px;
@@ -275,11 +275,27 @@
         margin-top: 110px;
     }
     .bdd_details_nav_top{
-        margin-top: 100px;
+        margin-top: 150px;
     }
     .bdd_details_value_input:hover{
         color: #cea63f;
         cursor: pointer;
+    }
+    .bdd_stage_bottom_list {
+        width: 60px;
+        height: 25px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        position: absolute;
+        border: none;
+
+    }
+    .bdd_stage_bottom_list:hover{
+        background-color: #cea63f;
+        color: white;
+    }
+    .bdd_stage_bottom_list{
+        color:#4d3a3a;
     }
 
 </style>
@@ -329,9 +345,12 @@
                     <div class="bdd_stage_bottom" ng-show="dataArrayList!=null && dataArrayList.length>1">
                         <div class="bdd_stage_bd">共<span style="color: #cea63f">{{bdSize}}</span>个标段</div>
                         <div class="bdd_stage_bottom_top">
+
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f" class="bdd_stage_bottom_list" type="button"><span style="color: white;" class="bdd_stage_bottom_span"> {{$index+1}}</span>
+                                ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
+                                                                      type="button" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
                             </li>
+
                         </div>
                     </div>
 
@@ -358,20 +377,25 @@
 
         </div>
     </div>
-</div>
-
-<div class="bdd_details_value_right">
-    <div class="bdd_details_header">
-        <div class="bdd_details_header_left"></div>
-        <div class="bdd_details_header_conter">符合资质企业</div>
-    </div>
-
-    <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-        <div class="bdd_details_js_two">{{item.comName}}
+    <div class="bdd_details_value_right">
+        <div class="bdd_details_header">
+            <div class="bdd_details_header_left"></div>
+            <div class="bdd_details_header_conter">候选人</div>
         </div>
 
-        <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
-        <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
-        <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
+        <div class="bdd_details_js" ng-if="currentTender.oneName">
+            <div class="bdd_details_js_two">{{currentTender.oneName}}</div>
+            <div class="bdd_details_js_new">中标金额：{{currentTender.oneOffer}}</div>
+        </div>
+        <div class="bdd_details_js" ng-if="currentTender.twoName">
+            <div class="bdd_details_js_two">{{currentTender.twoName}}</div>
+            <div class="bdd_details_js_new">中标金额：{{currentTender.twoOffer}}</div>
+        </div>
+        <div class="bdd_details_js" ng-if="currentTender.threeName">
+            <div class="bdd_details_js_two">{{currentTender.threeName}}</div>
+            <div class="bdd_details_js_new">中标金额：{{currentTender.threeOffer}}</div>
+        </div>
     </div>
 </div>
+
+

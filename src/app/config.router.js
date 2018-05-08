@@ -25,6 +25,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/index',
             templateUrl: window.rootSrc + 'app/index/index.tpl.html',//路由更改
             controller: 'IndexCtrl as $ctrl',
+            title:'首页',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -36,7 +37,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         .state('About', {
             url: '/about/:id',
             templateUrl: window.rootSrc + 'app/about/index.tpl.html',
-
+            title:'关于',
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'AboutCtrl as $ctrl',
             resolve: {
@@ -50,7 +51,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         .state('Company', {
             url: '/company',
             templateUrl: window.rootSrc + 'app/company/index.tpl.html',
-
+            title:'标大大-企信',
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'CompanyCtrl as $ctrl',
             resolve: {
@@ -65,7 +66,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         .state('CompanyTop', {
             url: '/companyTop',
             templateUrl: window.rootSrc + 'app/company/companyTop.html',
-
+            title:'标大大-企信',
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'CompanyTopCtrl as ctrl',
             resolve: {
@@ -82,7 +83,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/home',
             cache:false,
             templateUrl: window.rootSrc + 'app/home/bdd_home.html',
-
+            title:'标大大-首页',
             // 在controller 定义的时候用 this.xxx 的方式定义属性或者方法，模版中使用的时候 使用 $ctrl 来代替 this，详情请看index.tpl.html内容
             controller: 'HomeCtrl as $ctrl',
             resolve: {
@@ -98,6 +99,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/companydetail',
             templateUrl: window.rootSrc + 'app/companydetail/index.tpl.html',
             controller: 'CompanyDetailCtrl as ctrl',
+            title:'标大大-企信',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -110,6 +112,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/tender',
             templateUrl: window.rootSrc + 'app/tender/tender.html',
             params: {'id': null},
+            title:'标大大-标讯',
             controller: 'tenderIndex as $ctrl',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -121,6 +124,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         }).state('TenderSay', {
         url: '/tenderSay/:id/:type',
         templateUrl: window.rootSrc + 'app/tender/tenderSay.html',
+        title:'标大大-标讯',
         controller: 'TenderSayCtrl as ctrl',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -132,6 +136,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     }).state('TenderDtail', {
         url: '/tenderDetail/:id',
         templateUrl: window.rootSrc + 'app/tender/index.tpl.html',
+        title:'标大大-标讯',
         controller: 'tenderDetailCtrl as ctrl',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -143,6 +148,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     }).state('TendList', {
         url: '/TendList/:id',
         templateUrl: window.rootSrc + 'app/tender/tender_list.html',
+        title:'标大大-标讯',
         controller: 'TendListCtrl as ctrl',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -154,6 +160,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     }).state('TendListDetail', {
         url: '/TendListDetail',
         templateUrl: window.rootSrc + 'app/tender/tender_list_detail.html',
+        title:'标大大-标讯',
         controller: 'TendListDetailCtrl as ctrl',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -165,6 +172,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
     }).state('WinBid', {
         url: '/win_bid',
         templateUrl: window.rootSrc + 'app/winbid/index.html',
+        title:'标大大-标讯',
         controller: 'WinBidCtrl as ctrl',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -177,6 +185,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         url: '/winbding/:id',
         templateUrl: window.rootSrc + 'app/tender/winbding.html',
         controller: 'WinbdingCtrl as ctrl',
+        title:'标大大-标讯',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -189,6 +198,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/login',
             templateUrl: window.rootSrc + 'app/login/bdd_login.html',
             controller: 'LoginCtrl as ctrl',
+            title:'标大大-登录',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -201,6 +211,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/register',
             templateUrl: window.rootSrc + 'app/register/bdd_register.html',
             controller: 'RegisterCtrl as ctrl',
+            title:'标大大-注册',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -213,6 +224,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/forget',
             templateUrl: window.rootSrc + 'app/forget/bdd_forget.html',
             controller: 'ForgetCtrl as ctrl',
+            title:'标大大-忘记密码',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -225,6 +237,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/workmore',
             templateUrl: window.rootSrc + 'app/workmore/index.tpl.html',
             controller: 'WorkMoreCtrl as ctrl',
+            title:'标大大-行业动态',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -236,6 +249,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
         url: '/workmoreDetail/:id',
         templateUrl: window.rootSrc + 'app/workmore/detail.html',
         controller: 'WorkMoreDetailCtrl as ctrl',
+        title:'标大大-行业动态',
         resolve: {
             load: ['$ocLazyLoad', function ($ocLazyLoad) {
                 return $ocLazyLoad.load([
@@ -249,6 +263,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/society',
             templateUrl: window.rootSrc + 'app/society/index.tpl.html',
             controller: 'SocietyCtrl as ctrl',
+            title:'标大大-应用',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -262,6 +277,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/ucenter',
             templateUrl: window.rootSrc + 'app/personal/ucenter.html',
             controller: 'UcenterCtrl as ctrl',
+            title:'标大大-应用',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -275,6 +291,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/feedback',
             templateUrl: window.rootSrc + 'app/personal/feedback.html',
             controller: 'FeedbackCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -289,6 +306,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/financial',
             templateUrl: window.rootSrc + 'app/personal/financial.html',
             controller: 'FinancialCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -302,6 +320,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/myfollow',
             templateUrl: window.rootSrc + 'app/personal/myfollow.html',
             controller: 'MyfollowCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -315,6 +334,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/personInfo',
             templateUrl: window.rootSrc + 'app/personal/personInfo.html',
             controller: 'PersonInfoCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -327,6 +347,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/messages',
             templateUrl: window.rootSrc + 'app/personal/messages.html',
             controller: 'MessagesCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -340,6 +361,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/modify',
             templateUrl: window.rootSrc + 'app/modify/modify.html',
             controller: 'ModifyCtrl as ctrl',
+            title:'标大大-更改密码',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -353,6 +375,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/usercenter',
             templateUrl: window.rootSrc + 'app/usercenter/index.tpl.html',
             controller: 'userCenterCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -366,6 +389,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/person',
             templateUrl: window.rootSrc + 'app/searchperson/use.html',
             controller: 'PersonCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -379,6 +403,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/joinus',
             templateUrl: window.rootSrc + 'app/footer/Joinus.html',
             controller: 'FooterCtrl as ctrl',
+            title:'标大大-加入我们',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -392,6 +417,7 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
             url: '/perp',
             templateUrl: window.rootSrc + 'app/footer/prep.html',
             controller: 'FooterCtrl as ctrl',
+            title:'标大大-个人中心',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

@@ -32,12 +32,7 @@
 
     }
 
-    .bdd_details_value_right {
-        padding-top:25px;
-        width: 290px;
-        float: right;
 
-    }
 
     .bdd_details_value_left_top {
         width: 800px;
@@ -425,7 +420,6 @@
     .bdd_stage_bottom_top {
         width: 890px;
         margin-bottom: 140px;
-        margin-left: 20px;
 
     }
 
@@ -452,13 +446,12 @@
         width: 50px;
         overflow: auto;
         margin-top: 20px;
-        margin-right: 49px;
+        margin-right: 20px;
         margin-bottom: 20px;
         padding-left: 8px;
         text-align: center;
         line-height: 20px;
         vertical-align: center;
-        padding-top: 5px;
     }
 
     .bdd_stage_bd {
@@ -500,9 +493,16 @@
     }
 
     .bdd_datails_value_a {
-       
+
         margin-top: -50px;
         margin-bottom:30px;
+    }
+    .bdd_stage_bottom_list:hover{
+        background-color: #cea63f;
+        color: white;
+    }
+    .bdd_stage_bottom_list{
+        color:#4d3a3a;
     }
 
     /**二维码**/
@@ -527,6 +527,10 @@
                         <span style="margin-top: 13px"
                               class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_data_c">项目地区：<span
                                 style="color:#4d3a3a">{{currentTender.projDq}}</span></span>
+
+                        <span style="margin-top: 13px"
+                        class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">项目金额：<span
+                        style="color: #4d3a3a">{{currentTender.projSum}}元</span></span><br>
                         <br>
 
                         <div style="margin-top: 20px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
@@ -573,7 +577,7 @@
                         <div class="bdd_details_what">离报名截止时间还剩</div>
                     </div>
                     <div class="bdd_bond bdd_bond_fit"
-                         ng-show="currentTender.tbAssureEndDate||currentTender.tbAssureSum">
+                         ng-show="currentTender.tbAssureEndDate||currentTender.tbAssureEndTime">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">保证金</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
@@ -584,20 +588,19 @@
                         <br>
                     </div>
                     <div class="bdd_bond"
-                         ng-show="currentTender.bmEndDate||currentTender.bmEndTime||currentTender.projSum">
+                         ng-show="currentTender.bmEndDate||currentTender.bmEndTime">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">报名</span></div>
-                        <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
+                        <div style="float: right;width:760px;line-height:30px;margin-top:15px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <div style="float: left">
+                            <div>
                                 报名截止时间：{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}
                             </div>
-                            <div style="float: right">
-                                项目金额：{{currentTender.projSum}}{{currentTender.projSum?"万元":""}}
-                            </div>
+                            <div> 报名地址：{{currentTender.bmSite}}</div>
+
                         </div>
                     </div>
                     <div class="bdd_bond"
-                         ng-show="currentTender.kbDate||currentTender.kbTime||currentTender.kbStaffAsk||currentTender.kbSite">
+                         ng-show="currentTender.kbDate||currentTender.kbTime">
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">开标</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
@@ -638,10 +641,12 @@
                     <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
+                    <a href="#/companydetail?comId={{item.comId}}">
                     <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>
                     <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -755,10 +760,8 @@
                         <div class="bdd_stage_bd">共&nbsp;<span style="color: #cea63f">{{bdSize?bdSize:0}}</span>&nbsp;个标段</div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><a style="background-color: #cea63f"
-                                                                          class="bdd_stage_bottom_list"
-                                                                          type="button" ><div style="color: white;"
-                                                                                               class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
+                                ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
+                                                                          type="button" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
                             </li>
                         </div>
                     </div>
@@ -787,17 +790,19 @@
                 <div class="bdd_details_header">
                     <div class="bdd_details_header_left"></div>
                     <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
-                </div>
+
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
+                    <a href="#/companydetail?comId={{item.comId}}">
                     <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}
                     </div>
                     <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
                     <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
                     <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
+                    </a>
                 </div>
 
 
-            </div>
+
         </div>
     </div>
 </div>

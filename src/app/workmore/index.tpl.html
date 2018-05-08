@@ -83,9 +83,22 @@
 
 <div class="bdd_trends_contont">
     <div class="bdd_trends_border">
-        <div class="bdd_trends_pic">
-            <img  src="../../../vendor/images/banner_1.png" alt="">
+
+        <!--轮播图-->
+        <div class="jd_banner">
+            <div class="all" id='box'>
+                <div class="screen">
+                    <ul>
+                        <!--<li ng-repeat="item in $ctrl.imageArr"><a><img src="{{item.imagesrc}}" width="1200" height="500"/></a></li>-->
+                    </ul>
+                    <ol style="display: none"><!--<li ng-repeat="item in $ctrl.imageArr">{{$index+1}}--></li></ol>
+                </div>
+                <div id="arr"><span  id="left">&lt;</span><span id="right">&gt;</span></div>
+            </div>
         </div>
+
+
+
         <div class="bdd_trends_header">
             <div class="bdd_trends_header_title {{ctrl.isCompany?'bdd_trends_header_bot':''}}" ng-click="ctrl.toDiffMsg('0')">行业资讯 </div>
 
