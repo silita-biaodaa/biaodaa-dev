@@ -195,7 +195,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
     //----资质---end---
 
-
     this.morePro = false;
     this.moreProvince=function(morePro){
         if(morePro){
@@ -279,7 +278,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
     //------------翻页----end
 
-
     //#####公告请求开始
 
     //项目类型
@@ -327,7 +325,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
                 if (selt.pb[item]) {
                     selt.pbModes.push(selt.pb[item]);
                 }
-
             }
             console.info(selt.pbModes);
             selt.queryList();

@@ -449,10 +449,16 @@
 
     .bdd_stage_bottom_news {
         float: left;
-        margin-top: 30px;
+        width: 50px;
+        overflow: auto;
+        margin-top: 20px;
         margin-right: 49px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         padding-left: 8px;
+        text-align: center;
+        line-height: 20px;
+        vertical-align: center;
+        padding-top: 5px;
     }
 
     .bdd_stage_bd {
@@ -749,10 +755,10 @@
                         <div class="bdd_stage_bd">共&nbsp;<span style="color: #cea63f">{{bdSize?bdSize:0}}</span>&nbsp;个标段</div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><input style="background-color: #cea63f"
+                                ng-click="toCurrentTender($index)"><a style="background-color: #cea63f"
                                                                           class="bdd_stage_bottom_list"
-                                                                          type="button"><span style="color: white;"
-                                                                                              class="bdd_stage_bottom_span"> {{$index+1}}</span>
+                                                                          type="button" ><div style="color: white;"
+                                                                                               class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
                             </li>
                         </div>
                     </div>

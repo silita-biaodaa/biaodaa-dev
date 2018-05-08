@@ -187,6 +187,11 @@
         .text-white{
             color: white;
         }
+        .to_top_div{
+            position: fixed;
+            right:100px;
+            bottom: 100px;
+        }
     </style>
     <title>webapp</title>
 </head>
@@ -267,7 +272,7 @@
 </nav>
 
 <ui-view class="ui_view_min_high"> </ui-view>
-
+<div class="to_top_div" ng-click="toTop()"><img src="../vendor/images/home_to_top.png"/></div>
 <div class="bdd_footer_left_a">
     <div class="bdd_footer_news" style="overflow: hidden;margin: 0 auto;padding-left: 50px">
         <div class="bdd_footer_content">

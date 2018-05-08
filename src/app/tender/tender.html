@@ -1,4 +1,5 @@
 
+
 <style type="text/css">
     @import url("../../../vendor/normalize.css/bdd_scerrn.css");
 </style>
@@ -99,14 +100,6 @@
         margin-left: 5px;
     }
 
-    .dropdown-div-more {
-        margin-left: 94px;
-    }
-
-
-    .bdd_comp_span_m {
-        margin-left: 253px;
-    }
 
     .bdd_dev_area_pro_a {
         width: 1120px;
@@ -133,6 +126,18 @@
     .bdd_input_b{
         width:150px;
     }
+    .bdd_letter_li_ti{
+        margin-top: 30px;
+    }
+    .bdd_font_a{
+        padding: 3px 6px;
+        text-align: center;
+        color: #4d3a3a;
+    }
+    .form-group-a{
+        width: 800px;
+    }
+
 
 </style>
 
@@ -150,8 +155,6 @@
     </div>
     <!--<div class="bdd_announcement_left" ng-click="chageData(2)">我的定制</div>-->
 </div>
-
-
 <!--筛选框-->
 <div class="bdd_company_body">
     <div class="bg-color">
@@ -182,7 +185,6 @@
                         <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                            ng-click="$ctrl.clickProvince(area)"></a>
                     </div>
-
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
                     <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}" ng-click="$ctrl.cancleEmCity()">全部</a>
@@ -225,7 +227,6 @@
                         <!--全部-->
                         <!--<input type="checkbox" ng-model="all" />-->
                         <!--</div>-->
-
                         <div class="text-inline" ng-repeat="mode in $ctrl.pbModeList">
                             <input id="{{mode.standardName}}" name="pb" type="checkbox"
                                    ng-checked="$ctrl.updateChecked('{{mode.standardName}}');"
@@ -337,8 +338,8 @@
                     </div>
 
                     <div class="bdd_area_left bdd_area_left_pad">
-                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(0,200)">
-                            <!--0-200万-->
+                        <div style="color: #cea63f;"  class="bdd_area_content bdd_text_vib span-cursor">
+                           全部
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
                              ng-click="$ctrl.clickProjSum(500,1000)">500-1000万
@@ -353,7 +354,7 @@
                 <div class="bdd_area_header_select_li" ng-show="$ctrl.type==0">
                     <div class="bdd_area_header_select_line2"></div>
                     <div class="bdd_area_left">
-                        <div class="form-group">
+                        <div class="form-group form-group-a">
                             <div class="col-md-1 bdd_area_content bdd_content_h bdd_content_k">开标时间：</div>
                             <div class="col-md-4">
                                 <div class='input-group date form_date bdd_input_b ' datetimepicker id='datetimepicker1'>
@@ -372,9 +373,9 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-md-1">
+                            <div style="float: right">
                                 <input class="bdd_button_val" type="button" value="确认" ng-click="$ctrl.clickKbDate()">&nbsp;<span
-                                    class="bdd_font_span" ng-click="$ctrl.cancelKbDate()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
+                                    class="bdd_font_span_a" ng-click="$ctrl.cancelKbDate()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>
                             </div>
                         </div>
                     </div>
@@ -391,56 +392,56 @@
                             <div class="bdd_area_content bdd_content_h bdd_content_t">已筛选条件：</div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.projectType">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.projectTypeDesc}}&nbsp;&nbsp;&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelProjectType()">×</span></div>
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.province">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelArea()">×</span></div>
                             </div>
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.city">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmCity()">×</span>
                                 </div>
                             </div>
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual1">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.qual1.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelQUal()">×</span>
                                 </div>
                             </div>
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual2">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.qual2.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancleEmQTwo()">×</span>
                                 </div>
                             </div>
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual3">
-                                <div class="bdd_select bdd_font  bdd_font_color">
+                                <div class="bdd_select bdd_font_a  bdd_font_color">
                                     {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmQThree()">×</span>
                                 </div>
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
                                  ng-repeat="mm in $ctrl.pbModes ">
-                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
                                     <span style="width: 10px;">{{mm}}</span>&nbsp;&nbsp;<span
                                         ng-click="$ctrl.canclePbMode('{{mm}}')">×</span></div>
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
                                  ng-if="$ctrl.projSumStart || $ctrl.projSumEnd">
-                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
                                     {{$ctrl.projSumStart}}万—{{$ctrl.projSumEnd}}万&nbsp;&nbsp;<span
                                         ng-click="$ctrl.canclePrice()">×</span></div>
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
                                  ng-if="$ctrl.kbDateStart || $ctrl.kbDateEnd">
-                                <div class="bdd_select bdd_font  bdd_font_color" style="width:auto;">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
                                     {{$ctrl.kbDateStart}}—{{$ctrl.kbDateEnd}}&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelKbDate()">×</span></div>
                             </div>
@@ -496,6 +497,7 @@
 
     </div>
 </div>
+
 <!--
 <script>
     $('.form_date').datetimepicker({

@@ -1,4 +1,4 @@
-app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,$scope,userTemp,utils) {
+app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll',"$location",function($http,$scope,userTemp,utils, $anchorScroll,$location) {
 
     var selt = this;
 
@@ -96,6 +96,10 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils',function($http,
     selt.showTender = false;
     $scope.showTenderList=function(showTender){
         selt.showTender = !showTender;
+    }
+    $scope.toTop=function(){
+        $location.hash();
+        $anchorScroll();
     }
 
 }]);
