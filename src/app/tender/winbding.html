@@ -26,13 +26,14 @@
 
     }
     .bdd_details_value_right{
-        position: absolute;
-        top:150px;
-        left: 1349px;
+
+        top:110px;
+        left: 1270px;
         width: 290px;
         margin-bottom:140px;
-        margin-left:18px;
+        margin-left:200px;
         overflow: hidden;
+
     }
     .bdd_details_value_left_top{
         width: 800px;
@@ -93,19 +94,23 @@
     /*分析*/
     .bdd_details_header{
         width: 290px;
-        height:60px;
+        height:30px;
+        line-height: 30px;
         background-color: white;
-        padding-left:15px;
+        margin-left:10px;
+
 
 
 
     }
     .bdd_details_header_left{
         width: 5px;
-        height: 20px;
+        height: 14px;
         background-color: #cea63f;
         float: left;
-        margin-top:22px;
+        margin-top:8px;
+        margin-left: 5px;
+
 
     }
     .bdd_details_header_conter{
@@ -120,11 +125,13 @@
         height: 180px;
         margin-top:10px;
         background-color: white;
+        margin-left: 10px;
+
     }
     .bdd_details_js_two{
         font-size: 16px;
         color: #4d3a3a;
-        padding:20px 0 0 58px;
+        padding:18px 0 0 40px;
         font-family: Arial;
         font-weight: 700;
 
@@ -234,7 +241,7 @@
         background-color: #f0f0f0;
         border-radius: 5px;
         position: absolute;
-        border: none;
+        border: 0;
 
     }
     .bdd_stage_bottom_span{
@@ -246,7 +253,9 @@
     }
     .bdd_stage_bottom_news{
        float: left;
-        padding: 4px 30px;
+        padding: 17px 32px;
+        text-align: center;
+
 
     }
     .bdd_stage_bd{
@@ -275,7 +284,7 @@
         margin-top: 110px;
     }
     .bdd_details_nav_top{
-        margin-top: 150px;
+        margin-top: 110px;
     }
     .bdd_details_value_input:hover{
         color: #cea63f;
@@ -288,6 +297,8 @@
         border-radius: 5px;
         position: absolute;
         border: none;
+        padding-top: 4px;
+        cursor: pointer;
 
     }
     .bdd_stage_bottom_list:hover{
@@ -297,7 +308,11 @@
     .bdd_stage_bottom_list{
         color:#4d3a3a;
     }
-
+    .bdd_details_hedivr_conter{
+        font-size: 18px;
+        color: #4d3a3a;
+        margin-left:15px;
+    }
 </style>
 
 <!--nav-->
@@ -326,17 +341,17 @@
                             </div><br>
                             <div class="bdd_stage_top">
                                <div  ng-if="currentTender.oneName && currentTender.oneName!=''">
-                                   <div><img src="../../../vendor/images/bx_zb_icon_Candidate1.png" alt="">&nbsp;&nbsp; {{currentTender.oneName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.oneOffer}}{{currentTender.oneOffer?'万元':'0万元'}}</span></div>
+                                   <div><img src="../../../vendor/images/bx_zb_icon_Candidate1.png" alt="">&nbsp;&nbsp; {{currentTender.oneName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.oneOffer}}{{currentTender.oneOffer?'万元':''}}</span></div>
 
 
                                </div>
                                 <div ng-if="currentTender.twoName && currentTender.twoName!=''">
-                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate2.png" alt="">&nbsp;&nbsp; {{currentTender.twoName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.twoOffer}}{{currentTender.twoOffer?'万元':'0万元'}}</span></div>
+                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate2.png" alt="">&nbsp;&nbsp; {{currentTender.twoName}}<span style="margin-left: 40px;">项目金额：</span> <span>{{currentTender.twoOffer}}{{currentTender.twoOffer?'万元':''}}</span></div>
 
 
                                 </div>
                                 <div  ng-if="currentTender.threeName!=null && currentTender.threeName!=''">
-                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span><span>{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':'0万元'}}</span></div>
+                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span><span>{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':''}}</span></div>
 
                                 </div>
                             </div><br>
@@ -380,20 +395,26 @@
     <div class="bdd_details_value_right">
         <div class="bdd_details_header">
             <div class="bdd_details_header_left"></div>
-            <div class="bdd_details_header_conter">候选人</div>
+            <div class="bdd_details_hedivr_conter">候选人</div>
         </div>
 
         <div class="bdd_details_js" ng-if="currentTender.oneName">
             <div class="bdd_details_js_two">{{currentTender.oneName}}</div>
-            <div class="bdd_details_js_new">中标金额：{{currentTender.oneOffer}}</div>
+            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
+            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
+            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
         </div>
         <div class="bdd_details_js" ng-if="currentTender.twoName">
             <div class="bdd_details_js_two">{{currentTender.twoName}}</div>
-            <div class="bdd_details_js_new">中标金额：{{currentTender.twoOffer}}</div>
+            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
+            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
+            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
         </div>
         <div class="bdd_details_js" ng-if="currentTender.threeName">
             <div class="bdd_details_js_two">{{currentTender.threeName}}</div>
-            <div class="bdd_details_js_new">中标金额：{{currentTender.threeOffer}}</div>
+            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
+            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
+            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
         </div>
     </div>
 </div>
