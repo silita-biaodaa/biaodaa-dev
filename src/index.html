@@ -238,7 +238,7 @@
         </div>
         <div  style="z-index: 1101;" class="bdd-nav-title-t bdd-nav-search">
         </div>
-        <div class="bdd-nav-ser-div" style="{{ctrl.user?'margin-top: 20px;':' margin-top: 40px;'}}" >
+        <div class="bdd-nav-ser-div" style="{{ctrl.user?'margin-top:35px;':' margin-top: 40px;'}}" >
             <a  class="txt-inline-a" id="btnFadein"  style="z-index: 1101;"><img
                     style="z-index: 1101;" src="../vendor/images/nav_icon_search.png" alt=""></a>
 
@@ -252,7 +252,7 @@
             <div  class="txt-inline-a">
                 <div ng-if="ctrl.user != null">
                     <div  ng-mouseenter="showImageIcon(ctrl.showHeadImage)" ng-mouseleave="showImageIcon(ctrl.showHeadImage)" class="txt-inline-a txt-inline-a-center">
-                        <img  ng-src="{{ctrl.user.imgurl?ctrl.user.imgurl:'/vendor/images/icon_head_default30px.png'}}" width="60px" height="60px" alt="..." class="img-circle">
+                        <img  ng-src="{{ctrl.user.imgurl?ctrl.user.imgurl:'/vendor/images/icon_head_default30px.png'}}" width="30px" height="30px" alt="..." class="img-circle">
                         <div style="position: fixed" ng-show="ctrl.showHeadImage" >
                             <ul class="txt-inline-a select-inline-ul txt-cursor">
                                 <li><a ng-click="ctrl.selectChange('personInfo')">个人资料</a></li>
