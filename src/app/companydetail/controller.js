@@ -220,11 +220,6 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
         selt.nextPage();
     };
 
-
-
-
-
-
     this.nextPage = function () {
         if (selt.busy) return;
         selt.busy = true;
