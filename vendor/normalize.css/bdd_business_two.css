@@ -173,6 +173,10 @@ body {
     padding-left: 50px;
     padding-right: 50px;
 
+
+
+
+
 }
 
 .bdd_busing_text_mess_r {
@@ -201,4 +205,7 @@ body {
 }
 .bdd_busing_text_content{
     margin-top:-20px;
+}
+.bdd_business_infor{
+    padding-bottom:25px;
 }
