@@ -341,14 +341,14 @@
                     </div>
 
                     <div class="bdd_area_left bdd_area_left_pad">
-                        <div style="color: #cea63f;"  class="bdd_area_content bdd_text_vib span-cursor">
-                           全部
+                        <div class="bdd_area_content bdd_text_vib span-cursor">
+                            <a class="{{$ctrl.priceArea==''?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.canclePrice()">全部</a>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_mid span-cursor"
-                             ng-click="$ctrl.clickProjSum(500,1000)">500-1000万
+                        <div class="bdd_area_content bdd_text_vib span-cursor">
+                            <a class="{{$ctrl.priceArea=='1500'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProjSum(500,1000)">500-1000万</a>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib span-cursor" ng-click="$ctrl.clickProjSum(1000,5000)">
-                            1000-5000万
+                        <div class="bdd_area_content bdd_text_vib span-cursor">
+                            <a class="{{$ctrl.priceArea=='6000'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProjSum(1000,5000)">1000-5000万</a>
                         </div>
                     </div>
                 </div>

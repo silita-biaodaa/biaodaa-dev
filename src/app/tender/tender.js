@@ -362,11 +362,11 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     //项目金额
     this.clickProjSum = function (start, end) {
-        console.log(start + "@@" + end);
+        selt.priceArea = start + end;
         if (start != null && end != null) {
             selt.projSumStart = start;
             selt.projSumEnd = end;
-            if( selt.projSumStart > selt.projSumEnd) {
+            if( selt.projSumStart - selt.projSumEnd > 0) {
                 selt.projSumStart = null;
                 selt.projSumEnd = null;
                 alert("最低金额不能大于最高金额！");
@@ -376,6 +376,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.queryList();
     }
     this.canclePrice = function () {
+        this.priceArea = "";
         selt.projSumStart = null;
         selt.projSumEnd = null;
         selt.queryList();
@@ -383,7 +384,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     //开标时间
     this.clickKbDate = function () {
-        console.log(selt.kbDateStart + "##" + selt.kbDateEnd)
         if(selt.kbDateStart > selt.kbDateEnd) {
             selt.kbDateStart = null;
             selt.kbDateEnd = null;
@@ -411,6 +411,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.type = 0;
 
     this.resetParam = function () {
+        this.priceArea = "";
         this.province = "";
         this.city = "";
         this.qual1 = "";
