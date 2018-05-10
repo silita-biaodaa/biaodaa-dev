@@ -22,7 +22,7 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
 		if(result.code==1){
 			for(var i=0;i<result.data.area.length;i++){
 				var areaArr = result.data.area;
-				if(i<14){
+				if(i<18){
 					arr1.push(areaArr[i]);
 				}else{
 					arr2.push(areaArr[i]);
