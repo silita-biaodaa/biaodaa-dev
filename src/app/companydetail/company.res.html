@@ -164,11 +164,11 @@
                 <div class="bdd_dev_area bdd_dev_area_txt">项目地区:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
                     <div class="bdd_tender_inline bdd_tender_a">
-                        <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}"
+                        <a class="{{$ctrl.province == null ? 'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}"
                            ng-click="$ctrl.cancelArea()">全部</a>
 
                         <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"
+                            <a class="{{$ctrl.province == area.name ? 'span-cursor span-yellow':'span-cursor'}}"
                                ng-bind="area.name|areaLimit"
                                ng-click="$ctrl.clickProvince(area)"></a>
                         </div>
@@ -185,19 +185,9 @@
                 </div>
                 <div id="more-pro" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
                     <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
-                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"
+                        <a class="{{$ctrl.province == area.name ? 'span-cursor span-yellow':'span-cursor'}}"
                            ng-bind="area.name|areaLimit"
                            ng-click="$ctrl.clickProvince(area)"></a>
-                    </div>
-
-                </div>
-                <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}"
-                                                    ng-click="$ctrl.cancleEmCity()">全部</a>
-                    </div>
-                    <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
-                        <a class="{{$ctrl.city==city?'span-yellow span-cursor':'span-cursor'}}"
-                           ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
                     </div>
                 </div>
             </div>
@@ -206,153 +196,21 @@
                 <div class="bdd_dev_area bdd_dev_area_txt">项目类别:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
                     <div class="bdd_tender_inline bdd_tender_a">
-                        <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}"
-                           ng-click="$ctrl.cancelArea()">全部</a>
+                        <a class="{{$ctrl.showProType == null ? 'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}">全部</a>
+                        <!--<a class="bdd_comp_span_all span-cursor span-yellow">全部</a>-->
+                        <div class="bdd_comp_span">
+                            <!--<a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"-->
+                               <!--ng-bind="area.name|areaLimit"-->
+                               <!--ng-click="$ctrl.clickProvince(area)"></a>-->
+                            <a class="{{$ctrl.showProType=='市政工程'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('市政工程')">市政工程</a>
+                            <a class="{{$ctrl.showProType=='房屋建筑'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('房屋建筑')">房屋建筑</a>
+                            <a class="{{$ctrl.showProType=='其他'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('其他')">其他</a>
 
-                        <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
-                            <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"
-                               ng-bind="area.name|areaLimit"
-                               ng-click="$ctrl.clickProvince(area)"></a>
                         </div>
-                    </div>
-                    <div class="bdd_comp_span bdd_comp_span_m">
-                        <a class="span-cursor" id="to-pro-more-a"
-                           ng-click="$ctrl.moreProvince($ctrl.morePro)">
-                            <div class="to_more" ng-show="!$ctrl.morePro">更多</div>
-                            <div class="to_more to_bottom" ng-show="!$ctrl.morePro"></div>
-                            <div class="to_more" ng-show="$ctrl.morePro">收起</div>
-                            <div class="to_more to_top" ng-show="$ctrl.morePro"></div>
-                        </a>
-                    </div>
-                </div>
-                <div id="more-pro-a" class="bdd_dev_area_pro_m" ng-show="$ctrl.morePro">
-                    <div class="bdd_comp_span bdd_dev_area_pro_t" ng-repeat="area in $ctrl.areaList2">
-                        <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"
-                           ng-bind="area.name|areaLimit"
-                           ng-click="$ctrl.clickProvince(area)"></a>
-                    </div>
-
-                </div>
-                <div id="bdd_dev_city-a" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}"
-                                                    ng-click="$ctrl.cancleEmCity()">全部</a>
-                    </div>
-                    <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
-                        <a class="{{$ctrl.city==city?'span-yellow span-cursor':'span-cursor'}}"
-                           ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
                     </div>
                 </div>
             </div>
             <div class="bdd_area_header_select_line"></div>
-
-
-            <!--&lt;!&ndash;筛选框&ndash;&gt;-->
-            <!--<div class="bdd_area_li bdd_letter_li_ti">-->
-            <!--<div class="bdd_area_header_select_li">-->
-            <!--<div class="bdd_area_left">-->
-            <!--<div class="bdd_content_h">资质要求：</div>-->
-            <!--<div class="bdd_content_n bdd_content-inline">-->
-            <!--<div class="{{$ctrl.qual1==''?'bdd_tender_inline bdd_content_m span-yellow':'bdd_tender_inline bdd_content_m'}}" ng-click="$ctrl.cancelQUal()">全部</div>-->
-            <!--<div class="bdd_tender_inline dropdown dropdown-div dropdown-div-border"-->
-            <!--ng-repeat="qual in $ctrl.companyQualList">-->
-            <!--<a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"-->
-            <!--data-target="#"-->
-            <!--href="javascript:;"><span class="{{$ctrl.qual1==qual?'span-yellow':''}}" ng-click="$ctrl.clickQual1(qual)" >{{qual.name}}</span> <span-->
-            <!--class="caret"></span></a>-->
-            <!--<ul class="dropdown-menu multi-level bdd_drop_scroll" role="menu"-->
-            <!--aria-labelledby="dropdownMenu">-->
-            <!--<li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">-->
-            <!--<a class="dropdown-yellow" href="javascript:;" data-index="2"-->
-            <!--ng-bind="qual2.name"-->
-            <!--ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"-->
-            <!--ng-click="$ctrl.clickQual2(qual2,qual)"></a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</div>-->
-
-
-            <!--<div class="dropdown  dropdown-div dropdown-div-more">-->
-            <!--<a id="more_select_zz" role="button" data-toggle="dropdown"-->
-            <!--class="btn btn-white btn-white-a" data-target="#"-->
-            <!--href="javascript:;" ng-click="$ctrl.moreSelectZz($ctrl.moreZz)">-->
-            <!--<div class="to_more" ng-show="!$ctrl.moreZz">更多</div>-->
-            <!--<div class="to_more to_bottom" ng-show="!$ctrl.moreZz"></div>-->
-            <!--<div class="to_more" ng-show="$ctrl.moreZz">收起</div>-->
-            <!--<div class="to_more to_top" ng-show="$ctrl.moreZz"></div>-->
-            <!--</a>-->
-
-            <!--</div>-->
-
-            <!--</div>-->
-            <!--<div id="more-select-zz" class="drop-margin" ng-show="$ctrl.moreZz">-->
-            <!--<div class="dropdown dropdown-div dropdown-div-border dropdown-div-border2"-->
-            <!--ng-repeat="qual in $ctrl.companyQualList2">-->
-            <!--<a role="button" data-toggle="dropdown" class="btn btn-white btn-white-a"-->
-            <!--data-target="#"-->
-            <!--href="javascript:;"><span-->
-            <!--ng-click="$ctrl.clickQual1(qual)" class="{{$ctrl.qual1==qual?'span-yellow':''}}">{{qual.name}}</span> <span-->
-            <!--class="caret"></span></a>-->
-            <!--<ul class="dropdown-menu  multi-level bdd_drop_scroll" role="menu"-->
-            <!--aria-labelledby="dropdownMenu">-->
-            <!--<li class="dropdown-submenu dropdown-yellow-li" ng-repeat="qual2 in qual.list">-->
-            <!--<a href="javascript:;" data-index="2" ng-bind="qual2.name"-->
-            <!--ng-mouseenter="$ctrl.touchStart($event,qual2,qual)"-->
-            <!--ng-click="$ctrl.clickQual2(qual2,qual)"></a>-->
-
-            <!--</li>-->
-
-            <!--</ul>-->
-
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="bdd_area_header_select_li">-->
-            <!--<div class="bdd_area_header_select_line2"></div>-->
-            <!--<div class="bdd_area_left">-->
-            <!--&lt;!&ndash;<div class="bdd_area_content bdd_content_h">注册资金：</div>-->
-            <!--<div class="bdd_area_content bdd_content_q"><input class="bdd_select  bdd_font"-->
-            <!--placeholder="最低价"-->
-            <!--type="text"-->
-            <!--ng-model="$ctrl.minPrice" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')"><span-->
-            <!--style="color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;—</span>-->
-            <!--</div>-->
-            <!--<div class="bdd_area_content bdd_text_vib"><input class="bdd_select bdd_font" placeholder="最高价"-->
-            <!--type="text"-->
-            <!--ng-model="$ctrl.maxPrice" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')"></div>-->
-            <!--<div class="bdd_area_content bdd_text_vib"><input class="bdd_button_val" type="button"-->
-            <!--value="确认"-->
-            <!--ng-click="$ctrl.clickPrice()">&nbsp;<span-->
-            <!--class="bdd_font_span" ng-click="$ctrl.canclePrice()">&nbsp;&nbsp;&nbsp;&nbsp;清空</span>-->
-            <!--</div>&ndash;&gt;-->
-            <!--<div class="bdd_dev_area bdd_dev_area_txt">注册资金：</div>-->
-            <!--<div class="bdd_dev_area bdd_dev_area_pro">-->
-            <!--<a class="{{$ctrl.priceArea==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.canclePrice();">不限</a>-->
-
-            <!--<div class="bdd_comp_span">-->
-            <!--<a class="{{$ctrl.priceArea=='0-500万'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickCapital(0,500)">0-500万</a>-->
-            <!--</div>-->
-            <!--<div class="bdd_comp_span">-->
-            <!--<a class="{{$ctrl.priceArea=='500-1000万'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickCapital(500,1000)">500-1000万</a>-->
-            <!--</div>-->
-            <!--<div class="bdd_comp_span">-->
-            <!--<a class="{{$ctrl.priceArea=='1000-5000万'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickCapital(1000,5000)">1000-5000万</a>-->
-            <!--</div>-->
-            <!--<div class="bdd_comp_span">-->
-            <!--<a class="{{$ctrl.priceArea=='5000-10000万'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickCapital(5000,10000)">5000-10000万</a>-->
-            <!--</div>-->
-            <!--<div class="bdd_comp_span">-->
-            <!--<a class="{{$ctrl.priceArea=='10000万以上'?'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickCapital(10000,null)">10000万以上</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-
-
-            <!--</div>-->
-
-
             <div class="bdd_side_left_did">
                 <div class="bdd_side_conter_do">
                     <div class="bdd_area_left">
@@ -362,33 +220,10 @@
                                 {{$ctrl.province}}&nbsp;&nbsp;&nbsp;&nbsp;<span
                                     ng-click="$ctrl.cancelArea()">×</span></div>
                         </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.city">
+                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.showProType">
                             <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.city}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleEmCity()">×</span>
+                                {{$ctrl.showProType}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleProType()">×</span>
                             </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual1">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual1.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.cancelQUal()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual2">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual2.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.cancleEmQTwo()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.qual3">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.qual3.name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.cancleEmQThree()">×</span>
-                            </div>
-                        </div>
-                        <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.priceArea">
-                            <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.priceArea}}&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                    ng-click="$ctrl.canclePrice()">×</span></div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_a">
                             <a href="javascript:void(0)" ng-click="$ctrl.cancelFilter()"
@@ -412,38 +247,15 @@
 
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
-             infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
-            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="company in $ctrl.companyList">
-                <!--<div class="bdd_win_conter_left">-->
-                <!--&lt;!&ndash;<img ng-if="!company.logo"src="../../../vendor/images/logo_default.png" alt="">&ndash;&gt;-->
-                <!--<img ng-if="company.logo"  style="width: 110px;height: 110px;" src="{{company.logo}}" alt="">-->
-                <!--</div>-->
-                <!--<div class="bdd_win_conter_conter">-->
-                <!--<a href="#/companydetail?comId={{company.comId}}">-->
-                <!--<div class="bdd_win_conter_header" ng-bind="company.comName"></div>-->
-                <!--</a>-->
-                <!--<br>-->
-                <!--&lt;!&ndash;<div class="bdd_win_conter_d">&ndash;&gt;-->
-                <!--&lt;!&ndash;<span class="bdd_win_conter_span" ng-bind="company.subsist|limitTo:2"></span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-                <!--<div><span style="margin-top: 230px;">建筑单位：</span><span ng-bind="company.legalPerson"></span></div>-->
-                <!--<div>项目地区:<span ng-bind="company.regisCapital"></span></div>-->
-                <!--&lt;!&ndash;<div class="bdd_hold_top bdd_hold_text">注册时间：<span ng-bind="company.certDate"></span></div>&ndash;&gt;-->
-                <!--<br>-->
-
-                <!--<div class="bdd_hold_top bdd_hold_top_addr">房屋建筑<span ng-bind="company.regisAddress"></span></div>-->
-                <!--</div>-->
-                <!--<div class="bdd_win_conter_right"></div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <div class="bdd_win_txt_a">湖南耀邦建设有限公司</div>
+             infinite-scroll-disabled='{{$ctrl.busy}}' infinite-scroll-distance='1'>
+            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList">
+                <div class="bdd_win_txt_a">{{project.proName}}</div>
                 <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
-                    <div style="float: left">建设单位：湖南耀邦建设有限公司</div>
-                    <div style="float: left;margin-left: 40px;">项目地区：湖南长沙</div>
+                    <div style="float: left">建设单位：{{project.proOrg}}</div>
+                    <div style="float: left;margin-left: 40px;">项目地区：{{project.province}}- {{project.proWhere}}</div>
                 </div>
                 <div style="color: #d65588;font-size: 14px;background-color: #ffe5f0;width: 80px;text-align: center;margin-top: 15px;">
-                    房屋建筑
+                    {{project.proType}}
                 </div>
 
 
