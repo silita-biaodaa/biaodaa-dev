@@ -73,13 +73,14 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
     this.allArea = function () {
         this.province = "";
         this.city = "";
+        this.isCity = false;
         this.findLinks(null);
     }
 
     this.cancleEmCity = function () {
         selt.regisAddress = selt.province+"||";
         selt.city="";
-        this.findLinks(null);
+        this.findLinks(selt.regisAddress);
     };
     //---省市----end
 

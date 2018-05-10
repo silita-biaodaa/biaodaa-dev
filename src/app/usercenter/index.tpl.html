@@ -118,7 +118,7 @@
     /*下面列表*/
     .bdd_area_conter {
         width: 100%;
-        margin-bottom: 140px;
+        margin-bottom: 20px;
         overflow: hidden;
 
     }
@@ -162,16 +162,16 @@
     }
 
     .bdd_dev_area_pro_a {
-        width: 820px;
+        width: 1200px;
         margin-left: 80px;
         font-size: 16px;
-        padding-left: 12px;
+        padding-left: 10px;
     }
 
     .bdd_dev_area_pro_t {
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-left:5px;
+        padding-left:15px;
     }
 
     .bdd_dev_city_a {
@@ -186,7 +186,7 @@
 
     .bdd_area_conter_border_a {
         width: 1200px;
-        min-height: 140px;
+        min-height: 120px;
         margin: 0px auto;
     }
 
@@ -233,27 +233,22 @@
             <div class="bdd_area_a" style="background-color: white;margin: 0 auto">
                 <div class="bdd_area_boder_a">
                     <div class="bdd_area_boder_left_a">
-                        <div class="text-inline bdd_area_boder_span_a">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
+                        <div style="font-size: 15px;" class="text-inline bdd_area_boder_span_a">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
                         <div class="text-inline bdd_area_aode_a">
-                            <a class="{{ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="ctrl.allArea()">全部</a>
+                            <a style="font-size: 15px;" class="{{ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="ctrl.allArea()">全部</a>
 
-                            <div class="bdd_comp_span" ng-repeat="area in ctrl.areaList">
+                            <div style="font-size:15px;margin-left:15px" class="bdd_comp_span" ng-repeat="area in ctrl.areaList">
                                 <a class="{{ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
                                    ng-click="ctrl.clickProvince(area)"></a>
                             </div>
-
-                            <!--<div class="text-inline bdd_comp_span" ng-repeat="area in ctrl.areaList"-->
-                                 <!--ng-bind="area.name|limitTo:2" ng-click="ctrl.clickProvince(area)">-->
-                            <!--</div>-->
-
                         </div>
                         <div class="text-inline bdd_area_boder_right_a" style="padding-left: 20px">
                             <a class="span-cursor" id="to-pro-more"
                                ng-click="ctrl.moreProvince(ctrl.morePro)">
-                                <div class="to_more" ng-show="!ctrl.morePro">更多</div>
-                                <div class="to_more to_bottom" ng-show="!ctrl.morePro"></div>
-                                <div class="to_more" ng-show="ctrl.morePro">收起</div>
-                                <div class="to_more to_top" ng-show="ctrl.morePro"></div>
+                                <div style="font-size:15px;" class="to_more" ng-show="!ctrl.morePro">更多</div>
+                                <div style="font-size:15px;" class="to_more to_bottom" ng-show="!ctrl.morePro"></div>
+                                <div style="font-size:15px;" class="to_more" ng-show="ctrl.morePro">收起</div>
+                                <div style="font-size:15px;" class="to_more to_top" ng-show="ctrl.morePro"></div>
                             </a>
                         </div>
                     </div>
@@ -261,36 +256,25 @@
 
                 </div>
                 <div id="more-pro" class="bdd_dev_area_pro_a" ng-show="ctrl.morePro">
-                    <div class="bdd_comp_span_a bdd_dev_area_pro_t" ng-repeat="area in ctrl.areaList2">
+                    <div style="font-size:15px;" class="bdd_comp_span_a bdd_dev_area_pro_t" ng-repeat="area in ctrl.areaList2">
                         <a class="{{ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|limitTo:2"
                            ng-click="ctrl.clickProvince(area)"></a>
                     </div>
                 </div>
 
                 <div id="bdd_dev_city" class="bdd_dev_city_a" ng-show="ctrl.isCity" style="margin-top: 10px">
-                    <div style="padding-left: 5px" class="bdd_comp_span_c" ng-if="city">
+                    <div style="padding-left: 15px;font-size:15px;" class="bdd_comp_span_c" >
                         <a class="{{ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}" ng-click="ctrl.cancleEmCity()">全部</a>
                     </div>
-                    <div style="padding-left: 5px" class="bdd_comp_span_c" ng-repeat="city in ctrl.cityList" ng-if="city">
+                    <div style="padding-left: 15px;font-size:15px;" class="bdd_comp_span_c" ng-repeat="city in ctrl.cityList" ng-if="city">
                         <a class="{{ctrl.city==city?'span-yellow span-cursor':'span-cursor'}}" ng-bind="city" ng-click="ctrl.clickCity(city)"></a>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
-
-    </div>
-
-    <div class="bdd_catenation">
-        <div class="bdd_catention_zheng"></div>
-        <div class="bdd_catenation_cat">行业链接</div>
     </div>
 
     <div class="bdd_area_conter">
-
-
         <div class="bdd_area_conter_border">
 
             <a href="{{link.linkUrl}}" class="bdd_area_conter_border_text bdd_area_list"
