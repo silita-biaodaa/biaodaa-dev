@@ -1,4 +1,4 @@
-app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', '$anchorScroll',"$location",function ($http, $scope, utils, $stateParams, $state, userTemp,$anchorScroll,$location) {
+app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', '$anchorScroll',"$location", "utils",function ($http, $scope, utils, $stateParams, $state, userTemp,$anchorScroll,$location, utils) {
     var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
@@ -70,6 +70,13 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.maxCapital = null;
     this.priceArea = "";
     this.cancelFilter = function () {
+
+        /**
+         * 逐个清空评标办法
+         */
+       for(var temp in selt.pbModes) {
+           selt.canclePbMode(selt.pbModes[temp]);
+       }
         selt.resetParam();
         selt.queryList();
     };
@@ -480,6 +487,9 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };*/
     this.keyword =  "";
     var keyword = utils.getUrlVar('keyword');
+    if(keyword){
+        selt.keyword = decodeURI(keyword);
+    }
     var noticeType =  utils.getUrlVar('type');
 
     this.queryList = function (type) {
@@ -489,10 +499,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.setPage();
     }
 
-    if(keyword){
-        selt.keyword = decodeURI(keyword);
-        // console.log(selt.keyword);
-    }
     if(noticeType){
         selt.queryList(noticeType);
     }else{
