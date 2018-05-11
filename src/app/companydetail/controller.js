@@ -75,7 +75,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
 		}else if(type==4){
 			selt.style04 = style00;
         }else if(type==5){
-            selt.style04 = style00;
+            selt.style05 = style00;
         }
 	};
 
@@ -202,6 +202,20 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
         selt.categoryList = result.data;
 
     });
+
+    //业绩信息
+    var projectParam = {
+        comId:comId
+    }
+    this.projectList = []
+    $http.post("/project/company/list",angular.toJson(projectParam)).success(function (result) {
+        selt.projectList = result.data;
+    });
+
+    this.localProHref = function (proId) {
+        window.location.href ="index.html#/projectDetail/"+proId+"/bidding/"+proId;
+    }
+
 
     this.category = "";
     this.personList = [];

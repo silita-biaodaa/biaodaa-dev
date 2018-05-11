@@ -38,7 +38,7 @@
     <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(2)" ng-style="ctrl.style02">信誉信息</div>
     <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(3)" ng-style="ctrl.style03">资质信息</div>
     <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(4)" ng-style="ctrl.style04">人员信息</div>
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(4)" ng-style="ctrl.style05">企业业绩</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(5)" ng-style="ctrl.style05">企业业绩</div>
 </div>
 <!--内容-->
 <div class="bdd_basic_nav_conter" ng-if="ctrl.showType==1">
@@ -217,33 +217,28 @@
     </table>
 </div>
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==5">
-    <div class="bdd_Personl_talbe_header">
-        <div class="bdd_Personl_table_header_list">
-            <span class="{{ctrl.category==''?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-click="ctrl.setPage()">全部</span>
-        </div>
-        <div class="{{ctrl.category==cate.category?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
-            {{cate.category}}({{cate.num}})
-        </div>
-        <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f;" ng-bind="ctrl.personSize"></span> 条人员信息</div>
+    <div class="bdd_Personl_talbe_header" ng-if="ctrl.projectList != null && ctrl.projectList.length > 0">
+        <div class="bdd_Personl_table_header_right ">共有找到 <span style="color: #cea63f;" ng-bind="ctrl.projectList.length"></span> 条业绩信息</div>
     </div>
-    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a">
+    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectList != null && ctrl.projectList.length > 0">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
-            <th style="text-align: center;width: 20%;">姓名</th>
-            <th style="text-align: center;width: 20%;">注册类别</th>
-            <th style="text-align: center;width: 20%;">注册证书编号</th>
-            <th style="text-align: center;width: 20%;">专业</th>
-            <th style="text-align: center;width: 20%;">有效期</th>
+            <th style="text-align: center;width: 20%;">项目类别</th>
+            <th style="text-align: center;width: 20%;">项目名称</th>
+            <th style="text-align: center;width: 20%;">建设单位</th>
+            <th style="text-align: center;width: 20%;">所在地</th>
         </tr>
-        <div id="bdd_adver_header_a" infinite-scroll='ctrl.nextPage()'
-             infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1'>
-            <tr style="color:#4d3a3a;font-size: 16px;line-height: 60px" ng-repeat="person in ctrl.personList">
-                <td ng-bind="person.name"></td>
-                <td ng-bind="person.category"></td>
-                <td ng-bind="person.certNo"></td>
-                <td ng-bind="person.major"></td>
-                <td ng-bind="person.validDate"></td>
+        <div id="bdd_adver_header_a">
+            <tr style="color:#4d3a3a;font-size: 16px;line-height: 60px;cursor: pointer" ng-repeat="project in ctrl.projectList" ng-click="ctrl.localProHref('{{project.proId}}')">
+                <td ng-bind="project.proType"></td>
+                <td ng-bind="project.proName"></td>
+                <td ng-bind="project.proOrg"></td>
+                <td ng-bind="project.province"></td>
             </tr>
         </div>
     </table>
+
+    <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectList.length <= 0">
+        <span style="color: #985f0d">sorry，暂未查询到该企业的业绩信息</span>
+    </div>
 </div>
 

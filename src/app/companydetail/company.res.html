@@ -237,7 +237,7 @@
                         <div class="bdd_side_news_val">
                             <div class="bdd_side_rihgt">综合排序</div>
                             <div class="bdd_side_rihgt_r">共找到 <span style="color:#cea63f"
-                                                                    ng-bind="$ctrl.totalCount"></span> 家企业
+                                                                    ng-bind="$ctrl.totalCount"></span> 条业绩信息
                             </div>
                         </div>
                     </div>
@@ -264,6 +264,10 @@
 
             </div>
 
+
+            <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="$ctrl.projectList.length <= 0">
+                <span style="color: #985f0d">没有找到符合调接的业绩</span>
+            </div>
 
             <div id="bdd_second_menu" style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
                 <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"

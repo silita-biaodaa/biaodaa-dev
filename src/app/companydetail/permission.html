@@ -1,15 +1,27 @@
-<div class="bdd_busing_com_b">
-    <div class="bdd_busing_com_infor">湖南耀邦建设有限公司--施工许可{{ctrl.proId}}<span class="bdd_busing_com_infor_b">（中标单位)</span></div>
+<div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a">
+    <span style="color: #985f0d">sorry,暂未查询到该业绩的施工许可信息</span>
+</div>
+<!--
+<div class="bdd_busing_new_a"><img style="vertical-align: middle;margin-left:60px;" src="../../../vendor/images/icon_rectangle.png"
+                                   alt=""><span class="bdd_Busing_new_b">施工许可</span></div>
+<div class="bdd_busing_com_b" ng-repeat="build in ctrl.projectBuildList"
+    ng-click="ctrl.projectBuildDetail('{{build.pkid}}')">
+    &lt;!&ndash;<div class="bdd_busing_com_infor">省级施工许可证编号<span class="bdd_busing_com_infor_b">（中标单位)</span></div>&ndash;&gt;
     <div class="bdd_busing_com_infor_k">
-        <div class="bdd_busing_com_infor_l">中标金额：00000000万元</div>
-        <div class="bdd_busing_com_infor_h">招标类型：施工</div>
+        <div class="bdd_busing_com_infor_l">施工许可证编号：{{build.buildLicence}}</div>
+        <div class="bdd_busing_com_infor_h">省级施工许可证编号：{{build.blicence}}</div>
+
     </div>
     <div class="bdd_busing_com_infor_k">
-        <div class="bdd_busing_com_infor_l">招标方式：其他</div>
-        <div class="bdd_busing_com_infor_h">中标日期：2018-01-01</div>
+        <div class="bdd_busing_com_infor_h">合同金额（万元）：{{build.constractAmount}}</div>
+        <div class="bdd_busing_com_infor_l">面积（平方米）：{{build.acreage}}</div>
+
+    </div>
+    <div class="bdd_busing_com_infor_k">
+        <div class="bdd_busing_com_infor_1">发证日期：{{build.licenceDate}}</div>
     </div>
 </div>
-<div class="bdd_business_informessage">
+<div class="bdd_business_informessage" ng-show="ctrl.showBuild">
     <div class="bdd_business_informessage_conter">
         <div class="bdd_business_informessage_conter_l">中标通知书标号：1234567891235469874556</div>
         <div class="bdd_business_informessage_conter_r">省级中标通知书标号：1234567899874563210</div>
@@ -50,4 +62,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
