@@ -1,27 +1,27 @@
 <!--头部-->
 <div class="bdd_header">
-    <div class="bdd_Busing_text" ng-bind="$ctr1.tst">
+    <div class="bdd_Busing_text" ng-bind="$ctr1.projectDetail.proName">
     </div>
     <div class="bdd_Busing_lick">
-        <div class="bdd_Busing_span">项目编号：<span class="bdd_Busing_message_in">11122</span></div>
-        <div class="bdd_Busing_span bdd_Busing_message">省级项目编号：<span class="bdd_Busing_message_in">22222</span></div>
-        <div class="bdd_Busing_span bdd_Busing_message">总投资：<span class="bdd_Busing_message_in">22222万</span></div>
+        <div class="bdd_Busing_span">项目编号：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.projectNo"></span></div>
+        <div class="bdd_Busing_span bdd_Busing_message">省级项目编号：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.proNo"></span></div>
+        <div class="bdd_Busing_span bdd_Busing_message">总投资：<span class="bdd_Busing_message_in">{{$ctr1.projectDetail.investAmount}}万</span></div>
     </div>
     <div class="bdd_Busing_lick">
-        <div class="bdd_Busing_span">项目分类：<span class="bdd_Busing_message_in">22222</span></div>
-        <div class="bdd_Busing_span bdd_Busing_message">建设性质：<span class="bdd_Busing_message_in">12323123</span></div>
-        <div class="bdd_Busing_span bdd_Busing_message">总面积：<span class="bdd_Busing_message_in">123123123</span></div>
+        <div class="bdd_Busing_span">项目分类：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.proType"></span></div>
+        <div class="bdd_Busing_span bdd_Busing_message">建设性质：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.buildType"></span></div>
+        <div class="bdd_Busing_span bdd_Busing_message">总面积：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.acreage"></span></div>
     </div>
     <div class="bdd_Busing_lick">
-        <div class="bdd_Busing_span">立项级别：<span class="bdd_Busing_message_in">123123</span></div>
-        <div class="bdd_Busing_span bdd_Busing_message bdd_Busing_message_a">立项文号：<span class="bdd_Busing_message_in">123123123</span>
+        <div class="bdd_Busing_span">立项级别：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.proLevel"></span></div>
+        <div class="bdd_Busing_span bdd_Busing_message bdd_Busing_message_a">立项文号：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.approvalNum"></span>
         </div>
     </div>
-    <div class="bdd_Busing_text_a">建设单位：<span class="bdd_Busing_message_in">1231231</span></div>
-    <div class="bdd_Busing_text_a">建设单位组织机构代码 （统一社会信用代码）：<span class="bdd_Busing_message_in">1231231</span>
+    <div class="bdd_Busing_text_a">建设单位：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.proOrg"></span></div>
+    <div class="bdd_Busing_text_a">建设单位组织机构代码 （统一社会信用代码）：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.orgCode"></span>
     </div>
-    <div class="bdd_Busing_text_a">所在区划：<span class="bdd_Busing_message_in">12312312 - 123123</span></div>
-    <div class="bdd_Busing_text_a">工程用途：<span class="bdd_Busing_message_in">请问请问</span></div>
+    <div class="bdd_Busing_text_a">所在区划：<span class="bdd_Busing_message_in">{{$ctr1.projectDetail.province}} - {{$ctr1.projectDetail.proWhere}}</span></div>
+    <div class="bdd_Busing_text_a">工程用途：<span class="bdd_Busing_message_in" ng-bind="$ctr1.projectDetail.proUse"></span></div>
 </div>
 <!--table切换-->
 <div class="bdd_content_a">

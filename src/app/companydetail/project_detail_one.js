@@ -1,4 +1,4 @@
-app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($http,$uibModal, $log, $scope,$document,userTemp,utils) {
+app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($http,userTemp,utils) {
     var self = this;
     if (userTemp != null) {
         self.user = angular.fromJson(userTemp);
@@ -14,6 +14,7 @@ app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($ht
     var param = {
         id:self.proId
     };
+
 
     $http.post("/project/detail",angular.toJson(param)).success(function (result) {
         if(result.code == 1){
