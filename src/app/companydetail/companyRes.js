@@ -146,7 +146,7 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
     };
 
     this.localHref = function (proId) {
-        window.location.href = "index.html#/projectDetail?proId="+proId;
+        window.location.href ="index.html#/projectDetail/"+proId+"/bidding/"+proId;
     }
 }]);
 
