@@ -8,7 +8,7 @@ app.controller('CompanyTopCtrl', ['$http','$uibModal','$log','$scope','$document
 
     var paramsPage = {
         pageNo:1,
-        pageSize:6
+        pageSize:4
     };
     $http.post("/company/query/filter", angular.toJson(paramsPage)).success(function (result) {
         selt.companyList = result.data;

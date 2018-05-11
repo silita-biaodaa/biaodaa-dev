@@ -103,23 +103,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
     };
     //---省市----end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //---资质----
 	this.clickQual1 = function (qual) {
 		selt.qual1 = qual;
@@ -201,25 +184,6 @@ app.controller('CompanyCtrl', ['$http','$uibModal','$log','$scope','$document', 
         }
     };
     //----资质---end---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	this.morePro = false;
 	this.moreProvince=function(morePro){
