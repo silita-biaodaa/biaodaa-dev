@@ -200,11 +200,14 @@
                         <!--<a class="bdd_comp_span_all span-cursor span-yellow">全部</a>-->
                         <div class="bdd_comp_span">
                             <!--<a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}"-->
-                               <!--ng-bind="area.name|areaLimit"-->
-                               <!--ng-click="$ctrl.clickProvince(area)"></a>-->
-                            <a class="{{$ctrl.showProType=='市政工程'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('市政工程')">市政工程</a>
-                            <a class="{{$ctrl.showProType=='房屋建筑'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('房屋建筑')">房屋建筑</a>
-                            <a class="{{$ctrl.showProType=='其他'? 'span-cursor span-yellow':'span-cursor'}}" ng-click="$ctrl.clickProType('其他')">其他</a>
+                            <!--ng-bind="area.name|areaLimit"-->
+                            <!--ng-click="$ctrl.clickProvince(area)"></a>-->
+                            <a class="{{$ctrl.showProType=='市政工程'? 'span-cursor span-yellow':'span-cursor'}}"
+                               ng-click="$ctrl.clickProType('市政工程')">市政工程</a>
+                            <a class="{{$ctrl.showProType=='房屋建筑'? 'span-cursor span-yellow':'span-cursor'}}"
+                               ng-click="$ctrl.clickProType('房屋建筑')">房屋建筑</a>
+                            <a class="{{$ctrl.showProType=='其他'? 'span-cursor span-yellow':'span-cursor'}}"
+                               ng-click="$ctrl.clickProType('其他')">其他</a>
 
                         </div>
                     </div>
@@ -222,7 +225,8 @@
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_a" ng-if="$ctrl.showProType">
                             <div class="bdd_select bdd_font  bdd_font_color">
-                                {{$ctrl.showProType}}&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="$ctrl.cancleProType()">×</span>
+                                {{$ctrl.showProType}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                    ng-click="$ctrl.cancleProType()">×</span>
                             </div>
                         </div>
                         <div class="bdd_area_content bdd_text_vib bdd_text_vib_a">
@@ -240,15 +244,14 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
 
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
              infinite-scroll-disabled='{{$ctrl.busy}}' infinite-scroll-distance='1'>
-            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList" ng-click="$ctrl.localHref('{{project.proId}}')">
+            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList"
+                 ng-click="$ctrl.localHref('{{project.proId}}')">
                 <div class="bdd_win_txt_a">{{project.proName}}</div>
                 <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
                     <div style="float: left">建设单位：{{project.proOrg}}</div>
@@ -262,8 +265,7 @@
             </div>
 
 
-            <div id="bdd_second_menu"
-                 style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
+            <div id="bdd_second_menu" style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">
                 <div style="width: 150px;height: 25px;" ng-repeat="item in $ctrl.zzList"
                      ng-click="$ctrl.clickQual3(item,$ctrl.zzTwo,$ctrl.zzOne)">
                     <a class="a-point" ng-bind="item.name"></a>
