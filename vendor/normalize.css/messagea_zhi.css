@@ -51,8 +51,8 @@ body{
 /*活跃度*/
 .bdd_vitality{
     width:1200px;
-    height:100px;
-    margin: 0 auto;
+    /*height:100px;*/
+    /*margin: 0 auto;*/
 
 }
 .bdd_vitality_list{
@@ -134,13 +134,13 @@ body{
 /*下拉框*/
 .bdd_qinximessage_border{
     width: 900px;
-    height: 173px;
+    margin-bottom: 10px;
 
 }
 .bdd_qinximessage_boder_news{
     width: 840px;
-    height:173px;
     margin: 0 auto;
+
 
 }
 .bdd_qinximessage_text{

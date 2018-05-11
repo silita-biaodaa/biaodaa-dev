@@ -48,7 +48,7 @@
 .bdd_vitality_left_a{
     float: left;
     width: 280px;
-    margin-top: 90px;
+    margin-top: 65px;
     background-color: white;
 }
 .bdd_vitality_right{
@@ -67,8 +67,8 @@
 }
 .bdd_vita_list_a{
     width: 280px;
-    height: 100px;
-    line-height: 100px;
+    height: 60px;
+    line-height:60px;
     text-align: center;
     font-size: 18px;
     color: #ffffff;
@@ -79,7 +79,7 @@
     background-color: white;
 }
 .bdd_vita_span{
-    width:62px;
+    width:33px;
     height:3px;
     background-color: #cea63f;
     margin-top:15px;
