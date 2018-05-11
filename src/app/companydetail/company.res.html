@@ -248,7 +248,7 @@
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
              infinite-scroll-disabled='{{$ctrl.busy}}' infinite-scroll-distance='1'>
-            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList">
+            <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList" ng-click="$ctrl.localHref('{{project.proId}}')">
                 <div class="bdd_win_txt_a">{{project.proName}}</div>
                 <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
                     <div style="float: left">建设单位：{{project.proOrg}}</div>

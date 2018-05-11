@@ -466,7 +466,18 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-
+        .state('/projectDetail', {
+            url: '/projectDetail',
+            templateUrl: window.rootSrc + 'app/companydetail/bdd_business_one.html',
+            controller: 'ProjectDetailOneCtrl as $ctr1',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/project_detail_one.js'
+                    ]);
+                }]
+            }
+        })
 
     ;
     /**

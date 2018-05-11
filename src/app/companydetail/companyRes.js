@@ -144,6 +144,10 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
         self.user = null;
         window.location.href = "index.html#/home";
     };
+
+    this.localHref = function (proId) {
+        window.location.href = "index.html#/project/detail?proId="+proId;
+    }
 }]);
 
 function setContentHeight(dataList){
