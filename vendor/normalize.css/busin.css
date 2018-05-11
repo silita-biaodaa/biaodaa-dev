@@ -42,7 +42,6 @@
 .bdd_vitality_left{
     float: left;
     width: 280px;
-    height: 500px;
     background-color: white;
 }
 .bdd_vitality_left_a{
@@ -59,8 +58,8 @@
 }
 .bdd_vita_list{
     width: 280px;
-    height: 100px;
-    line-height: 65px;
+    height: 60px;
+    line-height: 20px;
     text-align: center;
     font-size: 18px;
     color: #ffffff;
@@ -79,7 +78,7 @@
     background-color: white;
 }
 .bdd_vita_span{
-    width:33px;
+    width:66px;
     height:3px;
     background-color: #cea63f;
     margin-top:15px;
@@ -174,7 +173,7 @@
     width: 900px;
     padding-right:30px;
     padding-left:30px;
-    margin-bottom:140px;
+    margin-bottom:10px;
 }
 .bdd_recruit_tet{
 
