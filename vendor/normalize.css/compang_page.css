@@ -233,12 +233,17 @@ bdd_pers_conter_boder_b{
 .bdd_per_conter_left_a{
     width: 590px;
     float: left;
-    margin-bottom:140px;
+    margin-bottom:70px;
 
 }
 .bdd_per_conter_left_b{
     width: 590px;
     float:right;
-    margin-bottom:140px;
+    margin-bottom:70px;
 }
-
+.bdd_homepage_header_a{
+    width: 1200px;
+}
+.bdd_homepage_header_qi_b{
+    left:1100px;
+}
