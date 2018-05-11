@@ -311,10 +311,15 @@
                                 <a  href="javascript:void(0)" ng-click="$ctrl.cancelFilter()" style="text-decoration: none"><span>&nbsp;&nbsp;&nbsp;&nbsp;清空</span></a>
                             </div>
 
-                            <div class="bdd_side_news_val">
+                            <div class="bdd_side_news_val" ng-show="$ctrl.totalCount != 0">
                                 <div class="bdd_side_rihgt">综合排序</div>
                                 <div class="bdd_side_rihgt_r">共找到 <span style="color:#cea63f" ng-bind="$ctrl.totalCount"></span> 家企业
                                 </div>
+                            </div>
+
+                            <div class="bdd_side_news_val" ng-show="$ctrl.totalCount == 0">
+                                <div class="bdd_side_rihgt">综合排序</div>
+                                <div class="bdd_side_rihgt_r">sorry，没有找到符合条件的企业</div>
                             </div>
                         </div>
                     </div>
@@ -328,7 +333,7 @@
     <div class="bdd_adver">
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
              infinite-scroll-disabled='$ctrl.busy' infinite-scroll-distance='1'>
-            <div class="bdd_win_conter_a bdd_win_conter_list" ng-repeat="company in $ctrl.companyList">
+            <div class="bdd_win_conter_a bdd_win_conter_list" ng-repeat="company in $ctrl.companyList" ng-show="$ctrl.totalCount != 0">
                 <div class="bdd_win_conter_left">
                     <img ng-if="!company.logo"src="../../../vendor/images/logo_default.png" alt="">
                     <img ng-if="company.logo"  style="width: 110px;height: 110px;" src="{{company.logo}}" alt="">
@@ -352,6 +357,10 @@
                     <div class="bdd_hold_top bdd_hold_top_addr">地址：<span ng-bind="company.regisAddress"></span></div>
                 </div>
                 <div class="bdd_win_conter_right"></div>
+            </div>
+
+            <div class="bdd_adver_header" ng-show="$ctrl.totalCount == 0">
+                <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 33%;"/>
             </div>
         </div>
 

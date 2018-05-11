@@ -37,8 +37,10 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
     this.goMenu = "tender?type=99&keyword=";
     this.goUrl = "index.html#/"+this.goMenu;
     $scope.searchName="搜标讯";
-    this.selectGoMenu = function(goMenu,searchName){
+    this.placeholderName = "搜索招标、中标公告";
+    this.selectGoMenu = function(goMenu,searchName,placeholderName){
         $scope.searchName=searchName;
+        selt.placeholderName = placeholderName;
         console.log("value : index.html#/" + goMenu);
         selt.goUrl = "index.html#/" + goMenu;
     };

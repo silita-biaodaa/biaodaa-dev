@@ -71,15 +71,20 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.priceArea = "";
     this.cancelFilter = function () {
 
+
+        var tempTbModes
+        if(selt.pbModes != null) {
+            tempTbModes = selt.pbModes.slice(0);
+        }
         /**
          * 逐个清空评标办法
          */
-
-        var tempTbModes = selt.pbModes.slice(0);
-
-        for (var temp in tempTbModes) {
-            selt.canclePbMode(tempTbModes[temp]);
+        if(tempTbModes != null) {
+            for (var temp in tempTbModes) {
+                selt.canclePbMode(tempTbModes[temp]);
+            }
         }
+
         selt.resetParam();
         selt.queryList();
     };

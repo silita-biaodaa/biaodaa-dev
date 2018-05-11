@@ -70,6 +70,7 @@
     <div class="bdd_scopr_top">
         <div class="bdd_scopr_top_span" ng-if="ctrl.company.comRange" ng-bind="ctrl.company.comRange"></div>
         <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange">sorry，暂未查询到该公司的经营范围</div>
+        <img src="../../../vendor/images/kym_icon_nothing.png" ng-if="!ctrl.company.comRange" style="padding-left: 380px;margin-top: -160px;"/>
     </div>
 </div>
 
@@ -93,7 +94,8 @@
     <!--鲁班奖-->
     <div class="bdd_basic_person_spans">
         <div class="bdd_lauban">
-            <div ng-show="ctrl.showTip==1">sorry，暂未查询到该公司信誉信息</div>
+            <div ng-show="ctrl.showTip==1" style="padding-left: 30px;">sorry，暂未查询到该公司信誉信息</div>
+            <img src="../../../vendor/images/kym_icon_nothing.png" ng-show="ctrl.showTip==1" style="height: 140px;padding-left: 380px;margin-top: -100px;"/>
             <div ng-repeat="item in ctrl.reputList">
                 <div class="bdd_lauban_rihgt_a">
                     <div class="bdd_lauban_left display_inline"></div>

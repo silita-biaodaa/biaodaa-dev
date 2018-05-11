@@ -612,7 +612,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
             var borrowTime = document.getElementById("borrowTime").value;
             var money = selt.money;
             if (undefined == province) {
-                alert('请选择省份！');
+                alert('请选择地区');
                 return;
             } else {
                 region = angular.fromJson(province).name;
@@ -621,21 +621,21 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                 }
             }
             if ('' == kbTime || kbTime == undefined) {
-                alert('开标时间不能为空！');
+                alert('请选择开标时间');
                 return;
             } else {
                 if (!regDateTime.test(kbTime)) {
-                    alert('开标时间格式不正确！正确格式为 2018-01-01 00:00:00');
+                    alert('开标时间格式不正确！正确格式如 2018-01-01 00:00:00');
                     selt.kbTime='';
                     return;
                 }
             }
             if ('' == borrowTime || borrowTime == undefined) {
-                alert('借款时间不能为空！');
+                alert('请选择借款时间');
                 return;
             } else {
                 if (!regDateTime.test(borrowTime)) {
-                    alert('借款时间格式不正确！正确格式为 2018-01-01 00:00:00');
+                    alert('借款时间格式不正确！正确格式如 2018-01-01 00:00:00');
                     selt.borrowTime = '';
                     return;
                 }

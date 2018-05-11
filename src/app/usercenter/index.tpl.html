@@ -294,13 +294,18 @@
         </div>
     </div>
 
+    {{ctrl.totalCount}}
     <div class="bdd_area_conter">
-        <div class="bdd_area_conter_border">
+        <div class="bdd_area_conter_border" ng-show="ctrl.totalCount != 0">
 
             <a href="{{link.linkUrl}}" class="bdd_area_conter_border_text bdd_area_list"
                ng-repeat="link in ctrl.linkList">
                 {{link.linkName}}
             </a>
+        </div>
+        <div class="bdd_area_conter_border" ng-show="ctrl.totalCount == 0">
+            <span style="padding-left: 39%;">没有找到符合条件的应用</span>
+            <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 33%;"/>
         </div>
     </div>
 

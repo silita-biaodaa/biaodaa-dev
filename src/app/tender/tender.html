@@ -454,18 +454,23 @@
                             </div>
 
 
-                            <div class="bdd_side_news_val">
+                            <div class="bdd_side_news_val" ng-show="$ctrl.totalCount != 0">
                                 <div class="bdd_side_rihgt">综合排序</div>
                                 <div class="bdd_side_rihgt_r">共找到<span style="color:#cea63f"
                                                                        ng-bind="$ctrl.totalCount"></span>公告
                                 </div>
                             </div>
 
+                            <div class="bdd_side_news_val" ng-show="$ctrl.totalCount == 0">
+                                <div class="bdd_side_rihgt">综合排序</div>
+                                <div class="bdd_side_rihgt_r">sorry，没有找到符合条件的公告</div>
+                            </div>
+
 
                         </div>
                     </div>
                 </div>
-                <a ng-repeat="notice in $ctrl.noticeList">
+                <a ng-repeat="notice in $ctrl.noticeList" ng-show="$ctrl.totalCount != 0">
                     <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}')">
                         <div class="bdd_text_z" ng-bind="notice.title">
                         </div>
@@ -486,6 +491,9 @@
                         <div class="bdd_text_riqi"><span ng-bind="notice.opendate"></span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                 </a>
+                <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer; height: 300px" ng-show="$ctrl.totalCount == 0">
+                    <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 33%;"/>
+                </div>
 
             </div>
         </div>

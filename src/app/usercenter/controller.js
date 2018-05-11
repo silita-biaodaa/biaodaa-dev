@@ -92,6 +92,7 @@ app.controller('userCenterCtrl', ['$http','$uibModal','$log','$scope','$document
         }
         $http.post("/foundation/links",angular.toJson(params)).success(function (result) {
             console.log(result);
+            selt.totalCount = result.total;
             selt.linkList = result.data;
         });
     }

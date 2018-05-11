@@ -83,17 +83,20 @@ app.controller('PersonCtrl', ['$http', '$uibModal', '$log', '$scope', '$document
 
         $http.post("/company/person", angular.toJson(paramsPage)).success(function (result) {
             var personList = result.data;
+            selt.personSize = result.total;
             if (personList != null &&
                 selt.page == result.pageNum) {
                 angular.forEach(personList, function (person) {
                     selt.personList.push(person);
                 });
-                selt.personSize = result.total;
                 selt.pageSize = result.pageSize;
                 selt.pageNo = result.pageNum;
-                selt.busy = false;
                 selt.page += 1;
             }
+            selt.busy = false;
+        }).error(function (data) {
+            console.log(data);
+            selt.busy = false;
         });
     };
 
