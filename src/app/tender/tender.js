@@ -1,4 +1,4 @@
-app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', '$anchorScroll',"$location", "utils",function ($http, $scope, utils, $stateParams, $state, userTemp,$anchorScroll,$location, utils) {
+app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$state', 'userTemp', '$anchorScroll', "$location", "utils", function ($http, $scope, utils, $stateParams, $state, userTemp, $anchorScroll, $location, utils) {
     var selt = this;
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
@@ -74,9 +74,12 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         /**
          * 逐个清空评标办法
          */
-       for(var temp in selt.pbModes) {
-           selt.canclePbMode(selt.pbModes[temp]);
-       }
+
+        var tempTbModes = selt.pbModes.slice(0);
+
+        for (var temp in tempTbModes) {
+            selt.canclePbMode(tempTbModes[temp]);
+        }
         selt.resetParam();
         selt.queryList();
     };
@@ -203,10 +206,10 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     //----资质---end---
 
     this.morePro = false;
-    this.moreProvince=function(morePro){
-        if(morePro){
+    this.moreProvince = function (morePro) {
+        if (morePro) {
             selt.isCity = false;
-        }else if(selt.city!=""){
+        } else if (selt.city != "") {
             selt.isCity = true;
         }
         selt.morePro = !morePro;
@@ -237,19 +240,19 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             pageNo: selt.page,
             pageSize: 5,
             type: selt.type,
-            kbDateStart:selt.kbDateStart,
-            kbDateEnd:selt.kbDateEnd,
-            projSumStart:selt.projSumStart,
-            projSumEnd:selt.projSumEnd,
-            regions:selt.regions,
-            zzType:selt.zzType,
-            projectType:selt.projectType
+            kbDateStart: selt.kbDateStart,
+            kbDateEnd: selt.kbDateEnd,
+            projSumStart: selt.projSumStart,
+            projSumEnd: selt.projSumEnd,
+            regions: selt.regions,
+            zzType: selt.zzType,
+            projectType: selt.projectType
         };
         if (selt.pbModes && selt.pbModes instanceof Array) {
             paramsPage.pbModes = selt.pbModes.join("||");
         }
-        if(selt.keyword){
-            paramsPage.title=selt.keyword;
+        if (selt.keyword) {
+            paramsPage.title = selt.keyword;
         }
         console.log(paramsPage)
 
@@ -269,7 +272,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
             selt.busy = false;
             console.log(paramsPage);
             console.log(result);
-        }).error(function (data){
+        }).error(function (data) {
             console.log(data);
             selt.busy = false;
         });
@@ -339,7 +342,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         return true;
     }
     this.canclePbMode = function (obj) {
-        console.log(selt.pbModes+'###'+obj);
+        console.log(selt.pbModes + '###' + obj);
         if (selt.pbModes) {
             selt.pbModes.remove(obj);
             for (var item in selt.pb) {
@@ -373,7 +376,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         if (start != null && end != null) {
             selt.projSumStart = start;
             selt.projSumEnd = end;
-            if( selt.projSumStart - selt.projSumEnd > 0) {
+            if (selt.projSumStart - selt.projSumEnd > 0) {
                 selt.projSumStart = null;
                 selt.projSumEnd = null;
                 alert("最低金额不能大于最高金额！");
@@ -391,7 +394,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     //开标时间
     this.clickKbDate = function () {
-        if(selt.kbDateStart > selt.kbDateEnd) {
+        if (selt.kbDateStart > selt.kbDateEnd) {
             selt.kbDateStart = null;
             selt.kbDateEnd = null;
             alert("开始时间不能大于结束时间！");
@@ -435,73 +438,73 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         this.totalCount = 0;
     };
 
-/*    this.queryList = function (type) {
-        if (type) {
-            selt.type = type;
-        }
+    /*    this.queryList = function (type) {
+     if (type) {
+     selt.type = type;
+     }
 
-        if (selt.type == 0) {
-            selt.isTender = true;
-        } else if (selt.type == 2) {
-            selt.isTender = false;
-        }
-        var paramsPage = {
-            pageNo: 1,
-            pageSize: 20,
-            type: selt.type
-        };
+     if (selt.type == 0) {
+     selt.isTender = true;
+     } else if (selt.type == 2) {
+     selt.isTender = false;
+     }
+     var paramsPage = {
+     pageNo: 1,
+     pageSize: 20,
+     type: selt.type
+     };
 
-        if (selt.pb) {
-            if (selt.pbModes && selt.pbModes instanceof Array) {
-                paramsPage.pbModes = selt.pbModes.join("||");
-            }
-        }
-        if (selt.kbDateStart) {
-            paramsPage.kbDateStart = selt.kbDateStart;
-        }
-        if (selt.kbDateEnd) {
-            paramsPage.kbDateEnd = selt.kbDateEnd;
-        }
-        if (selt.projSumStart) {
-            paramsPage.projSumStart = selt.projSumStart;
-        }
-        if (selt.projSumEnd) {
-            paramsPage.projSumEnd = selt.projSumEnd;
-        }
-        if (selt.regions) {
-            paramsPage.regions = selt.regions;
-        }
-        if (selt.zzType) {
-            paramsPage.zzType = selt.zzType;
-        }
-        if (selt.projectType) {
-            paramsPage.projectType = selt.projectType;
-        }
+     if (selt.pb) {
+     if (selt.pbModes && selt.pbModes instanceof Array) {
+     paramsPage.pbModes = selt.pbModes.join("||");
+     }
+     }
+     if (selt.kbDateStart) {
+     paramsPage.kbDateStart = selt.kbDateStart;
+     }
+     if (selt.kbDateEnd) {
+     paramsPage.kbDateEnd = selt.kbDateEnd;
+     }
+     if (selt.projSumStart) {
+     paramsPage.projSumStart = selt.projSumStart;
+     }
+     if (selt.projSumEnd) {
+     paramsPage.projSumEnd = selt.projSumEnd;
+     }
+     if (selt.regions) {
+     paramsPage.regions = selt.regions;
+     }
+     if (selt.zzType) {
+     paramsPage.zzType = selt.zzType;
+     }
+     if (selt.projectType) {
+     paramsPage.projectType = selt.projectType;
+     }
 
-        console.log(paramsPage);
-        $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
-            console.log(result);
-            selt.dataList = result.data;
-            selt.totalCount = result.total;
-        });
-    };*/
-    this.keyword =  "";
+     console.log(paramsPage);
+     $http.post("/notice/queryList", angular.toJson(paramsPage)).success(function (result) {
+     console.log(result);
+     selt.dataList = result.data;
+     selt.totalCount = result.total;
+     });
+     };*/
+    this.keyword = "";
     var keyword = utils.getUrlVar('keyword');
-    if(keyword){
+    if (keyword) {
         selt.keyword = decodeURI(keyword);
     }
-    var noticeType =  utils.getUrlVar('type');
+    var noticeType = utils.getUrlVar('type');
 
     this.queryList = function (type) {
-        if (type != undefined){
+        if (type != undefined) {
             selt.type = type;
         }
         selt.setPage();
     }
 
-    if(noticeType){
+    if (noticeType) {
         selt.queryList(noticeType);
-    }else{
+    } else {
         //页面初始化
         selt.queryList(0);
     }
@@ -524,10 +527,10 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     //在Controller中绑定选择控件
     var datepicker1 = $('#datetimepicker1').datetimepicker({
-        language:  'zh-CN',
-        format:'yyyy-mm-dd',
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
         weekStart: 1,
-        todayBtn:  1,
+        todayBtn: 1,
         autoclose: 1,
         todayHighlight: 1,
         startView: 2,
@@ -540,10 +543,10 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     });
 
     var datepicker2 = $('#datetimepicker2').datetimepicker({
-        language:  'zh-CN',
-        format:'yyyy-mm-dd',
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
         weekStart: 1,
-        todayBtn:  1,
+        todayBtn: 1,
         autoclose: 1,
         todayHighlight: 1,
         startView: 2,
@@ -554,7 +557,6 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.kbDateEnd = result;
         $scope.$apply();
     });
-
 
 
     this.logout = function () {
@@ -568,18 +570,18 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     /**点击跳转**/
     this.clickHref = function (type) {
-        window.location.href="#/tenderDetail/"+type;
+        window.location.href = "#/tenderDetail/" + type;
     }
-    this.clickHrefWin = function (type){
-        window.location.href="#/winbding/"+type;
+    this.clickHrefWin = function (type) {
+        window.location.href = "#/winbding/" + type;
     };
 
 
     //资质要求弹出资质等级后点击空白自动消失
-    $(document).on("click",function(e){//js
+    $(document).on("click", function (e) {//js
         var $target = $(e.target);
-        if(!($target.parents().andSelf().is("#bdd_second_menu"))){
-            $scope.$apply(function(){
+        if (!($target.parents().andSelf().is("#bdd_second_menu"))) {
+            $scope.$apply(function () {
                 $('#bdd_second_menu').hide();
             });
         }
