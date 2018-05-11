@@ -32,8 +32,6 @@
 
     }
 
-
-
     .bdd_details_value_left_top {
         width: 800px;
         height: 210px;
@@ -230,7 +228,7 @@
         color: #4d3a3a;
         margin-left: -20px;
         cursor: pointer;
-        border: 1px solid  #ccc;
+        border: 1px solid #ccc;
         letter-spacing: 1px;
     }
 
@@ -258,14 +256,14 @@
         width: 290px;
         height: 45px;
         /*margin-bottom: 45px;*/
-        background-color: white;
+        /*background-color: white;*/
         padding-left: 15px;
         border-radius: 5px;
         line-height: 45px;
-        right:361px;
+        right: 361px;
         margin-bottom: 100px;
         margin-top: 100px;
-
+        display: inline;
 
     }
 
@@ -274,15 +272,14 @@
         height: 12px;
         background-color: #cea63f;
         position: absolute;
-        top:17px;
-        left:8px;
+        top: -34px;
 
 
     }
 
     .bdd_details_header_conter {
-        /*margin-left: 5px;*/
-        /*margin-top: -95px;*/
+        margin-left: 5px;
+        margin-top: -95px;
         color: #4d3a3a;
         font-size: 18px;
         width: 290px;
@@ -303,7 +300,7 @@
         color: #4d3a3a;
         font-family: Arial;
         font-weight: 700;
-        padding-left:5px;
+        padding-left: 5px;
 
     }
 
@@ -332,10 +329,10 @@
     .bdd_follow_info {
         width: 890px;
         height: auto;
-       padding-top:50px;
+        padding-top: 50px;
         padding-left: 30px;
         padding-right: 30px;
-        margin-bottom:10px;
+        margin-bottom: 10px;
     }
 
     .bdd_follow_left {
@@ -453,6 +450,7 @@
         text-align: center;
         line-height: 20px;
         vertical-align: center;
+        padding-top:10px;
     }
 
     .bdd_stage_bd {
@@ -496,14 +494,23 @@
     .bdd_datails_value_a {
 
         margin-top: -50px;
-        margin-bottom:30px;
+        margin-bottom: 30px;
     }
-    .bdd_stage_bottom_list:hover{
+
+    .bdd_stage_bottom_list:hover {
         background-color: #cea63f;
         color: white;
     }
-    .bdd_stage_bottom_list{
-        color:#4d3a3a;
+
+    .bdd_stage_bottom_list {
+        color: #4d3a3a;
+        padding-top:2px;
+
+    }
+    .bdd_details_value_right{
+        position: absolute;
+        top:150px;
+        left:1300px;
     }
 
     /**二维码**/
@@ -530,8 +537,8 @@
                                 style="color:#4d3a3a">{{currentTender.projDq}}</span></span>
 
                         <span style="margin-top: 13px"
-                        class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">项目金额：<span
-                        style="color: #4d3a3a">{{currentTender.projSum}}万元</span></span><br>
+                              class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">项目金额：<span
+                                style="color: #4d3a3a">{{currentTender.projSum}}万元</span></span><br>
                         <br>
 
                         <div style="margin-top: 20px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
@@ -582,8 +589,8 @@
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">保证金</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <span style="float: left">保证金截止时间：{{currentTender.tbAssureEndDate}}&nbsp;{{currentTender.tbAssureEndTime}}</span>
-                            <span style="float: right">保证金金额：{{currentTender.tbAssureSum}}&nbsp;{{currentTender.tbAssureSum?"万元":""}}</span>
+                            <span style="float: left">截止时间：{{currentTender.tbAssureEndDate}}&nbsp;{{currentTender.tbAssureEndTime}}</span>
+                            <span style="float: right">金额：{{currentTender.tbAssureSum}}&nbsp;{{currentTender.tbAssureSum?"万元":""}}</span>
                         </div>
                         <br>
                         <br>
@@ -594,9 +601,9 @@
                         <div style="float: right;width:760px;line-height:30px;margin-top:15px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
                             <div>
-                                报名截止时间：{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}
+                                截止时间：{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}
                             </div>
-                            <div> 报名地址：{{currentTender.bmSite}}</div>
+                            <div>地址：{{currentTender.bmSite}}</div>
 
                         </div>
                     </div>
@@ -605,7 +612,7 @@
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">开标</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <span style="float: left">开标截止时间：{{currentTender.kbDate}}&nbsp;{{currentTender.kbTime}}</span>
+                            <span style="float: left">截止时间：{{currentTender.kbDate}}&nbsp;{{currentTender.kbTime}}</span>
                             <span style="float: right">开标人员：{{currentTender.kbStaffAsk}}</span></div>
                         <div style="float: right;width:760px;line-height:10px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
@@ -614,21 +621,27 @@
                     </div>
                     <div class="bdd_follow bdd_follow_foll">
 
-                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt="" ng-show="!currentTender.collected" ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
-                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt="" ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
+                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt=""
+                             ng-show="!currentTender.collected"
+                             ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
+                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt=""
+                             ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb" ng-click="share('xinlang')" style=" cursor: pointer;"><img
+                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb" ng-click="share('xinlang')"
+                         style=" cursor: pointer;"><img
                             src="../../../vendor/images/zb_icon_weibo.png" alt="">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq"  style=" cursor: pointer;" ng-click="share('wechat')">
+                    <div class="bdd_follow bdd_follow_pyq" style=" cursor: pointer;" ng-click="share('wechat')">
                         <img src="../../../vendor/images/zb_icon_wechat.png" alt="">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq"  style=" cursor: pointer;" ng-click="share('qq')"><img src="../../../vendor/images/zb_icon_qq.png" alt="">
+                    <div class="bdd_follow bdd_follow_pyq" style=" cursor: pointer;" ng-click="share('qq')"><img
+                            src="../../../vendor/images/zb_icon_qq.png" alt="">
                     </div>
                     <!--<div class="bdd_follow bdd_follow_pyq"  style=" cursor: pointer;" ><img src="../../../vendor/images/zb_icon_pyq.png" alt="">-->
                     <!--</div>-->
                     <!--<div class="bdd_follow "><div class="bdd_follow_weibo">分享到微博</div></div>-->
-                    <div class="bdd_follow " ><img class="bdd_follow_weibo" style="width: 100px;height: 100px;" src="{{imgCodeUrl}}" ng-show="isShow"></div>
+                    <div class="bdd_follow "><img class="bdd_follow_weibo" style="width: 100px;height: 100px;"
+                                                  src="{{imgCodeUrl}}" ng-show="isShow"></div>
                 </div>
                 <div class="bdd_follow_info" id="bdd_follow_info_two" style="background-color: white">
                 </div>
@@ -636,18 +649,24 @@
                 <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
                 <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
 
-            <div class="bdd_details_value_right">
-                <div class="bdd_details_header">
-                    <div class="bdd_details_header_left"></div>
-                    <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
-                </div>
-                <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
-                    <a href="#/companydetail?comId={{item.comId}}">
-                    <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png" alt="">{{item.comName}}</div>
-                    <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
-                    <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
-                    <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
-                    </a>
+                <div class="bdd_details_value_right">
+                    <div class="bdd_details_header">
+                        <div class="bdd_details_header_left"></div>
+                        <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span
+                                style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img
+                                src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
+                    </div>
+                    <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
+                        <a href="#/companydetail?comId={{item.comId}}">
+                            <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png"
+                                                                 alt="">{{item.comName}}
+                            </div>
+                            <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
+                            <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
+                            <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -673,9 +692,11 @@
                         <!--class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_data_c">项目金额：<span-->
                         <!--style="color: #4d3a3a">{{currentTender.projSum}}元</span></span><br>-->
 
-                        <div style="margin-top: 20px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
+                        <div style="margin-top: 20px"
+                             class="bdd_details_value_input bdd_details_m bdd_details_data_c">
                             报名地点：<span style="color:#4d3a3a">{{currentTender.bmSite}}</span></div>
-                        <div style="margin-top: 7px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
+                        <div style="margin-top: 7px"
+                             class="bdd_details_value_input bdd_details_m bdd_details_data_c">
                             开标地点：<span style="color:#4d3a3a">{{currentTender.kbSite}}</span></div>
                     </div>
                 </div>
@@ -683,7 +704,8 @@
                     <div class="bdd_details_html_left">
                         <a ng-click="toTenderSayList(currentTender.id,0)">
                             <div class="bdd_style_img_a "><img class="bdd_style_img_pic_c"
-                                                               src="../../../vendor/images/zb_icon_xggg.png" alt=""/>
+                                                               src="../../../vendor/images/zb_icon_xggg.png"
+                                                               alt=""/>
                             </div>
                             <div class="bdd_style_value_a">相关公告 {{relNoticeCount==null?0:relNoticeCount}}个</div>
                         </a>
@@ -758,41 +780,48 @@
                         </div>
                     </div>
                     <div class="bdd_stage_bottom">
-                        <div class="bdd_stage_bd">共&nbsp;<span style="color: #cea63f">{{bdSize?bdSize:0}}</span>&nbsp;个标段</div>
+                        <div class="bdd_stage_bd">共&nbsp;<span style="color: #cea63f">{{bdSize?bdSize:0}}</span>&nbsp;个标段
+                        </div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
                                 ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
-                                                                          type="button" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
+                                                                      type="button">
+                                <div class="bdd_stage_bottom_span_a"> {{$index+1}}</div>
+                            </a>
                             </li>
                         </div>
                     </div>
                     <div style="cursor: pointer" class="bdd_follow bdd_follow_foll">
-                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt="" ng-show="!currentTender.collected" ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
-                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt="" ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
+                        <img src="../../../vendor/images/zb_btn_follow.png" style="cursor: pointer" alt=""
+                             ng-show="!currentTender.collected"
+                             ng-click="addConcern('{{currentTender.id}}','{{currentTender.type}}')">
+                        <img src="../../../vendor/images/zb_btn_follow_pre.png" style="cursor: pointer" alt=""
+                             ng-show="currentTender.collected" ng-click="cancelConcern('{{currentTender.id}}')">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span" ng-click="share('xinlang')" style=" cursor: pointer;"><img
+                    <div class="bdd_follow bdd_follow_pyq bdd_follow_zb bdd_follow_zb_span"
+                         ng-click="share('xinlang')" style=" cursor: pointer;"><img
                             src="../../../vendor/images/zb_icon_weibo.png" alt=""></div>
-                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('wechat')" style=" cursor: pointer;"><img src="../../../vendor/images/zb_icon_wechat.png" alt="">
+                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('wechat')" style=" cursor: pointer;"><img
+                            src="../../../vendor/images/zb_icon_wechat.png" alt="">
                     </div>
-                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('qq')" style=" cursor: pointer;"><img src="../../../vendor/images/zb_icon_qq.png" alt="">
+                    <div class="bdd_follow bdd_follow_pyq" ng-click="share('qq')" style=" cursor: pointer;"><img
+                            src="../../../vendor/images/zb_icon_qq.png" alt="">
                     </div>
                     <!--<div class="bdd_follow bdd_follow_pyq"><img src="../../../vendor/images/zb_icon_pyq.png" alt="">-->
-                    </div>
-                    <!--<div class="bdd_follow "><div class="bdd_follow_weibo">分享到微博</div></div>-->
-                <div class="bdd_follow " ><img  class="bdd_follow_weibo" style="width: 100px;height: 100px;margin-top: 64px;margin-left: -105px;" src="{{imgCodeUrl}}" ng-show="isShow"></div>
                 </div>
-                <div class="bdd_follow_info_one" id="bdd_follow_info_one" style="background-color: white">
-
-                </div>
-                <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
-                <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
+                <!--<div class="bdd_follow "><div class="bdd_follow_weibo">分享到微博</div></div>-->
+                <div class="bdd_follow "><img class="bdd_follow_weibo"
+                                              style="width: 100px;height: 100px;margin-top: 64px;margin-left: -105px;"
+                                              src="{{imgCodeUrl}}" ng-show="isShow"></div>
             </div>
-            <div class="bdd_details_value_right">
+            <div class="bdd_follow_info_one" id="bdd_follow_info_one" style="background-color: white">
 
-
-
+            </div>
+            <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
+            <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
 
         </div>
+
+
     </div>
-</div>
 </div>
