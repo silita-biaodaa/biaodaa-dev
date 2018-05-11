@@ -1,4 +1,4 @@
-app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($http,userTemp,utils) {
+app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils','$state',function($http,userTemp,utils,$state) {
     var self = this;
     if (userTemp != null) {
         self.user = angular.fromJson(userTemp);
@@ -9,10 +9,10 @@ app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($ht
     this.tst="112233";
 
 
-    self.proId = utils.getUrlVar("proId");
+    this.proId = $state.params.proId;
 
     var param = {
-        id:self.proId
+        id:$state.params.proId
     };
 
 
@@ -23,5 +23,15 @@ app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils',function($ht
         }else{
             alert('获取详细信息失败');
         }
-    })
+    });
+
+
+    console.log( $state.current.name);
+    this.menu = $state.current.name;
+    this.selectMenu = function (menu) {
+        self.menu = menu;
+    };
+
+
+
 }]);

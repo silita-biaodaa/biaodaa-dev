@@ -466,14 +466,74 @@ function config($stateProvider, $urlRouterProvider, $compileProvider, $httpProvi
                 }]
             }
         })
-        .state('/projectDetail', {
-            url: '/projectDetail',
+        .state('projectDetail', {
+            url: '/projectDetail/:proId',
             templateUrl: window.rootSrc + 'app/companydetail/bdd_business_one.html',
             controller: 'ProjectDetailOneCtrl as $ctr1',
             resolve: {
                 load: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
                         'app/companydetail/project_detail_one.js'
+                    ]);
+                }]
+            }
+        })
+        .state('projectDetail.bidding', {
+            url: '/bidding/:proId',
+            templateUrl: window.rootSrc + 'app/companydetail/bidding.html',
+            controller: 'BiddingCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/bidding.js'
+                    ]);
+                }]
+            }
+        })
+        .state('projectDetail.censor', {
+            url: '/censor/:proId',
+            templateUrl: window.rootSrc + 'app/companydetail/censor.html',
+            controller: 'CensorCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/censor.js'
+                    ]);
+                }]
+            }
+        })
+        .state('projectDetail.permission', {
+            url: '/permission/:proId',
+            templateUrl: window.rootSrc + 'app/companydetail/permission.html',
+            controller: 'PermissionCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/permission.js'
+                    ]);
+                }]
+            }
+        })
+        .state('projectDetail.contract', {
+            url: '/contract/:proId',
+            templateUrl: window.rootSrc + 'app/companydetail/contract.html',
+            controller: 'ContractCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/contract.js'
+                    ]);
+                }]
+            }
+        })
+        .state('projectDetail.complete', {
+            url: '/complete/:proId',
+            templateUrl: window.rootSrc + 'app/companydetail/complete.html',
+            controller: 'CompleteCtrl as ctrl',
+            resolve: {
+                load: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        'app/companydetail/complete.js'
                     ]);
                 }]
             }
