@@ -65,6 +65,7 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
 		selt.style02 = "";
 		selt.style03 = "";
 		selt.style04 = "";
+        selt.style05 = "";
 		if(type==1){
 			selt.style01 = style00;
 		}else if(type==2){
@@ -73,7 +74,9 @@ app.controller('CompanyDetailCtrl', ['$http','$scope','utils','userTemp','$ancho
 			selt.style03 = style00;
 		}else if(type==4){
 			selt.style04 = style00;
-		}
+        }else if(type==5){
+            selt.style04 = style00;
+        }
 	};
 
 
