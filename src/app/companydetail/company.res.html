@@ -251,7 +251,7 @@
         <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
              infinite-scroll-disabled='{{$ctrl.busy}}' infinite-scroll-distance='1'>
             <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in $ctrl.projectList"
-                 ng-click="$ctrl.localHref('{{project.proId}}')">
+                 ng-click="$ctrl.localHref('{{project.proId}}')" style="cursor: pointer">
                 <div class="bdd_win_txt_a">{{project.proName}}</div>
                 <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
                     <div style="float: left">建设单位：{{project.proOrg}}</div>
@@ -266,7 +266,7 @@
 
 
             <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="$ctrl.projectList.length <= 0">
-                <span style="color: #985f0d">没有找到符合调接的业绩</span>
+                <span style="color: #985f0d">没有找到符合条件的业绩</span>
             </div>
 
             <div id="bdd_second_menu" style="width: 150px;overflow:hidden;background-color: white;position: absolute;padding-left: 10px;">

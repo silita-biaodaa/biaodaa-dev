@@ -21,6 +21,10 @@ app.controller('CompanyTopCtrl', ['$http','$uibModal','$log','$scope','$document
     });
 
 
+    this.localHrefProject = function (proId) {
+        window.location.href ="index.html#/projectDetail/"+proId+"/bidding/"+proId;
+    };
+
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");

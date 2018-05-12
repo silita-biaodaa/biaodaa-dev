@@ -8,7 +8,6 @@ app.controller('BiddingCtrl', ['$http', 'userTemp','utils','$state',function($ht
 
     this.proId = $state.params.proId;
 
-    this.detailShow = false;
     this.projectZhongbiaoList = []
     this.initProZhaotou = function () {
         var param = {
@@ -22,20 +21,14 @@ app.controller('BiddingCtrl', ['$http', 'userTemp','utils','$state',function($ht
                 angular.forEach(self.projectZhongbiaoList,function (item) {
                     item.isShow = false;
                 })
-            }else {
-                alert('查询列表失败');
+            }else if(result.code == 0) {
+                window.location.href = 'index.html#/login';
             }
         })
     };
 
     this.zhaoProjectDetail = {}
-    this.projectZhaoDetail = function (pkid,company,zhaoType,showType) {
-        if(showType==true){
-            angular.forEach(self.projectZhongbiaoList,function (item) {
-                    item.isShow = false;
-            })
-            return ;
-        }
+    this.projectZhaoDetail = function (pkid,company,zhaoType) {
         var zhaoParam = {
             proId:self.proId,
             tabType:"zhaotoubiao",
@@ -55,6 +48,13 @@ app.controller('BiddingCtrl', ['$http', 'userTemp','utils','$state',function($ht
             console.log(self.zhaoProjectDetail);
         });
     };
+
+    this.closeDetail = function () {
+        alert('OK');
+        angular.forEach(self.projectZhongbiaoList,function (item) {
+            item.isShow = false;
+        })
+    }
 
     this.initProZhaotou();
 }]);

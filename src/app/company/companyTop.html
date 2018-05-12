@@ -86,15 +86,14 @@
                 <img src="../../../vendor/images/qx_title2.png" alt="">
                 <div class="bdd_homepage_header_qin">业绩</div>
                 <div class="bdd_homepage_header_qi bdd_homepage_header_qi_b">
-                    <a href="#/person"><span style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span></a>
+                    <a href="#/companyRes"><span style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span></a>
                     <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span>
                 </div>
 
                 <div >
-                    <div  class="bdd_adver_header bdd_adver_header_b" infinite-scroll='$ctrl.nextPage()'
-                         infinite-scroll-disabled='{{ctrl.busy}}' infinite-scroll-distance='1'>
+                    <div  class="bdd_adver_header bdd_adver_header_b">
                         <div class="bdd_win_conter_b bdd_win_conter_list_b bdd_win_b" ng-repeat="project in ctrl.projectList"
-                             ng-click="$ctrl.localHref('{{project.proId}}')">
+                             ng-click="ctrl.localHrefProject('{{project.proId}}')" style="cursor: pointer">
                             <div class="bdd_win_txt_a">{{project.proName}}</div>
                             <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
                                 <div style="float: left">建设单位：{{project.proOrg}}</div>
