@@ -6,6 +6,18 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
         self.user = null;
     }
 
+    /**
+     * 强制刷新用户状态
+     */
+    var refresh = utils.getUrlVar('refresh');
+    if(refresh == 'true') {
+        history.go(0);
+        window.location.href = "index.html#/companyRes";
+    }else {
+        if(null == self.user){
+            window.location.href = "index.html#/login?service=companyRes";
+        }
+    }
     this.keyword =  "";
     var keyword = utils.getUrlVar('keyword');
     if(keyword){
@@ -75,11 +87,6 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
     //更多
 	this.morePro = false;
 	this.moreProvince=function(morePro){
-	    if(morePro){
-            self.isCity = false;
-        }else if(self.city!=""){
-	        self.isCity = true;
-        }
         self.morePro = !morePro;
 	};
 

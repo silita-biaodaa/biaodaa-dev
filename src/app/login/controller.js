@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', '$state', function ($http, $log, $scope, $document, userTemp, $state) {
+app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp', '$state','utils', function ($http, $log, $scope, $document, userTemp, $state,utils) {
     var selt = this;
 
     var temp = getCookie("userCookie");
@@ -26,6 +26,7 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
     /**
      * 登录
      */
+    var service = utils.getUrlVar("service");
     this.login = function (valid) {
         var params = {
             version: "0",
@@ -46,7 +47,11 @@ app.controller('LoginCtrl', ['$http', '$log', '$scope', '$document', 'userTemp',
                     userTemp = vo;
                     sessionStorage.setItem("X-TOKEN", result.data.xtoken);
                     sessionStorage.setItem("userTemp", vo);
-                    window.location.href = "index.html#/home?refresh=true";
+                    if(null != service){
+                        window.location.href = "index.html#/"+service+"?refresh=true";
+                    }else{
+                        window.location.href = "index.html#/home?refresh=true";
+                    }
 
                     if (flag) {
                         setCookie("userCookie", angular.toJson(params), 7);

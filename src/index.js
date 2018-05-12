@@ -13,7 +13,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
         sessionStorage.removeItem("userTemp");
         userTemp = null;
         selt.user = null;
-        window.location.href = "index.html#/home";
+        window.location.href = "index.html#/home?refresh=true";
     };
 
     //select option改变触发的事件
