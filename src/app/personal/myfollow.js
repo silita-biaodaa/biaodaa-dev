@@ -72,6 +72,7 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
             console.log(result);
             selt.resultLength=result.data.length;
             selt.returnPageNum=result.pageNum;
+            selt.noticeTotal = result.total;
             if(selt.returnPageNum!=selt.param.pageNo){//翻页时当前页没有记录，后端也会返回上一页记录。防止继续翻页
                 selt.resultLength=-1;
                 if (selt.param.type == 0) {
@@ -116,7 +117,7 @@ app.controller('MyfollowCtrl', ['$http','$uibModal','$log','$scope','$document',
         $http.post("/userCenter/listCollectionCompany", angular.toJson(this.param)).success(function (result) {
             console.log("##result.pageNum："+result.pageNum);
             console.log(result);
-
+            selt.companyTotal = result.total;
             selt.resultLength = result.data.length;
             selt.returnPageNum =result.pageNum;
             if (selt.companyList) {

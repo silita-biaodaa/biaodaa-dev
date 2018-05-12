@@ -13,13 +13,18 @@
      infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='0.5'>
 
     <div style="height: auto" class="bdd_qinximessage_border">
-        <div class="bdd_qinximessage_boder_news" ng-repeat="message in ctrl.messageList">
+        <div class="bdd_qinximessage_boder_news" ng-repeat="message in ctrl.messageList"  ng-show="ctrl.totalCount != 0">
             <div style="margin-top: 40px" class="bdd_qinximessage_text_side">
                 <div class="bdd_qinximessage_text"><span ng-bind="message.title"></span></div>
                 <div class="bdd_qinximessage_data"><span ng-bind="message.createdate"></span></div>
             </div>
             <div class="bdd_qinximessage_tet"><span ng-bind="message.message"></span></div>
             <div class="bdd_qinximessage_br"></div>
+        </div>
+
+        <div class="bdd_qinximessage_boder_news" ng-show="ctrl.totalCount == 0">
+            <span>你还没有收到新的消息通知</span>
+            <img src="../../../vendor/images/kym_icon_xiaoxi.png" style="padding-left: 10%;"/>
         </div>
     </div>
     <!--<div style="margin-top: 20px;text-align: center" ng-show='ctrl.busy'>数据加载中...</div>-->

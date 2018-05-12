@@ -30,14 +30,13 @@ app.controller('MessagesCtrl', ['$http', '$uibModal', '$log', '$scope', '$docume
 
         $http.post("/userCenter/listMessageByUserId", angular.toJson(paramsPage)).success(function (result) {
             var messageList = result.data;
+            selt.totalCount = result.total;
             console.log(messageList);
             if (messageList != null && selt.page == result.pageNum) {
                 angular.forEach(messageList, function (msg) {
                     selt.messageList.push(msg);
                 });
-                selt.totalCount = result.total;
                 selt.pageSize = result.pageSize;
-                ;
                 selt.pageNo = result.pageNum;
                 selt.busy = false;
                 selt.page += 1;

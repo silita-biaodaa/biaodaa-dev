@@ -64,14 +64,14 @@
 
 </div>
 <!--经营范围-->
-<div class="bdd_scope" ng-if="ctrl.showType==1">
+<div class="bdd_scope" ng-if="ctrl.showType==1" style="height: 250px;">
     <div class="bdd_scope_conter">
         <div class="bdd_scope_conter_right"><span><div class="bdd_scope_conter_left"></div></span>经营范围</div>
     </div>
     <div class="bdd_scopr_top">
         <div class="bdd_scopr_top_span" ng-if="ctrl.company.comRange" ng-bind="ctrl.company.comRange"></div>
-        <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange">sorry，暂未查询到该公司的经营范围</div>
-        <img src="../../../vendor/images/kym_icon_nothing.png" ng-if="!ctrl.company.comRange" style="padding-left: 380px;margin-top: -160px;"/>
+        <img src="../../../vendor/images/kym_icon_nothing.png" ng-if="!ctrl.company.comRange" style="padding-left: 400px;margin-top: -30px;height: 200px;"/>
+        <div class="bdd_scopr_top_span" ng-if="!ctrl.company.comRange" style="padding-left: 380px;margin-top: -160px;">sorry，暂未查询到该公司的经营范围</div>
     </div>
 </div>
 
@@ -95,8 +95,8 @@
     <!--鲁班奖-->
     <div class="bdd_basic_person_spans">
         <div class="bdd_lauban">
-            <div ng-show="ctrl.showTip==1" style="padding-left: 30px;">sorry，暂未查询到该公司信誉信息</div>
             <img src="../../../vendor/images/kym_icon_nothing.png" ng-show="ctrl.showTip==1" style="height: 140px;padding-left: 380px;margin-top: -100px;"/>
+            <div ng-show="ctrl.showTip==1" style="padding-left: 360px;">sorry，暂未查询到该公司信誉信息</div>
             <div ng-repeat="item in ctrl.reputList">
                 <div class="bdd_lauban_rihgt_a">
                     <div class="bdd_lauban_left display_inline"></div>
@@ -167,9 +167,10 @@
         <div class="{{ctrl.qualType==qual.qualType?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-repeat="qual in ctrl.qualTypeList" ng-bind="qual.qualType" ng-click="ctrl.typeToQual(qual.list,qual.qualType)">
 
         </div>
-        <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f" ng-bind="ctrl.qualSize"></span> 条资质信息</div>
+        <div class="bdd_Personl_table_header_right" ng-show="ctrl.qualSize != 0">共有 <span style="color: #cea63f" ng-bind="ctrl.qualSize"></span> 条资质信息</div>
+        <div class="bdd_Personl_table_header_right" ng-show="ctrl.qualSize == 0">sorry，暂未查询到该公司的资质信息</div>
     </div>
-    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none">
+    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none" ng-show="ctrl.qualSize != 0">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
             <th style="text-align: center;width: 20%;">资质名称</th>
             <th style="text-align: center;width: 20%;">资质编号</th>
@@ -183,6 +184,9 @@
             <td ng-bind="item.certOrg"></td>
         </tr>
     </table>
+    <div ng-show="ctrl.qualSize == 0">
+        <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 380px;margin-top: -160px;"/>
+    </div>
 </div>
 
 <!--人员信息-->
@@ -194,9 +198,10 @@
         <div class="{{ctrl.category==cate.category?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-repeat="cate in ctrl.categoryList"  ng-click="ctrl.selectCate(cate.category)">
             {{cate.category}}({{cate.num}})
         </div>
-        <div class="bdd_Personl_table_header_right ">共有 <span style="color: #cea63f;" ng-bind="ctrl.personSize"></span> 条人员信息</div>
+        <div class="bdd_Personl_table_header_right" ng-show="ctrl.personSize != 0">共有 <span style="color: #cea63f;" ng-bind="ctrl.personSize"></span> 条人员信息</div>
+        <div class="bdd_Personl_table_header_right" ng-show="ctrl.personSize == 0">sorry，暂未查询到该公司的人员信息</div>
     </div>
-    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a">
+    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-show="ctrl.personSize != 0">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
             <th style="text-align: center;width: 20%;">姓名</th>
             <th style="text-align: center;width: 20%;">注册类别</th>
@@ -215,12 +220,18 @@
         </tr>
         </div>
     </table>
+    <div ng-show="ctrl.personSize == 0">
+        <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 380px;margin-top: -60px;"/>
+    </div>
 </div>
 <div class="bdd_Personl_talbe" ng-if="ctrl.showType==5">
-    <div class="bdd_Personl_talbe_header" ng-if="ctrl.projectList != null && ctrl.projectList.length > 0">
-        <div class="bdd_Personl_table_header_right ">共有找到 <span style="color: #cea63f;" ng-bind="ctrl.projectList.length"></span> 条业绩信息</div>
+    <div class="bdd_Personl_talbe_header" ng-if="ctrl.projectList.length > 0">
+        <div class="bdd_Personl_table_header_right">共有找到 <span style="color: #cea63f;" ng-bind="ctrl.projectList.length"></span> 条业绩信息</div>
     </div>
-    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectList != null && ctrl.projectList.length > 0">
+    <div class="bdd_Personl_talbe_header" ng-if="ctrl.projectList == null || ctrl.projectList.length == 0">
+        <div class="bdd_Personl_table_header_right">sorry，暂未查询到该公司的业绩信息</div>
+    </div>
+    <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectList.length > 0">
         <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
             <th style="text-align: center;width: 20%;">项目类别</th>
             <th style="text-align: center;width: 20%;">项目名称</th>
@@ -237,8 +248,8 @@
         </div>
     </table>
 
-    <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectList.length <= 0">
-        <span style="color: #985f0d">sorry，暂未查询到该企业的业绩信息</span>
+    <div ng-if="ctrl.projectList == null || ctrl.projectList.length == 0">
+        <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 380px;"/>
     </div>
 </div>
 
