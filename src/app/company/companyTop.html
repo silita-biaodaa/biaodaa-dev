@@ -7,8 +7,15 @@
     }
     .bdd_win_conter_list_b{
         height: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
+        margin-top: 10px;
+        background-color: white;
+        height: 140px;
+        padding-top:25px;
+        padding-left: 10px;
+    }
+    .bdd_adver_header_b{
+        margin-bottom: 140px;
+        margin-top: -20px;
     }
 
 </style>
@@ -83,8 +90,8 @@
                     <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span>
                 </div>
 
-                <div class="">
-                    <div id="" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
+                <div >
+                    <div  class="bdd_adver_header bdd_adver_header_b" infinite-scroll='$ctrl.nextPage()'
                          infinite-scroll-disabled='{{ctrl.busy}}' infinite-scroll-distance='1'>
                         <div class="bdd_win_conter_b bdd_win_conter_list_b bdd_win_b" ng-repeat="project in ctrl.projectList"
                              ng-click="$ctrl.localHref('{{project.proId}}')">
