@@ -1,6 +1,5 @@
 // 关于月份： 在设置时要-1，使用时要+1
 $(function () {
-
   $('#calendar').calendar({
     ifSwitch: true, // 是否切换月份
     hoverDate: true, // hover是否显示当天信息

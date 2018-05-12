@@ -818,7 +818,25 @@
             </div>
             <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
             <!--<div class="bdd_follow_left">上一篇：&nbsp;&nbsp;湖南省建筑业协会三届四次常务理事会暨三届五次。</div>-->
-
+            <div class="bdd_details_value_right">
+                <div class="bdd_details_header">
+                    <div class="bdd_details_header_left"></div>
+                    <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                            style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span
+                            style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img
+                            src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
+                </div>
+                <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
+                    <a href="#/companydetail?comId={{item.comId}}">
+                        <div class="bdd_details_js_two"><img src="../../../vendor/images/logo_default_48px.png"
+                                                             alt="">{{item.comName}}
+                        </div>
+                        <div class="bdd_details_js_new bdd_details_messg">法人：{{item.legalPerson}}</div>
+                        <div class="bdd_details_js_new">注册资本：{{item.regisCapital}}</div>
+                        <div class="bdd_details_js_new">经济类型：{{item.subsist}}</div>
+                    </a>
+                </div>
+            </div>
         </div>
 
 
