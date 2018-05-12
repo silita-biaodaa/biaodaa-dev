@@ -1,4 +1,3 @@
-
 <div class="bdd_trends_contont">
     <div class="bdd_trends_border">
         <!--内容-->
@@ -16,7 +15,8 @@
                 <div class="bdd_homepage_header_qin">热门人员榜</div>
                 <div class="bdd_homepage_header_qi">
                     <a href="#/person"><span style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span></a>
-                    <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span></div>
+                    <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span>
+                </div>
             </div>
         </div>
         <!--内容-->
@@ -26,15 +26,16 @@
                     <div class="bdd_pers_content_boder">
                         <div class="bdd_pers_conter_border_left">
                             <div class="bdd_pers_left_aide">
-                                <img ng-if="!company.logo"src="../../../vendor/images/logo_default_48px.png" alt="">
-                                <img ng-if="company.logo"  style="width: 48px;height: 48px;" src="{{company.logo}}" alt="">
+                                <img ng-if="!company.logo" src="../../../vendor/images/logo_default_48px.png" alt="">
+                                <img ng-if="company.logo" style="width: 48px;height: 48px;" src="{{company.logo}}"
+                                     alt="">
                             </div>
                         </div>
                         <div class="bdd_pers_conter_border_right">
                             <a href="#/companydetail?comId={{company.comId}}">
                                 <div class="bdd_pers_conter_spans" ng-bind="company.comName"></div>
                             </a>
-                            <div  class="bdd_pers_conter_aide"><span ng-bind="company.subsist|limitTo:2"></span></div>
+                            <div class="bdd_pers_conter_aide"><span ng-bind="company.subsist|limitTo:2"></span></div>
                         </div>
                         <div class="bdd_pers_top_boder">
                             <div class="bdd_pers_top_boder_left">法定代表人：<span ng-bind="company.legalPerson"></span></div>
@@ -42,7 +43,7 @@
                             <div class="bdd_pers_top_boder_left">地址：<span ng-bind="company.comAddress"></span></div>
                         </div>
                         <!--<div class="bdd_pers_top_boder_ad">-->
-                            <!--<div class="bdd_pers_ad">地址：<span ng-bind="company.comAddress"></span></div>-->
+                        <!--<div class="bdd_pers_ad">地址：<span ng-bind="company.comAddress"></span></div>-->
                         <!--</div>-->
                     </div>
                 </div>
@@ -59,16 +60,38 @@
                 </div>
             </div>
         </div>
+        <div>
             <div class="bdd_homepage_header_right bdd_homepage_header_a">
                 <img src="../../../vendor/images/qx_title2.png" alt="">
                 <div class="bdd_homepage_header_qin">业绩</div>
                 <div class="bdd_homepage_header_qi bdd_homepage_header_qi_b">
                     <a href="#/person"><span style="font-size: 16px;color: #ccbebe">&nbsp;&nbsp;更多</span></a>
-                    <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span></div>
+                    <span><img style="vertical-align: middle" src="../../../vendor/images/icon_arrow_right.png" alt=""></span>
+                </div>
             </div>
 
+            <div class="">
+                <div id="" class="bdd_adver_header" infinite-scroll='$ctrl.nextPage()'
+                     infinite-scroll-disabled='{{ctrl.busy}}' infinite-scroll-distance='1'>
+                    <div class="bdd_win_conter_b bdd_win_conter_list bdd_win_b" ng-repeat="project in ctrl.projectList"
+                         ng-click="$ctrl.localHref('{{project.proId}}')">
+                        <div class="bdd_win_txt_a">{{project.proName}}</div>
+                        <div style="overflow: hidden;color: #ccbebe;font-size: 16px;margin-top:13px;">
+                            <div style="float: left">建设单位：{{project.proOrg}}</div>
+                            <div style="float: left;margin-left: 40px;">项目地区：{{project.province}}-
+                                {{project.proWhere}}
+                            </div>
+                        </div>
+                        <div style="color: #d65588;font-size: 14px;background-color: #ffe5f0;width: 80px;text-align: center;margin-top: 15px;">
+                            {{project.proType}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
+
 
 

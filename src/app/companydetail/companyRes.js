@@ -157,7 +157,6 @@ function setContentHeight(dataList){
 	}else{
 		bdd_adver_header.style.height="500px";
 	}
-
 }
 
 
