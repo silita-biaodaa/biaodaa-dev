@@ -34,7 +34,7 @@ app.controller('CompanyTopCtrl', ['$http','$uibModal','$log','$scope','$document
         area:self.regisAddress == "" ? null : self.regisAddress,
         pageNo:0,
         proType:self.proType,
-        pageSize:6,
+        pageSize:4,
         tabType:"project"
     };
 
@@ -48,44 +48,4 @@ app.controller('CompanyTopCtrl', ['$http','$uibModal','$log','$scope','$document
         selt.page += 1;
 
     });
-
-
-    this.setPage = function () {
-        self.projectList = [];
-        self.busy = false;
-        self.page = 1;
-        self.nextPage();
-    };
-
-    this.nextPage = function () {
-        if (self.busy) return;
-        self.busy = true;
-        var paramsPage = {
-            proName:self.keyword == "" ? null : self.keyword,
-            area:self.regisAddress == "" ? null : self.regisAddress,
-            pageNo:self.page,
-            proType:self.proType,
-            pageSize:6,
-            tabType:"project"
-        };
-
-        $http.post("/project/query", angular.toJson(paramsPage)).success(function (result) {
-            var projectList = result.data;
-            if(projectList!=null&&projectList.length>0){
-                if(self.page==result.pageNum){
-                    angular.forEach(projectList,function(project){
-                        self.projectList.push(project);
-                    });
-                    self.totalCount = result.total;
-                    self.pageSize = result.pageSize;;
-                    self.pageNo = result.pageNum;
-                    self.busy = false;
-                    self.page += 1;
-
-                }
-            }else{
-                self.totalCount = 0;
-            }
-        });
-    };
 }]);
