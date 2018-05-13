@@ -35,6 +35,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
     }
 
     this.goMenu = "tender?type=99&keyword=";
+    this.showType = 0;
     this.goUrl = "index.html#/"+this.goMenu;
     $scope.searchName="搜标讯";
     this.placeholderName = "搜索招标、中标公告";

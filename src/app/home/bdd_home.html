@@ -5,6 +5,13 @@
     color:#cea63f;
     background-color: lightgray;
 }
+    .bdd_win_a_b{
+        text-decoration: none;
+        overflow: auto;
+    }
+    .bdd_win_a_b:hover{
+        background-color: #cccccc;
+    }
 </style>
 <div class="jd_layout">
     <!--轮播图-->
@@ -68,6 +75,7 @@
             </div>
 
             <div class="bdd_win_conter" style="margin-top: 10px;cursor: pointer" ng-repeat="zhaobiao in $ctrl.zhaobiaoList" ng-click="$ctrl.clickHref('{{zhaobiao.id}}')">
+                <a class="bdd_win_a_b">
                 <div class="bdd_text_z"><a href="#/tenderDetail/{{zhaobiao.id}}"><span
                         ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
                 <div class="bdd_text_y">资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
@@ -77,6 +85,7 @@
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
                 <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
             </div>
 
             <!--中标公告-->

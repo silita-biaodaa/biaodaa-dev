@@ -12,7 +12,7 @@
 <div style="height: auto" id="bdd_adver_header" class="bdd_adver_header" infinite-scroll='ctrl.nextPage()'
      infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='0.5'>
 
-    <div style="height: auto" class="bdd_qinximessage_border">
+    <div style="height: 500px;overflow: scroll" class="bdd_qinximessage_border">
         <div class="bdd_qinximessage_boder_news" ng-repeat="message in ctrl.messageList"  ng-show="ctrl.totalCount != 0">
             <div style="margin-top: 40px" class="bdd_qinximessage_text_side">
                 <div class="bdd_qinximessage_text"><span ng-bind="message.title"></span></div>

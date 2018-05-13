@@ -281,7 +281,7 @@
 </nav>
 
 <ui-view class="ui_view_min_high"> </ui-view>
-<div class="to_top_div" ng-click="toTop()"><img src="../vendor/images/icon_totop.png"/></div>
+<div class="to_top_div" ng-mouseenter="ctrl.showType=1"  ng-mouseleave="ctrl.showType=0" ng-click="toTop()"><img src="{{ctrl.showType==1?'../vendor/images/icon_totop_pre.png':'../vendor/images/icon_totop.png'}}"/></div>
 <div class="bdd_footer_left_a">
     <div class="bdd_footer_news" style="overflow: hidden;margin: 0 auto;padding-left: 50px">
         <div class="bdd_footer_content">
