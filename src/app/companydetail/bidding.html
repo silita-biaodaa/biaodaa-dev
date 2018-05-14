@@ -1,5 +1,19 @@
+<style>
+    .bdd_busing_com_b{
+        background-color: #F8F8F8;
+    }
+    .bdd_busing_com_k{
+        background-color: white;
+        width: 1100px;
+        margin-left: -50px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 20px;
+    }
+</style>
 <div class="bdd_busing_com_b" style="cursor: pointer;" ng-repeat="projectZ in ctrl.projectZhongbiaoList"
      ng-click="ctrl.projectZhaoDetail('{{projectZ.pkid}}','{{projectZ.zhongbiaoCompany}}','{{projectZ.zhaobiaoType}}')">
+    <div class="bdd_busing_com_k">
     <div class="bdd_busing_com_infor">{{projectZ.zhongbiaoCompany}}<span class="bdd_busing_com_infor_b">（中标单位)</span></div>
     <div class="bdd_busing_com_infor_k">
         <div class="bdd_busing_com_infor_l">中标金额/万元：{{projectZ.zhongbiaoAmount}}</div>
@@ -8,6 +22,7 @@
     <div class="bdd_busing_com_infor_k">
         <div class="bdd_busing_com_infor_l">招标方式：{{projectZ.zhaobiaoWay}}</div>
         <div class="bdd_busing_com_infor_h">中标日期：{{projectZ.zhongbiaoDate}}</div>
+    </div>
     </div>
 
     <div class="bdd_business_informessage"  ng-show="projectZ.isShow">
