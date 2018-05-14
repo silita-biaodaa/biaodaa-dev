@@ -8,6 +8,7 @@ app.controller('CensorCtrl', ['$http', 'userTemp','utils','$state',function($htt
 
     this.proId = $state.params.proId;
 
+    this.showDesign = false;
     this.projectDesignList = []
     this.initDesign = function () {
         var param = {
@@ -18,6 +19,11 @@ app.controller('CensorCtrl', ['$http', 'userTemp','utils','$state',function($htt
         $http.post("/project/company/detail",angular.toJson(param)).success(function (result) {
             if(result.code == 1){
                 self.projectDesignList = result.data;
+                if(self.projectDesignList.length <= 0){
+                    if(self.showDesign == false){
+                        self.showDesign = true;
+                    }
+                }
                 angular.forEach(self.projectDesignList,function (item) {
                     item.isDesignShow = false;
                 })
@@ -29,7 +35,6 @@ app.controller('CensorCtrl', ['$http', 'userTemp','utils','$state',function($htt
     };
 
     this.initDesign();
-    this.showDesign = false;
     this.designDetail = {};
     this.projectDesignDetail = function (pkid,designType) {
         if(designType == true){

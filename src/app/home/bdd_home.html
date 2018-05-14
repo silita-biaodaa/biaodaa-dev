@@ -149,7 +149,7 @@
             <!--<div class="bdd_infor_rihgt">更多></div>-->
             <div style="overflow: hidden;background-color: white;margin-top:15px;margin-bottom: 60px;padding-bottom: 20px;width: 290px;margin-left: -10px;">
                 <div class="bdd_infor_mation_border">
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList">
+                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.tradeList" ng-click="$ctrl.clickHrefNotise('{{info.url}}')" style="cursor: pointer">
                         <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa1_60px.png"/></div>
                         <div class="bdd_infor_maright">
                             <div class="bdd_infor_maright_title"><span ng-bind="info.title |limitTo:16"></span></div>

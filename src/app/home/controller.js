@@ -77,6 +77,10 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         window.location.href="#/winbding/"+type;
     }
 
+    this.clickHrefNotise = function (url) {
+        window.location.href = url;
+    }
+
     this.logout = function () {
         sessionStorage.removeItem("X-TOKEN");
         sessionStorage.removeItem("userTemp");

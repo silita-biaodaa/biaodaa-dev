@@ -27,6 +27,7 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
     this.projectList = [];
     this.busy = false;
     this.page = 1;
+    this.projectShow = false;
 
 	$http.get("/company/filter").success(function (result) {
 		var arr1 = [];
@@ -79,7 +80,7 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
 	};
 	this.cancelArea = function () {
 		this.regisAddress = "";
-		this.province = "";
+		this.province = null;
 		self.setPage();
 	};
     //---省市----end
@@ -93,7 +94,11 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
     self.showProType;
 	//点击项目类别
     this.clickProType = function (proType) {
-        self.proType = proType;
+        if('全部' == proType){
+            self.proType = null;
+        }else {
+            self.proType = proType;
+        }
         self.showProType = self.proType;
         self.setPage();
     };
@@ -140,6 +145,9 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
                 }
             }else{
                 self.totalCount = 0;
+                if(self.projectShow == false){
+                    self.projectShow = !self.projectShow;
+                }
 			}
         });
     };

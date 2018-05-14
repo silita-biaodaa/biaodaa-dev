@@ -7,7 +7,7 @@ app.controller('BiddingCtrl', ['$http', 'userTemp','utils','$state',function($ht
     }
 
     this.proId = $state.params.proId;
-
+    this.zhaobiaoShow = false;
     this.projectZhongbiaoList = []
     this.initProZhaotou = function () {
         var param = {
@@ -17,6 +17,11 @@ app.controller('BiddingCtrl', ['$http', 'userTemp','utils','$state',function($ht
         $http.post("/project/company/detail",angular.toJson(param)).success(function (result) {
             if(result.code == 1){
                 self.projectZhongbiaoList = result.data;
+                if( self.projectZhongbiaoList.length <= 0){
+                    if(self.zhaobiaoShow == false){
+                        self.zhaobiaoShow = true;
+                    }
+                }
                 console.log(self.projectZhongbiaoList);
                 angular.forEach(self.projectZhongbiaoList,function (item) {
                     item.isShow = false;
