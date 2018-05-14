@@ -2,7 +2,7 @@
      ng-click="ctrl.projectZhaoDetail('{{projectZ.pkid}}','{{projectZ.zhongbiaoCompany}}','{{projectZ.zhaobiaoType}}')">
     <div class="bdd_busing_com_infor">{{projectZ.zhongbiaoCompany}}<span class="bdd_busing_com_infor_b">（中标单位)</span></div>
     <div class="bdd_busing_com_infor_k">
-        <div class="bdd_busing_com_infor_l">中标金额：{{projectZ.zhongbiaoAmount}}</div>
+        <div class="bdd_busing_com_infor_l">中标金额/万元：{{projectZ.zhongbiaoAmount}}</div>
         <div class="bdd_busing_com_infor_h">招标类型：{{projectZ.zhaobiaoType}}</div>
     </div>
     <div class="bdd_busing_com_infor_k">
@@ -21,10 +21,10 @@
         </div>
         <div class="bdd_business_informessage_conter">
             <div class="bdd_business_informessage_conter_l">中标日期：{{ctrl.zhaoProjectDetail.zhongbiaoDate}}</div>
-            <div class="bdd_business_informessage_conter_r">招标金额：{{ctrl.zhaoProjectDetail.zhongbiaoAmount}}</div>
+            <div class="bdd_business_informessage_conter_r">招标金额/万元：{{ctrl.zhaoProjectDetail.zhongbiaoAmount}}</div>
         </div>
         <div class="bdd_business_informessage_conter">建设规模：{{ctrl.zhaoProjectDetail.proScope}}</div>
-        <div class="bdd_business_informessage_conter">面积：{{ctrl.zhaoProjectDetail.acreage}}</div>
+        <div class="bdd_business_informessage_conter">面积/平方米：{{ctrl.zhaoProjectDetail.acreage}}</div>
         <div class="bdd_business_informessage_conter">
             <div class="bdd_business_informessage_conter_l">招标代理单位公司：{{ctrl.zhaoProjectDetail.zhaobiaoAgencyCompany}}</div>
             <div class="bdd_business_informessage_conter_r">招标代理单位组织机构代码：{{ctrl.zhaoProjectDetail.zhaobiaoCompanyCode}}</div>
