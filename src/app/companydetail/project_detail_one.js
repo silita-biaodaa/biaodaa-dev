@@ -30,11 +30,52 @@ app.controller('ProjectDetailOneCtrl', ['$http', 'userTemp','utils','$state',fun
         }
     });
 
-
+    this.biddingShowStyle = false;
+    this.censorShowStyle = false;
+    this.contractShowStyle = false;
+    this.completeShowStyle = false;
+    this.permissionShowStyle = false;
     console.log( $state.current.name);
     this.menu = $state.current.name;
+    if(self.menu == 'projectDetail.bidding'){
+        self.biddingShowStyle = true;
+    }else if(self.menu == 'projectDetail.censor'){
+        self.censorShowStyle = true;
+    }else if(self.menu == 'projectDetail.contract'){
+        self.contractShowStyle = true;
+    }else if(self.menu == 'projectDetail.permission'){
+        self.completeShowStyle = true;
+    }else if(self.menu == 'projectDetail.complete'){
+        self.permissionShowStyle = true;
+    }
     this.selectMenu = function (menu) {
         self.menu = menu;
+        if(self.menu == 'projectDetail.bidding'){
+            self.censorShowStyle = false;
+            self.contractShowStyle = false;
+            self.completeShowStyle = false;
+            self.permissionShowStyle = false;
+        }else if(self.menu == 'projectDetail.censor'){
+            self.biddingShowStyle = false;
+            self.contractShowStyle = false;
+            self.completeShowStyle = false;
+            self.permissionShowStyle = false;
+        }else if(self.menu == 'projectDetail.contract'){
+            self.biddingShowStyle = false;
+            self.censorShowStyle = false;
+            self.completeShowStyle = false;
+            self.permissionShowStyle = false;
+        }else if(self.menu == 'projectDetail.permission'){
+            self.biddingShowStyle = false;
+            self.censorShowStyle = false;
+            self.contractShowStyle = false;
+            self.completeShowStyle = false;
+        }else if(self.menu == 'projectDetail.complete'){
+            self.biddingShowStyle = false;
+            self.censorShowStyle = false;
+            self.contractShowStyle = false;
+            self.permissionShowStyle = false;
+        }
     };
 
 }]);
