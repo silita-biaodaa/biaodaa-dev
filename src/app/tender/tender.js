@@ -96,7 +96,13 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         selt.province = area.name;
         selt.isCity = true;
         this.city = "";
-        selt.cityList = area.list;
+        selt.cityList = "";
+        /**
+         * 湖南省的显示市级
+         */
+        if(area.name == '湖南省') {
+            selt.cityList = area.list;
+        }
         selt.queryList();
     };
     this.clickCity = function (city) {
@@ -108,7 +114,8 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
     this.cancelArea = function () {
         this.regions = "";
-        this.province = "";
+        selt.province = "湖南省";
+        // this.province = "";
         this.city = "";
         this.isCity = false;
         selt.setPage();
@@ -210,7 +217,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     };
     //----资质---end---
 
-    this.morePro = false;
+    this.morePro = true;
     this.moreProvince = function (morePro) {
         if (morePro) {
             selt.isCity = false;
@@ -255,6 +262,13 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
         };
         if (selt.pbModes && selt.pbModes instanceof Array) {
             paramsPage.pbModes = selt.pbModes.join("||");
+        }
+        /**
+         * 默认显示湖南省
+         */
+        if(selt.regions == null || selt.regions == '') {
+            paramsPage.regions = "湖南省||";
+            selt.province = "湖南省";
         }
         if (selt.keyword) {
             paramsPage.title = selt.keyword;
@@ -574,11 +588,11 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
 
     /**点击跳转**/
-    this.clickHref = function (type) {
-        window.location.href = "#/tenderDetail/" + type;
+    this.clickHref = function (noticeId, source) {
+        window.location.href = "#/tenderDetail/" + noticeId + "?source=" + source;
     }
-    this.clickHrefWin = function (type) {
-        window.location.href = "#/winbding/" + type;
+    this.clickHrefWin = function (noticeId, source) {
+        window.location.href = "#/winbding/" + noticeId + "?source=" + source;
     };
 
 

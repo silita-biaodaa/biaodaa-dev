@@ -145,8 +145,11 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
     $scope.currentNum = 0;
     $scope.bdSize = 0;
 
+    this.source = utils.getUrlVar('source');
+
     var paramsPage = {
-        type: 0
+        type: 0,
+        source : selt.source
     }
     $http.post("/notice/queryRelNotice/" + id, angular.toJson(paramsPage)).success(function (result) {
         //console.log(result);

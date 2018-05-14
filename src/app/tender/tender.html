@@ -165,8 +165,8 @@
             <div style="padding-top:60px" class="bdd_comp_f">
                 <div class="bdd_dev_area bdd_dev_area_txt">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区:</div>
                 <div class="bdd_dev_area bdd_dev_area_pro bdd_dev_area_pro_a">
-                    <div class="bdd_tender_inline bdd_tender_a">
-                        <a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelArea()">全部</a>
+                    <div class="bdd_tender_inline bdd_tender_a" style="padding-left: 30px;">
+                        <!--<a class="{{$ctrl.province==''?'bdd_comp_span_all span-cursor span-yellow':'bdd_comp_span_all span-cursor'}}" ng-click="$ctrl.cancelArea()">全部</a>-->
 
                         <div class="bdd_comp_span" ng-repeat="area in $ctrl.areaList">
                             <a class="{{$ctrl.province==area.name?' span-cursor span-yellow':'span-cursor'}}" ng-bind="area.name|areaLimit"
@@ -190,7 +190,7 @@
                     </div>
                 </div>
                 <div id="bdd_dev_city" class="bdd_dev_city" ng-show="$ctrl.isCity">
-                    <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}" ng-click="$ctrl.cancleEmCity()">全部</a>
+                    <div class="bdd_comp_span_c"><a class="{{$ctrl.city==''?'span-yellow span-cursor':'span-cursor'}}" ng-show="$ctrl.cityList != ''" ng-click="$ctrl.cancleEmCity()">全部</a>
                     </div>
                     <div class="bdd_comp_span_c" ng-repeat="city in $ctrl.cityList" ng-if="city">
                         <a class="{{$ctrl.city==city?'span-yellow span-cursor':'span-cursor'}}" ng-click="$ctrl.clickCity(city)" ng-bind="city"></a>
@@ -471,7 +471,7 @@
                     </div>
                 </div>
                 <a ng-repeat="notice in $ctrl.noticeList" ng-show="$ctrl.totalCount != 0">
-                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}')">
+                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==0;" ng-click="$ctrl.clickHref('{{notice.id}}', '{{notice.source}}')">
                         <div class="bdd_text_z" ng-bind="notice.title">
                         </div>
                         <div class="bdd_text_y">资质要求：{{notice.certificate}}</div>
@@ -482,7 +482,7 @@
                         <div class="bdd_text_riqi">{{notice.opendate}}</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==2" ng-click="$ctrl.clickHrefWin('{{notice.id}}')">
+                    <div class="bdd_win_conter" style="margin-top:10px;cursor:pointer;" ng-if="notice.type==2" ng-click="$ctrl.clickHrefWin('{{notice.id}}', '{{notice.source}}')">
                         <div class="bdd_text_z" ng-bind="notice.title"></div>
                         <div class="bdd_text_y" >中标企业：<span>{{notice.oneName ? notice.oneName:'详见原文'}}</span></div>
                         <div class="bdd_text_p" >项目金额：<span>{{notice.projSum ? notice.projSum+'万元':'详见原文'}}</span></div>
