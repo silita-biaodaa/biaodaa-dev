@@ -522,6 +522,11 @@
     .bdd_fist_k:hover{
         color: #cea63f;
     }
+    .bdd_select_color_style{
+        background-color: #cea63f;
+        color: white;
+    }
+
     /**二维码**/
 </style>
 <!--nav-->
@@ -663,7 +668,7 @@
                         <div class="bdd_details_header_left"></div>
                         <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
                                 style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span
-                                style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img
+                                style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'更多':'更多'}}</span><img
                                 src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
                     </div>
                     <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">
@@ -793,7 +798,7 @@
                         </div>
                         <div class="bdd_stage_bottom_top">
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
+                                ng-click="toCurrentTender($index,$event)"><a class="bdd_stage_bottom_list" ng-class="{bdd_select_color_style:$index==focus}"
                                                                       type="button">
                                 <div  class="bdd_stage_bottom_span_a">{{$index+1}}</div>
                             </a>
@@ -833,7 +838,7 @@
                     <div class="bdd_details_header_left"></div>
                     <div class="bdd_details_header_conter"><span style="color: #4d3a3a;font-size: 18px;">&nbsp;符合资质企业</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
                             style="cursor: default" ui-sref="TendList({id:currentTender.id})"><span
-                            style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'0条':'更多'}}</span><img
+                            style="color: #ccbebe;font-size: 16px">{{(copanyResultArr==null||copanyResultArr.length==0)?'更多':'更多'}}</span><img
                             src="../../../vendor/images/icon_arrow_right.png" alt=""></a></div>
                 </div>
                 <div class="bdd_details_js" ng-repeat="item in copanyResultArr | limitTo:10">

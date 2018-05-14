@@ -1,4 +1,6 @@
+<style>
 
+</style>
 <!--图片-->
 <div class="bdd_basic_hold">
     <div class="bdd_basic_top">
@@ -171,13 +173,13 @@
         <div class="bdd_Personl_table_header_right" ng-show="ctrl.qualSize == 0">sorry，暂未查询到该公司的资质信息</div>
     </div>
     <table cellspacing="0" style="text-align: center;width:100%;margin-bottom: 200px;border: none" ng-show="ctrl.qualSize != 0">
-        <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto">
+        <tr class="bdd_per_tr_a" style="width:80%;margin: 0 auto;">
             <th style="text-align: center;width: 20%;">资质名称</th>
             <th style="text-align: center;width: 20%;">资质编号</th>
             <th style="text-align: center;width: 20%;">有效期</th>
             <th style="text-align: center;width: 20%;">发证机关</th>
         </tr>
-        <tr class="bdd_tr_a" style="color:#4d3a3a;font-size: 16px;line-height:20px;" ng-repeat="item in ctrl.qualList">
+        <tr class="bdd_tr_a" style="color:#4d3a3a;font-size: 16px;line-height:30px;" ng-repeat="item in ctrl.qualList">
             <td ng-bind="item.qualName"></td>
             <td ng-bind="item.certNo"></td>
             <td ng-bind="item.validDate"></td>

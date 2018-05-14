@@ -115,6 +115,18 @@
         margin-top: 20px;
         background-color: white;
     }
+    .have_no_company{
+        width: 100%;
+        text-align: center;
+        margin-top: 200px;
+        min-height: 600px;
+    }
+    .bdd_side_rihgt_r_b{
+        color: #cea63f;
+        font-size: 12px;
+
+
+    }
 </style>
 
 <div class="bdd_company_body" ng-controller="TendListCtrl">
@@ -147,10 +159,15 @@
 
                     <div class="bdd_hold_top bdd_hold_top_addr">地址：<span ng-bind="company.regisAddress"></span></div>
                 </div>
-                <div class="bdd_win_contiv>
-  ight"></div>
+                <div class="bdd_win_contivight"></div>
             </div>
         </div>
 
+    </div>
+    <div ng-if="(ctrl.companyList==null||ctrl.companyList.length==0)" class="have_no_company">
+        <img src="../../../vendor/images/kym_icon_nothing.png">
+        <br>
+        <div class="bdd_side_rihgt_r_b">没有找到符合资质要求的企业
+        </div>
     </div>
 </div>

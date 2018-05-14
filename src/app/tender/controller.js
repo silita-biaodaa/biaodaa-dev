@@ -185,7 +185,9 @@ app.controller('tenderDetailCtrl', ['$http', '$scope', 'utils', '$stateParams', 
         $scope.copanyResultArr = result.data;
 
     })
-    $scope.toCurrentTender = function (index) {
+    $scope.focus=0;
+    $scope.toCurrentTender = function (index,$event) {
+        $scope.focus=index;
         $scope.currentTender = resArray[index];
         $scope.relNoticeCount = resArray[index].relNoticeCount;
         $("#bdd_follow_info_one").html(resArray[index].content);
@@ -395,7 +397,10 @@ app.controller('WinbdingCtrl', ['$http', '$scope', 'utils', '$stateParams','$sta
         $scope.copanyResultArr = result.data;
 
     })
+    $scope.focus=0;
     $scope.toCurrentTender = function (index) {
+
+        $scope.focus=index;
         $scope.currentTender = resArray[index];
         $scope.relNoticeCount = resArray[index].relNoticeCount;
         $("#bdd_follow_info_one").html(resArray[index].content);

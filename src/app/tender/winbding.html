@@ -140,6 +140,7 @@
         font-size: 14px;
         color: #4d3a3a;
         padding: 0 0 10px 20px;
+        margin-top: 30px;
     }
     .bdd_details_messg{
         margin-top:50px;
@@ -313,6 +314,12 @@
         color: #4d3a3a;
         margin-left:15px;
     }
+
+    .bdd_select_color_style{
+        background-color: #cea63f;
+        color: white;
+
+    }
 </style>
 
 <!--nav-->
@@ -363,7 +370,7 @@
 
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
                                 ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
-                                                                      type="button" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
+                                                                      type="button"   ng-class="{bdd_select_color_style:$index==focus}" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
                             </li>
 
                         </div>
@@ -400,21 +407,18 @@
 
         <div class="bdd_details_js" ng-if="currentTender.oneName">
             <div class="bdd_details_js_two">{{currentTender.oneName}}</div>
-            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
-            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
-            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+
         </div>
         <div class="bdd_details_js" ng-if="currentTender.twoName">
             <div class="bdd_details_js_two">{{currentTender.twoName}}</div>
-            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
-            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
-            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+
         </div>
         <div class="bdd_details_js" ng-if="currentTender.threeName">
             <div class="bdd_details_js_two">{{currentTender.threeName}}</div>
-            <div class="bdd_details_js_new">法人：{{currentTender.legalPerson}}</div>
-            <div class="bdd_details_js_new">注册资本：{{currentTender.regisCapital}}</div>
-            <div class="bdd_details_js_new">经济类型：{{currentTender.subsist}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+
         </div>
     </div>
 </div>
