@@ -66,23 +66,23 @@
 
             <ul class="bdd_vitality_left_a" style="background-color: white">
                 <li  ui-sref=".personInfo"
-                     ng-click="ctrl.selectMenu('ucenter.personInfo')" style="{{ctrl.menu=='ucenter.personInfo'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
+                     ng-click="ctrl.selectMenu('ucenter.personInfo')" style="{{hrefUrl=='ucenter.personInfo'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
                     <a style="{{ctrl.menu=='ucenter.personInfo'?'color: white':''}}">个人资料</a>
                 </li>
                 <li  ui-sref=".financial"
-                     ng-click="ctrl.selectMenu('ucenter.financial')" style="{{ctrl.menu=='ucenter.financial'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
+                     ng-click="ctrl.selectMenu('ucenter.financial')" style="{{hrefUrl=='ucenter.financial'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
                     <a style="{{ctrl.menu=='ucenter.financial'?'color: white':''}}">金融服务</a>
                 </li>
                 <li  ui-sref=".messages"
-                     ng-click="ctrl.selectMenu('ucenter.messages')" style="{{ctrl.menu=='ucenter.messages'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
+                     ng-click="ctrl.selectMenu('ucenter.messages')" style="{{hrefUrl=='ucenter.messages'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
                     <a style="{{ctrl.menu=='ucenter.messages'?'color: white':''}}">消息通知</a>
                 </li>
-                <li  ui-sref=".feedback" style="{{ctrl.menu=='ucenter.feedback'?'background-color: #212121;':''}}" class="bdd_vita_list_a" ng-click="ctrl.selectMenu('ucenter.feedback')">
+                <li  ui-sref=".feedback" style="{{hrefUrl=='ucenter.feedback'?'background-color: #212121;':''}}" class="bdd_vita_list_a" ng-click="ctrl.selectMenu('ucenter.feedback')">
                     <a style="{{ctrl.menu=='ucenter.feedback'?'color: white':''}}"
                       >意见反馈</a>
                 </li>
                 <li  ui-sref=".myfollow"
-                     ng-click="ctrl.selectMenu('ucenter.myfollow')" style="{{ctrl.menu=='ucenter.myfollow'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
+                     ng-click="ctrl.selectMenu('ucenter.myfollow')" style="{{hrefUrl=='ucenter.myfollow'?'background-color: #212121;':''}}" class="bdd_vita_list_a">
                     <a style="{{ctrl.menu=='ucenter.myfollow'?'color: white':''}}">我的关注</a>
                 </li>
 

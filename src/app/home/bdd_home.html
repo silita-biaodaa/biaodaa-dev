@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <div class="bdd_infor_mation_border">
-                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList">
+                    <div class="bdd_infor_mation" ng-repeat="info in $ctrl.platformList" ng-click="$ctrl.clickHrefNotise('{{info.url}}')" style="cursor: pointer">
                         <div class="bdd_infor_maleft"><img src="../../../vendor/images/dt_icon_defa2_60px.png"/></div>
                         <div class="bdd_infor_maright">
                             <div class="bdd_infor_maright_title"><span ng-bind="info.title | limitTo:16"></span></div>

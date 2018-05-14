@@ -14,11 +14,11 @@ app.controller('UcenterCtrl', ['$http','$state','$log','$scope','$document', 'us
         $scope.ucenter = result.data;
     });
 
-
     console.log( $state.current.name);
     this.menu = $state.current.name;
     this.selectMenu = function (menu) {
         selt.menu = menu;
+        $scope.hrefUrl = menu;
     };
 
 
