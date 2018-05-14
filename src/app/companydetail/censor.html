@@ -12,6 +12,7 @@
         margin-top: 30px;
     }
 
+
 </style>
 <div class="bdd_busing_con_side_header">
 <div class="bdd_busing_con_side" ng-repeat="design in ctrl.projectDesignList"
@@ -39,6 +40,7 @@
         <div class="bdd_business_informessage_conter">审查完成时间：{{design.checkFinishDate}}</div>
 
         <div class="bdd_busing_text_mess" ng-if="ctrl.designDetail.exploreOrg != null || ctrl.designDetail.designOrg != null">企业主体信息</div>
+
         <div class="bdd_busing_text_mess_b"  ng-if="ctrl.designDetail.exploreOrg != null">
             <div class="bdd_busing_text_mess_r"><span class="bdd_business_informessage_span">{{ctrl.designDetail.exploreOrg}}</span><span
                     class="bdd_business_informessage_span_l">(勘察单位)</span>

@@ -2,6 +2,7 @@
     .bdd_busing_com_b{
         background-color: #F8F8F8;
     }
+
     .bdd_busing_com_k{
         background-color: white;
         width: 1100px;
@@ -9,7 +10,17 @@
         padding-left: 50px;
         padding-right: 50px;
         padding-bottom: 20px;
+        margin-top: -20PX;
     }
+    .bdd_busing_con_side{
+        margin-top: 50PX;
+    }
+    .bdd_busing_con_side_p{
+        margin-bottom: 40px;
+        margin-left: -50px;
+    }
+
+
 </style>
 <div class="bdd_busing_com_b" style="cursor: pointer;" ng-repeat="projectZ in ctrl.projectZhongbiaoList"
      ng-click="ctrl.projectZhaoDetail('{{projectZ.pkid}}','{{projectZ.zhongbiaoCompany}}','{{projectZ.zhaobiaoType}}')">
@@ -49,11 +60,12 @@
             <div class="bdd_business_informessage_conter_r">中标单位组织机构代码：{{ctrl.zhaoProjectDetail.zhongbiaoCompanyCode}}</div>
         </div>
         <div class="bdd_business_informessage_conter">
-            <div class="bdd_business_informessage_conter_l">项目金额/总监理工程师姓名：{{ctrl.zhaoProjectDetail.name}}</div>
-            <div class="bdd_business_informessage_conter_r">项目金额/总监理工程师身份证号：{{ctrl.zhaoProjectDetail.idCard}}</div>
+            <div class="bdd_business_informessage_conter_l">项目经理/总监理工程师姓名：{{ctrl.zhaoProjectDetail.name}}</div>
+            <div class="bdd_business_informessage_conter_r">项目经理/总监理工程师身份证号：{{ctrl.zhaoProjectDetail.idCard}}</div>
         </div>
         <div class="bdd_business_informessage_conter">记录登记时间：{{ctrl.zhaoProjectDetail.recordDate}}</div>
         <div class="bdd_busing_text_mess" ng-if="ctrl.zhaoProjectDetail.personList != null && ctrl.zhaoProjectDetail.personList.length > 0">主要参加人员</div>
+        <div class="bdd_busing_con_side_p">
         <div class="bdd_busing_text_mess_b" ng-repeat="person in ctrl.zhaoProjectDetail.personList">
             <div class="bdd_busing_text_mess_r"><span class="bdd_business_informessage_span">{{person.name}}</span><span
                     class="bdd_business_informessage_span_l">({{person.role}})</span></div>
@@ -67,6 +79,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a" ng-if="ctrl.projectZhongbiaoList.length <= 0">
     <span style="color: #985f0d">sorry,暂未查询到该业绩的招投标信息</span>
