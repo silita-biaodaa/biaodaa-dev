@@ -11,6 +11,12 @@
         margin-bottom: 140px;
         margin-top: 30px;
     }
+    .bdd_busing_text_mess_b{
+        margin-left: -10px;
+    }
+    .bdd_busing_k{
+        margin-bottom: 40px;
+    }
 
 
 </style>
@@ -40,7 +46,7 @@
         <div class="bdd_business_informessage_conter">审查完成时间：{{design.checkFinishDate}}</div>
 
         <div class="bdd_busing_text_mess" ng-if="ctrl.designDetail.exploreOrg != null || ctrl.designDetail.designOrg != null">企业主体信息</div>
-
+        <div class="bdd_busing_k">
         <div class="bdd_busing_text_mess_b"  ng-if="ctrl.designDetail.exploreOrg != null">
             <div class="bdd_busing_text_mess_r"><span class="bdd_business_informessage_span">{{ctrl.designDetail.exploreOrg}}</span><span
                     class="bdd_business_informessage_span_l">(勘察单位)</span>
@@ -52,6 +58,7 @@
                 </div>
             </div>
         </div>
+
         <div class="bdd_busing_text_mess_b"  ng-if="ctrl.designDetail.designOrg != null">
             <div class="bdd_busing_text_mess_r"><span class="bdd_business_informessage_span">{{ctrl.designDetail.designOrg}}</span><span
                     class="bdd_business_informessage_span_l">(设计单位)</span>
@@ -62,6 +69,7 @@
                     所在省份：{{ctrl.designDetail.designProvince}}
                 </div>
             </div>
+        </div>
         </div>
 
         <div class="bdd_busing_text_mess" ng-if="ctrl.designDetail.personList != null && ctrl.designDetail.personList.length > 0">从业人员信息</div>
