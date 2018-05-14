@@ -3,8 +3,17 @@
     .bdd_business_informessage{
         margin-left: 100px;
     }
+    .bdd_busing_con_side{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .bdd_busing_con_side_header{
+        margin-bottom: 140px;
+        margin-top: 30px;
+    }
 
 </style>
+<div class="bdd_busing_con_side_header">
 <div class="bdd_busing_con_side" ng-repeat="design in ctrl.projectDesignList"
      ng-click="ctrl.projectDesignDetail('{{design.pkid}}','{{design.isDesignShow}}')" style="cursor: pointer">
     <div class="bdd_busing_com_b" >
@@ -79,4 +88,5 @@
 <div style="text-align: center;width:100%;margin-bottom: 200px;border: none;line-height: 30px;color: #4d3a3a"
      ng-if="ctrl.projectDesignList.length <= 0">
     <span style="color: #985f0d">sorry,暂未查询到该业绩的施工图审查信息</span>
+</div>
 </div>

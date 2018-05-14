@@ -30,9 +30,44 @@ app.run(['$rootScope', '$log', function($rootScope, $log){
             }else if(titleName.indexOf("tender")!=-1){
             titleArr[1].className="bdd-nav-app-title home_title_active";
                 titleArr[1].style.color = "#cea63f";
-        }else  if(titleName.indexOf("company")!=-1){
+        }else  if(titleName.indexOf("company")!=-1||titleName.indexOf("projectdetail")!=-1){
             titleArr[2].className="bdd-nav-app-title home_title_active";
                 titleArr[2].style.color = "#cea63f";
+                if(titleName.indexOf("projectdetail")!=-1){
+                    var sonTitleArr = angular.element(document.querySelectorAll('.bdd_Busing_message_b'));
+                    for(var i=0;i<sonTitleArr.length;i++){
+                        sonTitleArr[i].style.backgroundColor="#ffffff";
+                        sonTitleArr[i].style.color = "#000000";
+                    }
+                    sonTitleArr[0].style.backgroundColor="#4d3a3a";
+                    sonTitleArr[0].style.color = "#ffffff";
+                    if(titleName.indexOf("projectdetail.censor")!=-1){
+                        sonTitleArr[1].style.backgroundColor="#4d3a3a";
+                        sonTitleArr[1].style.color = "#ffffff";
+                        sonTitleArr[0].style.backgroundColor="#ffffff";
+                        sonTitleArr[0].style.color = "#000000";
+                    }else if(titleName.indexOf("projectdetail.bidding")!=-1){
+                        sonTitleArr[0].style.backgroundColor="#4d3a3a";
+                        sonTitleArr[0].style.color = "#ffffff";
+                    }else if(titleName.indexOf("projectdetail.contract")!=-1){
+                        sonTitleArr[2].style.backgroundColor="#4d3a3a";
+                        sonTitleArr[2].style.color = "#ffffff";
+                        sonTitleArr[0].style.backgroundColor="#ffffff";
+                        sonTitleArr[0].style.color = "#000000";
+                    }else if(titleName.indexOf("projectdetail.permission")!=-1){
+                        sonTitleArr[3].style.backgroundColor="#4d3a3a";
+                        sonTitleArr[3].style.color = "#ffffff";
+                        sonTitleArr[0].style.backgroundColor="#ffffff";
+                        sonTitleArr[0].style.color = "#000000";
+                    }else if(titleName.indexOf("projectdetail.complete")!=-1){
+                        sonTitleArr[4].style.backgroundColor="#4d3a3a";
+                        sonTitleArr[4].style.color = "#ffffff";
+                        sonTitleArr[0].style.backgroundColor="#ffffff";
+                        sonTitleArr[0].style.color = "#000000";
+                    }
+
+                }
+
         }else if(titleName.indexOf("workmore")!=-1){
             titleArr[3].className="bdd-nav-app-title home_title_active";
                 titleArr[3].style.color = "#cea63f";

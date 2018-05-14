@@ -7,7 +7,7 @@
 }
     .bdd_win_a_b{
         text-decoration: none;
-        overflow: auto;
+        display: block;
     }
     .bdd_win_a_b:hover{
         background-color: #cccccc;
@@ -74,8 +74,9 @@
                 </div>
             </div>
 
-            <div class="bdd_win_conter" style="margin-top: 10px;cursor: pointer" ng-repeat="zhaobiao in $ctrl.zhaobiaoList" ng-click="$ctrl.clickHref('{{zhaobiao.id}}')">
+            <div class="bdd_win_conter {{$ctrl.isMourseIn?'bdd_back_gray':''}}" style="margin-top: 10px;cursor: pointer;" ng-mouseenter="$ctrl.isMourseIn=true" ng-mouseleave="$ctrl.isMourseIn=false" ng-repeat="zhaobiao in $ctrl.zhaobiaoList" ng-click="$ctrl.clickHref('{{zhaobiao.id}}')">
                 <a class="bdd_win_a_b">
+                    <div>
                 <div class="bdd_text_z"><a href="#/tenderDetail/{{zhaobiao.id}}"><span
                         ng-bind="zhaobiao.title|limitTo:48"></span></a></div>
                 <div class="bdd_text_y">资质要求：<span>{{zhaobiao.certificate ? zhaobiao.certificate:'详见原文'}}</span></div>
@@ -85,6 +86,7 @@
                 <div class="bdd_text_invite bdd_text_pading"><span ng-bind="zhaobiao.noticeType"></span></div>
                 <div class="bdd_text_riqi"><span ng-bind="zhaobiao.opendate"></span></div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </a>
             </div>
 

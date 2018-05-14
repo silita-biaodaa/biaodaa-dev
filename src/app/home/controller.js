@@ -90,7 +90,12 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
     this.choiceType(2, '');
     this.choiceType(0, '');
 
-
+    this.isMourseIn=function(event){
+        event.target.style.backgroundColor = "#ccc";
+    }
+    this.isMourseLeave=function(event){
+        event.target.style.backgroundColor = "#fff";
+    }
     /**
      * 常见链接
      */
