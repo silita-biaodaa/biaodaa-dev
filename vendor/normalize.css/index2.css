@@ -367,7 +367,7 @@
     color: #ef873a;
     background-color: #fdefe3;
     text-align: center;
-    padding-top:4px;
+    padding-top:3px;
     float: left;
 
 }
@@ -855,5 +855,8 @@
     border-radius: 10px;
 }
 .bdd_render_b:hover{
+    color: #cea63f;
+}
+.ng-binding:hover{
     color: #cea63f;
 }

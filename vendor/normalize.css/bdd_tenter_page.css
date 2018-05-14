@@ -109,7 +109,6 @@ body::-webkit-scrollbar {
     font-size: 14px;
     color: #4d3a3a;
     height: 40px;
-    letter-spacing: 2px;
     color: #4d3a3a;
 }
 
@@ -239,7 +238,6 @@ a:hover {
 }
 
 .span-yellow {
-
     color: #cea63f;
     font-size: 14px;
     font-weight: 700;
