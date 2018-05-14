@@ -5,7 +5,8 @@ app.controller('CompanyResCtrl', ['$http','$uibModal','$log','$scope','$document
     } else {
         self.user = null;
     }
-
+    $location.hash();
+    $anchorScroll();
     /**
      * 强制刷新用户状态
      */
