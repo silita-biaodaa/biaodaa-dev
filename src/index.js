@@ -18,6 +18,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
 
     //select option改变触发的事件
     this.dateValue = "default"
+    $scope.hrefUrl = "ucenter.personInfo";
     this.selectChange = function(dateValue){
         console.log("value : " + dateValue);
         if(dateValue == 'logout') {
@@ -27,7 +28,7 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
             dateValue = 'personInfo';
         }
         window.location.href="index.html#/ucenter/"+dateValue;
-
+        $scope.hrefUrl = 'ucenter.'+dateValue;
     };
     var keyword = utils.getUrlVar('keyword');
     if(keyword){
