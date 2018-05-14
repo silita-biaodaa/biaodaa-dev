@@ -177,6 +177,8 @@
     float: left;
     padding: 10px;
     font-size: 16px;
+    color: #ccbebe;
+    margin-top: 3px;
 }
 .bdd_side_rihgt_r{
     float: right;
@@ -240,7 +242,7 @@
 }
 .bdd_text_y{
     padding-top:16px;
-    font-size: 14px;
+    font-size: 16px;
     color: #ccbebe;
     height: 64px;
 }

@@ -7,7 +7,7 @@
 
     .bdd_details_nav {
         width: 100%;
-        margin-bottom: 60px;
+        margin-bottom: 140px;
         min-height: 800px;
         overflow: hidden;
     }
@@ -15,12 +15,13 @@
     .bdd_details_value {
         width: 1200px;
         margin: 30px auto;
+
     }
 
     .bdd_details_value_hold {
         width: 890px;
         float: left;
-        margin-bottom: 200px;
+        margin-bottom:10px;
 
     }
 
@@ -37,6 +38,7 @@
         height: 210px;
         margin: 0 auto;
         margin-top: 30px;
+
     }
 
     .bdd_details_news {
@@ -248,7 +250,7 @@
     }
 
     .bdd_follow_zb {
-        padding-left: 210px;
+        padding-left: 270px;
     }
 
     /*分析*/
@@ -324,6 +326,7 @@
         float: left;
         border: none;
 
+
     }
 
     .bdd_follow_info {
@@ -332,7 +335,8 @@
         padding-top: 50px;
         padding-left: 30px;
         padding-right: 30px;
-        margin-bottom: 10px;
+        margin-bottom:10px;
+        padding-bottom: 70px;
     }
 
     .bdd_follow_left {
@@ -388,6 +392,7 @@
     .bdd_stage_top_right {
         float: right;
         padding-top: 5px;
+
 
     }
 
@@ -510,10 +515,13 @@
         position: absolute;
         top:150px;
         left:1300px;
-
-
     }
-
+    .bdd_follow_b:hover{
+        color: #cea63f;
+    }
+    .bdd_fist_k:hover{
+        color: #cea63f;
+    }
     /**二维码**/
 </style>
 <!--nav-->
@@ -528,7 +536,7 @@
                         <span style="margin-top: 13px"
                               class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_one">发布日期：{{currentTender.opendate}}</span>
                         <span style="margin-top: 13px"
-                              class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_one"><a
+                              class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_one"><a class="bdd_follow_b"
                                 href="{{currentTender.url}}">访问公告源</a></span><br/>
 
                         <div class="bdd_br"
@@ -542,7 +550,7 @@
                                 style="color: #4d3a3a">{{currentTender.projSum}}万元</span></span><br>
                         <br>
 
-                        <div style="margin-top: 20px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
+                        <div style="margin-top: 10px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
                             资质要求：<span style="color:#4d3a3a">{{currentTender.zzRank}}</span></div>
                         <div style="margin-top: 7px" class="bdd_details_value_input bdd_details_m bdd_details_data_c">
                             评标办法：<span style="color:#4d3a3a">{{currentTender.pbMode}}</span></div>
@@ -590,34 +598,34 @@
                         <div class="bdd_bond_pic"><span class="bdd_pic_po">保证金</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <span style="float: left">截止时间：{{currentTender.tbAssureEndDate}}&nbsp;{{currentTender.tbAssureEndTime}}</span>
-                            <span style="float: right">金额：{{currentTender.tbAssureSum}}&nbsp;{{currentTender.tbAssureSum?"万元":""}}</span>
+                            <span style="float: left;font-size: 16px">截止时间：<span style="color: #4d3a3a;">{{currentTender.tbAssureEndDate}}&nbsp;{{currentTender.tbAssureEndTime}}</span></span>
+                            <span style="float: right;font-size: 16px">金额：<span style="color: #4d3a3a;">{{currentTender.tbAssureSum}}&nbsp;{{currentTender.tbAssureSum?"万元":""}}</span></span>
                         </div>
                         <br>
                         <br>
                     </div>
                     <div class="bdd_bond"
                          ng-show="currentTender.bmEndDate||currentTender.bmEndTime">
-                        <div class="bdd_bond_pic"><span class="bdd_pic_po">报名</span></div>
-                        <div style="float: right;width:760px;line-height:30px;margin-top:15px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
+                        <div class="bdd_bond_pic"><span class="bdd_pic_po">&nbsp;报&nbsp;&nbsp;&nbsp;名</span></div>
+                        <div style="float: right;width:760px;line-height:30px;margin-top:15px;font-size: 16px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
                             <div>
-                                截止时间：{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}
+                                截止时间：<span style="color: #4d3a3a">{{currentTender.bmEndDate}}&nbsp;{{currentTender.bmEndTime}}</span>
                             </div>
-                            <div>地址：{{currentTender.bmSite}}</div>
+                            <div>地址：<span style="color: #4d3a3a;">{{currentTender.bmSite}}</span></div>
 
                         </div>
                     </div>
                     <div class="bdd_bond"
                          ng-show="currentTender.kbDate||currentTender.kbTime">
-                        <div class="bdd_bond_pic"><span class="bdd_pic_po">开标</span></div>
+                        <div class="bdd_bond_pic"><span class="bdd_pic_po">&nbsp;开&nbsp;&nbsp;&nbsp;标</span></div>
                         <div style="float: right;width:760px;line-height:60px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <span style="float: left">截止时间：{{currentTender.kbDate}}&nbsp;{{currentTender.kbTime}}</span>
-                            <span style="float: right">开标人员：{{currentTender.kbStaffAsk}}</span></div>
+                            <span style="float: left;font-size: 16px">截止时间：<span style="color: #4d3a3a">{{currentTender.kbDate}}&nbsp;{{currentTender.kbTime}}</span></span>
+                            <span style="float: right;font-size: 16px">开标人员：<span style="color: #4d3a3a;">{{currentTender.kbStaffAsk}}</span></span></div>
                         <div style="float: right;width:760px;line-height:10px;font-size: 14px;color: #ccbebe;margin-left: 20px;margin-right: 20px;"
                              class="bdd_bond_right">
-                            <div>报名地址：{{currentTender.kbSite}}</div>
+                            <div style="font-size: 16px">报名地址：<span style="color: #4d3a3a;">{{currentTender.kbSite}}</span></div>
                         </div>
                     </div>
                     <div class="bdd_follow bdd_follow_foll">
@@ -682,7 +690,7 @@
                               class="bdd_details_value_input bdd_details_data bdd_details_m bdd_details_one">发布日期：{{currentTender.opendate}}</span>
                         <span style="margin-top: 13px"
                               class="bdd_details_value_input bdd_details_news bdd_details_m bdd_details_one"><a
-                                href="{{currentTender.url}}">访问公告源</a></span><br/>
+                             class="bdd_fist_k"   href="{{currentTender.url}}">访问公告源</a></span><br/>
 
                         <div class="bdd_br"
                              style="margin-top:23px;width: 800px;height: 1px;background-color:#f0f0f0;"></div>
@@ -708,7 +716,7 @@
                                                                src="../../../vendor/images/zb_icon_xggg.png"
                                                                alt=""/>
                             </div>
-                            <div class="bdd_style_value_a">相关公告 {{relNoticeCount==null?0:relNoticeCount}}个</div>
+                            <div class="bdd_style_value_a">相关公告{{relNoticeCount==null?0:relNoticeCount}}个</div>
                         </a>
                     </div>
                     <div class="bdd_details_html_left bdd_details_zf">

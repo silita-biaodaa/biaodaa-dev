@@ -36,8 +36,8 @@
 .bdd_homepage_header_qin{
     position: relative;
     font-size: 16px;
-    color: #ccbebe;
-    top:-45px;
+    color: #4d3a3a;
+    top:-36px;
     left:65px;
 
 }
@@ -47,7 +47,8 @@
 .bdd_homepage_header_qi{
     position: relative;
     left: 430px;
-    top: -46px;
+    top: -36px;
+
 }
 .bdd_homepage_list{
     width: 1200px;
@@ -107,7 +108,7 @@
     font-family: "微软雅黑", sans-serif;
 }
 .bdd_per_content_text{
-    font-size: 16px;
+    font-size:14px;
     color: #4d3a3a;
     margin-top:6px;
     margin-left:18px;
@@ -202,7 +203,7 @@
     margin-top:13px;
 }
 .bdd_pers_top_boder_left{
-    font-size: 16px;
+    font-size: 14px;
     color: #4d3a3a;
     padding-left:53px;
     margin-top:4px;
