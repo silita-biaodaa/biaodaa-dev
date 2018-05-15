@@ -84,8 +84,8 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         window.location.href="#/winbding/"+type;
     }
 
-    this.clickHrefNotise = function (url) {
-        window.location.href = url;
+    this.clickHrefNotise = function (id) {
+        window.location.href = "index.html#/workmoreDetail/"+id;
     }
 
     this.logout = function () {
