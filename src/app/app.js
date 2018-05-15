@@ -27,10 +27,10 @@ app.run(['$rootScope', '$log', function($rootScope, $log){
             if(titleName.indexOf("home")!=-1){
                 titleArr[0].className="bdd-nav-app-title home_title_active";
                 titleArr[0].style.color = "#cea63f";
-            }else if(titleName.indexOf("tender")!=-1){
+            }else if(titleName.indexOf("tender")!=-1||titleName.indexOf("winbding")!=-1){
             titleArr[1].className="bdd-nav-app-title home_title_active";
                 titleArr[1].style.color = "#cea63f";
-        }else  if(titleName.indexOf("company")!=-1||titleName.indexOf("projectdetail")!=-1){
+        }else  if(titleName.indexOf("company")!=-1||titleName.indexOf("projectdetail")!=-1||titleName=="person"){
             titleArr[2].className="bdd-nav-app-title home_title_active";
                 titleArr[2].style.color = "#cea63f";
                 if(titleName.indexOf("projectdetail")!=-1){

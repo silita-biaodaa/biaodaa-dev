@@ -23,6 +23,9 @@
    .bdd_use_right_a:hover{
        box-shadow: 0px 0px 8px #d8d8d8;
    }
+    .bdd_back_yellow{
+       color: #cea63f;
+    }
 
 </style>
 <div class="jd_layout">
@@ -73,13 +76,13 @@
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">招标公告</div>
                 <div class="bdd_icon"></div>
-                <div class="bdd_header_lit  bdd_header_color" ng-click="$ctrl.choiceType(0,'')">全部</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'0')">施工</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'2')">监理</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'3')">采购</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'1')">设计</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(0,'5')">其他</div>
+                <div class="bdd_header_lit  bdd_header_color {{$ctrl.showItemType==''?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'')">全部</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='0'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'0')">施工</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='2'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'2')">监理</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='3'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'3')">采购</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='1'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'1')">设计</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='4'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'4')">勘察</div>
+                <div class="bdd_header_lit bdd_header_color {{$ctrl.showItemType=='5'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(0,'5')">其他</div>
                 <div class="bdd_win_header_right bdd_win_a">
                     <a class="bdd_render_b" href="#/tender?type=0">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
@@ -107,13 +110,13 @@
             <div class="bdd_win_header">
                 <div class="bdd_win_header_left">中标公告</div>
                 <div class="bdd_icon"></div>
-                <div class="bdd_header_lit  bdd_header_color" ng-click="$ctrl.choiceType(2,'')">全部</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'0')">施工</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'2')">监理</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'3')">采购</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'1')">设计</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
-                <div class="bdd_header_lit bdd_header_color" ng-click="$ctrl.choiceType(2,'5')">其他</div>
+                <div class="bdd_header_lit  bdd_header_color  {{$ctrl.showItemTypeZ==''?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'')">全部</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='0'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'0')">施工</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='2'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'2')">监理</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='3'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'3')">采购</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='1'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'1')">设计</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='4'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'4')">勘察</div>
+                <div class="bdd_header_lit bdd_header_color  {{$ctrl.showItemTypeZ=='5'?'bdd_back_yellow':''}}" ng-click="$ctrl.choiceType(2,'5')">其他</div>
                 <div class="bdd_win_header_right">
                     <a class="bdd_render_b" href="#/tender?type=2">更多&nbsp;</a>
                     <img src="../../../vendor/images/icon_arrow_right.png" alt="">
@@ -224,6 +227,17 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
+<!--弹框-->
+
+ <!--<div style="position:relative">-->
+     <!--<img style="width:638px;height: 588px;" src="../../../vendor/images/content.png" alt="">-->
+     <!--<img  style="width: 558px;height: 60px;text-align: center;position: relative;top:-61px;left:39px" src="../../../vendor/images/btn.png" alt="">-->
+ <!--</div>-->
+
+
+ 
+
+
 <script>
     var d = new Date();
     d.setTime(d.getTime() - 24 * 60 * 60 * 1000);

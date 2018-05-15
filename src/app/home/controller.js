@@ -55,8 +55,15 @@ app.controller('HomeCtrl', ['$http', '$uibModal', '$log', '$scope', '$document',
         });
     };
 
-
+    selt.showItemType="";
+    selt.showItemTypeZ="";
     this.choiceType = function (type, projectType) {
+        if(type==0) {
+            selt.showItemType = projectType;
+        }
+        if(type==2) {
+            selt.showItemTypeZ = projectType;
+        }
         selt.type = type;
         selt.projectType = projectType;
         selt.setPage()
