@@ -8,7 +8,7 @@
 
 <div id="bdd_adver_header" class="bdd_adver_header" infinite-scroll="ctrl.nextPage()"
      infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1' style="height:auto;" >
-
+<div class="bdd_win_conter" style="overflow: scroll">
     <div   class="bdd_win_conter bdd_win_conter_last" ng-repeat="tender in ctrl.tenderList"  ng-show="ctrl.noticeTotal != 0 && ctrl.param.type == '0'">
         <div class="bdd_text_z" > <a href="#/tenderDetail/{{tender.id}}"><span ng-bind="tender.title"></span></a>
             <span ng-if="tender.id">
@@ -25,8 +25,7 @@
         <img src="../../../vendor/images/kym_icon_guangzhu.png" style="padding-left: 33%;margin-top: -50px;"/>
         <span style="padding-left: 41%;margin-top: -50px;">你还没有关注任何招标公告</span>
     </div>
-
-
+</div>
     <div class="bdd_win_conter bdd_win_conter_last" ng-repeat="notice in ctrl.biddingList" ng-show="ctrl.noticeTotal != 0 && ctrl.param.type == '2'">
         <div class="bdd_text_z">
             <a href="#/winbding/{{notice.id}}"><span ng-bind="notice.title"></span></a>

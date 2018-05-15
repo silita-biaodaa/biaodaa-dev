@@ -16,6 +16,17 @@ app.controller('UcenterCtrl', ['$http','$state','$log','$scope','$document', 'us
 
     console.log( $state.current.name);
     this.menu = $state.current.name;
+    if($scope.hrefUrl == 'ucenter.personInfo'){
+        window.location.href="index.html#/ucenter/personInfo";
+    }else if($scope.hrefUrl == 'ucenter.financial'){
+        window.location.href="index.html#/ucenter/financial";
+    }else if($scope.hrefUrl == 'ucenter.messages'){
+        window.location.href="index.html#/ucenter/messages";
+    }else if($scope.hrefUrl == 'ucenter.feedback'){
+        window.location.href="index.html#/ucenter/feedback";
+    }else if($scope.hrefUrl == 'ucenter.myfollow'){
+        window.location.href="index.html#/ucenter/myfollow";
+    }
     this.selectMenu = function (menu) {
         selt.menu = menu;
         $scope.hrefUrl = menu;

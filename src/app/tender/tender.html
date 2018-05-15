@@ -445,16 +445,44 @@
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
-                                 ng-if="$ctrl.projSumStart || $ctrl.projSumEnd">
+                                 ng-if="$ctrl.projSumStart && $ctrl.projSumEnd">
                                 <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
                                     {{$ctrl.projSumStart}}万—{{$ctrl.projSumEnd}}万&nbsp;&nbsp;<span
                                         ng-click="$ctrl.canclePrice()">×</span></div>
                             </div>
 
                             <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
-                                 ng-if="$ctrl.kbDateStart || $ctrl.kbDateEnd">
+                                 ng-if="$ctrl.projSumStart != null && $ctrl.projSumEnd == null">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
+                                    {{$ctrl.projSumStart}}万以上&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.canclePrice()">×</span></div>
+                            </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.projSumStart == null && $ctrl.projSumEnd != null">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
+                                    {{$ctrl.projSumEnd}}万以下&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.canclePrice()">×</span></div>
+                            </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.kbDateStart && $ctrl.kbDateEnd">
                                 <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
                                     {{$ctrl.kbDateStart}}—{{$ctrl.kbDateEnd}}&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelKbDate()">×</span></div>
+                            </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.kbDateStart != null && $ctrl.kbDateEnd == null">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
+                                    {{$ctrl.kbDateStart}}&nbsp;&nbsp;<span
+                                        ng-click="$ctrl.cancelKbDate()">×</span></div>
+                            </div>
+
+                            <div class="bdd_area_content bdd_text_vib bdd_text_vib_a"
+                                 ng-if="$ctrl.kbDateStart == null && $ctrl.kbDateEnd != null">
+                                <div class="bdd_select bdd_font_a  bdd_font_color" style="width:auto;">
+                                    {{$ctrl.kbDateEnd}}&nbsp;&nbsp;<span
                                         ng-click="$ctrl.cancelKbDate()">×</span></div>
                             </div>
 
