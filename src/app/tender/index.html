@@ -706,8 +706,8 @@
     <div class="bdd_adver">
         <div class="bdd_adver_header" infinite-scroll='demo.nextPage()' infinite-scroll-disabled='demo.busy'
              infinite-scroll-distance='1'>
-            <a ng-repeat="item in demo.dataList" ng-click="toDetail(item.id)">
-                <div class="bdd_win_conter" style="margin-top:10px;">
+            <a class="bdd_win_conter_p" ng-repeat="item in demo.dataList" ng-click="toDetail(item.id)">
+                <div class="bdd_win_conter bdd_win_conter_p" style="margin-top:10px;">
                     <div class="bdd_text_z" ng-bind="item.title"></div>
                     <div class="bdd_text_y">资质要求：{{item.certificate}}</div>
                     <div class="bdd_text_p">评标办法：{{item.pbMode}}</div>

@@ -248,3 +248,9 @@ bdd_pers_conter_boder_b{
 .bdd_homepage_header_qi_b{
     left:1100px;
 }
+.bdd_per_content_left:hover{
+    box-shadow: 0px 0px 8px #d8d8d8;
+}
+.bdd_per_content_right:hover{
+    box-shadow: 0px 0px 8px #d8d8d8;
+}
