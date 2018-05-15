@@ -794,14 +794,13 @@ body {
     height: 150px;
     margin-top: 5px;
 }
-
 /*表格*/
 .bdd_Personl_talbe {
     width: 1200px;
-
     margin: 0 auto;
     margin-top: 20px;
     background-color: white;
+    padding-bottom:100px;
 }
 
 .bdd_Personl_talbe_header {
@@ -819,7 +818,7 @@ body {
 }
 
 .bdd_Personl_table_header_right {
-    text-align: center;
+    text-align:right;
     font-size: 14px;
     color: #9d9d9d;
 }
