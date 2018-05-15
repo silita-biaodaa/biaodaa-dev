@@ -72,7 +72,7 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
     this.cancelFilter = function () {
 
 
-        var tempTbModes
+        var tempTbModes;
         if(selt.pbModes != null) {
             tempTbModes = selt.pbModes.slice(0);
         }
@@ -441,7 +441,8 @@ app.controller('tenderIndex', ['$http', '$scope', 'utils', '$stateParams', '$sta
 
     this.resetParam = function () {
         this.priceArea = "";
-        this.province = "";
+        // this.province = "";
+        this.province = "湖南省";
         this.city = "";
         this.qual1 = "";
         this.qual2 = "";
