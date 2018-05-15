@@ -362,7 +362,7 @@
 
                                 </div>
                                 <div  ng-if="currentTender.threeName!=null && currentTender.threeName!=''">
-                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; {{currentTender.threeName}}<span style="margin-left: 40px;">项目金额：</span><span>{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':''}}</span></div>
+                                    <div><img src="../../../vendor/images/bx_zb_icon_Candidate3.png" alt="">&nbsp;&nbsp; <span style="color: #4d3a3a;">{{currentTender.threeName}}</span><span style="margin-left: 40px;">项目金额：</span><span style="color: #4d3a3a">{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':''}}</span></div>
 
                                 </div>
                             </div><br>
@@ -373,13 +373,10 @@
                         <div class="bdd_stage_bottom_top">
 
                             <li class="bdd_stage_bottom_news bdd_stage_bottom_col" ng-repeat="item in dataArrayList"
-                                ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list"
-                                                                      type="button"   ng-class="{bdd_select_color_style:$index==focus}" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
+                                ng-click="toCurrentTender($index)"><a class="bdd_stage_bottom_list" type="button"   ng-class="{bdd_select_color_style:$index==focus}" ><div class="bdd_stage_bottom_span_a"> {{$index+1}}</div></a>
                             </li>
-
                         </div>
                     </div>
-
                     <div class="bdd_follow bdd_follow_foll">
                         <img src="../../../vendor/images/zb_btn_follow.png"  style="cursor: pointer"  alt="" ng-show="!currentTender.collected" ng-click="addConcernWin(currentTender.id,currentTender.type)">
                         <img src="../../../vendor/images/zb_btn_follow_pre.png"  style="cursor: pointer"  alt="" ng-show="currentTender.collected" ng-click="cancelConcernWin(currentTender.id)">
@@ -411,17 +408,17 @@
 
         <div class="bdd_details_js" ng-if="currentTender.oneName">
             <div class="bdd_details_js_two">{{currentTender.oneName}}</div>
-            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.oneOffer}}{{currentTender.oneOffer?'万元':''}}</div>
 
         </div>
         <div class="bdd_details_js" ng-if="currentTender.twoName">
             <div class="bdd_details_js_two">{{currentTender.twoName}}</div>
-            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.twoOffer}}{{currentTender.twoOffer?'万元':''}}</div>
 
         </div>
         <div class="bdd_details_js" ng-if="currentTender.threeName">
             <div class="bdd_details_js_two">{{currentTender.threeName}}</div>
-            <div class="bdd_details_js_new">项目金额：{{currentTender.projSum}}{{currentTender.projSum?'万元':''}}</div>
+            <div class="bdd_details_js_new">项目金额：{{currentTender.threeOffer}}{{currentTender.threeOffer?'万元':''}}</div>
 
         </div>
     </div>
