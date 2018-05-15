@@ -225,7 +225,7 @@
         <div class="bdd-nav-tend-rel">
             <div id="divD" class="search-tender search-tender-select">
                 <div  ng-mouseenter="showTenderList(ctrl.showTender)" ng-mouseleave="showTenderList(ctrl.showTender)" class="txt-inline txt-inline-a txt-inline-a-center">
-                    <div class="bdd-search-name"><div class="txt-inline">{{ctrl.searchName}}招标</div><img class="txt-inline" src="../vendor/images/nav_icon_arrow_down.png"></div>
+                    <div class="bdd-search-name"><div class="txt-inline">{{ctrl.searchName}}{{ctrl.showName}}</div><img class="txt-inline" src="../vendor/images/nav_icon_arrow_down.png"></div>
                     <div style="position: fixed" ng-show="ctrl.showTender" >
                         <ul class="txt-inline-a select-inline-ul txt-cursor-a">
                             <!--<li><a class="text-small" ng-click="ctrl.selectGoMenu('tender?type=99&keyword=','搜标讯','搜索招标、中标公告')">搜标讯</a></li>-->

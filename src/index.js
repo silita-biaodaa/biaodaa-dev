@@ -40,9 +40,11 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
     this.goUrl = "index.html#/"+this.goMenu;
     $scope.searchName="搜标讯";
     this.placeholderName = "搜索招标、中标公告";
+    this.showName = '招标';
     this.selectGoMenu = function(goMenu,searchName,placeholderName){
         $scope.searchName=searchName;
         selt.placeholderName = placeholderName;
+        selt.showName = searchName;
         console.log("value : index.html#/" + goMenu);
         selt.goUrl = "index.html#/" + goMenu;
     };
