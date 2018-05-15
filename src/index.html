@@ -204,6 +204,24 @@
         .text-white:hover{
             color: white;
         }
+        .model-out{
+            position: fixed;
+            width: 1920px;
+            height: 800px;
+            height: 100%;
+            text-align: center;
+            left:0;
+            top:0;
+            text-align: center;
+            z-index: 1101;
+            background-color: rgba(132,132,132,0.5);
+        }
+        .model-out-content{
+            margin-top: 300px;
+            width: 100%;
+            color:white;
+            font-size: 32px;
+        }
     </style>
     <title>webapp</title>
 </head>
@@ -279,8 +297,6 @@
 
             </div>
         </div>
-
-
     </div>
 </nav>
 
@@ -308,7 +324,18 @@
         <!--bottom_icon_wechat        bottom_icon_andriod-->
     </div>
     <div style="color:#ccbebe;width: 1200px;height:90px;padding-top: 30px;font-size: 12px;padding-left: 80px;">© 2017 思利他, Inc. All rights reserved  . 湘ICP备17019911号-1</div>
+  <!--  弹框 <div class="model-out" ng-if="isShowNewVision">
+        <div class="model-out-content">
+        <div>
+            <img src="../vendor/images/content.png" alt="">
+        </div>
+            <div ng-click="showNewVision()" style="width:400px;margin:0 auto;background-color: #cea63f;border-radius: 5px;padding-left: 20px;padding-right: 20px;">
+                <img src="../vendor/images/btn.png" alt=""></div>
 
+            <img src="../vendor/images/popup_icon_delate.png" alt="">
+        </div>
+        </div>
+    </div>-->
 </div>
 
 

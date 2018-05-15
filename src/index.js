@@ -1,4 +1,4 @@
-app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll',"$location",function($http,$scope,userTemp,utils, $anchorScroll,$location) {
+app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll',"$location",'locals',function($http,$scope,userTemp,utils, $anchorScroll,$location,locals) {
 
     var selt = this;
 
@@ -106,5 +106,14 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
     $scope.toTop=function(){
         $location.hash();
         $anchorScroll();
+    }
+    if(locals.get('showVisionCode',0)==0){
+        $scope.isShowNewVision=true;
+    }else{
+        $scope.isShowNewVision=false;
+    }
+    $scope.showNewVision=function(){
+        $scope.isShowNewVision=false;
+        locals.set('showVisionCode',1);
     }
 }]);
