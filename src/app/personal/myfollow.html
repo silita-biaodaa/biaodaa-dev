@@ -15,7 +15,7 @@
      infinite-scroll-disabled='ctrl.busy' infinite-scroll-distance='1' style="height:auto;" >
 <div class="bdd_win_conter" style="overflow: auto;height: 500px;">
     <div   class="bdd_win_conter bdd_win_conter_last" ng-repeat="tender in ctrl.tenderList"  ng-show="ctrl.noticeTotal != 0 && ctrl.param.type == '0'">
-        <div class="bdd_text_z" > <a href="#/tenderDetail/{{tender.id}}"><span ng-bind="tender.title"></span></a>
+        <div class="bdd_text_z" > <a href="#/tenderDetail/{{tender.id}}"><span >{{tender.title | limitTo:20}}</span></a>
             <span ng-if="tender.id">
                 <span ng-click="ctrl.cancelCollectionNotice({{tender.id}},0,tender)"><img  src="../../../vendor/images/wode_but_delate.png" alt="取消关注"></span>
             </span>
