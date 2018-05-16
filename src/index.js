@@ -4,6 +4,9 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
 
     if (userTemp != null) {
         selt.user = angular.fromJson(userTemp);
+        if(locals.get("imgUrl")){
+            selt.user.imgurl = locals.get("imgUrl");
+        }
     } else {
         selt.user = null;
     }

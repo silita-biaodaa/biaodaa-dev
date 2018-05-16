@@ -1,4 +1,4 @@
-app.controller('PersonInfoCtrl', ['$http','$uibModal','$log','$scope','$document',function($http,$uibModal, $log, $scope,$document) {
+app.controller('PersonInfoCtrl', ['$http','$uibModal','$log','$scope','$document','locals',"$state",function($http,$uibModal, $log, $scope,$document,locals,$state) {
     var selt = this;
     this.visible = false;
     this.name_hide = true;
@@ -86,6 +86,9 @@ app.controller('PersonInfoCtrl', ['$http','$uibModal','$log','$scope','$document
                 alert("设置图像成功");
                 selt.user.imgurl = imgUrl;
                 $scope.ucenter.imgurl = imgUrl;
+                locals.set("imgUrl",imgUrl);
+                window.location.href = "index.html#/ucenter/personInfo";
+                window.location.reload();
             }else{
                 alert("设置图像失败");
             }
