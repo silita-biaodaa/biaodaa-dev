@@ -36,11 +36,11 @@
 </div>
 <!--导航-->
 <div class="bdd_basic_nav">
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(1)" ng-style="ctrl.style01">基本信息</div>
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(2)" ng-style="ctrl.style02">信誉信息</div>
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(3)" ng-style="ctrl.style03">资质信息</div>
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(4)" ng-style="ctrl.style04">人员信息</div>
-    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(5)" ng-style="ctrl.style05">企业业绩</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(1)" ng-style="ctrl.style01">工商</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(5)" ng-style="ctrl.style05">诚信</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(2)" ng-style="ctrl.style02">资质</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(3)" ng-style="ctrl.style03">人员</div>
+    <div class="bdd_basic_nav_title" ng-click="ctrl.changeType(4)" ng-style="ctrl.style04">业绩</div>
 </div>
 <!--内容-->
 <div class="bdd_basic_nav_conter" ng-if="ctrl.showType==1">
@@ -82,7 +82,7 @@
     <div class="bdd_reput_top_title">"现在的普通改变，将改变未来的普通"</div>
 </div>-->
 <!--获奖情况-->
-<div class="bdd_reput_conter" ng-if="ctrl.showType==2">
+<div class="bdd_reput_conter" ng-if="ctrl.showType==5">
     <div class="bdd_scope_conter">
         <div class="bdd_scope_conter_right">
             <div class="bdd_scope_conter_left display_inline"></div>
@@ -161,7 +161,7 @@
 </div>
 
 <!--资质要求-->
-<div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
+<div class="bdd_Personl_talbe" ng-if="ctrl.showType==2">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
             <span class="{{ctrl.qualType==''?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-click="ctrl.allQual()">全部</span>
@@ -192,7 +192,7 @@
 </div>
 
 <!--人员信息-->
-<div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
+<div class="bdd_Personl_talbe" ng-if="ctrl.showType==3">
     <div class="bdd_Personl_talbe_header">
         <div class="bdd_Personl_table_header_list">
             <span class="{{ctrl.category==''?'bdd_Personl_table_header_title span-yellow':'bdd_Personl_table_header_title'}}" ng-click="ctrl.setPage()">全部</span>
@@ -226,7 +226,7 @@
         <img src="../../../vendor/images/kym_icon_nothing.png" style="padding-left: 380px;margin-top: -60px;"/>
     </div>
 </div>
-<div class="bdd_Personl_talbe" ng-if="ctrl.showType==5">
+<div class="bdd_Personl_talbe" ng-if="ctrl.showType==4">
     <div class="bdd_Personl_talbe_header" ng-if="ctrl.projectList.length > 0">
         <div class="bdd_Personl_table_header_right">共有找到 <span style="color: #cea63f;" ng-bind="ctrl.projectList.length"></span> 条业绩信息</div>
     </div>
