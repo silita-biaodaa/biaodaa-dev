@@ -1,4 +1,4 @@
-app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll',"$location",'locals',function($http,$scope,userTemp,utils, $anchorScroll,$location,locals) {
+app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll',"$location",'locals','$state',function($http,$scope,userTemp,utils, $anchorScroll,$location,locals,$state) {
 
     var selt = this;
 
@@ -44,10 +44,14 @@ app.controller('IndexCtrl', ['$http','$scope','userTemp','utils', '$anchorScroll
     $scope.searchName="搜标讯";
     this.placeholderName = "搜索招标、中标公告";
     this.showName = '招标';
+    if(null != locals.get("selectName")){
+        this.showName = locals.get("selectName");
+    }
     this.selectGoMenu = function(goMenu,searchName,placeholderName){
         $scope.searchName=searchName;
         selt.placeholderName = placeholderName;
-        selt.showName = searchName;
+        this.showName = searchName;
+        locals.set("selectName",searchName);
         console.log("value : index.html#/" + goMenu);
         selt.goUrl = "index.html#/" + goMenu;
     };
