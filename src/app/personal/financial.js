@@ -2,7 +2,9 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
     var selt = this;
 
     selt.mobileRegx = RegExp("^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$");
-    selt.moneyReg = RegExp("^(([1-9]+)$|([0-9]+\.[0-9]{1,2})$)");
+    selt.moneyReg = RegExp("^(([1-9]+)$|([0-9]+\\.[0-9]{1,2})$)");
+
+    selt.formSubmit = false;
 
     $scope.selectDatas = [
         {
@@ -601,6 +603,9 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
     var regDateTime = /^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/;
 
     this.submit = function (valid) {
+        if(!valid || selt.formSubmit == true) {
+            selt.formSubmit = false;
+        }
         if (null != userTemp) {
             var region = '';
             var province = selt.province;
@@ -663,6 +668,7 @@ app.controller('FinancialCtrl', ['$http','$uibModal','$log','$scope','$document'
                         alert('申请保证金借款失败！');
                     }
                 });
+                selt.formSubmit = true;
             }
         } else {
             alert('您未登录，暂不能申请保证金借款！');
